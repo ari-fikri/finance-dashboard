@@ -71,15 +71,6 @@ export default function App() {
           <h1>Data Dashboard</h1>
           <p>Overview of source syncs and master-data tools</p>
         </div>
-
-        <div className="header-actions">
-          <button className="btn btn-ghost" onClick={() => alert("Sync All (preview)")}>
-            Sync All
-          </button>
-          <button className="btn btn-primary" onClick={() => alert("New Action (preview)")}>
-            New Action
-          </button>
-        </div>
       </header>
 
       <main>
