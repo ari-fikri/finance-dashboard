@@ -1,5 +1,5 @@
 // src/SyncPartList.jsx
-import React, { useMemo } from "react";
+import React, { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 /**
@@ -9,6 +9,8 @@ import { useNavigate } from "react-router-dom";
  */
 export default function SyncPartList() {
   const navigate = useNavigate();
+  const [currentPage, setCurrentPage] = useState(1);
+  const recordsPerPage = 15;
 
   // raw part rows (from your list)
   const partRows = [
@@ -47,6 +49,17 @@ export default function SyncPartList() {
     []
   );
 
+  // Pagination calculations
+  const totalRecords = rows.length;
+  const totalPages = Math.ceil(totalRecords / recordsPerPage);
+  const startIndex = (currentPage - 1) * recordsPerPage;
+  const endIndex = startIndex + recordsPerPage;
+  const currentRecords = rows.slice(startIndex, endIndex);
+
+  const goToPage = (page) => {
+    setCurrentPage(Math.max(1, Math.min(page, totalPages)));
+  };
+
   return (
     <div style={{ padding: 28 }}>
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
@@ -74,9 +87,10 @@ export default function SyncPartList() {
         </div>
 
         <div style={{ overflowX: "auto", borderRadius: 12, border: "1px solid rgba(0,0,0,0.06)" }}>
-          <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 900 }}>
+          <table style={{ width: "100%", borderCollapse: "collapse", minWidth: 950 }}>
             <thead style={{ background: "rgba(15,23,42,0.03)" }}>
               <tr>
+                <th style={thStyleCenter}>Record No</th>
                 <th style={thStyle}>PartNo</th>
                 <th style={thStyle}>PartName</th>
                 <th style={thStyle}>Supplier Name</th>
@@ -87,27 +101,89 @@ export default function SyncPartList() {
             </thead>
 
             <tbody>
-              {rows.map((r) => (
-                <tr key={r.partNo} style={{ borderBottom: "1px solid rgba(0,0,0,0.04)" }}>
-                  <td style={tdStyle}>{r.partNo}</td>
-                  <td style={tdStyle}>{r.partName}</td>
-                  <td style={tdStyle}>{r.supplier}</td>
+              {currentRecords.map((r, index) => {
+                const recordNo = startIndex + index + 1;
+                return (
+                  <tr key={r.partNo} style={{ borderBottom: "1px solid rgba(0,0,0,0.04)" }}>
+                    <td style={tdStyleCenter}>{recordNo}</td>
+                    <td style={tdStyle}>{r.partNo}</td>
+                    <td style={tdStyle}>{r.partName}</td>
+                    <td style={tdStyle}>{r.supplier}</td>
 
-                  <td style={tdStyleCenter}>
-                    <input type="checkbox" checked={r.cmd} readOnly />
-                  </td>
+                    <td style={tdStyleCenter}>
+                      <input type="checkbox" checked={r.cmd} readOnly />
+                    </td>
 
-                  <td style={tdStyleCenter}>
-                    <input type="checkbox" checked={r.sap} readOnly />
-                  </td>
+                    <td style={tdStyleCenter}>
+                      <input type="checkbox" checked={r.sap} readOnly />
+                    </td>
 
-                  <td style={tdStyleCenter}>
-                    <input type="checkbox" checked={r.ifast} readOnly />
-                  </td>
-                </tr>
-              ))}
+                    <td style={tdStyleCenter}>
+                      <input type="checkbox" checked={r.ifast} readOnly />
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
+        </div>
+
+        {/* Pagination */}
+        <div style={{ 
+          marginTop: 16, 
+          display: "flex", 
+          justifyContent: "space-between", 
+          alignItems: "center" 
+        }}>
+          <div style={{ fontSize: 13, color: "#6b7280" }}>
+            Showing {startIndex + 1} to {Math.min(endIndex, totalRecords)} of {totalRecords} records
+          </div>
+          
+          <div style={{ display: "flex", gap: 4, alignItems: "center" }}>
+            <button
+              onClick={() => goToPage(currentPage - 1)}
+              disabled={currentPage === 1}
+              className="btn btn-ghost"
+              style={{ 
+                padding: "4px 8px", 
+                fontSize: 12,
+                opacity: currentPage === 1 ? 0.5 : 1,
+                cursor: currentPage === 1 ? "not-allowed" : "pointer"
+              }}
+            >
+              Previous
+            </button>
+            
+            {/* Page numbers */}
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+              <button
+                key={page}
+                onClick={() => goToPage(page)}
+                className={page === currentPage ? "btn btn-primary" : "btn btn-ghost"}
+                style={{ 
+                  padding: "4px 8px", 
+                  fontSize: 12,
+                  minWidth: 32
+                }}
+              >
+                {page}
+              </button>
+            ))}
+            
+            <button
+              onClick={() => goToPage(currentPage + 1)}
+              disabled={currentPage === totalPages}
+              className="btn btn-ghost"
+              style={{ 
+                padding: "4px 8px", 
+                fontSize: 12,
+                opacity: currentPage === totalPages ? 0.5 : 1,
+                cursor: currentPage === totalPages ? "not-allowed" : "pointer"
+              }}
+            >
+              Next
+            </button>
+          </div>
         </div>
 
         <div style={{ marginTop: 16, display: "flex", justifyContent: "flex-end", gap: 8 }}>
