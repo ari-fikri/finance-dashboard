@@ -87,6 +87,10 @@ export default function App() {
     a.click();
     URL.revokeObjectURL(url);
   }
+
+  function openPartPairing() {
+    alert("Part Pairing Management interface (preview)\n\nThis feature allows you to:\n• Map parts between different systems\n• Define equivalency relationships\n• Manage cross-reference tables");
+  }
   
   function HeaderActions() {
     const navigate = useNavigate();
@@ -310,7 +314,7 @@ export default function App() {
         <section>
           <h2 className="section-title">Master Data</h2>
 
-          <div className="grid-1" style={{ alignItems: "start" }}>
+          <div className="grid-2" style={{ alignItems: "start" }}>
             <motion.div
               className="card master-card"
               initial={{ opacity: 0, y: 6 }}
@@ -333,6 +337,32 @@ export default function App() {
                   </button>
                   <button className="btn btn-primary" onClick={openMaintain}>
                     Maintain Master Data
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+
+            <motion.div
+              className="card"
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.28, delay: 0.08 }}
+            >
+              <div>
+                <div className="title">Part Pairing Management</div>
+                <div className="meta">Cross-system part mapping and relationships</div>
+                <div style={{ marginTop: 10 }} className="small">
+                  Manage part number mappings between CMD, SAP, and IFAST systems. Define equivalency relationships and maintain cross-reference tables.
+                </div>
+              </div>
+
+              <div className="card-footer">
+                <div className="small">
+                  Status: <strong style={{ color: "#059669" }}>Ready</strong>
+                </div>
+                <div className="card-actions">
+                  <button className="btn btn-primary" onClick={openPartPairing}>
+                    Manage Pairings
                   </button>
                 </div>
               </div>
