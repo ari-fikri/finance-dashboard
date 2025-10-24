@@ -260,6 +260,7 @@ export default function PartPairingPage() {
                           type="text"
                           value={editLeftPartName}
                           readOnly
+                          tabIndex="-1"
                           style={{
                             width: "100%",
                             padding: "4px 6px",
@@ -326,6 +327,7 @@ export default function PartPairingPage() {
                           type="text"
                           value={editRightPartName}
                           readOnly
+                          tabIndex="-1"
                           style={{
                             width: "100%",
                             padding: "4px 6px",
