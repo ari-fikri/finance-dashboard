@@ -68,7 +68,7 @@ export default function PPRPage() {
 
         {/* Table container with horizontal scroll */}
         <div style={{ overflow: "auto", border: "1px solid rgba(0,0,0,0.06)", borderRadius: 8 }}>
-          <table style={{ borderCollapse: "collapse", minWidth: 1400, width: "100%" }}>
+          <table style={{ borderCollapse: "collapse", minWidth: 1600, width: "100%" }}>
             <thead>
               {/* First header row: colored bands */}
               <tr>
@@ -80,7 +80,9 @@ export default function PPRPage() {
                 <th colSpan="4" style={headerBandStyle("#dff7e6")}>Processing Cost</th>
                 <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky}}>Total Process Cost</th>
                 <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky}}>Exclusive Investment</th>
+                <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky}}>Prev Period</th>
                 <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky}}>Total Cost</th>
+                <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky}}>Diff</th>
                 <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky}}>Remark</th>
               </tr>
 
@@ -121,7 +123,9 @@ export default function PPRPage() {
 
                   <td style={td}>{formatNumber(r.totalProcessCost)}</td>
                   <td style={td}>{formatNumber(r.exclusiveInvestment)}</td>
+                  <td style={td}>{formatNumber(r.prevPeriod)}</td>
                   <td style={td}>{formatNumber(r.totalCost)}</td>
+                  <td style={td}>{formatPercentage(r.diff)}</td>
                   <td style={td}>{r.remark}</td>
                 </tr>
               ))}
@@ -185,5 +189,14 @@ const formatNumber = (v) => {
   if (v == null || v === "") return "-";
   // shows with thousand separators and 3 decimals if float
   if (typeof v === "number") return v.toLocaleString(undefined, { minimumFractionDigits: 3, maximumFractionDigits: 3 });
+  return v;
+};
+
+const formatPercentage = (v) => {
+  if (v == null || v === "") return "-";
+  if (typeof v === "number") {
+    const formatted = v.toFixed(2);
+    return v >= 0 ? `+${formatted}%` : `${formatted}%`;
+  }
   return v;
 };

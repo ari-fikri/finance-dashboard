@@ -16,7 +16,9 @@ export const pprSampleData = [
     unfinishDepre: 41.853,
     totalProcessCost: 94.069, 
     exclusiveInvestment: 27.474, 
+    prevPeriod: 1373.273, // -15% from totalCost
     totalCost: 1615.909,
+    diff: 17.66, // percentage difference
     remark: "RH - LH different",
   },
   {
@@ -34,7 +36,9 @@ export const pprSampleData = [
     unfinishDepre: 41.853,
     totalProcessCost: 94.069, 
     exclusiveInvestment: 27.474, 
+    prevPeriod: 1900.530, // +17% from totalCost
     totalCost: 1624.385,
+    diff: -14.53, // percentage difference
     remark: "",
   },
   // add more rows as needed...
