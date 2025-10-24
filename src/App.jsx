@@ -89,7 +89,7 @@ export default function App() {
   }
 
   function openPartPairing() {
-    alert("Part Pairing Management interface (preview)\n\nThis feature allows you to:\n• Map parts between different systems\n• Define equivalency relationships\n• Manage cross-reference tables");
+    navigate("/part-pairing");
   }
   
   function HeaderActions() {
