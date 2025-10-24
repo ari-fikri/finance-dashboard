@@ -11,6 +11,9 @@ import { pprSampleData } from "./data/pprSampleData";
 export default function PPRPage() {
   const navigate = useNavigate();
   const [selectedMonth, setSelectedMonth] = useState("Aug-25");
+  const [editingRemark, setEditingRemark] = useState(null);
+  const [remarkValues, setRemarkValues] = useState({});
+  const threshold = 10; // 10% threshold
 
   // Exchange rates for different months
   const exchangeRates = {
@@ -23,6 +26,30 @@ export default function PPRPage() {
   const rows = useMemo(() => {
     return pprSampleData;
   }, []);
+
+  // Helper function to check if diff is outside threshold
+  const isOutsideThreshold = (diff) => {
+    return Math.abs(diff) > threshold;
+  };
+
+  // Helper function to get remark value (from state or original data)
+  const getRemarkValue = (partNo, originalRemark) => {
+    return remarkValues[partNo] !== undefined ? remarkValues[partNo] : originalRemark;
+  };
+
+  // Handle remark editing
+  const handleRemarkEdit = (partNo) => {
+    setEditingRemark(partNo);
+  };
+
+  const handleRemarkSave = (partNo, value) => {
+    setRemarkValues(prev => ({ ...prev, [partNo]: value }));
+    setEditingRemark(null);
+  };
+
+  const handleRemarkCancel = () => {
+    setEditingRemark(null);
+  };
 
   return (
     <div style={{ padding: 20 }}>
@@ -103,32 +130,80 @@ export default function PPRPage() {
             </thead>
 
             <tbody>
-              {rows.map((r) => (
-                <tr key={r.partNo} style={{ borderBottom: "1px solid rgba(0,0,0,0.04)" }}>
-                  <td style={td}>{r.no}</td>
-                  <td style={td}>{r.partNo}</td>
-                  <td style={td}>{r.partName}</td>
+              {rows.map((r) => {
+                const isThresholdExceeded = isOutsideThreshold(r.diff);
+                const redStyle = isThresholdExceeded ? { ...td, color: "red", fontWeight: "bold" } : td;
+                const currentRemark = getRemarkValue(r.partNo, r.remark);
+                
+                return (
+                  <tr key={r.partNo} style={{ borderBottom: "1px solid rgba(0,0,0,0.04)" }}>
+                    <td style={td}>{r.no}</td>
+                    <td style={td}>{r.partNo}</td>
+                    <td style={td}>{r.partName}</td>
 
-                  <td style={td}>{r.jsp ?? "-"}</td>
-                  <td style={td}>{r.msp ?? "-"}</td>
-                  <td style={td}>{r.localOH ?? "-"}</td>
-                  <td style={td}>{formatNumber(r.toolingOH)}</td>
+                    <td style={td}>{r.jsp ?? "-"}</td>
+                    <td style={td}>{r.msp ?? "-"}</td>
+                    <td style={td}>{r.localOH ?? "-"}</td>
+                    <td style={td}>{formatNumber(r.toolingOH)}</td>
 
-                  <td style={td}>{formatNumber(r.rawMaterial)}</td>
+                    <td style={td}>{formatNumber(r.rawMaterial)}</td>
 
-                  <td style={td}>{formatNumber(r.labor)}</td>
-                  <td style={td}>{formatNumber(r.fohFix)}</td>
-                  <td style={td}>{formatNumber(r.fohVar)}</td>
-                  <td style={td}>{formatNumber(r.unfinishDepre)}</td>
+                    <td style={td}>{formatNumber(r.labor)}</td>
+                    <td style={td}>{formatNumber(r.fohFix)}</td>
+                    <td style={td}>{formatNumber(r.fohVar)}</td>
+                    <td style={td}>{formatNumber(r.unfinishDepre)}</td>
 
-                  <td style={td}>{formatNumber(r.totalProcessCost)}</td>
-                  <td style={td}>{formatNumber(r.exclusiveInvestment)}</td>
-                  <td style={td}>{formatNumber(r.prevPeriod)}</td>
-                  <td style={td}>{formatNumber(r.totalCost)}</td>
-                  <td style={td}>{formatPercentage(r.diff)}</td>
-                  <td style={td}>{r.remark}</td>
-                </tr>
-              ))}
+                    <td style={td}>{formatNumber(r.totalProcessCost)}</td>
+                    <td style={td}>{formatNumber(r.exclusiveInvestment)}</td>
+                    <td style={td}>{formatNumber(r.prevPeriod)}</td>
+                    <td style={redStyle}>{formatNumber(r.totalCost)}</td>
+                    <td style={redStyle}>{formatPercentage(r.diff)}</td>
+                    <td style={td}>
+                      {editingRemark === r.partNo ? (
+                        <div style={{ display: "flex", gap: 4, alignItems: "center" }}>
+                          <input
+                            type="text"
+                            defaultValue={currentRemark}
+                            autoFocus
+                            style={{
+                              padding: "2px 6px",
+                              border: "1px solid #ccc",
+                              borderRadius: 4,
+                              fontSize: 12,
+                              width: "100px"
+                            }}
+                            onKeyDown={(e) => {
+                              if (e.key === "Enter") {
+                                handleRemarkSave(r.partNo, e.target.value);
+                              } else if (e.key === "Escape") {
+                                handleRemarkCancel();
+                              }
+                            }}
+                            onBlur={(e) => handleRemarkSave(r.partNo, e.target.value)}
+                          />
+                        </div>
+                      ) : (
+                        <div style={{ display: "flex", gap: 4, alignItems: "center" }}>
+                          <span>{currentRemark || "-"}</span>
+                          <button
+                            onClick={() => handleRemarkEdit(r.partNo)}
+                            style={{
+                              padding: "2px 6px",
+                              fontSize: 10,
+                              border: "1px solid #ccc",
+                              borderRadius: 3,
+                              background: "#f8f9fa",
+                              cursor: "pointer"
+                            }}
+                          >
+                            Edit
+                          </button>
+                        </div>
+                      )}
+                    </td>
+                  </tr>
+                );
+              })}
             </tbody>
           </table>
         </div>
