@@ -13,6 +13,8 @@ export default function PPRPage() {
   const [selectedMonth, setSelectedMonth] = useState("Aug-25");
   const [editingRemark, setEditingRemark] = useState(null);
   const [remarkValues, setRemarkValues] = useState({});
+  const [currentPage, setCurrentPage] = useState(1);
+  const recordsPerPage = 10;
   const threshold = 10; // 10% threshold
 
   // Exchange rates for different months
@@ -26,6 +28,17 @@ export default function PPRPage() {
   const rows = useMemo(() => {
     return pprSampleData;
   }, []);
+
+  // Pagination calculations
+  const totalRecords = rows.length;
+  const totalPages = Math.ceil(totalRecords / recordsPerPage);
+  const startIndex = (currentPage - 1) * recordsPerPage;
+  const endIndex = startIndex + recordsPerPage;
+  const currentRecords = rows.slice(startIndex, endIndex);
+
+  const goToPage = (page) => {
+    setCurrentPage(Math.max(1, Math.min(page, totalPages)));
+  };
 
   // Helper function to check if diff is outside threshold
   const isOutsideThreshold = (diff) => {
@@ -135,14 +148,14 @@ export default function PPRPage() {
             </thead>
 
             <tbody>
-              {rows.map((r) => {
+              {currentRecords.map((r) => {
                 const isThresholdExceeded = isOutsideThreshold(r.diff);
                 const redStyle = isThresholdExceeded ? { ...td, color: "red", fontWeight: "bold" } : td;
                 const currentRemark = getRemarkValue(r.partNo, r.remark);
                 
                 return (
                   <tr key={r.partNo} style={{ borderBottom: "1px solid rgba(0,0,0,0.04)" }}>
-                    <td style={td}>{r.no}</td>
+                    <td style={td}>{startIndex + currentRecords.indexOf(r) + 1}</td>
                     <td style={td}>{r.partNo}</td>
                     <td style={td}>{r.partName}</td>
 
@@ -241,8 +254,66 @@ export default function PPRPage() {
           </table>
         </div>
 
+        {/* Pagination */}
+        <div style={{ 
+          marginTop: 16, 
+          display: "flex", 
+          justifyContent: "space-between", 
+          alignItems: "center" 
+        }}>
+          <div style={{ fontSize: 13, color: "#6b7280" }}>
+            Showing {startIndex + 1} to {Math.min(endIndex, totalRecords)} of {totalRecords} records
+          </div>
+          
+          <div style={{ display: "flex", gap: 4, alignItems: "center" }}>
+            <button
+              onClick={() => goToPage(currentPage - 1)}
+              disabled={currentPage === 1}
+              className="btn btn-ghost"
+              style={{ 
+                padding: "4px 8px", 
+                fontSize: 12,
+                opacity: currentPage === 1 ? 0.5 : 1,
+                cursor: currentPage === 1 ? "not-allowed" : "pointer"
+              }}
+            >
+              Previous
+            </button>
+            
+            {/* Page numbers */}
+            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
+              <button
+                key={page}
+                onClick={() => goToPage(page)}
+                className={page === currentPage ? "btn btn-primary" : "btn btn-ghost"}
+                style={{ 
+                  padding: "4px 8px", 
+                  fontSize: 12,
+                  minWidth: 32
+                }}
+              >
+                {page}
+              </button>
+            ))}
+            
+            <button
+              onClick={() => goToPage(currentPage + 1)}
+              disabled={currentPage === totalPages}
+              className="btn btn-ghost"
+              style={{ 
+                padding: "4px 8px", 
+                fontSize: 12,
+                opacity: currentPage === totalPages ? 0.5 : 1,
+                cursor: currentPage === totalPages ? "not-allowed" : "pointer"
+              }}
+            >
+              Next
+            </button>
+          </div>
+        </div>
+
         <div style={{ marginTop: 12, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <div style={{ color: "#6b7280", fontSize: 13 }}>Showing {rows.length} rows</div>
+          <div />
           <div style={{ display: "flex", gap: 8 }}>
             <button className="btn btn-ghost" onClick={() => alert("Print (preview)")}>Print</button>
             <button className="btn btn-primary" onClick={() => alert("Close (preview)") || navigate(-1)}>Close</button>
