@@ -167,11 +167,15 @@ export default function PPRPage() {
                     <td style={td}>
                       <div style={{ display: "flex", gap: 4, alignItems: "center" }}>
                         <div style={{ flex: 1 }}>
-                          <InlineEditableTextarea
-                            value={currentRemark}
-                            onSave={(value) => handleRemarkSave(r.partNo, value)}
-                            placeholder="Click to add remark..."
-                          />
+                          {isThresholdExceeded ? (
+                            <InlineEditableTextarea
+                              value={currentRemark}
+                              onSave={(value) => handleRemarkSave(r.partNo, value)}
+                              placeholder="Click to add remark..."
+                            />
+                          ) : (
+                            <span style={{ color: "#999", fontSize: "12px" }}>-</span>
+                          )}
                         </div>
                         <button
                           onClick={() => handleDetailClick(r.partNo)}
