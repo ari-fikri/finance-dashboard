@@ -224,7 +224,7 @@ export default function App() {
                 <div />
                 <div>
                   <button
-                    onClick={calculateIhp}
+                    onClick={() => navigate("/ppr")}
                     disabled={isCalculating}
                     className="btn btn-primary"
                     style={isCalculating ? { opacity: 0.7, cursor: "wait" } : {}}

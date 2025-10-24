@@ -4,6 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './index.css'
 import App from './App.jsx'
 import SyncPartList from "./SyncPartList";
+import PPRPage from "./PPRPage";
 
 createRoot(document.getElementById('root')).render(
     <React.StrictMode>
@@ -11,6 +12,7 @@ createRoot(document.getElementById('root')).render(
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/sync" element={<SyncPartList />} />
+        <Route path="/ppr" element={<PPRPage />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
