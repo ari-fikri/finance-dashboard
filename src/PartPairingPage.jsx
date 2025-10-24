@@ -193,14 +193,25 @@ export default function PartPairingPage() {
           <table style={{ width: "100%", borderCollapse: "collapse" }}>
             <thead>
               <tr style={{ backgroundColor: "#f8f9fa" }}>
+                <th style={headerStyle}>Rec No</th>
                 <th style={headerStyle}>LEFT Part</th>
                 <th style={headerStyle}>RIGHT Part</th>
                 <th style={headerStyle}>Actions</th>
               </tr>
             </thead>
             <tbody>
-              {pairings.map((pair) => (
+              {pairings.map((pair, index) => (
                 <tr key={pair.id} style={{ borderBottom: "1px solid rgba(0,0,0,0.05)" }}>
+                  <td style={cellStyle}>
+                    <div style={{ 
+                      fontWeight: 500, 
+                      fontSize: 13,
+                      color: "#374151",
+                      textAlign: "center"
+                    }}>
+                      {index + 1}
+                    </div>
+                  </td>
                   <td style={cellStyle}>
                     {editingId === pair.id ? (
                       <div>
