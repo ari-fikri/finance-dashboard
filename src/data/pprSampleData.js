@@ -1,24 +1,25 @@
 // src/data/pprSampleData.js
 
-export const pprSampleData = [
-  {
-    no: 1,
-    partNo: "51011-KK050",
-    partName: "RAIL SUB-ASSY, FRAME SIDE, RH",
-    localOH: "", 
-    toolingOH: 333.082,
-    rawMaterial: 82,
-    labor: 784.238, 
-    fohFix: 214.761, 
-    fohVar: 120.351, 
-    unfinishDepre: 41.853,
-    totalProcessCost: 94.069, 
-    exclusiveInvestment: 27.474, 
-    prevPeriod: 1373.273, // -15% from totalCost
-    totalCost: 1615.909,
-    diff: 17.66, // percentage difference
-    remark: "RH - LH different",
-  },
+export const pprDataByPeriod = {
+  "Aug-25": [
+    {
+      no: 1,
+      partNo: "51011-KK050",
+      partName: "RAIL SUB-ASSY, FRAME SIDE, RH",
+      localOH: "", 
+      toolingOH: 333.082,
+      rawMaterial: 82,
+      labor: 784.238, 
+      fohFix: 214.761, 
+      fohVar: 120.351, 
+      unfinishDepre: 41.853,
+      totalProcessCost: 94.069, 
+      exclusiveInvestment: 27.474, 
+      prevPeriod: 1373.273, // -15% from totalCost
+      totalCost: 1615.909,
+      diff: 17.66, // percentage difference
+      remark: "RH - LH different",
+    },
   {
     no: 2,
     partNo: "51012-KK050",
@@ -215,6 +216,447 @@ export const pprSampleData = [
     totalCost: 301.194,
     diff: -9.10, // percentage difference
     remark: "",
-  },
-  // add more rows as needed...
-];
+  }
+  ],
+  
+  "Jul-25": [
+    {
+      no: 1,
+      partNo: "51011-KK050",
+      partName: "RAIL SUB-ASSY, FRAME SIDE, RH",
+      localOH: "", 
+      toolingOH: 325.445,
+      rawMaterial: 79,
+      labor: 760.125, 
+      fohFix: 208.392, 
+      fohVar: 116.741, 
+      unfinishDepre: 40.580,
+      totalProcessCost: 91.306, 
+      exclusiveInvestment: 26.640, 
+      prevPeriod: 1334.156, // -15% from totalCost
+      totalCost: 1569.595,
+      diff: 15.43, // percentage difference
+      remark: "RH - LH different",
+    },
+    {
+      no: 2,
+      partNo: "51012-KK050",
+      partName: "RAIL SUB-ASSY, FRAME SIDE, LH",
+      localOH: "", 
+      toolingOH: 334.102,
+      rawMaterial: 550,
+      labor: 760.125, 
+      fohFix: 207.263, 
+      fohVar: 116.741, 
+      unfinishDepre: 40.580,
+      totalProcessCost: 91.306, 
+      exclusiveInvestment: 26.640, 
+      prevPeriod: 1842.515, // +17% from totalCost
+      totalCost: 1574.967,
+      diff: -14.53, // percentage difference
+      remark: "",
+    },
+    {
+      no: 3,
+      partNo: "51201-KK010",
+      partName: "CROSSMEMBER SUB-ASSY, FRAME, NO.1",
+      localOH: "159.801", 
+      toolingOH: 6.262,
+      rawMaterial: 110.398,
+      labor: 73.645, 
+      fohFix: 207.255, 
+      fohVar: 78.603, 
+      unfinishDepre: 179.621,
+      totalProcessCost: 539.269, 
+      exclusiveInvestment: 8.456, 
+      prevPeriod: 756.929, // -10% from totalCost
+      totalCost: 841.027,
+      diff: 11.12, // percentage difference
+      remark: "",
+    },
+    {
+      no: 4,
+      partNo: "51205-KK010",
+      partName: "AIR CLEANER ASSY",
+      localOH: "95.653",
+      toolingOH: 1.221,
+      rawMaterial: 67.832,
+      labor: 14.831, 
+      fohFix: 8.767, 
+      fohVar: 2.033, 
+      unfinishDepre: 3.154,
+      totalProcessCost: 28.785, 
+      exclusiveInvestment: 1.983, 
+      prevPeriod: 165.836, // +10% from totalCost
+      totalCost: 150.760,
+      diff: -9.10, // percentage difference
+      remark: "",
+    },
+    {
+      no: 5,
+      partNo: "51206-KK020",
+      partName: "CROSSMEMBER SUB-ASSY, FRAME, NO.6",
+      localOH: "271.694", 
+      toolingOH: 7.481,
+      rawMaterial: 0,
+      labor: 50.484, 
+      fohFix: 15.187, 
+      fohVar: 5.912, 
+      unfinishDepre: 13.581,
+      totalProcessCost: 85.164, 
+      exclusiveInvestment: 4.599, 
+      prevPeriod: 331.837, // -10% from totalCost
+      totalCost: 368.708,
+      diff: 11.18, // percentage difference
+      remark: "",
+    },
+    {
+      no: 6,
+      partNo: "51230-KK060",
+      partName: "CROSSMEMBER ASSY, FRAME, NO.3",
+      localOH: "312.129", 
+      toolingOH: 2.716,
+      rawMaterial: 0,
+      labor: 59.970, 
+      fohFix: 9.713, 
+      fohVar: 3.781, 
+      unfinishDepre: 8.695,
+      totalProcessCost: 82.159, 
+      exclusiveInvestment: 5.054, 
+      prevPeriod: 442.259, // +10% from totalCost
+      totalCost: 401.854,
+      diff: -9.10, // percentage difference
+      remark: "",
+    },
+    {
+      no: 7,
+      partNo: "53301-0K150",
+      partName: "HOOD SUB-ASSY",
+      localOH: "95.582", 
+      toolingOH: 3.445,
+      rawMaterial: 332.814,
+      labor: 24.374, 
+      fohFix: 11.836, 
+      fohVar: 10.157, 
+      unfinishDepre: 12.903,
+      totalProcessCost: 59.270, 
+      exclusiveInvestment: 18.964, 
+      prevPeriod: 434.024, // -15% from totalCost
+      totalCost: 510.445,
+      diff: 17.58, // percentage difference
+      remark: "",
+    },
+    {
+      no: 8,
+      partNo: "53801-0K080",
+      partName: "FENDER SUB-ASSY, FR RH",
+      localOH: "7.4", 
+      toolingOH: 0,
+      rawMaterial: 127.259,
+      labor: 18.404, 
+      fohFix: 6.156, 
+      fohVar: 5.343, 
+      unfinishDepre: 7.198,
+      totalProcessCost: 37.101, 
+      exclusiveInvestment: 61.391, 
+      prevPeriod: 256.612, // +10% from totalCost
+      totalCost: 233.285,
+      diff: -9.13, // percentage difference
+      remark: "",
+    },
+    {
+      no: 9,
+      partNo: "53802-0K080",
+      partName: "FENDER SUB-ASSY, FR LH",
+      localOH: "7.4", 
+      toolingOH: 0,
+      rawMaterial: 127.259,
+      labor: 18.291, 
+      fohFix: 6.188, 
+      fohVar: 5.343, 
+      unfinishDepre: 7.198,
+      totalProcessCost: 37.020, 
+      exclusiveInvestment: 61.391, 
+      prevPeriod: 198.311, // -15% from totalCost
+      totalCost: 233.201,
+      diff: 17.64, // percentage difference
+      remark: "",
+    },
+    {
+      no: 10,
+      partNo: "57403-KK010",
+      partName: "MEMBER SUB-ASSY, FLOOR SIDE, INNER RR RH",
+      localOH: "11.70", 
+      toolingOH: 0,
+      rawMaterial: 82.832,
+      labor: 10.572, 
+      fohFix: 6.717, 
+      fohVar: 2.945, 
+      unfinishDepre: 1.273,
+      totalProcessCost: 21.507, 
+      exclusiveInvestment: 3.640, 
+      prevPeriod: 131.778, // +10% from totalCost
+      totalCost: 119.798,
+      diff: -9.10, // percentage difference
+      remark: "",
+    },
+    {
+      no: 11,
+      partNo: "57404-KK010",
+      partName: "MEMBER SUB-ASSY, FLOOR SIDE, INNER RR LH",
+      localOH: "11.87", 
+      toolingOH: 0,
+      rawMaterial: 82.832,
+      labor: 10.572, 
+      fohFix: 6.717, 
+      fohVar: 2.945, 
+      unfinishDepre: 1.273,
+      totalProcessCost: 21.507, 
+      exclusiveInvestment: 3.640, 
+      prevPeriod: 101.935, // -15% from totalCost
+      totalCost: 119.879,
+      diff: 17.65, // percentage difference
+      remark: "",
+    },
+    {
+      no: 12,
+      partNo: "51204-KK070",
+      partName: "CROSSMEMBER SUB-ASSY, FRAME, NO.4",
+      localOH: "233.450", 
+      toolingOH: 3.936,
+      rawMaterial: 0,
+      labor: 28.677, 
+      fohFix: 9.759, 
+      fohVar: 3.801, 
+      unfinishDepre: 8.734,
+      totalProcessCost: 50.971, 
+      exclusiveInvestment: 3.966, 
+      prevPeriod: 322.383, // +10% from totalCost
+      totalCost: 292.984,
+      diff: -9.10, // percentage difference
+      remark: "",
+    }
+  ],
+  
+  "Jun-25": [
+    {
+      no: 1,
+      partNo: "51011-KK050",
+      partName: "RAIL SUB-ASSY, FRAME SIDE, RH",
+      localOH: "", 
+      toolingOH: 318.234,
+      rawMaterial: 76,
+      labor: 742.890, 
+      fohFix: 203.156, 
+      fohVar: 113.925, 
+      unfinishDepre: 39.612,
+      totalProcessCost: 89.145, 
+      exclusiveInvestment: 26.001, 
+      prevPeriod: 1298.923, // -15% from totalCost
+      totalCost: 1527.556,
+      diff: 13.89, // percentage difference
+      remark: "RH - LH different",
+    },
+    {
+      no: 2,
+      partNo: "51012-KK050",
+      partName: "RAIL SUB-ASSY, FRAME SIDE, LH",
+      localOH: "", 
+      toolingOH: 326.542,
+      rawMaterial: 535,
+      labor: 742.890, 
+      fohFix: 202.098, 
+      fohVar: 113.925, 
+      unfinishDepre: 39.612,
+      totalProcessCost: 89.145, 
+      exclusiveInvestment: 26.001, 
+      prevPeriod: 1797.015, // +17% from totalCost
+      totalCost: 1536.434,
+      diff: -14.53, // percentage difference
+      remark: "",
+    },
+    {
+      no: 3,
+      partNo: "51201-KK010",
+      partName: "CROSSMEMBER SUB-ASSY, FRAME, NO.1",
+      localOH: "156.240", 
+      toolingOH: 6.120,
+      rawMaterial: 107.882,
+      labor: 71.982, 
+      fohFix: 202.535, 
+      fohVar: 76.784, 
+      unfinishDepre: 175.603,
+      totalProcessCost: 526.904, 
+      exclusiveInvestment: 8.265, 
+      prevPeriod: 739.291, // -10% from totalCost
+      totalCost: 821.434,
+      diff: 11.12, // percentage difference
+      remark: "",
+    },
+    {
+      no: 4,
+      partNo: "51205-KK010",
+      partName: "AIR CLEANER ASSY",
+      localOH: "93.505",
+      toolingOH: 1.193,
+      rawMaterial: 66.286,
+      labor: 14.508, 
+      fohFix: 8.567, 
+      fohVar: 1.988, 
+      unfinishDepre: 3.085,
+      totalProcessCost: 28.148, 
+      exclusiveInvestment: 1.939, 
+      prevPeriod: 162.140, // +10% from totalCost
+      totalCost: 147.400,
+      diff: -9.10, // percentage difference
+      remark: "",
+    },
+    {
+      no: 5,
+      partNo: "51206-KK020",
+      partName: "CROSSMEMBER SUB-ASSY, FRAME, NO.6",
+      localOH: "265.555", 
+      toolingOH: 7.313,
+      rawMaterial: 0,
+      labor: 49.374, 
+      fohFix: 14.834, 
+      fohVar: 5.776, 
+      unfinishDepre: 13.273,
+      totalProcessCost: 83.257, 
+      exclusiveInvestment: 4.495, 
+      prevPeriod: 324.239, // -10% from totalCost
+      totalCost: 360.265,
+      diff: 11.18, // percentage difference
+      remark: "",
+    },
+    {
+      no: 6,
+      partNo: "51230-KK060",
+      partName: "CROSSMEMBER ASSY, FRAME, NO.3",
+      localOH: "304.931", 
+      toolingOH: 2.655,
+      rawMaterial: 0,
+      labor: 58.645, 
+      fohFix: 9.495, 
+      fohVar: 3.696, 
+      unfinishDepre: 8.500,
+      totalProcessCost: 80.336, 
+      exclusiveInvestment: 4.943, 
+      prevPeriod: 432.427, // +10% from totalCost
+      totalCost: 393.115,
+      diff: -9.10, // percentage difference
+      remark: "",
+    },
+    {
+      no: 7,
+      partNo: "53301-0K150",
+      partName: "HOOD SUB-ASSY",
+      localOH: "93.475", 
+      toolingOH: 3.369,
+      rawMaterial: 325.374,
+      labor: 23.844, 
+      fohFix: 11.576, 
+      fohVar: 9.932, 
+      unfinishDepre: 12.618,
+      totalProcessCost: 57.970, 
+      exclusiveInvestment: 18.548, 
+      prevPeriod: 424.371, // -15% from totalCost
+      totalCost: 499.260,
+      diff: 17.58, // percentage difference
+      remark: "",
+    },
+    {
+      no: 8,
+      partNo: "53801-0K080",
+      partName: "FENDER SUB-ASSY, FR RH",
+      localOH: "7.22", 
+      toolingOH: 0,
+      rawMaterial: 124.422,
+      labor: 17.998, 
+      fohFix: 6.021, 
+      fohVar: 5.225, 
+      unfinishDepre: 7.040,
+      totalProcessCost: 36.284, 
+      exclusiveInvestment: 60.055, 
+      prevPeriod: 251.155, // +10% from totalCost
+      totalCost: 228.323,
+      diff: -9.13, // percentage difference
+      remark: "",
+    },
+    {
+      no: 9,
+      partNo: "53802-0K080",
+      partName: "FENDER SUB-ASSY, FR LH",
+      localOH: "7.22", 
+      toolingOH: 0,
+      rawMaterial: 124.422,
+      labor: 17.889, 
+      fohFix: 6.053, 
+      fohVar: 5.225, 
+      unfinishDepre: 7.040,
+      totalProcessCost: 36.207, 
+      exclusiveInvestment: 60.055, 
+      prevPeriod: 193.995, // -15% from totalCost
+      totalCost: 228.246,
+      diff: 17.64, // percentage difference
+      remark: "",
+    },
+    {
+      no: 10,
+      partNo: "57403-KK010",
+      partName: "MEMBER SUB-ASSY, FLOOR SIDE, INNER RR RH",
+      localOH: "11.43", 
+      toolingOH: 0,
+      rawMaterial: 81.023,
+      labor: 10.337, 
+      fohFix: 6.567, 
+      fohVar: 2.880, 
+      unfinishDepre: 1.245,
+      totalProcessCost: 21.029, 
+      exclusiveInvestment: 3.558, 
+      prevPeriod: 128.826, // +10% from totalCost
+      totalCost: 117.115,
+      diff: -9.10, // percentage difference
+      remark: "",
+    },
+    {
+      no: 11,
+      partNo: "57404-KK010",
+      partName: "MEMBER SUB-ASSY, FLOOR SIDE, INNER RR LH",
+      localOH: "11.60", 
+      toolingOH: 0,
+      rawMaterial: 81.023,
+      labor: 10.337, 
+      fohFix: 6.567, 
+      fohVar: 2.880, 
+      unfinishDepre: 1.245,
+      totalProcessCost: 21.029, 
+      exclusiveInvestment: 3.558, 
+      prevPeriod: 99.614, // -15% from totalCost
+      totalCost: 117.194,
+      diff: 17.65, // percentage difference
+      remark: "",
+    },
+    {
+      no: 12,
+      partNo: "51204-KK070",
+      partName: "CROSSMEMBER SUB-ASSY, FRAME, NO.4",
+      localOH: "228.249", 
+      toolingOH: 3.848,
+      rawMaterial: 0,
+      labor: 28.037, 
+      fohFix: 9.540, 
+      fohVar: 3.717, 
+      unfinishDepre: 8.544,
+      totalProcessCost: 49.838, 
+      exclusiveInvestment: 3.878, 
+      prevPeriod: 315.169, // +10% from totalCost
+      totalCost: 286.517,
+      diff: -9.10, // percentage difference
+      remark: "",
+    }
+  ]
+};
+
+// For backward compatibility, export the current period data as default
+export const pprSampleData = pprDataByPeriod["Aug-25"];

@@ -1,6 +1,6 @@
 import React, { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
-import { pprSampleData } from "./data/pprSampleData";
+import { pprDataByPeriod } from "./data/pprSampleData";
 import InlineEditableTextarea from "./components/InlineEditableTextarea";
 
 /**
@@ -25,10 +25,10 @@ export default function PPRPage() {
     "Jun-25": "15,890"
   };
 
-  // Sample data (you should replace with real data or fetch from API)
+  // Sample data (filtered by selected period)
   const rows = useMemo(() => {
-    return pprSampleData;
-  }, []);
+    return pprDataByPeriod[selectedMonth] || [];
+  }, [selectedMonth]);
 
   // Pagination calculations
   const totalRecords = rows.length;
@@ -73,7 +73,10 @@ export default function PPRPage() {
           <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
             <select 
               value={selectedMonth}
-              onChange={(e) => setSelectedMonth(e.target.value)}
+              onChange={(e) => {
+                setSelectedMonth(e.target.value);
+                setCurrentPage(1); // Reset to first page when period changes
+              }}
               style={{ padding: "6px 10px", borderRadius: 8, border: "1px solid rgba(0,0,0,0.12)" }}
             >
               <option value="Aug-25">Aug-25</option>
