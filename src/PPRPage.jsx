@@ -105,14 +105,14 @@ export default function PPRPage() {
 
         {/* Table container with horizontal scroll */}
         <div style={{ overflow: "auto", border: "1px solid rgba(0,0,0,0.06)", borderRadius: 8 }}>
-          <table style={{ borderCollapse: "collapse", minWidth: 1600, width: "100%" }}>
+          <table style={{ borderCollapse: "collapse", minWidth: 1440, width: "100%" }}>
             <thead>
               {/* First header row: colored bands */}
               <tr>
                 <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky}}>No.</th>
                 <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky}}>PartNo.</th>
                 <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky}}>PartName</th>
-                <th colSpan="4" style={headerBandStyle("#dff7e6")}>Purchase Part</th>
+                <th colSpan="2" style={headerBandStyle("#dff7e6")}>Purchase Part</th>
                 <th colSpan="1" style={headerBandStyle("#dff7e6")}>Raw Material</th>
                 <th colSpan="4" style={headerBandStyle("#dff7e6")}>Processing Cost</th>
                 <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky}}>Total Process Cost</th>
@@ -125,8 +125,6 @@ export default function PPRPage() {
 
               {/* Second header row: column group titles */}
               <tr style={{ background: "#dff7e6" }}>
-                <th style={thSticky}>JSP</th>
-                <th style={thSticky}>MSP</th>
                 <th style={thSticky}>Local OH</th>
                 <th style={thSticky}>ToolingOH</th>
 
@@ -151,8 +149,6 @@ export default function PPRPage() {
                     <td style={td}>{r.partNo}</td>
                     <td style={td}>{r.partName}</td>
 
-                    <td style={td}>{r.jsp ?? "-"}</td>
-                    <td style={td}>{r.msp ?? "-"}</td>
                     <td style={td}>{r.localOH ?? "-"}</td>
                     <td style={td}>{formatNumber(r.toolingOH)}</td>
 
