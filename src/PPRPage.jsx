@@ -51,6 +51,11 @@ export default function PPRPage() {
     setEditingRemark(null);
   };
 
+  const handleDetailClick = (partNo) => {
+    // Handle detail button click - you can implement navigation or modal here
+    alert(`Detail view for Part: ${partNo}`);
+  };
+
   return (
     <div style={{ padding: 20 }}>
       <div style={{ maxWidth: 1400, margin: "0 auto" }}>
@@ -181,6 +186,20 @@ export default function PPRPage() {
                             }}
                             onBlur={(e) => handleRemarkSave(r.partNo, e.target.value)}
                           />
+                          <button
+                            onClick={() => handleDetailClick(r.partNo)}
+                            style={{
+                              padding: "2px 6px",
+                              fontSize: 10,
+                              border: "1px solid #007bff",
+                              borderRadius: 3,
+                              background: "#007bff",
+                              color: "white",
+                              cursor: "pointer"
+                            }}
+                          >
+                            Detail
+                          </button>
                         </div>
                       ) : (
                         <div style={{ display: "flex", gap: 4, alignItems: "center" }}>
@@ -197,6 +216,20 @@ export default function PPRPage() {
                             }}
                           >
                             Edit
+                          </button>
+                          <button
+                            onClick={() => handleDetailClick(r.partNo)}
+                            style={{
+                              padding: "2px 6px",
+                              fontSize: 10,
+                              border: "1px solid #007bff",
+                              borderRadius: 3,
+                              background: "#007bff",
+                              color: "white",
+                              cursor: "pointer"
+                            }}
+                          >
+                            Detail
                           </button>
                         </div>
                       )}
