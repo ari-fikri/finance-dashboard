@@ -322,7 +322,7 @@ export default function App() {
               transition={{ duration: 0.28, delay: 0.04 }}
             >
               <div>
-                <div className="title">Master Data</div>
+                <div className="title">Master Assumption</div>
                 <div className="meta">Last Period: <span>{masterData.lastPeriod}</span></div>
                 <div style={{ marginTop: 10 }} className="small">
                   Maintain core reference tables used by the synchronization processes. Use the button below to manage values.
@@ -336,7 +336,7 @@ export default function App() {
                     View
                   </button>
                   <button className="btn btn-primary" onClick={openMaintain}>
-                    Maintain Master Data
+                    Maintain Master Assumption
                   </button>
                 </div>
               </div>
