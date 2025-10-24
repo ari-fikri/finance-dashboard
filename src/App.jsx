@@ -271,36 +271,9 @@ export default function App() {
         </section>
 
         <section>
-          <h2 className="section-title">Master Data & Calculation</h2>
+          <h2 className="section-title">Calculation</h2>
 
-          <div className="grid-2" style={{ alignItems: "start" }}>
-            <motion.div
-              className="card master-card"
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.28, delay: 0.04 }}
-            >
-              <div>
-                <div className="title">Master Data</div>
-                <div className="meta">Last Period: <span>{masterData.lastPeriod}</span></div>
-                <div style={{ marginTop: 10 }} className="small">
-                  Maintain core reference tables used by the synchronization processes. Use the button below to manage values.
-                </div>
-              </div>
-
-              <div className="card-footer">
-                <div />
-                <div className="card-actions">
-                  <button className="btn btn-ghost" onClick={() => alert("View master data (preview)")}>
-                    View
-                  </button>
-                  <button className="btn btn-primary" onClick={openMaintain}>
-                    Maintain Master Data
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-
+          <div className="grid-1" style={{ alignItems: "start" }}>
             <motion.div
               className="card ihp-area"
               initial={{ opacity: 0, y: 6 }}
@@ -327,6 +300,39 @@ export default function App() {
                     style={isCalculating ? { opacity: 0.7, cursor: "wait" } : {}}
                   >
                     {isCalculating ? "Calculating..." : "Calculate IHP"}
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+          </div>
+        </section>
+
+        <section>
+          <h2 className="section-title">Master Data</h2>
+
+          <div className="grid-1" style={{ alignItems: "start" }}>
+            <motion.div
+              className="card master-card"
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.28, delay: 0.04 }}
+            >
+              <div>
+                <div className="title">Master Data</div>
+                <div className="meta">Last Period: <span>{masterData.lastPeriod}</span></div>
+                <div style={{ marginTop: 10 }} className="small">
+                  Maintain core reference tables used by the synchronization processes. Use the button below to manage values.
+                </div>
+              </div>
+
+              <div className="card-footer">
+                <div />
+                <div className="card-actions">
+                  <button className="btn btn-ghost" onClick={() => alert("View master data (preview)")}>
+                    View
+                  </button>
+                  <button className="btn btn-primary" onClick={openMaintain}>
+                    Maintain Master Data
                   </button>
                 </div>
               </div>
