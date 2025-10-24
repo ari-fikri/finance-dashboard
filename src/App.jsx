@@ -15,6 +15,7 @@ export default function App() {
   const [isMaintaining, setIsMaintaining] = useState(false);
   const [isCalculating, setIsCalculating] = useState(false);
   const [ihpResult, setIhpResult] = useState(null);
+  const [uploadedFile, setUploadedFile] = useState(null);
   const navigate = useNavigate();
 
   function downloadSource(source) {
@@ -47,6 +48,44 @@ export default function App() {
       setIhpResult(result);
       setIsCalculating(false);
     }, 1100);
+  }
+
+  function handleFileUpload(event) {
+    const file = event.target.files[0];
+    if (file && (file.type === "application/vnd.ms-excel" || file.type === "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")) {
+      setUploadedFile({
+        name: file.name,
+        size: file.size,
+        uploadDate: new Date().toISOString(),
+      });
+      console.log("File uploaded:", file.name);
+      // Here you would typically upload the file to your server
+    } else {
+      alert("Please select a valid Excel file (.xls or .xlsx)");
+    }
+  }
+
+  function downloadMaterialData() {
+    if (!uploadedFile) {
+      alert("No file uploaded yet. Please upload an Excel file first.");
+      return;
+    }
+    
+    // Create sample CSV data representing the uploaded material cost data
+    const csvContent = `Part Number,Material Type,Cost per Unit,Currency,Last Updated
+51011-KK050,Steel,15.25,USD,2025-10-22
+51012-KK050,Steel,15.25,USD,2025-10-22
+51201-KK010,Aluminum,8.75,USD,2025-10-21
+51205-KK010,Plastic,2.50,USD,2025-10-20
+51206-KK020,Steel,12.80,USD,2025-10-22`;
+    
+    const blob = new Blob([csvContent], { type: "text/csv" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "material-cost-data.csv";
+    a.click();
+    URL.revokeObjectURL(url);
   }
   
   function HeaderActions() {
@@ -81,7 +120,7 @@ export default function App() {
             className="grid-3"
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(5, 1fr)",
+              gridTemplateColumns: "repeat(6, 1fr)",
               gap: "16px",
               alignItems: "stretch",
             }}
@@ -115,6 +154,64 @@ export default function App() {
                 </div>
               </motion.div>
             ))}
+
+            {/* Material Cost Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.28, delay: 0.12 }}
+              className="card"
+            >
+              <div>
+                <div className="title">Material Cost</div>
+                <div className="meta">
+                  {uploadedFile ? (
+                    <>File: <span>{uploadedFile.name}</span></>
+                  ) : (
+                    <>Status: <span style={{ color: "#dc2626" }}>No file uploaded</span></>
+                  )}
+                </div>
+                {uploadedFile && (
+                  <div className="small" style={{ marginTop: 8 }}>
+                    Uploaded: {new Date(uploadedFile.uploadDate).toLocaleDateString()}
+                  </div>
+                )}
+              </div>
+            
+              <div className="card-footer">
+                <div className="small">
+                  {uploadedFile ? (
+                    <strong style={{ color: "#059669" }}>Ready</strong>
+                  ) : (
+                    <strong style={{ color: "#dc2626" }}>Upload Required</strong>
+                  )}
+                </div>
+                <div className="card-actions">
+                  <input
+                    type="file"
+                    accept=".xls,.xlsx"
+                    onChange={handleFileUpload}
+                    style={{ display: "none" }}
+                    id="material-cost-upload"
+                  />
+                  <label
+                    htmlFor="material-cost-upload"
+                    className="btn btn-ghost"
+                    style={{ cursor: "pointer" }}
+                  >
+                    Upload
+                  </label>
+                  <button
+                    onClick={downloadMaterialData}
+                    className="btn btn-primary"
+                    disabled={!uploadedFile}
+                    style={!uploadedFile ? { opacity: 0.5, cursor: "not-allowed" } : {}}
+                  >
+                    Download
+                  </button>
+                </div>
+              </div>
+            </motion.div>
 
             {/* Arrow Card */}
             <motion.div
