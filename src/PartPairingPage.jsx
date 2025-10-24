@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
+import { validatePartExists, getPartNameByNumber } from "./data/PartSampleData";
 
 /**
  * PartPairingPage - Manage part number pairings between systems
@@ -81,6 +82,39 @@ export default function PartPairingPage() {
   const [editLeftPartName, setEditLeftPartName] = useState("");
   const [editRightPart, setEditRightPart] = useState("");
   const [editRightPartName, setEditRightPartName] = useState("");
+  const [validationErrors, setValidationErrors] = useState({});
+
+  const validatePairing = (leftPart, rightPart, currentId = null) => {
+    const errors = {};
+    
+    // Check if left part exists in master data
+    if (leftPart && !validatePartExists(leftPart)) {
+      errors.leftPart = `Part number "${leftPart}" not found in master data`;
+    }
+    
+    // Check if right part exists in master data
+    if (rightPart && !validatePartExists(rightPart)) {
+      errors.rightPart = `Part number "${rightPart}" not found in master data`;
+    }
+    
+    // Check if left part is already used in another pairing
+    if (leftPart) {
+      const existingLeft = pairings.find(p => p.id !== currentId && p.leftPart === leftPart);
+      if (existingLeft) {
+        errors.leftPart = `Part number "${leftPart}" is already used as LEFT part in another pairing`;
+      }
+    }
+    
+    // Check if right part is already used in another pairing
+    if (rightPart) {
+      const existingRight = pairings.find(p => p.id !== currentId && p.rightPart === rightPart);
+      if (existingRight) {
+        errors.rightPart = `Part number "${rightPart}" is already used as RIGHT part in another pairing`;
+      }
+    }
+    
+    return errors;
+  };
 
   const handleEdit = (id, leftPart, leftPartName, rightPart, rightPartName) => {
     setEditingId(id);
@@ -88,17 +122,30 @@ export default function PartPairingPage() {
     setEditLeftPartName(leftPartName);
     setEditRightPart(rightPart);
     setEditRightPartName(rightPartName);
+    setValidationErrors({});
   };
 
   const handleSave = (id) => {
+    // Validate before saving
+    const errors = validatePairing(editLeftPart, editRightPart, id);
+    
+    if (Object.keys(errors).length > 0) {
+      setValidationErrors(errors);
+      return; // Don't save if there are validation errors
+    }
+    
+    // Auto-populate part names from master data if they exist
+    const leftPartName = editLeftPartName || getPartNameByNumber(editLeftPart);
+    const rightPartName = editRightPartName || getPartNameByNumber(editRightPart);
+    
     setPairings(pairings.map(pair => 
       pair.id === id 
         ? { 
             ...pair, 
             leftPart: editLeftPart,
-            leftPartName: editLeftPartName,
+            leftPartName: leftPartName,
             rightPart: editRightPart,
-            rightPartName: editRightPartName,
+            rightPartName: rightPartName,
             status: (editLeftPart && editRightPart) ? "Active" : "Pending" 
           }
         : pair
@@ -108,6 +155,7 @@ export default function PartPairingPage() {
     setEditLeftPartName("");
     setEditRightPart("");
     setEditRightPartName("");
+    setValidationErrors({});
   };
 
   const handleCancel = () => {
@@ -116,18 +164,30 @@ export default function PartPairingPage() {
     setEditLeftPartName("");
     setEditRightPart("");
     setEditRightPartName("");
+    setValidationErrors({});
   };
 
   const handleAddNew = () => {
     const newId = Math.max(...pairings.map(p => p.id)) + 1;
-    setPairings([...pairings, {
+    const newPairing = {
       id: newId,
-      leftPart: `NEW-${newId.toString().padStart(3, '0')}`,
-      leftPartName: `NEW PART ${newId}`,
+      leftPart: "",
+      leftPartName: "",
       rightPart: "",
       rightPartName: "",
       status: "Pending"
-    }]);
+    };
+    
+    // Add new row at the top of the list
+    setPairings([newPairing, ...pairings]);
+    
+    // Immediately start editing the new row
+    setEditingId(newId);
+    setEditLeftPart("");
+    setEditLeftPartName("");
+    setEditRightPart("");
+    setEditRightPartName("");
+    setValidationErrors({});
   };
 
   const handleDelete = (id) => {
@@ -218,11 +278,22 @@ export default function PartPairingPage() {
                         <input
                           type="text"
                           value={editLeftPart}
-                          onChange={(e) => setEditLeftPart(e.target.value)}
+                          onChange={(e) => {
+                            setEditLeftPart(e.target.value);
+                            // Auto-populate part name when part number changes
+                            const partName = getPartNameByNumber(e.target.value);
+                            if (partName) {
+                              setEditLeftPartName(partName);
+                            }
+                            // Clear validation errors when user types
+                            if (validationErrors.leftPart) {
+                              setValidationErrors(prev => ({ ...prev, leftPart: null }));
+                            }
+                          }}
                           style={{
                             width: "100%",
                             padding: "4px 6px",
-                            border: "1px solid #007bff",
+                            border: validationErrors.leftPart ? "1px solid #ef4444" : "1px solid #007bff",
                             borderRadius: 4,
                             fontFamily: "monospace",
                             fontSize: 12,
@@ -230,18 +301,30 @@ export default function PartPairingPage() {
                           }}
                           placeholder="Part Number"
                         />
+                        {validationErrors.leftPart && (
+                          <div style={{ 
+                            color: "#ef4444", 
+                            fontSize: 10, 
+                            marginBottom: 4,
+                            lineHeight: 1.2
+                          }}>
+                            {validationErrors.leftPart}
+                          </div>
+                        )}
                         <input
                           type="text"
                           value={editLeftPartName}
-                          onChange={(e) => setEditLeftPartName(e.target.value)}
+                          readOnly
                           style={{
                             width: "100%",
                             padding: "4px 6px",
-                            border: "1px solid #007bff",
+                            border: "1px solid #d1d5db",
                             borderRadius: 4,
-                            fontSize: 11
+                            fontSize: 11,
+                            backgroundColor: "#f9fafb",
+                            color: "#6b7280"
                           }}
-                          placeholder="Part Name"
+                          placeholder="Part Name (auto-filled)"
                         />
                       </div>
                     ) : (
@@ -261,11 +344,22 @@ export default function PartPairingPage() {
                         <input
                           type="text"
                           value={editRightPart}
-                          onChange={(e) => setEditRightPart(e.target.value)}
+                          onChange={(e) => {
+                            setEditRightPart(e.target.value);
+                            // Auto-populate part name when part number changes
+                            const partName = getPartNameByNumber(e.target.value);
+                            if (partName) {
+                              setEditRightPartName(partName);
+                            }
+                            // Clear validation errors when user types
+                            if (validationErrors.rightPart) {
+                              setValidationErrors(prev => ({ ...prev, rightPart: null }));
+                            }
+                          }}
                           style={{
                             width: "100%",
                             padding: "4px 6px",
-                            border: "1px solid #007bff",
+                            border: validationErrors.rightPart ? "1px solid #ef4444" : "1px solid #007bff",
                             borderRadius: 4,
                             fontFamily: "monospace",
                             fontSize: 12,
@@ -273,18 +367,30 @@ export default function PartPairingPage() {
                           }}
                           placeholder="Part Number"
                         />
+                        {validationErrors.rightPart && (
+                          <div style={{ 
+                            color: "#ef4444", 
+                            fontSize: 10, 
+                            marginBottom: 4,
+                            lineHeight: 1.2
+                          }}>
+                            {validationErrors.rightPart}
+                          </div>
+                        )}
                         <input
                           type="text"
                           value={editRightPartName}
-                          onChange={(e) => setEditRightPartName(e.target.value)}
+                          readOnly
                           style={{
                             width: "100%",
                             padding: "4px 6px",
-                            border: "1px solid #007bff",
+                            border: "1px solid #d1d5db",
                             borderRadius: 4,
-                            fontSize: 11
+                            fontSize: 11,
+                            backgroundColor: "#f9fafb",
+                            color: "#6b7280"
                           }}
-                          placeholder="Part Name"
+                          placeholder="Part Name (auto-filled)"
                         />
                       </div>
                     ) : (
