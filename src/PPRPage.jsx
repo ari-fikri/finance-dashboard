@@ -75,17 +75,17 @@ export default function PPRPage() {
                 <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky}}>No.</th>
                 <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky}}>PartNo.</th>
                 <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky}}>PartName</th>
-                <th colSpan="4" style={headerBandStyle("#e6fffb")}>Purchase Part</th>
-                <th colSpan="1" style={headerBandStyle("#fff7e6")}>Raw Material</th>
-                <th colSpan="4" style={headerBandStyle("#f9e6ff")}>Processing Cost</th>
-                <th rowSpan="2" style={{...headerBandStyle("#fff0f6"), ...thSticky}}>Total Process Cost</th>
-                <th rowSpan="2" style={{...headerBandStyle("#f5f5f5"), ...thSticky}}>Exclusive Investment</th>
-                <th rowSpan="2" style={{...headerBandStyle("#fff0f0"), ...thSticky}}>Total Cost</th>
-                <th rowSpan="2" style={{...headerBandStyle("#ffffff"), ...thSticky}}>Remark</th>
+                <th colSpan="4" style={headerBandStyle("#dff7e6")}>Purchase Part</th>
+                <th colSpan="1" style={headerBandStyle("#dff7e6")}>Raw Material</th>
+                <th colSpan="4" style={headerBandStyle("#dff7e6")}>Processing Cost</th>
+                <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky}}>Total Process Cost</th>
+                <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky}}>Exclusive Investment</th>
+                <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky}}>Total Cost</th>
+                <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky}}>Remark</th>
               </tr>
 
               {/* Second header row: column group titles */}
-              <tr style={{ background: "#e9eef6" }}>
+              <tr style={{ background: "#dff7e6" }}>
                 <th style={thSticky}>JSP</th>
                 <th style={thSticky}>MSP</th>
                 <th style={thSticky}>Local OH</th>
