@@ -99,6 +99,12 @@ export default function PartPairingPage() {
   };
 
   const handleAddNew = () => {
+    // Don't allow adding new record if currently editing
+    if (editingId !== null) {
+      alert("Please save or cancel the current edit before adding a new record.");
+      return;
+    }
+    
     const newId = Math.max(...pairings.map(p => p.id)) + 1;
     const newPairing = {
       id: newId,
@@ -143,7 +149,13 @@ export default function PartPairingPage() {
           <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
             <button 
               onClick={handleAddNew}
+              disabled={editingId !== null}
               className="btn btn-ghost"
+              style={{
+                opacity: editingId !== null ? 0.5 : 1,
+                cursor: editingId !== null ? "not-allowed" : "pointer"
+              }}
+              title={editingId !== null ? "Save or cancel current edit before adding new record" : "Add new part pairing"}
             >
               + Add New
             </button>
