@@ -72,22 +72,20 @@ export default function PPRPage() {
             <thead>
               {/* First header row: colored bands */}
               <tr>
-                <th colSpan="3" style={headerBandStyle("#dff7e6")}> </th>
+                <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky}}>No.</th>
+                <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky}}>PartNo.</th>
+                <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky}}>PartName</th>
                 <th colSpan="4" style={headerBandStyle("#e6fffb")}>Purchase Part</th>
                 <th colSpan="1" style={headerBandStyle("#fff7e6")}>Raw Material</th>
                 <th colSpan="4" style={headerBandStyle("#f9e6ff")}>Processing Cost</th>
-                <th colSpan="1" style={headerBandStyle("#fff0f6")}>Total Process Cost</th>
-                <th colSpan="1" style={headerBandStyle("#f5f5f5")}>Exclusive Investment</th>
-                <th colSpan="1" style={headerBandStyle("#fff0f0")}>Total Cost</th>
-                <th colSpan="1" style={headerBandStyle("#ffffff")}>Remark</th>
+                <th rowSpan="2" style={{...headerBandStyle("#fff0f6"), ...thSticky}}>Total Process Cost</th>
+                <th rowSpan="2" style={{...headerBandStyle("#f5f5f5"), ...thSticky}}>Exclusive Investment</th>
+                <th rowSpan="2" style={{...headerBandStyle("#fff0f0"), ...thSticky}}>Total Cost</th>
+                <th rowSpan="2" style={{...headerBandStyle("#ffffff"), ...thSticky}}>Remark</th>
               </tr>
 
               {/* Second header row: column group titles */}
               <tr style={{ background: "#e9eef6" }}>
-                <th style={thSticky}>No.</th>
-                <th style={thSticky}>PartNo.</th>
-                <th style={thSticky}>PartName</th>
-
                 <th style={thSticky}>JSP</th>
                 <th style={thSticky}>MSP</th>
                 <th style={thSticky}>Local OH</th>
@@ -99,11 +97,6 @@ export default function PPRPage() {
                 <th style={thSticky}>FOH Fixed</th>
                 <th style={thSticky}>FOH Var</th>
                 <th style={thSticky}>Unfinish Depre.</th>
-
-                <th style={thSticky}>Total Process Cost</th>
-                <th style={thSticky}>Exclusive Investment</th>
-                <th style={thSticky}>Total Cost</th>
-                <th style={thSticky}>Remark</th>
               </tr>
             </thead>
 
