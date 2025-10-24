@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { validatePartExists, getPartNameByNumber } from "./data/PartSampleData";
+import { pairedPartData, isLeftPartPaired, isRightPartPaired } from "./data/PairedPart";
 
 /**
  * PartPairingPage - Manage part number pairings between systems
@@ -9,73 +10,8 @@ import { validatePartExists, getPartNameByNumber } from "./data/PartSampleData";
 export default function PartPairingPage() {
   const navigate = useNavigate();
   
-  // Sample data for part pairings
-  const [pairings, setPairings] = useState([
-    { 
-      id: 1, 
-      leftPart: "51011-KK050", 
-      leftPartName: "RAIL SUB-ASSY, FRAME SIDE, RH",
-      rightPart: "CMD-001", 
-      rightPartName: "RAIL ASSEMBLY RIGHT SIDE",
-      status: "Active" 
-    },
-    { 
-      id: 2, 
-      leftPart: "51012-KK050", 
-      leftPartName: "RAIL SUB-ASSY, FRAME SIDE, LH",
-      rightPart: "CMD-002", 
-      rightPartName: "RAIL ASSEMBLY LEFT SIDE",
-      status: "Active" 
-    },
-    { 
-      id: 3, 
-      leftPart: "51201-KK010", 
-      leftPartName: "CROSSMEMBER SUB-ASSY, FRAME, NO.1",
-      rightPart: "SAP-A001", 
-      rightPartName: "FRAME CROSSMEMBER TYPE A",
-      status: "Active" 
-    },
-    { 
-      id: 4, 
-      leftPart: "51205-KK010", 
-      leftPartName: "AIR CLEANER ASSY",
-      rightPart: "IFAST-B123", 
-      rightPartName: "AIR FILTER ASSEMBLY",
-      status: "Active" 
-    },
-    { 
-      id: 5, 
-      leftPart: "51206-KK020", 
-      leftPartName: "CROSSMEMBER SUB-ASSY, FRAME, NO.6",
-      rightPart: "", 
-      rightPartName: "",
-      status: "Pending" 
-    },
-    { 
-      id: 6, 
-      leftPart: "51230-KK060", 
-      leftPartName: "CROSSMEMBER ASSY, FRAME, NO.3",
-      rightPart: "", 
-      rightPartName: "",
-      status: "Pending" 
-    },
-    { 
-      id: 7, 
-      leftPart: "53301-0K150", 
-      leftPartName: "HOOD SUB-ASSY",
-      rightPart: "CMD-007", 
-      rightPartName: "HOOD ASSEMBLY",
-      status: "Active" 
-    },
-    { 
-      id: 8, 
-      leftPart: "53801-0K080", 
-      leftPartName: "FENDER SUB-ASSY, FR RH",
-      rightPart: "", 
-      rightPartName: "",
-      status: "Pending" 
-    },
-  ]);
+  // Use PairedPart data as the source for the table
+  const [pairings, setPairings] = useState([...pairedPartData]);
 
   const [editingId, setEditingId] = useState(null);
   const [editLeftPart, setEditLeftPart] = useState("");
@@ -87,30 +23,24 @@ export default function PartPairingPage() {
   const validatePairing = (leftPart, rightPart, currentId = null) => {
     const errors = {};
     
-    // Check if left part exists in master data
+    // Check if left part exists in PartSampleData (for new part validation)
     if (leftPart && !validatePartExists(leftPart)) {
       errors.leftPart = `Part number "${leftPart}" not found in master data`;
     }
     
-    // Check if right part exists in master data
+    // Check if right part exists in PartSampleData (for new part validation)
     if (rightPart && !validatePartExists(rightPart)) {
       errors.rightPart = `Part number "${rightPart}" not found in master data`;
     }
     
-    // Check if left part is already used in another pairing
-    if (leftPart) {
-      const existingLeft = pairings.find(p => p.id !== currentId && p.leftPart === leftPart);
-      if (existingLeft) {
-        errors.leftPart = `Part number "${leftPart}" is already used as LEFT part in another pairing`;
-      }
+    // Check if left part is already paired (against PairedPart data)
+    if (leftPart && isLeftPartPaired(leftPart, currentId)) {
+      errors.leftPart = `Part number "${leftPart}" is already used as LEFT part in another pairing`;
     }
     
-    // Check if right part is already used in another pairing
-    if (rightPart) {
-      const existingRight = pairings.find(p => p.id !== currentId && p.rightPart === rightPart);
-      if (existingRight) {
-        errors.rightPart = `Part number "${rightPart}" is already used as RIGHT part in another pairing`;
-      }
+    // Check if right part is already paired (against PairedPart data)
+    if (rightPart && isRightPartPaired(rightPart, currentId)) {
+      errors.rightPart = `Part number "${rightPart}" is already used as RIGHT part in another pairing`;
     }
     
     return errors;
@@ -146,7 +76,8 @@ export default function PartPairingPage() {
             leftPartName: leftPartName,
             rightPart: editRightPart,
             rightPartName: rightPartName,
-            status: (editLeftPart && editRightPart) ? "Active" : "Pending" 
+            status: (editLeftPart && editRightPart) ? "Active" : "Pending",
+            lastModified: new Date().toISOString().split('T')[0]
           }
         : pair
     ));
@@ -175,7 +106,9 @@ export default function PartPairingPage() {
       leftPartName: "",
       rightPart: "",
       rightPartName: "",
-      status: "Pending"
+      status: "Pending",
+      createdDate: new Date().toISOString().split('T')[0],
+      lastModified: new Date().toISOString().split('T')[0]
     };
     
     // Add new row at the top of the list
