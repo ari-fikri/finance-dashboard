@@ -1,6 +1,7 @@
 import React, { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { pprSampleData } from "./data/pprSampleData";
+import InlineEditableTextarea from "./components/InlineEditableTextarea";
 
 /**
  * PPRPage - Presents a wide multi-row header table similar to the provided screenshot.
@@ -51,17 +52,8 @@ export default function PPRPage() {
   };
 
   // Handle remark editing
-  const handleRemarkEdit = (partNo) => {
-    setEditingRemark(partNo);
-  };
-
   const handleRemarkSave = (partNo, value) => {
     setRemarkValues(prev => ({ ...prev, [partNo]: value }));
-    setEditingRemark(null);
-  };
-
-  const handleRemarkCancel = () => {
-    setEditingRemark(null);
   };
 
   const handleDetailClick = (partNo) => {
@@ -177,75 +169,30 @@ export default function PPRPage() {
                     <td style={redStyle}>{formatNumber(r.totalCost)}</td>
                     <td style={redStyle}>{formatPercentage(r.diff)}</td>
                     <td style={td}>
-                      {editingRemark === r.partNo ? (
-                        <div style={{ display: "flex", gap: 4, alignItems: "center" }}>
-                          <input
-                            type="text"
-                            defaultValue={currentRemark}
-                            autoFocus
-                            style={{
-                              padding: "2px 6px",
-                              border: "1px solid #ccc",
-                              borderRadius: 4,
-                              fontSize: 12,
-                              width: "100px"
-                            }}
-                            onKeyDown={(e) => {
-                              if (e.key === "Enter") {
-                                handleRemarkSave(r.partNo, e.target.value);
-                              } else if (e.key === "Escape") {
-                                handleRemarkCancel();
-                              }
-                            }}
-                            onBlur={(e) => handleRemarkSave(r.partNo, e.target.value)}
+                      <div style={{ display: "flex", gap: 4, alignItems: "center" }}>
+                        <div style={{ flex: 1 }}>
+                          <InlineEditableTextarea
+                            value={currentRemark}
+                            onSave={(value) => handleRemarkSave(r.partNo, value)}
+                            placeholder="Click to add remark..."
                           />
-                          <button
-                            onClick={() => handleDetailClick(r.partNo)}
-                            style={{
-                              padding: "2px 6px",
-                              fontSize: 10,
-                              border: "1px solid #007bff",
-                              borderRadius: 3,
-                              background: "#007bff",
-                              color: "white",
-                              cursor: "pointer"
-                            }}
-                          >
-                            Detail
-                          </button>
                         </div>
-                      ) : (
-                        <div style={{ display: "flex", gap: 4, alignItems: "center" }}>
-                          <span>{currentRemark || "-"}</span>
-                          <button
-                            onClick={() => handleRemarkEdit(r.partNo)}
-                            style={{
-                              padding: "2px 6px",
-                              fontSize: 10,
-                              border: "1px solid #ccc",
-                              borderRadius: 3,
-                              background: "#f8f9fa",
-                              cursor: "pointer"
-                            }}
-                          >
-                            Edit
-                          </button>
-                          <button
-                            onClick={() => handleDetailClick(r.partNo)}
-                            style={{
-                              padding: "2px 6px",
-                              fontSize: 10,
-                              border: "1px solid #007bff",
-                              borderRadius: 3,
-                              background: "#007bff",
-                              color: "white",
-                              cursor: "pointer"
-                            }}
-                          >
-                            Detail
-                          </button>
-                        </div>
-                      )}
+                        <button
+                          onClick={() => handleDetailClick(r.partNo)}
+                          style={{
+                            padding: "2px 6px",
+                            fontSize: 10,
+                            border: "1px solid #007bff",
+                            borderRadius: 3,
+                            background: "#007bff",
+                            color: "white",
+                            cursor: "pointer",
+                            whiteSpace: "nowrap"
+                          }}
+                        >
+                          Detail
+                        </button>
+                      </div>
                     </td>
                   </tr>
                 );
