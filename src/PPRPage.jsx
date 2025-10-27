@@ -18,6 +18,31 @@ export default function PPRPage() {
   const recordsPerPage = 10;
   const threshold = 10; // 10% threshold
 
+  // Quality gates toggle states
+  const [qualityGates, setQualityGates] = useState({
+    rhLhFilter: false,
+    plantMhRate: false,
+    fiveDigitsPartNo: false
+  });
+
+  // Toggle quality gate buttons (only one can be active at a time)
+  const toggleQualityGate = (gate) => {
+    setQualityGates(prev => {
+      const newState = {
+        rhLhFilter: false,
+        plantMhRate: false,
+        fiveDigitsPartNo: false
+      };
+      
+      // Only set the clicked gate to true if it wasn't already active
+      if (!prev[gate]) {
+        newState[gate] = true;
+      }
+      
+      return newState;
+    });
+  };
+
   // Exchange rates for different months
   const exchangeRates = {
     "Aug-25": "15,650",
@@ -64,10 +89,61 @@ export default function PPRPage() {
   return (
     <div style={{ padding: 20 }}>
       <div style={{ maxWidth: "95vw", margin: "0 auto" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12 }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12 }}>
           <div>
             <h1 style={{ margin: 0 }}>PPR</h1>
-            <p style={{ margin: "6px 0 0", color: "#6b7280" }}>Part process & cost report (wide table)</p>
+            <p style={{ margin: "6px 0 8px", color: "#6b7280" }}>Part process & cost report (wide table)</p>
+            
+            {/* Quality Gates Buttons */}
+            <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
+              <button
+                onClick={() => toggleQualityGate('rhLhFilter')}
+                style={{
+                  padding: "4px 12px",
+                  fontSize: "12px",
+                  borderRadius: 6,
+                  border: "1px solid #d1d5db",
+                  backgroundColor: qualityGates.rhLhFilter ? "#059669" : "white",
+                  color: qualityGates.rhLhFilter ? "white" : "#374151",
+                  cursor: "pointer",
+                  transition: "all 0.2s ease"
+                }}
+              >
+                RH/LH Filter
+              </button>
+              
+              <button
+                onClick={() => toggleQualityGate('plantMhRate')}
+                style={{
+                  padding: "4px 12px",
+                  fontSize: "12px",
+                  borderRadius: 6,
+                  border: "1px solid #d1d5db",
+                  backgroundColor: qualityGates.plantMhRate ? "#059669" : "white",
+                  color: qualityGates.plantMhRate ? "white" : "#374151",
+                  cursor: "pointer",
+                  transition: "all 0.2s ease"
+                }}
+              >
+                Plant & MH Rate
+              </button>
+              
+              <button
+                onClick={() => toggleQualityGate('fiveDigitsPartNo')}
+                style={{
+                  padding: "4px 12px",
+                  fontSize: "12px",
+                  borderRadius: 6,
+                  border: "1px solid #d1d5db",
+                  backgroundColor: qualityGates.fiveDigitsPartNo ? "#059669" : "white",
+                  color: qualityGates.fiveDigitsPartNo ? "white" : "#374151",
+                  cursor: "pointer",
+                  transition: "all 0.2s ease"
+                }}
+              >
+                Five Digits Part No
+              </button>
+            </div>
           </div>
 
           <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
