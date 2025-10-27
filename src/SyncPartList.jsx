@@ -49,6 +49,66 @@ export default function SyncPartList() {
     []
   );
 
+  // Compare / modal state
+  const [showCompareModal, setShowCompareModal] = useState(false);
+  const [compareType, setCompareType] = useState("all"); // "ifast" | "sap" | "all"
+
+  // compute compare results based on compareType
+  const compareResults = useMemo(() => {
+    if (compareType === "ifast") {
+      return rows
+        .filter((r) => !(r.cmd && r.ifast))
+        .map((r) => ({ ...r, reasons: r.ifast ? [] : ["Missing in IFAST"] }));
+    }
+
+    if (compareType === "sap") {
+      return rows
+        .filter((r) => !(r.cmd && r.sap))
+        .map((r) => ({ ...r, reasons: r.sap ? [] : ["Missing in SAP"] }));
+    }
+
+    // default: all (show rows missing either SAP or IFAST)
+    return rows
+      .filter((r) => !(r.cmd && r.sap && r.ifast))
+      .map((r) => {
+        const reasons = [];
+        if (!r.sap) reasons.push("Missing in SAP");
+        if (!r.ifast) reasons.push("Missing in IFAST");
+        return { ...r, reasons };
+      });
+  }, [rows, compareType]);
+
+  const handleOpenCompare = (type = "all") => {
+    setCompareType(type);
+    setShowCompareModal(true);
+  };
+
+  const handleExportCompareCSV = () => {
+    const headers = ["PartNo", "PartName", "Supplier", "CMD", "SAP", "IFAST", "Issues"];
+    const csvRows = [
+      headers.join(","),
+      ...compareResults.map((r) =>
+        [
+          r.partNo,
+          `"${r.partName.replace(/"/g, '""')}"`,
+          `"${r.supplier.replace(/"/g, '""')}"`,
+          r.cmd ? "TRUE" : "FALSE",
+          r.sap ? "TRUE" : "FALSE",
+          r.ifast ? "TRUE" : "FALSE",
+          `"${r.reasons.join("; ")}"`,
+        ].join(",")
+      ),
+    ].join("\n");
+
+    const blob = new Blob([csvRows], { type: "text/csv;charset=utf-8;" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "sync-compare-results.csv";
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
   // Pagination calculations
   const totalRecords = rows.length;
   const totalPages = Math.ceil(totalRecords / recordsPerPage);
@@ -79,9 +139,36 @@ export default function SyncPartList() {
             </button>
             <button
               onClick={() => alert("Sync action (preview)")}
-              className="btn btn-primary"
+              className="btn btn-ghost"
             >
               Synchronize Selected
+            </button>
+
+            {/* Removed: Compare CMD ↔ IFAST and Compare CMD ↔ SAP buttons */}
+
+            {/* New: Explicit Synchronize buttons for IFAST and SAP */}
+            <button
+              onClick={() => handleOpenCompare("ifast")}
+              className="btn btn-primary"
+              title="Compare gap between CMD and IFAST"
+            >
+              Compare Gap CMD vs IFAST
+            </button>
+
+            <button
+              onClick={() => handleOpenCompare("sap")}
+              className="btn btn-primary"
+              title="Compare gap between CMD and SAP"
+            >
+              Compare Gap CMD vs SAP
+            </button>
+
+            <button
+              onClick={() => handleOpenCompare("all")}
+              className="btn btn-primary"
+              title="Compare CMD / SAP / IFAST"
+            >
+              Synchronize (All)
             </button>
           </div>
         </div>
@@ -127,6 +214,68 @@ export default function SyncPartList() {
             </tbody>
           </table>
         </div>
+
+        {/* Compare modal */}
+        {showCompareModal && (
+          <div style={{
+            position: "fixed",
+            left: 0, top: 0, right: 0, bottom: 0,
+            background: "rgba(0,0,0,0.35)",
+            display: "flex",
+            alignItems: "center",
+            justifyContent: "center",
+            zIndex: 9999
+          }}>
+            <div style={{ width: 920, maxHeight: "80vh", overflow: "auto", background: "white", borderRadius: 8, padding: 18 }}>
+              <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 12 }}>
+                <h3 style={{ margin: 0 }}>
+                  {compareType === "ifast" ? "Compare: CMD vs IFAST" : compareType === "sap" ? "Compare: CMD vs SAP" : "Compare Results (CMD / SAP / IFAST)"}
+                </h3>
+                <div style={{ display: "flex", gap: 8 }}>
+                  <button className="btn btn-ghost" onClick={() => setShowCompareModal(false)}>Close</button>
+                  <button className="btn btn-primary" onClick={handleExportCompareCSV} disabled={compareResults.length === 0}>Export CSV</button>
+                </div>
+              </div>
+
+              <div style={{ marginBottom: 8, color: "#374151" }}>
+                Mismatched records: <strong>{compareResults.length}</strong>
+                {compareType === "ifast" && " (rows where IFAST is missing)"}
+                {compareType === "sap" && " (rows where SAP is missing)"}
+                {compareType === "all" && " (rows missing SAP or IFAST)"}
+              </div>
+
+              <table style={{ width: "100%", borderCollapse: "collapse" }}>
+                <thead style={{ background: "#f3f4f6" }}>
+                  <tr>
+                    <th style={{ textAlign: "left", padding: "8px 10px" }}>PartNo</th>
+                    <th style={{ textAlign: "left", padding: "8px 10px" }}>PartName</th>
+                    <th style={{ textAlign: "left", padding: "8px 10px" }}>Supplier</th>
+                    <th style={{ textAlign: "center", padding: "8px 10px" }}>SAP</th>
+                    <th style={{ textAlign: "center", padding: "8px 10px" }}>IFAST</th>
+                    <th style={{ textAlign: "left", padding: "8px 10px" }}>Issues</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  {compareResults.length === 0 && (
+                    <tr>
+                      <td colSpan={6} style={{ padding: 12, color: "#6b7280" }}>No mismatches found.</td>
+                    </tr>
+                  )}
+                  {compareResults.map((r) => (
+                    <tr key={r.partNo} style={{ borderBottom: "1px solid rgba(0,0,0,0.04)" }}>
+                      <td style={{ padding: "8px 10px" }}>{r.partNo}</td>
+                      <td style={{ padding: "8px 10px" }}>{r.partName}</td>
+                      <td style={{ padding: "8px 10px" }}>{r.supplier}</td>
+                      <td style={{ textAlign: "center", padding: "8px 10px" }}>{r.sap ? "✓" : "—"}</td>
+                      <td style={{ textAlign: "center", padding: "8px 10px" }}>{r.ifast ? "✓" : "—"}</td>
+                      <td style={{ padding: "8px 10px", color: "#b91c1c" }}>{r.reasons.join("; ")}</td>
+                    </tr>
+                  ))}
+                </tbody>
+              </table>
+            </div>
+          </div>
+        )}
 
         {/* Pagination */}
         <div style={{ 
