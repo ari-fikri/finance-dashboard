@@ -128,27 +128,27 @@ export default function PPRPage() {
 
               {/* Second header row: column group titles */}
               <tr style={{ background: "#dff7e6", border: "1px solid #059669" }}>
-                <th style={{...thSticky, border: "1px solid #059669"}}>Prev</th>
+                <th style={{...thSticky, backgroundColor: "#d0f0d2", border: "1px solid #059669"}}>Prev</th>
                 <th style={{...thSticky, border: "1px solid #059669"}}>Local OH</th>
                 <th style={{...thSticky, border: "1px solid #059669"}}>% Diff</th>
-                <th style={{...thSticky, border: "1px solid #059669"}}>Prev</th>
+                <th style={{...thSticky, backgroundColor: "#d0f0d2", border: "1px solid #059669"}}>Prev</th>
                 <th style={{...thSticky, border: "1px solid #059669"}}>Tooling OH</th>
                 <th style={{...thSticky, border: "1px solid #059669"}}>% Diff</th>
 
-                <th style={{...thSticky, backgroundColor: "#b9faf8", border: "1px solid #059669"}}>Prev</th>
+                <th style={{...thSticky, backgroundColor: "#a6f6f3", border: "1px solid #059669"}}>Prev</th>
                 <th style={{...thSticky, backgroundColor: "#b9faf8", border: "1px solid #059669"}}>IDR/US (Raw)</th>
                 <th style={{...thSticky, backgroundColor: "#b9faf8", border: "1px solid #059669"}}>% Diff</th>
 
-                <th style={{...thSticky, backgroundColor: "#e0aaff", border: "1px solid #059669"}}>Prev</th>
+                <th style={{...thSticky, backgroundColor: "#d89cff", border: "1px solid #059669"}}>Prev</th>
                 <th style={{...thSticky, backgroundColor: "#e0aaff", border: "1px solid #059669"}}>Labor</th>
                 <th style={{...thSticky, backgroundColor: "#e0aaff", border: "1px solid #059669"}}>% Diff</th>
-                <th style={{...thSticky, backgroundColor: "#e0aaff", border: "1px solid #059669"}}>Prev</th>
+                <th style={{...thSticky, backgroundColor: "#d89cff", border: "1px solid #059669"}}>Prev</th>
                 <th style={{...thSticky, backgroundColor: "#e0aaff", border: "1px solid #059669"}}>FOH Fixed</th>
                 <th style={{...thSticky, backgroundColor: "#e0aaff", border: "1px solid #059669"}}>% Diff</th>
-                <th style={{...thSticky, backgroundColor: "#e0aaff", border: "1px solid #059669"}}>Prev</th>
+                <th style={{...thSticky, backgroundColor: "#d89cff", border: "1px solid #059669"}}>Prev</th>
                 <th style={{...thSticky, backgroundColor: "#e0aaff", border: "1px solid #059669"}}>FOH Var</th>
                 <th style={{...thSticky, backgroundColor: "#e0aaff", border: "1px solid #059669"}}>% Diff</th>
-                <th style={{...thSticky, backgroundColor: "#e0aaff", border: "1px solid #059669"}}>Prev</th>
+                <th style={{...thSticky, backgroundColor: "#d89cff", border: "1px solid #059669"}}>Prev</th>
                 <th style={{...thSticky, backgroundColor: "#e0aaff", border: "1px solid #059669"}}>Unfinish Depre.</th>
                 <th style={{...thSticky, backgroundColor: "#e0aaff", border: "1px solid #059669"}}>% Diff</th>
               </tr>
@@ -173,7 +173,7 @@ export default function PPRPage() {
                     <td style={td}>{r.partNo}</td>
                     <td style={td}>{r.partName}</td>
 
-                    <td style={td}>{r.localOHPrev ?? "-"}</td>
+                    <td style={tdPrev}>{r.localOHPrev ?? "-"}</td>
                     <td style={td}>{r.localOH ?? "-"}</td>
                     <td style={td}>
                       {(() => {
@@ -181,7 +181,7 @@ export default function PPRPage() {
                         return diff !== null ? formatPercentage(diff) : "-";
                       })()}
                     </td>
-                    <td style={td}>{formatNumber(r.toolingOHPrev)}</td>
+                    <td style={tdPrev}>{formatNumber(r.toolingOHPrev)}</td>
                     <td style={td}>{formatNumber(r.toolingOH)}</td>
                     <td style={td}>
                       {(() => {
@@ -190,7 +190,7 @@ export default function PPRPage() {
                       })()}
                     </td>
 
-                    <td style={td}>{formatNumber(r.rawMaterialPrev)}</td>
+                    <td style={tdPrev}>{formatNumber(r.rawMaterialPrev)}</td>
                     <td style={td}>{formatNumber(r.rawMaterial)}</td>
                     <td style={td}>
                       {(() => {
@@ -199,7 +199,7 @@ export default function PPRPage() {
                       })()}
                     </td>
 
-                    <td style={td}>{formatNumber(r.laborPrev)}</td>
+                    <td style={tdPrev}>{formatNumber(r.laborPrev)}</td>
                     <td style={td}>{formatNumber(r.labor)}</td>
                     <td style={td}>
                       {(() => {
@@ -207,7 +207,7 @@ export default function PPRPage() {
                         return diff !== null ? formatPercentage(diff) : "-";
                       })()}
                     </td>
-                    <td style={td}>{formatNumber(r.fohFixPrev)}</td>
+                    <td style={tdPrev}>{formatNumber(r.fohFixPrev)}</td>
                     <td style={td}>{formatNumber(r.fohFix)}</td>
                     <td style={td}>
                       {(() => {
@@ -215,7 +215,7 @@ export default function PPRPage() {
                         return diff !== null ? formatPercentage(diff) : "-";
                       })()}
                     </td>
-                    <td style={td}>{formatNumber(r.fohVarPrev)}</td>
+                    <td style={tdPrev}>{formatNumber(r.fohVarPrev)}</td>
                     <td style={td}>{formatNumber(r.fohVar)}</td>
                     <td style={td}>
                       {(() => {
@@ -223,7 +223,7 @@ export default function PPRPage() {
                         return diff !== null ? formatPercentage(diff) : "-";
                       })()}
                     </td>
-                    <td style={td}>{formatNumber(r.unfinishDeprePrev)}</td>
+                    <td style={tdPrev}>{formatNumber(r.unfinishDeprePrev)}</td>
                     <td style={td}>{formatNumber(r.unfinishDepre)}</td>
                     <td style={td}>
                       {(() => {
@@ -383,6 +383,9 @@ const filterThStyle = {
 };
 
 const td = { padding: "8px 10px", fontSize: 13, color: "#111827" };
+
+// Background color for "Prev" data columns
+const tdPrev = { ...td, backgroundColor: "#f5f5f5" };
 
 const formatNumber = (v) => {
   if (v == null || v === "") return "-";
