@@ -109,45 +109,52 @@ export default function PPRPage() {
         {/* Table container with horizontal scroll */}
         <div style={{ overflow: "auto", border: "1px solid rgba(0,0,0,0.06)", borderRadius: 8 }}>
           <table style={{ borderCollapse: "collapse", minWidth: 1440, width: "100%" }}>
-            <thead>
+            <thead style={{ border: "2px solid #059669" }}>
               {/* First header row: colored bands */}
-              <tr>
-                <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky}}>No.</th>
-                <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky}}>PartNo.</th>
-                <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky}}>PartName</th>
-                <th colSpan="2" style={headerBandStyle("#dff7e6")}>Purchase Part</th>
-                <th colSpan="1" style={headerBandStyle("#dff7e6")}>Raw Material</th>
-                <th colSpan="4" style={headerBandStyle("#dff7e6")}>Processing Cost</th>
-                <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky}}>Total Process Cost</th>
-                <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky}}>Exclusive Investment</th>
-                <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky}}>Prev Period</th>
-                <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky}}>Total Cost</th>
-                <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky}}>Diff</th>
-                <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky}}>Remark</th>
+              <tr style={{ border: "1px solid #059669" }}>
+                <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>No.</th>
+                <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>PartNo.</th>
+                <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>PartName</th>
+                <th colSpan="2" style={{...headerBandStyle("#dff7e6"), border: "1px solid #059669"}}>Purchase Part</th>
+                <th colSpan="1" style={{...headerBandStyle("#dff7e6"), border: "1px solid #059669"}}>Raw Material</th>
+                <th colSpan="4" style={{...headerBandStyle("#dff7e6"), border: "1px solid #059669"}}>Processing Cost</th>
+                <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>Total Process Cost</th>
+                <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>Exclusive Investment</th>
+                <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>Prev Period</th>
+                <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>Total Cost</th>
+                <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>Diff</th>
+                <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>Remark</th>
               </tr>
 
               {/* Second header row: column group titles */}
-              <tr style={{ background: "#dff7e6" }}>
-                <th style={thSticky}>Local OH</th>
-                <th style={thSticky}>ToolingOH</th>
+              <tr style={{ background: "#dff7e6", border: "1px solid #059669" }}>
+                <th style={{...thSticky, border: "1px solid #059669"}}>Local OH</th>
+                <th style={{...thSticky, border: "1px solid #059669"}}>ToolingOH</th>
 
-                <th style={thSticky}>IDR/US (Raw)</th>
+                <th style={{...thSticky, border: "1px solid #059669"}}>IDR/US (Raw)</th>
 
-                <th style={thSticky}>Labor</th>
-                <th style={thSticky}>FOH Fixed</th>
-                <th style={thSticky}>FOH Var</th>
-                <th style={thSticky}>Unfinish Depre.</th>
+                <th style={{...thSticky, border: "1px solid #059669"}}>Labor</th>
+                <th style={{...thSticky, border: "1px solid #059669"}}>FOH Fixed</th>
+                <th style={{...thSticky, border: "1px solid #059669"}}>FOH Var</th>
+                <th style={{...thSticky, border: "1px solid #059669"}}>Unfinish Depre.</th>
               </tr>
             </thead>
 
             <tbody>
-              {currentRecords.map((r) => {
+              {currentRecords.map((r, index) => {
                 const isThresholdExceeded = isOutsideThreshold(r.diff);
                 const redStyle = isThresholdExceeded ? { ...td, color: "red", fontWeight: "bold" } : td;
                 const currentRemark = getRemarkValue(r.partNo, r.remark);
+                const isEvenRow = index % 2 === 0;
                 
                 return (
-                  <tr key={r.partNo} style={{ borderBottom: "1px solid rgba(0,0,0,0.04)" }}>
+                  <tr 
+                    key={r.partNo} 
+                    style={{ 
+                      borderBottom: "1px solid rgba(0,0,0,0.04)",
+                      backgroundColor: isEvenRow ? "#f9fafb" : "white"
+                    }}
+                  >
                     <td style={td}>{startIndex + currentRecords.indexOf(r) + 1}</td>
                     <td style={td}>{r.partNo}</td>
                     <td style={td}>{r.partName}</td>
