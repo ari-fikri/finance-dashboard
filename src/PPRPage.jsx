@@ -63,7 +63,7 @@ export default function PPRPage() {
 
   return (
     <div style={{ padding: 20 }}>
-      <div style={{ maxWidth: 1400, margin: "0 auto" }}>
+      <div style={{ maxWidth: "95vw", margin: "0 auto" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12 }}>
           <div>
             <h1 style={{ margin: 0 }}>PPR</h1>
@@ -353,13 +353,7 @@ export default function PPRPage() {
           </div>
         </div>
 
-        <div style={{ marginTop: 12, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <div />
-          <div style={{ display: "flex", gap: 8 }}>
-            <button className="btn btn-ghost" onClick={() => alert("Print (preview)")}>Print</button>
-            <button className="btn btn-primary" onClick={() => alert("Close (preview)") || navigate(-1)}>Close</button>
-          </div>
-        </div>
+
       </div>
     </div>
   );
