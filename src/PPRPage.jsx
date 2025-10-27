@@ -112,12 +112,12 @@ export default function PPRPage() {
             <thead style={{ border: "2px solid #059669" }}>
               {/* First header row: colored bands */}
               <tr style={{ border: "1px solid #059669" }}>
-                <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>No.</th>
-                <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>PartNo.</th>
-                <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>PartName</th>
-                <th colSpan="2" style={{...headerBandStyle("#dff7e6"), border: "1px solid #059669"}}>Purchase Part</th>
-                <th colSpan="1" style={{...headerBandStyle("#dff7e6"), border: "1px solid #059669"}}>Raw Material</th>
-                <th colSpan="4" style={{...headerBandStyle("#dff7e6"), border: "1px solid #059669"}}>Processing Cost</th>
+                <th rowSpan="2" style={{...headerBandStyle("#cccccc"), ...thSticky, border: "1px solid #059669"}}>No.</th>
+                <th rowSpan="2" style={{...headerBandStyle("#cccccc"), ...thSticky, border: "1px solid #059669"}}>PartNo.</th>
+                <th rowSpan="2" style={{...headerBandStyle("#cccccc"), ...thSticky, border: "1px solid #059669"}}>PartName</th>
+                <th colSpan="6" style={{...headerBandStyle("#dff7e6"), border: "1px solid #059669"}}>Purchase Part</th>
+                <th colSpan="3" style={{...headerBandStyle("#b9faf8"), border: "1px solid #059669"}}>Raw Material</th>
+                <th colSpan="12" style={{...headerBandStyle("#e0aaff"), border: "1px solid #059669"}}>Processing Cost</th>
                 <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>Total Process Cost</th>
                 <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>Exclusive Investment</th>
                 <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>Prev Period</th>
@@ -128,15 +128,29 @@ export default function PPRPage() {
 
               {/* Second header row: column group titles */}
               <tr style={{ background: "#dff7e6", border: "1px solid #059669" }}>
+                <th style={{...thSticky, border: "1px solid #059669"}}>Prev</th>
                 <th style={{...thSticky, border: "1px solid #059669"}}>Local OH</th>
-                <th style={{...thSticky, border: "1px solid #059669"}}>ToolingOH</th>
+                <th style={{...thSticky, border: "1px solid #059669"}}>% Diff</th>
+                <th style={{...thSticky, border: "1px solid #059669"}}>Prev</th>
+                <th style={{...thSticky, border: "1px solid #059669"}}>Tooling OH</th>
+                <th style={{...thSticky, border: "1px solid #059669"}}>% Diff</th>
 
-                <th style={{...thSticky, border: "1px solid #059669"}}>IDR/US (Raw)</th>
+                <th style={{...thSticky, backgroundColor: "#b9faf8", border: "1px solid #059669"}}>Prev</th>
+                <th style={{...thSticky, backgroundColor: "#b9faf8", border: "1px solid #059669"}}>IDR/US (Raw)</th>
+                <th style={{...thSticky, backgroundColor: "#b9faf8", border: "1px solid #059669"}}>% Diff</th>
 
-                <th style={{...thSticky, border: "1px solid #059669"}}>Labor</th>
-                <th style={{...thSticky, border: "1px solid #059669"}}>FOH Fixed</th>
-                <th style={{...thSticky, border: "1px solid #059669"}}>FOH Var</th>
-                <th style={{...thSticky, border: "1px solid #059669"}}>Unfinish Depre.</th>
+                <th style={{...thSticky, backgroundColor: "#e0aaff", border: "1px solid #059669"}}>Prev</th>
+                <th style={{...thSticky, backgroundColor: "#e0aaff", border: "1px solid #059669"}}>Labor</th>
+                <th style={{...thSticky, backgroundColor: "#e0aaff", border: "1px solid #059669"}}>% Diff</th>
+                <th style={{...thSticky, backgroundColor: "#e0aaff", border: "1px solid #059669"}}>Prev</th>
+                <th style={{...thSticky, backgroundColor: "#e0aaff", border: "1px solid #059669"}}>FOH Fixed</th>
+                <th style={{...thSticky, backgroundColor: "#e0aaff", border: "1px solid #059669"}}>% Diff</th>
+                <th style={{...thSticky, backgroundColor: "#e0aaff", border: "1px solid #059669"}}>Prev</th>
+                <th style={{...thSticky, backgroundColor: "#e0aaff", border: "1px solid #059669"}}>FOH Var</th>
+                <th style={{...thSticky, backgroundColor: "#e0aaff", border: "1px solid #059669"}}>% Diff</th>
+                <th style={{...thSticky, backgroundColor: "#e0aaff", border: "1px solid #059669"}}>Prev</th>
+                <th style={{...thSticky, backgroundColor: "#e0aaff", border: "1px solid #059669"}}>Unfinish Depre.</th>
+                <th style={{...thSticky, backgroundColor: "#e0aaff", border: "1px solid #059669"}}>% Diff</th>
               </tr>
             </thead>
 
@@ -159,15 +173,64 @@ export default function PPRPage() {
                     <td style={td}>{r.partNo}</td>
                     <td style={td}>{r.partName}</td>
 
+                    <td style={td}>{r.localOHPrev ?? "-"}</td>
                     <td style={td}>{r.localOH ?? "-"}</td>
+                    <td style={td}>
+                      {(() => {
+                        const diff = calculatePercentageDiff(r.localOH, r.localOHPrev);
+                        return diff !== null ? formatPercentage(diff) : "-";
+                      })()}
+                    </td>
+                    <td style={td}>{formatNumber(r.toolingOHPrev)}</td>
                     <td style={td}>{formatNumber(r.toolingOH)}</td>
+                    <td style={td}>
+                      {(() => {
+                        const diff = calculatePercentageDiff(r.toolingOH, r.toolingOHPrev);
+                        return diff !== null ? formatPercentage(diff) : "-";
+                      })()}
+                    </td>
 
+                    <td style={td}>{formatNumber(r.rawMaterialPrev)}</td>
                     <td style={td}>{formatNumber(r.rawMaterial)}</td>
+                    <td style={td}>
+                      {(() => {
+                        const diff = calculatePercentageDiff(r.rawMaterial, r.rawMaterialPrev);
+                        return diff !== null ? formatPercentage(diff) : "-";
+                      })()}
+                    </td>
 
+                    <td style={td}>{formatNumber(r.laborPrev)}</td>
                     <td style={td}>{formatNumber(r.labor)}</td>
+                    <td style={td}>
+                      {(() => {
+                        const diff = calculatePercentageDiff(r.labor, r.laborPrev);
+                        return diff !== null ? formatPercentage(diff) : "-";
+                      })()}
+                    </td>
+                    <td style={td}>{formatNumber(r.fohFixPrev)}</td>
                     <td style={td}>{formatNumber(r.fohFix)}</td>
+                    <td style={td}>
+                      {(() => {
+                        const diff = calculatePercentageDiff(r.fohFix, r.fohFixPrev);
+                        return diff !== null ? formatPercentage(diff) : "-";
+                      })()}
+                    </td>
+                    <td style={td}>{formatNumber(r.fohVarPrev)}</td>
                     <td style={td}>{formatNumber(r.fohVar)}</td>
+                    <td style={td}>
+                      {(() => {
+                        const diff = calculatePercentageDiff(r.fohVar, r.fohVarPrev);
+                        return diff !== null ? formatPercentage(diff) : "-";
+                      })()}
+                    </td>
+                    <td style={td}>{formatNumber(r.unfinishDeprePrev)}</td>
                     <td style={td}>{formatNumber(r.unfinishDepre)}</td>
+                    <td style={td}>
+                      {(() => {
+                        const diff = calculatePercentageDiff(r.unfinishDepre, r.unfinishDeprePrev);
+                        return diff !== null ? formatPercentage(diff) : "-";
+                      })()}
+                    </td>
 
                     <td style={td}>{formatNumber(r.totalProcessCost)}</td>
                     <td style={td}>{formatNumber(r.exclusiveInvestment)}</td>
@@ -335,4 +398,12 @@ const formatPercentage = (v) => {
     return v >= 0 ? `+${formatted}%` : `${formatted}%`;
   }
   return v;
+};
+
+const calculatePercentageDiff = (current, previous) => {
+  if (!current || !previous || current === "" || previous === "") return null;
+  const currentNum = typeof current === "string" ? parseFloat(current) : current;
+  const prevNum = typeof previous === "string" ? parseFloat(previous) : previous;
+  if (isNaN(currentNum) || isNaN(prevNum) || prevNum === 0) return null;
+  return ((currentNum - prevNum) / prevNum) * 100;
 };
