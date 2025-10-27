@@ -118,7 +118,7 @@ export default function PPRPage() {
                 <th colSpan="6" style={{...headerBandStyle("#dff7e6"), border: "1px solid #059669"}}>Purchase Part</th>
                 <th colSpan="3" style={{...headerBandStyle("#b9faf8"), border: "1px solid #059669"}}>Raw Material</th>
                 <th colSpan="12" style={{...headerBandStyle("#e0aaff"), border: "1px solid #059669"}}>Processing Cost</th>
-                <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>Total Process Cost</th>
+                <th rowSpan="2" style={{...headerBandStyle("#e0aaff"), ...thSticky, border: "1px solid #059669"}}>Total Process Cost</th>
                 <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>Exclusive Investment</th>
                 <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>Prev Period</th>
                 <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>Total Cost</th>
@@ -136,7 +136,7 @@ export default function PPRPage() {
                 <th style={{...thSticky, border: "1px solid #059669"}}>% Diff</th>
 
                 <th style={{...thSticky, backgroundColor: "#a6f6f3", border: "1px solid #059669"}}>Prev</th>
-                <th style={{...thSticky, backgroundColor: "#b9faf8", border: "1px solid #059669"}}>IDR/US (Raw)</th>
+                <th style={{...thSticky, backgroundColor: "#b9faf8", border: "1px solid #059669"}}>Current</th>
                 <th style={{...thSticky, backgroundColor: "#b9faf8", border: "1px solid #059669"}}>% Diff</th>
 
                 <th style={{...thSticky, backgroundColor: "#d89cff", border: "1px solid #059669"}}>Prev</th>
