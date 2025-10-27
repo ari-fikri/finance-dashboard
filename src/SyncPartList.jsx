@@ -84,7 +84,7 @@ export default function SyncPartList() {
   };
 
   const handleExportCompareCSV = () => {
-    const headers = ["PartNo", "PartName", "Supplier", "CMD", "SAP", "IFAST", "Issues"];
+    const headers = ["Part No", "Part Name", "Supplier", "CMD", "SAP", "IFAST", "Issues"];
     const csvRows = [
       headers.join(","),
       ...compareResults.map((r) =>
@@ -178,9 +178,9 @@ export default function SyncPartList() {
             <thead style={{ background: "rgba(15,23,42,0.03)" }}>
               <tr>
                 <th style={thStyleCenter}>Record No</th>
-                <th style={thStyle}>PartNo</th>
-                <th style={thStyle}>PartName</th>
-                <th style={thStyle}>Supplier Name</th>
+                <th style={thStylePartNo}>Part No</th>
+                <th style={thStylePartName}>Part Name</th>
+                <th style={thStyleCenter}>Supplier Name</th>
                 <th style={thStyleCenter}>CMD</th>
                 <th style={thStyleCenter}>SAP</th>
                 <th style={thStyleCenter}>IFAST</th>
@@ -193,8 +193,8 @@ export default function SyncPartList() {
                 return (
                   <tr key={r.partNo} style={{ borderBottom: "1px solid rgba(0,0,0,0.04)" }}>
                     <td style={tdStyleCenter}>{recordNo}</td>
-                    <td style={tdStyle}>{r.partNo}</td>
-                    <td style={tdStyle}>{r.partName}</td>
+                    <td style={tdStylePartNo}>{r.partNo}</td>
+                    <td style={tdStylePartName}>{r.partName}</td>
                     <td style={tdStyle}>{r.supplier}</td>
 
                     <td style={tdStyleCenter}>
@@ -247,8 +247,8 @@ export default function SyncPartList() {
               <table style={{ width: "100%", borderCollapse: "collapse" }}>
                 <thead style={{ background: "#f3f4f6" }}>
                   <tr>
-                    <th style={{ textAlign: "left", padding: "8px 10px" }}>PartNo</th>
-                    <th style={{ textAlign: "left", padding: "8px 10px" }}>PartName</th>
+                    <th style={{ textAlign: "left", padding: "8px 10px" }}>Part No</th>
+                    <th style={{ textAlign: "left", padding: "8px 10px" }}>Part Name</th>
                     <th style={{ textAlign: "left", padding: "8px 10px" }}>Supplier</th>
                     <th style={{ textAlign: "center", padding: "8px 10px" }}>SAP</th>
                     <th style={{ textAlign: "center", padding: "8px 10px" }}>IFAST</th>
@@ -355,3 +355,9 @@ const thStyle = {
 const thStyleCenter = { ...thStyle, textAlign: "center" };
 const tdStyle = { padding: "12px 14px", fontSize: 13, color: "#374151" };
 const tdStyleCenter = { ...tdStyle, textAlign: "center" };
+
+// Additional spacing for PartNo and PartName columns
+const thStylePartNo = { ...thStyle, padding: "12px 20px", minWidth: 160, textAlign: "center" };
+const tdStylePartNo = { ...tdStyle, padding: "12px 20px", minWidth: 160 };
+const thStylePartName = { ...thStyle, padding: "12px 20px", minWidth: 300, textAlign: "center" };
+const tdStylePartName = { ...tdStyle, padding: "12px 20px", minWidth: 300 };
