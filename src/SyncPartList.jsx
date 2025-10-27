@@ -57,14 +57,14 @@ export default function SyncPartList() {
   const compareResults = useMemo(() => {
     if (compareType === "ifast") {
       return rows
-        .filter((r) => !(r.cmd && r.ifast))
-        .map((r) => ({ ...r, reasons: r.ifast ? [] : ["Missing in IFAST"] }));
+        .filter((r) => r.cmd && !r.ifast)
+        .map((r) => ({ ...r, reasons: ["Missing in IFAST"] }));
     }
 
     if (compareType === "sap") {
       return rows
-        .filter((r) => !(r.cmd && r.sap))
-        .map((r) => ({ ...r, reasons: r.sap ? [] : ["Missing in SAP"] }));
+        .filter((r) => r.cmd && !r.sap)
+        .map((r) => ({ ...r, reasons: ["Missing in SAP"] }));
     }
 
     // default: all (show rows missing either SAP or IFAST)
@@ -250,15 +250,26 @@ export default function SyncPartList() {
                     <th style={{ textAlign: "left", padding: "8px 10px" }}>PartNo</th>
                     <th style={{ textAlign: "left", padding: "8px 10px" }}>PartName</th>
                     <th style={{ textAlign: "left", padding: "8px 10px" }}>Supplier</th>
-                    <th style={{ textAlign: "center", padding: "8px 10px" }}>SAP</th>
-                    <th style={{ textAlign: "center", padding: "8px 10px" }}>IFAST</th>
+                    <th style={{ textAlign: "center", padding: "8px 10px" }}>CMD</th>
+                    {compareType === "ifast" && (
+                      <th style={{ textAlign: "center", padding: "8px 10px" }}>IFAST</th>
+                    )}
+                    {compareType === "sap" && (
+                      <th style={{ textAlign: "center", padding: "8px 10px" }}>SAP</th>
+                    )}
+                    {compareType === "all" && (
+                      <>
+                        <th style={{ textAlign: "center", padding: "8px 10px" }}>SAP</th>
+                        <th style={{ textAlign: "center", padding: "8px 10px" }}>IFAST</th>
+                      </>
+                    )}
                     <th style={{ textAlign: "left", padding: "8px 10px" }}>Issues</th>
                   </tr>
                 </thead>
                 <tbody>
                   {compareResults.length === 0 && (
                     <tr>
-                      <td colSpan={6} style={{ padding: 12, color: "#6b7280" }}>No mismatches found.</td>
+                      <td colSpan={compareType === "all" ? 6 : 5} style={{ padding: 12, color: "#6b7280" }}>No mismatches found.</td>
                     </tr>
                   )}
                   {compareResults.map((r) => (
@@ -266,8 +277,19 @@ export default function SyncPartList() {
                       <td style={{ padding: "8px 10px" }}>{r.partNo}</td>
                       <td style={{ padding: "8px 10px" }}>{r.partName}</td>
                       <td style={{ padding: "8px 10px" }}>{r.supplier}</td>
-                      <td style={{ textAlign: "center", padding: "8px 10px" }}>{r.sap ? "✓" : "—"}</td>
-                      <td style={{ textAlign: "center", padding: "8px 10px" }}>{r.ifast ? "✓" : "—"}</td>
+                      <td style={{ textAlign: "center", padding: "8px 10px" }}>{r.cmd ? "✓" : "—"}</td>
+                      {compareType === "ifast" && (
+                        <td style={{ textAlign: "center", padding: "8px 10px" }}>{r.ifast ? "✓" : "—"}</td>
+                      )}
+                      {compareType === "sap" && (
+                        <td style={{ textAlign: "center", padding: "8px 10px" }}>{r.sap ? "✓" : "—"}</td>
+                      )}
+                      {compareType === "all" && (
+                        <>
+                          <td style={{ textAlign: "center", padding: "8px 10px" }}>{r.sap ? "✓" : "—"}</td>
+                          <td style={{ textAlign: "center", padding: "8px 10px" }}>{r.ifast ? "✓" : "—"}</td>
+                        </>
+                      )}
                       <td style={{ padding: "8px 10px", color: "#b91c1c" }}>{r.reasons.join("; ")}</td>
                     </tr>
                   ))}
