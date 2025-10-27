@@ -175,7 +175,10 @@ export default function PPRPage() {
 
                     <td style={tdPrev}>{r.localOHPrev ?? "-"}</td>
                     <td style={td}>{r.localOH ?? "-"}</td>
-                    <td style={td}>
+                    <td style={(() => {
+                      const diff = calculatePercentageDiff(r.localOH, r.localOHPrev);
+                      return getTdDiffStyle(diff);
+                    })()}>
                       {(() => {
                         const diff = calculatePercentageDiff(r.localOH, r.localOHPrev);
                         return diff !== null ? formatPercentage(diff) : "-";
@@ -183,7 +186,10 @@ export default function PPRPage() {
                     </td>
                     <td style={tdPrev}>{formatNumber(r.toolingOHPrev)}</td>
                     <td style={td}>{formatNumber(r.toolingOH)}</td>
-                    <td style={td}>
+                    <td style={(() => {
+                      const diff = calculatePercentageDiff(r.toolingOH, r.toolingOHPrev);
+                      return getTdDiffStyle(diff);
+                    })()}>
                       {(() => {
                         const diff = calculatePercentageDiff(r.toolingOH, r.toolingOHPrev);
                         return diff !== null ? formatPercentage(diff) : "-";
@@ -192,7 +198,10 @@ export default function PPRPage() {
 
                     <td style={tdPrev}>{formatNumber(r.rawMaterialPrev)}</td>
                     <td style={td}>{formatNumber(r.rawMaterial)}</td>
-                    <td style={td}>
+                    <td style={(() => {
+                      const diff = calculatePercentageDiff(r.rawMaterial, r.rawMaterialPrev);
+                      return getTdDiffStyle(diff);
+                    })()}>
                       {(() => {
                         const diff = calculatePercentageDiff(r.rawMaterial, r.rawMaterialPrev);
                         return diff !== null ? formatPercentage(diff) : "-";
@@ -201,7 +210,10 @@ export default function PPRPage() {
 
                     <td style={tdPrev}>{formatNumber(r.laborPrev)}</td>
                     <td style={td}>{formatNumber(r.labor)}</td>
-                    <td style={td}>
+                    <td style={(() => {
+                      const diff = calculatePercentageDiff(r.labor, r.laborPrev);
+                      return getTdDiffStyle(diff);
+                    })()}>
                       {(() => {
                         const diff = calculatePercentageDiff(r.labor, r.laborPrev);
                         return diff !== null ? formatPercentage(diff) : "-";
@@ -209,7 +221,10 @@ export default function PPRPage() {
                     </td>
                     <td style={tdPrev}>{formatNumber(r.fohFixPrev)}</td>
                     <td style={td}>{formatNumber(r.fohFix)}</td>
-                    <td style={td}>
+                    <td style={(() => {
+                      const diff = calculatePercentageDiff(r.fohFix, r.fohFixPrev);
+                      return getTdDiffStyle(diff);
+                    })()}>
                       {(() => {
                         const diff = calculatePercentageDiff(r.fohFix, r.fohFixPrev);
                         return diff !== null ? formatPercentage(diff) : "-";
@@ -217,7 +232,10 @@ export default function PPRPage() {
                     </td>
                     <td style={tdPrev}>{formatNumber(r.fohVarPrev)}</td>
                     <td style={td}>{formatNumber(r.fohVar)}</td>
-                    <td style={td}>
+                    <td style={(() => {
+                      const diff = calculatePercentageDiff(r.fohVar, r.fohVarPrev);
+                      return getTdDiffStyle(diff);
+                    })()}>
                       {(() => {
                         const diff = calculatePercentageDiff(r.fohVar, r.fohVarPrev);
                         return diff !== null ? formatPercentage(diff) : "-";
@@ -225,7 +243,10 @@ export default function PPRPage() {
                     </td>
                     <td style={tdPrev}>{formatNumber(r.unfinishDeprePrev)}</td>
                     <td style={td}>{formatNumber(r.unfinishDepre)}</td>
-                    <td style={td}>
+                    <td style={(() => {
+                      const diff = calculatePercentageDiff(r.unfinishDepre, r.unfinishDeprePrev);
+                      return getTdDiffStyle(diff);
+                    })()}>
                       {(() => {
                         const diff = calculatePercentageDiff(r.unfinishDepre, r.unfinishDeprePrev);
                         return diff !== null ? formatPercentage(diff) : "-";
@@ -386,6 +407,14 @@ const td = { padding: "8px 10px", fontSize: 13, color: "#111827" };
 
 // Background color for "Prev" data columns
 const tdPrev = { ...td, backgroundColor: "#f5f5f5" };
+
+// Helper function to get style for percentage diff based on threshold
+const getTdDiffStyle = (diffValue) => {
+  if (diffValue !== null && Math.abs(diffValue) > 15) {
+    return { ...td, color: "red", fontWeight: "bold" };
+  }
+  return td;
+};
 
 const formatNumber = (v) => {
   if (v == null || v === "") return "-";
