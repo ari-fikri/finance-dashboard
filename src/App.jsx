@@ -124,7 +124,7 @@ export default function App() {
             className="grid-3"
             style={{
               display: "grid",
-              gridTemplateColumns: "repeat(6, 1fr)",
+              gridTemplateColumns: "repeat(5, 1fr)",
               gap: "16px",
               alignItems: "stretch",
             }}
@@ -159,63 +159,7 @@ export default function App() {
               </motion.div>
             ))}
 
-            {/* Material Cost Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.28, delay: 0.12 }}
-              className="card"
-            >
-              <div>
-                <div className="title">Material Cost</div>
-                <div className="meta">
-                  {uploadedFile ? (
-                    <>File: <span>{uploadedFile.name}</span></>
-                  ) : (
-                    <>Status: <span style={{ color: "#dc2626" }}>No file uploaded</span></>
-                  )}
-                </div>
-                {uploadedFile && (
-                  <div className="small" style={{ marginTop: 8 }}>
-                    Uploaded: {new Date(uploadedFile.uploadDate).toLocaleDateString()}
-                  </div>
-                )}
-              </div>
-            
-              <div className="card-footer">
-                <div className="small">
-                  {uploadedFile ? (
-                    <strong style={{ color: "#059669" }}>Ready</strong>
-                  ) : (
-                    <strong style={{ color: "#dc2626" }}>Upload Required</strong>
-                  )}
-                </div>
-                <div className="card-actions">
-                  <input
-                    type="file"
-                    accept=".xls,.xlsx"
-                    onChange={handleFileUpload}
-                    style={{ display: "none" }}
-                    id="material-cost-upload"
-                  />
-                  <label
-                    htmlFor="material-cost-upload"
-                    className="btn btn-ghost"
-                    style={{ cursor: "pointer" }}
-                  >
-                    Upload
-                  </label>
-                  <button
-                    onClick={downloadMaterialData}
-                    className="btn btn-primary"
-                    disabled={!uploadedFile}
-                    style={!uploadedFile ? { opacity: 0.5, cursor: "not-allowed" } : {}}
-                  >
-                    Download
-                  </button>
-                </div>
-              </div>
-            </motion.div>
+
 
             {/* Arrow Card */}
             <motion.div
@@ -277,7 +221,134 @@ export default function App() {
         <section>
           <h2 className="section-title">Calculation</h2>
 
-          <div className="grid-1" style={{ alignItems: "start" }}>
+          <div 
+            className="grid-4"
+            style={{
+              display: "grid",
+              gridTemplateColumns: "repeat(4, 1fr)",
+              gap: "16px",
+              alignItems: "stretch",
+            }}
+          >
+            {/* Process Cost Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.28, delay: 0.02 }}
+              className="card"
+            >
+              <div>
+                <div className="title">Process Cost</div>
+                <div className="meta">Manufacturing and processing cost data</div>
+                <div style={{ marginTop: 10 }} className="small">
+                  Labor, FOH, depreciation, and other processing costs used in calculations.
+                </div>
+              </div>
+            
+              <div className="card-footer">
+                <div className="small">
+                  <strong style={{ color: "#059669" }}>Ready</strong>
+                </div>
+                <div className="card-actions">
+                  <button
+                    onClick={() => alert("View process costs (preview)")}
+                    className="btn btn-ghost"
+                  >
+                    View
+                  </button>
+                  <button
+                    onClick={() => alert("Manage process costs (preview)")}
+                    className="btn btn-primary"
+                  >
+                    Manage
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Material Cost Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.28, delay: 0.04 }}
+              className="card"
+            >
+              <div>
+                <div className="title">Material Cost</div>
+                <div className="meta">
+                  {uploadedFile ? (
+                    <>File: <span>{uploadedFile.name}</span></>
+                  ) : (
+                    <>Status: <span style={{ color: "#dc2626" }}>No file uploaded</span></>
+                  )}
+                </div>
+                {uploadedFile && (
+                  <div className="small" style={{ marginTop: 8 }}>
+                    Uploaded: {new Date(uploadedFile.uploadDate).toLocaleDateString()}
+                  </div>
+                )}
+              </div>
+            
+              <div className="card-footer">
+                <div className="small">
+                  {uploadedFile ? (
+                    <strong style={{ color: "#059669" }}>Ready</strong>
+                  ) : (
+                    <strong style={{ color: "#dc2626" }}>Upload Required</strong>
+                  )}
+                </div>
+                <div className="card-actions">
+                  <input
+                    type="file"
+                    accept=".xls,.xlsx"
+                    onChange={handleFileUpload}
+                    style={{ display: "none" }}
+                    id="material-cost-upload"
+                  />
+                  <label
+                    htmlFor="material-cost-upload"
+                    className="btn btn-ghost"
+                    style={{ cursor: "pointer" }}
+                  >
+                    Upload
+                  </label>
+                  <button
+                    onClick={downloadMaterialData}
+                    className="btn btn-primary"
+                    disabled={!uploadedFile}
+                    style={!uploadedFile ? { opacity: 0.5, cursor: "not-allowed" } : {}}
+                  >
+                    Download
+                  </button>
+                </div>
+              </div>
+            </motion.div>
+
+            {/* Arrow Card */}
+            <motion.div
+              initial={{ opacity: 0, y: 6 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ duration: 0.28, delay: 0.06 }}
+              className="card"
+              style={{
+                display: "flex",
+                alignItems: "center",
+                justifyContent: "center",
+                fontSize: 28,
+                color: "#94a3b8",
+                minHeight: "auto",
+                height: "fit-content",
+                width: "fit-content",
+                justifySelf: "center",
+                alignSelf: "center",
+                padding: "15px",
+                margin: "15px",
+              }}
+            >
+              ➜
+            </motion.div>
+
+            {/* IHP Card */}
             <motion.div
               className="card ihp-area"
               initial={{ opacity: 0, y: 6 }}
