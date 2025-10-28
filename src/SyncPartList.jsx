@@ -162,12 +162,7 @@ export default function SyncPartList() {
           </div>
 
           <div style={{ display: "flex", gap: 8 }}>
-            <button
-              onClick={() => alert("Sync action (preview)")}
-              className="btn btn-ghost"
-            >
-              Synchronize Selected
-            </button>
+            {/* Synchronize Selected button removed */}
 
             {/* Removed: Compare CMD ↔ IFAST and Compare CMD ↔ SAP buttons */}
 
