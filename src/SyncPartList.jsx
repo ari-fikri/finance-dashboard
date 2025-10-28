@@ -83,11 +83,30 @@ export default function SyncPartList() {
     setShowCompareModal(true);
   };
 
-  const handleExportCompareCSV = () => {
+  // Export comparison CSV for given type ("ifast" | "sap" | "all").
+  // If no type provided, use current compareType state (modal case).
+  const handleExportCompareCSV = (type = null) => {
+    const t = type || compareType;
+
+    // compute results for chosen type (mirror logic from compareResults)
+    const results =
+      t === "ifast"
+        ? rows.filter((r) => r.cmd && !r.ifast).map((r) => ({ ...r, reasons: ["Missing in IFAST"] }))
+        : t === "sap"
+        ? rows.filter((r) => r.cmd && !r.sap).map((r) => ({ ...r, reasons: ["Missing in SAP"] }))
+        : rows
+            .filter((r) => !(r.cmd && r.sap && r.ifast))
+            .map((r) => {
+              const reasons = [];
+              if (!r.sap) reasons.push("Missing in SAP");
+              if (!r.ifast) reasons.push("Missing in IFAST");
+              return { ...r, reasons };
+            });
+
     const headers = ["Part No", "Part Name", "Supplier", "CMD", "SAP", "IFAST", "Issues"];
     const csvRows = [
       headers.join(","),
-      ...compareResults.map((r) =>
+      ...results.map((r) =>
         [
           r.partNo,
           `"${r.partName.replace(/"/g, '""')}"`,
@@ -104,7 +123,7 @@ export default function SyncPartList() {
     const url = URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "sync-compare-results.csv";
+    a.download = `sync-compare-results-${t}.csv`;
     a.click();
     URL.revokeObjectURL(url);
   };
@@ -137,12 +156,8 @@ export default function SyncPartList() {
             >
               ← Back
             </button>
-            <button
-              onClick={() => alert("Sync action (preview)")}
-              className="btn btn-ghost"
-            >
-              Synchronize Selected
-            </button>
+
+            {/* Synchronize Selected button removed */}
 
             {/* Removed: Compare CMD ↔ IFAST and Compare CMD ↔ SAP buttons */}
 
@@ -164,11 +179,11 @@ export default function SyncPartList() {
             </button>
 
             <button
-              onClick={() => handleOpenCompare("all")}
+              onClick={() => handleExportCompareCSV("all")}
               className="btn btn-primary"
-              title="Compare CMD / SAP / IFAST"
+              title="Export CSV (download comparison of CMD/SAP/IFAST)"
             >
-              Synchronize (All)
+              Export CSV
             </button>
           </div>
         </div>
@@ -232,8 +247,8 @@ export default function SyncPartList() {
                   {compareType === "ifast" ? "Compare: CMD vs IFAST" : compareType === "sap" ? "Compare: CMD vs SAP" : "Compare Results (CMD / SAP / IFAST)"}
                 </h3>
                 <div style={{ display: "flex", gap: 8 }}>
-                  <button className="btn btn-ghost" onClick={() => setShowCompareModal(false)}>Close</button>
-                  <button className="btn btn-primary" onClick={handleExportCompareCSV} disabled={compareResults.length === 0}>Export CSV</button>
+                  
+                  <button className="btn btn-primary" onClick={() => handleExportCompareCSV()} disabled={compareResults.length === 0}>Export CSV</button>
                 </div>
               </div>
 
@@ -358,9 +373,9 @@ export default function SyncPartList() {
         </div>
 
         <div style={{ marginTop: 16, display: "flex", justifyContent: "flex-end", gap: 8 }}>
-          <button onClick={() => alert("Export CSV (preview)")} className="btn btn-ghost">Export CSV</button>
-          <button onClick={() => alert("Close (preview)") || navigate(-1)} className="btn btn-primary">Close</button>
-        </div>
+          {/* Export CSV button removed */}
+          {/* Close button removed */}
+         </div>
       </div>
     </div>
   );
