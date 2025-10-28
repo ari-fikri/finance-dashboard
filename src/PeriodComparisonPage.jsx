@@ -9,6 +9,22 @@ const exchangeRates = {
   "Jun-25": "15,890",
 };
 
+const parseCurrency = (value) => {
+  if (value === null || value === undefined) {
+    return 0;
+  }
+  if (typeof value === "number") {
+    return value;
+  }
+  if (typeof value === "string") {
+    if (value.trim() === "") {
+      return 0;
+    }
+    return parseFloat(value.replace(/,/g, "")) || 0;
+  }
+  return 0;
+};
+
 export default function PeriodComparisonPage() {
   const navigate = useNavigate();
   const [selectedMonth, setSelectedMonth] = useState("Aug-25");
@@ -32,45 +48,85 @@ export default function PeriodComparisonPage() {
       if (!prevPart) {
         return {
           ...currentPart,
+          no: index + 1,
           prevPeriod: 0,
           diff: 100,
+          localOHPrev: 0,
+          toolingOHPrev: 0,
+          rawMaterialPrev: 0,
+          laborPrev: 0,
+          fohFixPrev: 0,
+          fohVarPrev: 0,
+          unfinishDeprePrev: 0,
+          fgCostPrev: 0,
+          mfgCostPrev: 0,
+          sellingPricePrev: 0,
+          totalCostPrev: 0,
+          totalProcessCost: 0,
+          totalProcessCostPrev: 0,
+          exclusiveInvestment: 0,
+          exclusiveInvestmentPrev: 0,
         };
       }
 
-      const totalCost =
-        (currentPart.localOH || 0) +
-        currentPart.toolingOH +
-        currentPart.rawMaterial +
-        currentPart.labor +
-        currentPart.fohFix +
-        currentPart.fohVar +
-        currentPart.unfinishDepre;
+      const labor = parseCurrency(currentPart.labor);
+      const fohFix = parseCurrency(currentPart.fohFix);
+      const fohVar = parseCurrency(currentPart.fohVar);
+      const unfinishDepre = parseCurrency(currentPart.unfinishDepre);
 
+      const laborPrev = parseCurrency(prevPart.labor);
+      const fohFixPrev = parseCurrency(prevPart.fohFix);
+      const fohVarPrev = parseCurrency(prevPart.fohVar);
+      const unfinishDeprePrev = parseCurrency(prevPart.unfinishDepre);
+
+      const localOH = parseCurrency(currentPart.localOH);
+      const toolingOH = parseCurrency(currentPart.toolingOH);
+      const rawMaterial = parseCurrency(currentPart.rawMaterial);
+
+      const localOHPrev = parseCurrency(prevPart.localOH);
+      const toolingOHPrev = parseCurrency(prevPart.toolingOH);
+      const rawMaterialPrev = parseCurrency(prevPart.rawMaterial);
+
+      const totalProcessCost = labor + fohFix + fohVar + unfinishDepre;
+      const totalProcessCostPrev =
+        laborPrev + fohFixPrev + fohVarPrev + unfinishDeprePrev;
+
+      const totalCost = localOH + toolingOH + rawMaterial + totalProcessCost;
       const prevTotalCost =
-        (prevPart.localOH || 0) +
-        prevPart.toolingOH +
-        prevPart.rawMaterial +
-        prevPart.labor +
-        prevPart.fohFix +
-        prevPart.fohVar +
-        prevPart.unfinishDepre;
+        localOHPrev + toolingOHPrev + rawMaterialPrev + totalProcessCostPrev;
 
       const diff =
-        prevTotalCost === 0 ? 100 : ((totalCost - prevTotalCost) / prevTotalCost) * 100;
+        prevTotalCost === 0
+          ? 100
+          : ((totalCost - prevTotalCost) / prevTotalCost) * 100;
 
-return {
+      return {
         ...currentPart,
         no: index + 1,
-        prevPeriod: prevTotalCost,
         totalCost: totalCost,
         diff: diff,
-        localOHPrev: prevPart.localOH,
-        toolingOHPrev: prevPart.toolingOH,
-        rawMaterialPrev: prevPart.rawMaterial,
-        laborPrev: prevPart.labor,
-        fohFixPrev: prevPart.fohFix,
-        fohVarPrev: prevPart.fohVar,
-        unfinishDeprePrev: prevPart.unfinishDepre,
+        localOH: localOH,
+        toolingOH: toolingOH,
+        rawMaterial: rawMaterial,
+        labor: labor,
+        fohFix: fohFix,
+        fohVar: fohVar,
+        unfinishDepre: unfinishDepre,
+        localOHPrev: localOHPrev,
+        toolingOHPrev: toolingOHPrev,
+        rawMaterialPrev: rawMaterialPrev,
+        laborPrev: laborPrev,
+        fohFixPrev: fohFixPrev,
+        fohVarPrev: fohVarPrev,
+        unfinishDeprePrev: unfinishDeprePrev,
+        fgCostPrev: parseCurrency(prevPart.fgCost),
+        mfgCostPrev: parseCurrency(prevPart.mfgCost),
+        sellingPricePrev: parseCurrency(prevPart.sellingPrice),
+        totalCostPrev: prevTotalCost,
+        totalProcessCost: totalProcessCost,
+        totalProcessCostPrev: totalProcessCostPrev,
+        exclusiveInvestment: parseCurrency(currentPart.exclusiveInvestment),
+        exclusiveInvestmentPrev: parseCurrency(prevPart.exclusiveInvestment),
       };
     });
 
@@ -103,8 +159,15 @@ return {
   const handleRemarkSave = (partNo, value) => {
     setRemarkValues((prev) => ({ ...prev, [partNo]: value }));
   };
-const handleDetailClick = (partNo) => {
+  const handleDetailClick = (partNo) => {
     alert(`Detail view for Part: ${partNo}`);
+  };
+
+  const getDiffStyle = (diffValue, baseStyle) => {
+    if (diffValue !== null && isOutsideThreshold(diffValue)) {
+      return { ...baseStyle, color: "red", fontWeight: "bold" };
+    }
+    return baseStyle;
   };
 
   return (
@@ -112,7 +175,7 @@ const handleDetailClick = (partNo) => {
       <div style={{ maxWidth: "95vw", margin: "0 auto" }}>
         <div
           style={{
-display: "flex",
+            display: "flex",
             justifyContent: "space-between",
             alignItems: "flex-start",
             gap: 12,
@@ -315,7 +378,7 @@ display: "flex",
                 <th
                   rowSpan="2"
                   style={{
-                    ...headerBandStyle("#dff7e6"),
+                    ...headerBandStyle("#e0aaff"),
                     ...thSticky,
                     border: "1px solid #059669",
                   }}
@@ -537,12 +600,8 @@ display: "flex",
 
             <tbody>
               {currentRecords.map((r, index) => {
-                const isThresholdExceeded = isOutsideThreshold(r.diff);
-                const redStyle = isThresholdExceeded
-                  ? { ...td, color: "red", fontWeight: "bold" }
-                  : td;
-                const currentRemark = getRemarkValue(r.partNo, r.remark);
                 const isEvenRow = index % 2 === 0;
+                const currentRemark = getRemarkValue(r.partNo, r.remark);
 
                 return (
                   <tr
@@ -558,187 +617,136 @@ display: "flex",
                     <td style={td}>{r.partNo}</td>
                     <td style={td}>{r.partName}</td>
 
-                    <td style={tdPrev}>{r.localOHPrev ?? "-"}</td>
-                    <td style={td}>{r.localOH ?? "-"}</td>
+                    {/* Purchase Part */}
+                    <td style={tdPrevNum}>{formatNumber(r.localOHPrev)}</td>
+                    <td style={tdNum}>{formatNumber(r.localOH)}</td>
                     <td
-                      style={(() => {
-                        const diff = calculatePercentageDiff(
-                          r.localOH,
-                          r.localOHPrev
-                        );
-                        return getTdDiffStyle(diff);
-                      })()}
+                      style={getDiffStyle(
+                        calculatePercentageDiff(r.localOH, r.localOHPrev),
+                        tdNum
+                      )}
                     >
-                      {(() => {
-                        const diff = calculatePercentageDiff(
-                          r.localOH,
-                          r.localOHPrev
-                        );
-                        return diff !== null ? formatPercentage(diff) : "-";
-                      })()}
+                      {formatPercentage(
+                        calculatePercentageDiff(r.localOH, r.localOHPrev)
+                      )}
                     </td>
-                    <td style={tdPrev}>{formatNumber(r.toolingOHPrev)}</td>
-                    <td style={td}>{formatNumber(r.toolingOH)}</td>
+                    <td style={tdPrevNum}>{formatNumber(r.toolingOHPrev)}</td>
+                    <td style={tdNum}>{formatNumber(r.toolingOH)}</td>
                     <td
-                      style={(() => {
-                        const diff = calculatePercentageDiff(
-                          r.toolingOH,
-                          r.toolingOHPrev
-                        );
-                        return getTdDiffStyle(diff);
-                      })()}
+                      style={getDiffStyle(
+                        calculatePercentageDiff(r.toolingOH, r.toolingOHPrev),
+                        tdNum
+                      )}
                     >
-                      {(() => {
-                        const diff = calculatePercentageDiff(
-                          r.toolingOH,
-                          r.toolingOHPrev
-                        );
-                        return diff !== null ? formatPercentage(diff) : "-";
-                      })()}
+                      {formatPercentage(
+                        calculatePercentageDiff(r.toolingOH, r.toolingOHPrev)
+                      )}
                     </td>
 
-                    <td style={tdPrev}>{formatNumber(r.rawMaterialPrev)}</td>
-                    <td style={td}>{formatNumber(r.rawMaterial)}</td>
+                    {/* Raw Material */}
+                    <td style={tdPrevNum}>
+                      {formatNumber(r.rawMaterialPrev)}
+                    </td>
+                    <td style={tdNum}>{formatNumber(r.rawMaterial)}</td>
                     <td
-                      style={(() => {
-                        const diff = calculatePercentageDiff(
+                      style={getDiffStyle(
+                        calculatePercentageDiff(
                           r.rawMaterial,
                           r.rawMaterialPrev
-                        );
-                        return getTdDiffStyle(diff);
-                      })()}
+                        ),
+                        tdNum
+                      )}
                     >
-                      {(() => {
-                        const diff = calculatePercentageDiff(
+                      {formatPercentage(
+                        calculatePercentageDiff(
                           r.rawMaterial,
                           r.rawMaterialPrev
-                        );
-                        return diff !== null ? formatPercentage(diff) : "-";
-                      })()}
+                        )
+                      )}
                     </td>
 
-                    <td style={tdPrev}>{formatNumber(r.laborPrev)}</td>
-                    <td style={td}>{formatNumber(r.labor)}</td>
+                    {/* Processing Cost */}
+                    <td style={tdPrevNum}>{formatNumber(r.laborPrev)}</td>
+                    <td style={tdNum}>{formatNumber(r.labor)}</td>
                     <td
-                      style={(() => {
-                        const diff = calculatePercentageDiff(
-                          r.labor,
-                          r.laborPrev
-                        );
-                        return getTdDiffStyle(diff);
-                      })()}
+                      style={getDiffStyle(
+                        calculatePercentageDiff(r.labor, r.laborPrev),
+                        tdNum
+                      )}
                     >
-                      {(() => {
-                        const diff = calculatePercentageDiff(
-                          r.labor,
-                          r.laborPrev
-                        );
-                        return diff !== null ? formatPercentage(diff) : "-";
-                      })()}
+                      {formatPercentage(
+                        calculatePercentageDiff(r.labor, r.laborPrev)
+                      )}
                     </td>
-                    <td style={tdPrev}>{formatNumber(r.fohFixPrev)}</td>
-                    <td style={td}>{formatNumber(r.fohFix)}</td>
+                    <td style={tdPrevNum}>{formatNumber(r.fohFixPrev)}</td>
+                    <td style={tdNum}>{formatNumber(r.fohFix)}</td>
                     <td
-                      style={(() => {
-                        const diff = calculatePercentageDiff(
-                          r.fohFix,
-                          r.fohFixPrev
-                        );
-                        return getTdDiffStyle(diff);
-                      })()}
+                      style={getDiffStyle(
+                        calculatePercentageDiff(r.fohFix, r.fohFixPrev),
+                        tdNum
+                      )}
                     >
-                      {(() => {
-                        const diff = calculatePercentageDiff(
-                          r.fohFix,
-                          r.fohFixPrev
-                        );
-                        return diff !== null ? formatPercentage(diff) : "-";
-                      })()}
+                      {formatPercentage(
+                        calculatePercentageDiff(r.fohFix, r.fohFixPrev)
+                      )}
                     </td>
-                    <td style={tdPrev}>{formatNumber(r.fohVarPrev)}</td>
-                    <td style={td}>{formatNumber(r.fohVar)}</td>
+                    <td style={tdPrevNum}>{formatNumber(r.fohVarPrev)}</td>
+                    <td style={tdNum}>{formatNumber(r.fohVar)}</td>
                     <td
-                      style={(() => {
-                        const diff = calculatePercentageDiff(
-                          r.fohVar,
-                          r.fohVarPrev
-                        );
-                        return getTdDiffStyle(diff);
-                      })()}
+                      style={getDiffStyle(
+                        calculatePercentageDiff(r.fohVar, r.fohVarPrev),
+                        tdNum
+                      )}
                     >
-                      {(() => {
-                        const diff = calculatePercentageDiff(
-                          r.fohVar,
-                          r.fohVarPrev
-                        );
-                        return diff !== null ? formatPercentage(diff) : "-";
-                      })()}
+                      {formatPercentage(
+                        calculatePercentageDiff(r.fohVar, r.fohVarPrev)
+                      )}
                     </td>
-                    <td style={tdPrev}>
+                    <td style={tdPrevNum}>
                       {formatNumber(r.unfinishDeprePrev)}
                     </td>
-                    <td style={td}>{formatNumber(r.unfinishDepre)}</td>
+                    <td style={tdNum}>{formatNumber(r.unfinishDepre)}</td>
                     <td
-                      style={(() => {
-                        const diff = calculatePercentageDiff(
+                      style={getDiffStyle(
+                        calculatePercentageDiff(
                           r.unfinishDepre,
                           r.unfinishDeprePrev
-                        );
-                        return getTdDiffStyle(diff);
-                      })()}
+                        ),
+                        tdNum
+                      )}
                     >
-                      {(() => {
-                        const diff = calculatePercentageDiff(
+                      {formatPercentage(
+                        calculatePercentageDiff(
                           r.unfinishDepre,
                           r.unfinishDeprePrev
-                        );
-                        return diff !== null ? formatPercentage(diff) : "-";
-                      })()}
+                        )
+                      )}
                     </td>
-                    <td style={td}>{formatNumber(r.totalProcessCost)}</td>
-                    <td style={td}>{formatNumber(r.exclusiveInvestment)}</td>
-                    <td style={td}>{formatNumber(r.prevPeriod)}</td>
-                    <td style={redStyle}>{formatNumber(r.totalCost)}</td>
-                    <td style={redStyle}>{formatPercentage(r.diff)}</td>
+
+                    {/* Total Process Cost */}
+                    <td style={tdPrevNum}>
+                      {formatNumber(r.totalProcessCostPrev)}
+                    </td>
+                    {/* Exclusive Investment */}
+                    <td style={tdPrevNum}>
+                      {formatNumber(r.exclusiveInvestmentPrev)}
+                    </td>
+
+                    {/* Prev Period */}
+                    <td style={tdPrevNum}>{formatNumber(r.totalCostPrev)}</td>
+                    {/* Total Cost */}
+                    <td style={tdNum}>{formatNumber(r.totalCost)}</td>
+                    {/* Diff */}
+                    <td style={getDiffStyle(r.diff, tdNum)}>
+                      {formatPercentage(r.diff)}
+                    </td>
+
+                    {/* Remark */}
                     <td style={td}>
-                      <div
-                        style={{
-                          display: "flex",
-                          gap: 4,
-                          alignItems: "center",
-                        }}
-                      >
-                        <div style={{ flex: 1 }}>
-                          {isThresholdExceeded ? (
-                            <InlineEditableTextarea
-                              value={currentRemark}
-                              onSave={(value) =>
-                                handleRemarkSave(r.partNo, value)
-                              }
-                              placeholder="Click to add remark..."
-                            />
-                          ) : (
-                            <span style={{ color: "#999", fontSize: "12px" }}>
-                              -
-                            </span>
-                          )}
-                        </div>
-                        <button
-                          onClick={() => handleDetailClick(r.partNo)}
-                          style={{
-                            padding: "2px 6px",
-                            fontSize: 10,
-                            border: "1px solid #007bff",
-                            borderRadius: 3,
-                            background: "#007bff",
-                            color: "white",
-                            cursor: "pointer",
-                            whiteSpace: "nowrap",
-                          }}
-                        >
-                          Detail
-                        </button>
-                      </div>
+                      <InlineEditableTextarea
+                        value={currentRemark}
+                        onSave={(value) => handleRemarkSave(r.partNo, value)}
+                      />
                     </td>
                   </tr>
                 );
@@ -831,23 +839,37 @@ const thSticky = {
   borderBottom: "1px solid rgba(0,0,0,0.06)",
 };
 
-const td = { padding: "8px 10px", fontSize: 13, color: "#111827" };
+const td = {
+  border: "1px solid #ddd",
+  padding: "8px",
+};
 
-const tdPrev = { ...td, backgroundColor: "#f5f5f5" };
+const tdNum = {
+  ...td,
+  textAlign: "right",
+};
 
-const getTdDiffStyle = (diffValue) => {
-  if (diffValue !== null && Math.abs(diffValue) > 15) {
-    return { ...td, color: "red", fontWeight: "bold" };
-  }
-  return td;
+const tdPrev = {
+  ...td,
+  backgroundColor: "#e6f7ff",
+};
+
+const tdPrevNum = {
+  ...tdPrev,
+  textAlign: "right",
+};
+
+const th = {
+  border: "1px solid #ddd",
+  padding: "8px",
 };
 
 const formatNumber = (v) => {
   if (v == null || v === "") return "-";
   if (typeof v === "number")
     return v.toLocaleString(undefined, {
-      minimumFractionDigits: 3,
-      maximumFractionDigits: 3,
+      minimumFractionDigits: 2,
+      maximumFractionDigits: 2,
     });
   return v;
 };
@@ -862,10 +884,10 @@ const formatPercentage = (v) => {
 };
 
 const calculatePercentageDiff = (current, previous) => {
-  if (!current || !previous || current === "" || previous === "") return null;
+  if (current == null || previous == null || previous === 0) return null;
   const currentNum =
-    typeof current === "string" ? parseFloat(current) : current;
-  const prevNum = typeof previous === "string" ? parseFloat(previous) : previous;
+    typeof current === "string" ? parseFloat(current.replace(/,/g, '')) : current;
+  const prevNum = typeof previous === "string" ? parseFloat(previous.replace(/,/g, '')) : previous;
   if (isNaN(currentNum) || isNaN(prevNum) || prevNum === 0) return null;
   return ((currentNum - prevNum) / prevNum) * 100;
 };
