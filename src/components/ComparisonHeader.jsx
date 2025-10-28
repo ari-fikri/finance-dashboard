@@ -20,100 +20,32 @@ const ComparisonHeader = ({
 
   return (
     <div>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12, marginBottom: 24 }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 24 }}>
         <div>
-          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-            <button
-              className="btn"
-              onClick={() => navigate(-1)}
-              style={{
-                backgroundColor: "#007bff",
-                color: "white",
-                border: "none"
-              }}
-            >
-              ← Back
-            </button>
-            <h1 style={{ margin: 0, fontSize: 28, fontWeight: 600 }}>Period-over-Period Comparison</h1>
-          </div>
-          <p style={{ margin: "6px 0 0", color: "#6b7280", fontSize: 14 }}>
+          <h1 style={{ margin: 0, fontSize: 28, fontWeight: 600 }}>
+            Period-over-Period Comparison
+          </h1>
+          <p style={{ margin: '6px 0 0', color: '#6b7280', fontSize: 14 }}>
             Select two periods to compare the cost differences.
           </p>
         </div>
-      </div>
-
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-end", marginBottom: 12 }}>
-        <div style={{ display: "flex", alignItems: "flex-end", gap: 16 }}>
-          <div>
-            <label
-              htmlFor="month1"
-              style={{
-                fontSize: 12,
-                fontWeight: 500,
-                color: '#374151',
-                display: 'block',
-                marginBottom: 4,
-              }}
-            >
-              Period 1 (Previous)
-            </label>
-            <select
-              id="month1"
+        <div style={{ display: "flex", gap: 16, alignItems: "flex-start" }}>
+          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+            <select 
               value={selectedMonth}
               onChange={(e) => setSelectedMonth(e.target.value)}
-              className="select"
-              style={{ minWidth: 160, padding: "6px 10px", borderRadius: 8, border: "1px solid rgba(0,0,0,0.12)" }}
+              style={{ padding: "6px 10px", borderRadius: 8, border: "1px solid rgba(0,0,0,0.12)", width: '180px' }}
             >
-              <option value="">Select Period</option>
+              <option value="">Select Period 1</option>
               {Object.keys(pprDataByPeriod).map((month) => (
                 <option key={month} value={month}>
                   {month}
                 </option>
               ))}
             </select>
-          </div>
-          <div>
-            <label
-              htmlFor="month2"
-              style={{
-                fontSize: 12,
-                fontWeight: 500,
-                color: '#374151',
-                display: 'block',
-                marginBottom: 4,
-              }}
-            >
-              Period 2 (Current)
-            </label>
-            <select
-              id="month2"
-              value={selectedMonth2}
-              onChange={(e) => setSelectedMonth2(e.target.value)}
-              className="select"
-              style={{ minWidth: 160, padding: "6px 10px", borderRadius: 8, border: "1px solid rgba(0,0,0,0.12)" }}
-            >
-              <option value="">Select Period</option>
-              {Object.keys(pprDataByPeriod).map((month) => (
-                <option key={month} value={month}>
-                  {month}
-                </option>
-              ))}
-            </select>
-          </div>
-          <button
-            onClick={() => handleCompare(selectedMonth, selectedMonth2)}
-            disabled={!selectedMonth || !selectedMonth2}
-            className="btn btn-primary"
-          >
-            Compare
-          </button>
-        </div>
-        
-        {comparedMonth1 && comparedMonth2 && (
-          <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
             <input
               type="text"
-              value={`USD/IDR: ${exchangeRates[comparedMonth2] || 'N/A'}`}
+              value={`USD/IDR: ${exchangeRates[selectedMonth] || 'N/A'}`}
               readOnly
               style={{
                 padding: "6px 10px",
@@ -121,12 +53,52 @@ const ComparisonHeader = ({
                 border: "1px solid rgba(0,0,0,0.12)",
                 backgroundColor: "#f8f9fa",
                 color: "#495057",
-                width: "150px",
+                width: "180px",
+                boxSizing: 'border-box',
                 fontSize: "13px"
               }}
             />
           </div>
-        )}
+          <div style={{ display: "flex", flexDirection: "column", gap: 8 }}>
+            <select 
+              value={selectedMonth2}
+              onChange={(e) => setSelectedMonth2(e.target.value)}
+              style={{ padding: "6px 10px", borderRadius: 8, border: "1px solid rgba(0,0,0,0.12)", width: '180px' }}
+            >
+              <option value="">Select Period 2</option>
+              {Object.keys(pprDataByPeriod).map((month) => (
+                <option key={month} value={month}>
+                  {month}
+                </option>
+              ))}
+            </select>
+            <input
+              type="text"
+              value={`USD/IDR: ${exchangeRates[selectedMonth2] || 'N/A'}`}
+              readOnly
+              style={{
+                padding: "6px 10px",
+                borderRadius: 8,
+                border: "1px solid rgba(0,0,0,0.12)",
+                backgroundColor: "#f8f9fa",
+                color: "#495057",
+                width: "180px",
+                boxSizing: 'border-box',
+                fontSize: "13px"
+              }}
+            />
+          </div>
+          <div style={{ display: "flex", gap: 8 }}>
+            <button
+              onClick={() => handleCompare(selectedMonth, selectedMonth2)}
+              disabled={!selectedMonth || !selectedMonth2}
+              className="btn btn-primary"
+            >
+              Compare
+            </button>
+            <button className="btn btn-primary" onClick={() => alert("Export CSV (preview)")}>Export</button>
+          </div>
+        </div>
       </div>
     </div>
   );
