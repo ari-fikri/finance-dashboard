@@ -18,6 +18,31 @@ export default function PPRPage() {
   const recordsPerPage = 10;
   const threshold = 10; // 10% threshold
 
+  // Quality gates toggle states
+  const [qualityGates, setQualityGates] = useState({
+    rhLhFilter: false,
+    plantMhRate: false,
+    fiveDigitsPartNo: false
+  });
+
+  // Toggle quality gate buttons (only one can be active at a time)
+  const toggleQualityGate = (gate) => {
+    setQualityGates(prev => {
+      const newState = {
+        rhLhFilter: false,
+        plantMhRate: false,
+        fiveDigitsPartNo: false
+      };
+      
+      // Only set the clicked gate to true if it wasn't already active
+      if (!prev[gate]) {
+        newState[gate] = true;
+      }
+      
+      return newState;
+    });
+  };
+
   // Exchange rates for different months
   const exchangeRates = {
     "Aug-25": "15,650",
@@ -25,10 +50,35 @@ export default function PPRPage() {
     "Jun-25": "15,890"
   };
 
-  // Sample data (filtered by selected period)
+  // Sample data (filtered by selected period and quality gates)
   const rows = useMemo(() => {
-    return pprDataByPeriod[selectedMonth] || [];
-  }, [selectedMonth]);
+    let data = pprDataByPeriod[selectedMonth] || [];
+    
+    // Apply RH/LH filter if active
+    if (qualityGates.rhLhFilter) {
+      data = data.filter(item => {
+        const partName = item.partName.toUpperCase();
+        return partName.endsWith(' RH') || partName.endsWith(' LH');
+      });
+      
+      // Sort by similar part names (group RH/LH pairs together)
+      data = data.sort((a, b) => {
+        // Remove RH/LH suffix for comparison
+        const baseName_a = a.partName.replace(/ (RH|LH)$/, '').toUpperCase();
+        const baseName_b = b.partName.replace(/ (RH|LH)$/, '').toUpperCase();
+        
+        if (baseName_a === baseName_b) {
+          // If same base name, sort RH before LH
+          return a.partName.includes('RH') ? -1 : 1;
+        }
+        
+        // Sort by base name
+        return baseName_a.localeCompare(baseName_b);
+      });
+    }
+    
+    return data;
+  }, [selectedMonth, qualityGates.rhLhFilter]);
 
   // Pagination calculations
   const totalRecords = rows.length;
@@ -63,11 +113,75 @@ export default function PPRPage() {
 
   return (
     <div style={{ padding: 20 }}>
-      <div style={{ maxWidth: 1400, margin: "0 auto" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", gap: 12 }}>
+      <div style={{ maxWidth: "95vw", margin: "0 auto" }}>
+        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12 }}>
           <div>
-            <h1 style={{ margin: 0 }}>PPR</h1>
-            <p style={{ margin: "6px 0 0", color: "#6b7280" }}>Part process & cost report (wide table)</p>
+            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+              <button
+                className="btn"
+                onClick={() => navigate(-1)}
+                style={{
+                  backgroundColor: "#007bff",
+                  color: "white",
+                  border: "none"
+                }}
+              >
+                ← Back
+              </button>
+              <h1 style={{ margin: 0 }}>PPR</h1>
+            </div>
+            <p style={{ margin: "6px 0 8px", color: "#6b7280" }}>Part process & cost report (wide table)</p>
+            
+            {/* Quality Gates Buttons */}
+            <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
+              <button
+                onClick={() => toggleQualityGate('rhLhFilter')}
+                style={{
+                  padding: "4px 12px",
+                  fontSize: "12px",
+                  borderRadius: 6,
+                  border: "1px solid #d1d5db",
+                  backgroundColor: qualityGates.rhLhFilter ? "#059669" : "white",
+                  color: qualityGates.rhLhFilter ? "white" : "#374151",
+                  cursor: "pointer",
+                  transition: "all 0.2s ease"
+                }}
+              >
+                RH/LH Filter
+              </button>
+              
+              <button
+                onClick={() => toggleQualityGate('plantMhRate')}
+                style={{
+                  padding: "4px 12px",
+                  fontSize: "12px",
+                  borderRadius: 6,
+                  border: "1px solid #d1d5db",
+                  backgroundColor: qualityGates.plantMhRate ? "#059669" : "white",
+                  color: qualityGates.plantMhRate ? "white" : "#374151",
+                  cursor: "pointer",
+                  transition: "all 0.2s ease"
+                }}
+              >
+                Plant & MH Rate
+              </button>
+              
+              <button
+                onClick={() => toggleQualityGate('fiveDigitsPartNo')}
+                style={{
+                  padding: "4px 12px",
+                  fontSize: "12px",
+                  borderRadius: 6,
+                  border: "1px solid #d1d5db",
+                  backgroundColor: qualityGates.fiveDigitsPartNo ? "#059669" : "white",
+                  color: qualityGates.fiveDigitsPartNo ? "white" : "#374151",
+                  cursor: "pointer",
+                  transition: "all 0.2s ease"
+                }}
+              >
+                Five Digits Part No
+              </button>
+            </div>
           </div>
 
           <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
@@ -99,7 +213,6 @@ export default function PPRPage() {
               }}
             />
 
-            <button className="btn btn-ghost" onClick={() => navigate(-1)}>← Back</button>
             <button className="btn btn-primary" onClick={() => alert("Export CSV (preview)")}>Export</button>
           </div>
         </div>
@@ -353,13 +466,7 @@ export default function PPRPage() {
           </div>
         </div>
 
-        <div style={{ marginTop: 12, display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-          <div />
-          <div style={{ display: "flex", gap: 8 }}>
-            <button className="btn btn-ghost" onClick={() => alert("Print (preview)")}>Print</button>
-            <button className="btn btn-primary" onClick={() => alert("Close (preview)") || navigate(-1)}>Close</button>
-          </div>
-        </div>
+
       </div>
     </div>
   );
