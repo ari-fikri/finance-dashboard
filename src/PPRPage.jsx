@@ -116,7 +116,20 @@ export default function PPRPage() {
       <div style={{ maxWidth: "95vw", margin: "0 auto" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12 }}>
           <div>
-            <h1 style={{ margin: 0 }}>PPR</h1>
+            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+              <button
+                className="btn"
+                onClick={() => navigate(-1)}
+                style={{
+                  backgroundColor: "#007bff",
+                  color: "white",
+                  border: "none"
+                }}
+              >
+                ← Back
+              </button>
+              <h1 style={{ margin: 0 }}>PPR</h1>
+            </div>
             <p style={{ margin: "6px 0 8px", color: "#6b7280" }}>Part process & cost report (wide table)</p>
             
             {/* Quality Gates Buttons */}
@@ -200,7 +213,6 @@ export default function PPRPage() {
               }}
             />
 
-            <button className="btn btn-ghost" onClick={() => navigate(-1)}>← Back</button>
             <button className="btn btn-primary" onClick={() => alert("Export CSV (preview)")}>Export</button>
           </div>
         </div>
