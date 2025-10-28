@@ -50,10 +50,35 @@ export default function PPRPage() {
     "Jun-25": "15,890"
   };
 
-  // Sample data (filtered by selected period)
+  // Sample data (filtered by selected period and quality gates)
   const rows = useMemo(() => {
-    return pprDataByPeriod[selectedMonth] || [];
-  }, [selectedMonth]);
+    let data = pprDataByPeriod[selectedMonth] || [];
+    
+    // Apply RH/LH filter if active
+    if (qualityGates.rhLhFilter) {
+      data = data.filter(item => {
+        const partName = item.partName.toUpperCase();
+        return partName.endsWith(' RH') || partName.endsWith(' LH');
+      });
+      
+      // Sort by similar part names (group RH/LH pairs together)
+      data = data.sort((a, b) => {
+        // Remove RH/LH suffix for comparison
+        const baseName_a = a.partName.replace(/ (RH|LH)$/, '').toUpperCase();
+        const baseName_b = b.partName.replace(/ (RH|LH)$/, '').toUpperCase();
+        
+        if (baseName_a === baseName_b) {
+          // If same base name, sort RH before LH
+          return a.partName.includes('RH') ? -1 : 1;
+        }
+        
+        // Sort by base name
+        return baseName_a.localeCompare(baseName_b);
+      });
+    }
+    
+    return data;
+  }, [selectedMonth, qualityGates.rhLhFilter]);
 
   // Pagination calculations
   const totalRecords = rows.length;
