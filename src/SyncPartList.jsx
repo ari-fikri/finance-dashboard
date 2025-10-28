@@ -125,18 +125,24 @@ export default function SyncPartList() {
       <div style={{ maxWidth: 1200, margin: "0 auto" }}>
         <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center", marginBottom: 18 }}>
           <div>
-            <h1 style={{ margin: 0 }}>Synchronize Part List</h1>
+            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+              <button
+                className="btn"
+                onClick={() => navigate(-1)}
+                style={{
+                  backgroundColor: "#007bff",
+                  color: "white",
+                  border: "none",
+                }}
+              >
+                ← Back
+              </button>
+              <h1 style={{ margin: 0 }}>Synchronize Part List</h1>
+            </div>
             <p style={{ margin: "6px 0 0", color: "#6b7280" }}>Shows which part lists exist in CMD / SAP / IFAST.</p>
           </div>
 
           <div style={{ display: "flex", gap: 8 }}>
-            <button
-              onClick={() => navigate(-1)}
-              className="btn btn-ghost"
-              style={{ alignSelf: "center" }}
-            >
-              ← Back
-            </button>
             <button
               onClick={() => alert("Sync action (preview)")}
               className="btn btn-ghost"
