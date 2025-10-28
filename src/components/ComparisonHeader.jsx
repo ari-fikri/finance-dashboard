@@ -45,7 +45,7 @@ const ComparisonHeader = ({
             </select>
             <input
               type="text"
-              value={`USD/IDR: ${exchangeRates[selectedMonth] || 'N/A'}`}
+              value={`USD/IDR: ${exchangeRates[comparedMonth1] || 'N/A'}`}
               readOnly
               style={{
                 padding: "6px 10px",
@@ -74,7 +74,7 @@ const ComparisonHeader = ({
             </select>
             <input
               type="text"
-              value={`USD/IDR: ${exchangeRates[selectedMonth2] || 'N/A'}`}
+              value={`USD/IDR: ${exchangeRates[comparedMonth2] || 'N/A'}`}
               readOnly
               style={{
                 padding: "6px 10px",
@@ -88,7 +88,7 @@ const ComparisonHeader = ({
               }}
             />
           </div>
-          <div style={{ display: "flex", gap: 8 }}>
+          <div style={{ display: "flex", gap: 8, alignItems: 'flex-start', paddingTop: 0 }}>
             <button
               onClick={() => handleCompare(selectedMonth, selectedMonth2)}
               disabled={!selectedMonth || !selectedMonth2}

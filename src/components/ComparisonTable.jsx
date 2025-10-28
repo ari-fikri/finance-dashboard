@@ -47,31 +47,31 @@ const ComparisonTable = ({
             <th colSpan="12" style={{...headerBandStyle("#e0aaff"), border: "1px solid #059669"}}>Processing Cost</th>
             <th rowSpan="2" style={{...headerBandStyle("#e0aaff"), ...thSticky, border: "1px solid #059669"}}>Total Process Cost</th>
             <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>Exclusive Investment</th>
-            <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>Prev Period</th>
-            <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>Total Cost</th>
+            <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>{`Total Cost (${comparedMonth1 || 'P1'})`}</th>
+            <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>{`Total Cost (${comparedMonth2 || 'P2'})`}</th>
             <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>Diff</th>
             <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>Remark</th>
           </tr>
           <tr style={{ background: "#dff7e6", border: "1px solid #059669" }}>
-            <th style={{...thSticky, backgroundColor: "#d0f0d2", border: "1px solid #059669"}}>Prev</th>
+            <th style={{...thSticky, backgroundColor: "#d0f0d2", border: "1px solid #059669"}}>{comparedMonth1 || 'Period 1'}</th>
             <th style={{...thSticky, border: "1px solid #059669"}}>Local OH</th>
             <th style={{...thSticky, border: "1px solid #059669"}}>% Diff</th>
-            <th style={{...thSticky, backgroundColor: "#d0f0d2", border: "1px solid #059669"}}>Prev</th>
+            <th style={{...thSticky, backgroundColor: "#d0f0d2", border: "1px solid #059669"}}>{comparedMonth1 || 'Period 1'}</th>
             <th style={{...thSticky, border: "1px solid #059669"}}>Tooling OH</th>
             <th style={{...thSticky, border: "1px solid #059669"}}>% Diff</th>
-            <th style={{...thSticky, backgroundColor: "#a6f6f3", border: "1px solid #059669"}}>Prev</th>
-            <th style={{...thSticky, backgroundColor: "#b9faf8", border: "1px solid #059669"}}>Current</th>
+            <th style={{...thSticky, backgroundColor: "#a6f6f3", border: "1px solid #059669"}}>{comparedMonth1 || 'Period 1'}</th>
+            <th style={{...thSticky, backgroundColor: "#b9faf8", border: "1px solid #059669"}}>{comparedMonth2 || 'Period 2'}</th>
             <th style={{...thSticky, backgroundColor: "#b9faf8", border: "1px solid #059669"}}>% Diff</th>
-            <th style={{...thSticky, backgroundColor: "#d89cff", border: "1px solid #059669"}}>Prev</th>
+            <th style={{...thSticky, backgroundColor: "#d89cff", border: "1px solid #059669"}}>{comparedMonth1 || 'Period 1'}</th>
             <th style={{...thSticky, backgroundColor: "#e0aaff", border: "1px solid #059669"}}>Labor</th>
             <th style={{...thSticky, backgroundColor: "#e0aaff", border: "1px solid #059669"}}>% Diff</th>
-            <th style={{...thSticky, backgroundColor: "#d89cff", border: "1px solid #059669"}}>Prev</th>
+            <th style={{...thSticky, backgroundColor: "#d89cff", border: "1px solid #059669"}}>{comparedMonth1 || 'Period 1'}</th>
             <th style={{...thSticky, backgroundColor: "#e0aaff", border: "1px solid #059669"}}>FOH Fixed</th>
             <th style={{...thSticky, backgroundColor: "#e0aaff", border: "1px solid #059669"}}>% Diff</th>
-            <th style={{...thSticky, backgroundColor: "#d89cff", border: "1px solid #059669"}}>Prev</th>
+            <th style={{...thSticky, backgroundColor: "#d89cff", border: "1px solid #059669"}}>{comparedMonth1 || 'Period 1'}</th>
             <th style={{...thSticky, backgroundColor: "#e0aaff", border: "1px solid #059669"}}>FOH Var</th>
             <th style={{...thSticky, backgroundColor: "#e0aaff", border: "1px solid #059669"}}>% Diff</th>
-            <th style={{...thSticky, backgroundColor: "#d89cff", border: "1px solid #059669"}}>Prev</th>
+            <th style={{...thSticky, backgroundColor: "#d89cff", border: "1px solid #059669"}}>{comparedMonth1 || 'Period 1'}</th>
             <th style={{...thSticky, backgroundColor: "#e0aaff", border: "1px solid #059669"}}>Unfinish Depre.</th>
             <th style={{...thSticky, backgroundColor: "#e0aaff", border: "1px solid #059669"}}>% Diff</th>
           </tr>
