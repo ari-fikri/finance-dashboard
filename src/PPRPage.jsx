@@ -22,7 +22,7 @@ export default function PPRPage() {
   const [qualityGates, setQualityGates] = useState({
     rhLhFilter: false,
     plantMhRate: false,
-    fiveDigitsPartNo: false
+    fiveDigitsPartNo: false,
   });
 
   // Toggle quality gate buttons (only one can be active at a time)
@@ -31,7 +31,7 @@ export default function PPRPage() {
       const newState = {
         rhLhFilter: false,
         plantMhRate: false,
-        fiveDigitsPartNo: false
+        fiveDigitsPartNo: false,
       };
       
       // Only set the clicked gate to true if it wasn't already active
@@ -212,6 +212,16 @@ export default function PPRPage() {
                 fontSize: "13px"
               }}
             />
+
+            <button
+              onClick={() => navigate("/period-comparison")}
+              className="btn btn-primary"
+              style={{
+                marginLeft: "16px",
+              }}
+            >
+              Period Comparison
+            </button>
 
             <button className="btn btn-primary" onClick={() => alert("Export CSV (preview)")}>Export</button>
           </div>

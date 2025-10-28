@@ -6,6 +6,7 @@ import App from './App.jsx'
 import SyncPartList from "./SyncPartList";
 import PPRPage from "./PPRPage";
 import PartPairingPage from "./PartPairingPage";
+import PeriodComparisonPage from "./PeriodComparisonPage";
 
 createRoot(document.getElementById('root')).render(
     <React.StrictMode>
@@ -15,6 +16,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/sync" element={<SyncPartList />} />
         <Route path="/ppr" element={<PPRPage />} />
         <Route path="/part-pairing" element={<PartPairingPage />} />
+        <Route path="/period-comparison" element={<PeriodComparisonPage />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>
