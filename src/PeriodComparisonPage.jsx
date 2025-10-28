@@ -3,6 +3,12 @@ import { useNavigate } from "react-router-dom";
 import { pprDataByPeriod } from "./data/pprSampleData";
 import InlineEditableTextarea from "./components/InlineEditableTextarea";
 
+const exchangeRates = {
+  "Aug-25": "15,650",
+  "Jul-25": "15,420",
+  "Jun-25": "15,890",
+};
+
 export default function PeriodComparisonPage() {
   const navigate = useNavigate();
   const [selectedMonth, setSelectedMonth] = useState("Aug-25");
@@ -132,45 +138,82 @@ display: "flex",
             </p>
           </div>
 
-          <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-            <select
-              value={selectedMonth}
-              onChange={(e) => {
-                setSelectedMonth(e.target.value);
-                setCurrentPage(1);
-              }}
-              style={{
-                padding: "6px 10px",
-                borderRadius: 8,
-                border: "1px solid rgba(0,0,0,0.12)",
-              }}
-            >
-              <option value="Aug-25">Aug-25</option>
-              <option value="Jul-25">Jul-25</option>
-              <option value="Jun-25">Jun-25</option>
-            </select>
+          <div style={{ display: "flex", gap: 8, alignItems: "flex-start" }}>
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <select
+                value={selectedMonth}
+                onChange={(e) => {
+                  setSelectedMonth(e.target.value);
+                  setCurrentPage(1);
+                }}
+                style={{
+                  marginTop: 4,
+                  padding: "6px 10px",
+                  borderRadius: 8,
+                  border: "1px solid rgba(0,0,0,0.12)",
+                }}
+              >
+                <option value="Aug-25">Aug-25</option>
+                <option value="Jul-25">Jul-25</option>
+                <option value="Jun-25">Jun-25</option>
+              </select>
+              <input
+                type="text"
+                value={`USD/IDR: ${
+                  comparedMonth1 ? exchangeRates[comparedMonth1] : ""
+                }`}
+                readOnly
+                style={{
+                  marginTop: 4,
+                  padding: "6px 10px",
+                  borderRadius: 8,
+                  border: "1px solid rgba(0,0,0,0.12)",
+                  backgroundColor: "#f8f9fa",
+                  color: "#495057",
+                  width: "150px",
+                  fontSize: "13px",
+                }}
+              />
+            </div>
 
-            <select
-              value={selectedMonth2}
-              onChange={(e) => {
-                setSelectedMonth2(e.target.value);
-                setCurrentPage(1);
-              }}
-              style={{
-                padding: "6px 10px",
-                borderRadius: 8,
-                border: "1px solid rgba(0,0,0,0.12)",
-              }}
-            >
-              <option value="Aug-25">Aug-25</option>
-              <option value="Jul-25">Jul-25</option>
-              <option value="Jun-25">Jun-25</option>
-            </select>
+            <div style={{ display: "flex", flexDirection: "column" }}>
+              <select
+                value={selectedMonth2}
+                onChange={(e) => {
+                  setSelectedMonth2(e.target.value);
+                  setCurrentPage(1);
+                }}
+                style={{
+                  marginTop: 4,
+                  padding: "6px 10px",
+                  borderRadius: 8,
+                  border: "1px solid rgba(0,0,0,0.12)",
+                }}
+              >
+                <option value="Aug-25">Aug-25</option>
+                <option value="Jul-25">Jul-25</option>
+                <option value="Jun-25">Jun-25</option>
+              </select>
+              <input
+                type="text"
+                value={`USD/IDR: ${
+                  comparedMonth2 ? exchangeRates[comparedMonth2] : ""
+                }`}
+                readOnly
+                style={{
+                  marginTop: 4,
+                  padding: "6px 10px",
+                  borderRadius: 8,
+                  border: "1px solid rgba(0,0,0,0.12)",
+                  backgroundColor: "#f8f9fa",
+                  color: "#495057",
+                  width: "150px",
+                  fontSize: "13px",
+                }}
+              />
+            </div>
 
-            <button
-              className="btn btn-primary"
-              onClick={handleCompare}
-            >
+            <button className="btn btn-primary" onClick={handleCompare}>
               Compare
             </button>
 
