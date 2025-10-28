@@ -50,7 +50,6 @@ const ComparisonTable = ({
             <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>{`Total Cost (${comparedMonth1 || 'P1'})`}</th>
             <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>{`Total Cost (${comparedMonth2 || 'P2'})`}</th>
             <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>Diff</th>
-            <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>Remark</th>
           </tr>
           <tr style={{ background: "#dff7e6", border: "1px solid #059669" }}>
             <th style={{...thSticky, backgroundColor: "#d0f0d2", border: "1px solid #059669"}}>{comparedMonth1 || 'Period 1'}</th>
@@ -78,7 +77,6 @@ const ComparisonTable = ({
         </thead>
         <tbody>
           {currentRecords.map((r, index) => {
-            const currentRemark = getRemarkValue(r.partNo, r.remark);
             const isEvenRow = index % 2 === 0;
             
             return (
@@ -133,12 +131,6 @@ const ComparisonTable = ({
                 <td style={td}>{formatNumber(r.totalCost)}</td>
                 <td style={getDiffStyle(r.diff, tdNum)}>
                   {formatPercentage(r.diff)}
-                </td>
-                <td style={td}>
-                  <InlineEditableTextarea
-                    value={currentRemark}
-                    onSave={(value) => handleRemarkSave(r.partNo, value)}
-                  />
                 </td>
               </tr>
             );
