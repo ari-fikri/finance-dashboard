@@ -245,6 +245,7 @@ export default function PPRPage() {
                 <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>Exclusive Investment</th>
                 <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>Prev Period</th>
                 <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>Total Cost</th>
+                <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>Diff</th>
                 <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>Remark</th>
               </tr>
 
@@ -365,7 +366,7 @@ export default function PPRPage() {
                     <td style={td}>{formatNumber(r.exclusiveInvestment)}</td>
                     <td style={td}>{formatNumber(r.prevPeriod)}</td>
                     <td style={redStyle}>{formatNumber(r.totalCost)}</td>
-                    <td style={td}>{formatPercentage(r.diff)}</td>
+                    <td style={redStyle}>{formatPercentage(r.diff)}</td>
                     <td style={td}>
                       <div style={{ display: "flex", gap: 4, alignItems: "center" }}>
                         <div style={{ flex: 1 }}>
