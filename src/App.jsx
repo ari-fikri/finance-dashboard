@@ -16,6 +16,8 @@ export default function App() {
   const [isCalculating, setIsCalculating] = useState(false);
   const [ihpResult, setIhpResult] = useState(null);
   const [uploadedFile, setUploadedFile] = useState(null);
+  // process cost upload state
+  const [uploadedProcessFile, setUploadedProcessFile] = useState(null);
   const navigate = useNavigate();
 
   function downloadSource(source) {
@@ -63,6 +65,43 @@ export default function App() {
     } else {
       alert("Please select a valid Excel file (.xls or .xlsx)");
     }
+  }
+
+  // handler for Process Cost upload
+  function handleProcessFileUpload(event) {
+    const file = event.target.files[0];
+    if (file && (file.type === "application/vnd.ms-excel" || file.type === "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")) {
+      setUploadedProcessFile({
+        name: file.name,
+        size: file.size,
+        uploadDate: new Date().toISOString(),
+      });
+      console.log("Process file uploaded:", file.name);
+      // upload logic for process cost file goes here
+    } else {
+      alert("Please select a valid Excel file (.xls or .xlsx)");
+    }
+  }
+
+  // download process cost sample or previously uploaded process file
+  function downloadProcessCost() {
+    if (!uploadedProcessFile) {
+      alert("No process cost file uploaded yet. Please upload a file first.");
+      return;
+    }
+
+    // Example CSV content for process cost (replace with real export if available)
+    const csvContent = `Process,CostType,Amount,Currency,Last Updated
+Labor,Direct,1200,USD,${new Date(uploadedProcessFile.uploadDate).toLocaleDateString()}
+FOH,Overhead,450,USD,${new Date(uploadedProcessFile.uploadDate).toLocaleDateString()}`;
+
+    const blob = new Blob([csvContent], { type: "text/csv" });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = `process-cost-data-${uploadedProcessFile.name ? uploadedProcessFile.name.replace(/\.[^/.]+$/, "") : "export"}.csv`;
+    a.click();
+    URL.revokeObjectURL(url);
   }
 
   function downloadMaterialData() {
@@ -250,17 +289,28 @@ export default function App() {
                   <strong style={{ color: "#059669" }}>Ready</strong>
                 </div>
                 <div className="card-actions">
-                  <button
-                    onClick={() => alert("View process costs (preview)")}
+                  {/* Process Cost: Upload File */}
+                  <input
+                    type="file"
+                    accept=".xls,.xlsx"
+                    onChange={handleProcessFileUpload}
+                    style={{ display: "none" }}
+                    id="process-cost-upload"
+                  />
+                  <label
+                    htmlFor="process-cost-upload"
                     className="btn btn-ghost"
+                    style={{ cursor: "pointer" }}
                   >
-                    View
-                  </button>
+                    Upload
+                  </label>
                   <button
-                    onClick={() => alert("Manage process costs (preview)")}
+                    onClick={downloadProcessCost}
                     className="btn btn-primary"
+                    disabled={!uploadedProcessFile}
+                    style={!uploadedProcessFile ? { opacity: 0.5, cursor: "not-allowed" } : {}}
                   >
-                    Manage
+                    Download
                   </button>
                 </div>
               </div>
