@@ -1,0 +1,3974 @@
+[
+    {
+        "part_no": "111010Y050",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "HEAD SUB-ASSY, CYLINDER"
+    },
+    {
+        "part_no": "11101BZ250",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "HEAD SUB-ASSY, CYLINDER"
+    },
+    {
+        "part_no": "111030Y040",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "HOUSING SUB-ASSY, CAMSHAFT"
+    },
+    {
+        "part_no": "111110Y050",
+        "sub_parts": [
+            {
+                "part_no": "111010Y050",
+                "Qty": "1"
+            },
+            {
+                "part_no": "111010Y050",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "HEAD, CYLINDER"
+    },
+    {
+        "part_no": "11111BZ200",
+        "sub_parts": [
+            {
+                "part_no": "11101BZ250",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "HEAD, CYLINDER"
+    },
+    {
+        "part_no": "111150Y030",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "GASKET, CYLINDER HEAD"
+    },
+    {
+        "part_no": "111210Y011",
+        "sub_parts": [
+            {
+                "part_no": "111010Y050",
+                "Qty": "16"
+            },
+            {
+                "part_no": "111010Y050",
+                "Qty": "16"
+            },
+            {
+                "part_no": "11101BZ250",
+                "Qty": "16"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BUSHING, INTAKE VALVE GUIDE"
+    },
+    {
+        "part_no": "111310Y030",
+        "sub_parts": [
+            {
+                "part_no": "111010Y050",
+                "Qty": "8"
+            },
+            {
+                "part_no": "111010Y050",
+                "Qty": "8"
+            },
+            {
+                "part_no": "11101BZ250",
+                "Qty": "8"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "SEAT, INTAKE VALVE"
+    },
+    {
+        "part_no": "111350Y030",
+        "sub_parts": [
+            {
+                "part_no": "111010Y050",
+                "Qty": "8"
+            },
+            {
+                "part_no": "111010Y050",
+                "Qty": "8"
+            },
+            {
+                "part_no": "11101BZ250",
+                "Qty": "8"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "SEAT, EXHAUST VALVE"
+    },
+    {
+        "part_no": "111590Y020",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "2"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "2"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "2"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "GASKET, CAMSHAFT BEARING CAP OIL HOLE"
+    },
+    {
+        "part_no": "111910Y010",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "4"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "4"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "4"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "TUBE, SPARK PLUG"
+    },
+    {
+        "part_no": "112010Y030",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "COVER SUB-ASSY, CYLINDER HEAD"
+    },
+    {
+        "part_no": "11201BZ160",
+        "sub_parts": [
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "COVER SUB-ASSY, CYLINDER HEAD"
+    },
+    {
+        "part_no": "11201BZ180",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "COVER SUB-ASSY, CYLINDER HEAD"
+    },
+    {
+        "part_no": "113100Y040",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "COVER ASSY, TIMING CHAIN W/WATER PUMP"
+    },
+    {
+        "part_no": "11310BZ200",
+        "sub_parts": [
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "COVER ASSY, TIMING CHAIN W/WATER PUMP"
+    },
+    {
+        "part_no": "11310BZ240",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "COVER ASSY, TIMING CHAIN"
+    },
+    {
+        "part_no": "114010Y060",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4350",
+        "part_name": "BLOCK SUB-ASSY, CYLINDER"
+    },
+    {
+        "part_no": "11401BZ220",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BLOCK SUB-ASSY, CYLINDER"
+    },
+    {
+        "part_no": "11409BZ150",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "GUIDE SUB-ASSY, OIL LEVEL GAGE"
+    },
+    {
+        "part_no": "114110Y060",
+        "sub_parts": [
+            {
+                "part_no": "114010Y060",
+                "Qty": "1"
+            },
+            {
+                "part_no": "114010Y060",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BLOCK, CYLINDER"
+    },
+    {
+        "part_no": "11411BZ180",
+        "sub_parts": [
+            {
+                "part_no": "11401BZ220",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BLOCK, CYLINDER"
+    },
+    {
+        "part_no": "114450Y020",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "SPACER, CYLINDER BLOCK WATER JACKET"
+    },
+    {
+        "part_no": "114520Y080",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4350",
+        "part_name": "GUIDE, OIL LEVEL GAGE"
+    },
+    {
+        "part_no": "114610Y040",
+        "sub_parts": [
+            {
+                "part_no": "114010Y060",
+                "Qty": "4"
+            },
+            {
+                "part_no": "114010Y060",
+                "Qty": "4"
+            },
+            {
+                "part_no": "11401BZ220",
+                "Qty": "4"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "LINER, CYLINDER"
+    },
+    {
+        "part_no": "115110Y040",
+        "sub_parts": [
+            {
+                "part_no": "114010Y060",
+                "Qty": "4"
+            },
+            {
+                "part_no": "114010Y060",
+                "Qty": "4"
+            },
+            {
+                "part_no": "11401BZ220",
+                "Qty": "4"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "CAP, CRANKSHAFT BEARING, NO.1"
+    },
+    {
+        "part_no": "115130Y040",
+        "sub_parts": [
+            {
+                "part_no": "114010Y060",
+                "Qty": "1"
+            },
+            {
+                "part_no": "114010Y060",
+                "Qty": "1"
+            },
+            {
+                "part_no": "11401BZ220",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "CAP, CRANKSHAFT BEARING, NO.3"
+    },
+    {
+        "part_no": "117110Y020",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "5"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "5"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BEARING, CRANKSHAFT, NO.1"
+    },
+    {
+        "part_no": "117110Y020",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "5"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "5"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BEARING, CRANKSHAFT, NO.1"
+    },
+    {
+        "part_no": "117110Y020",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "5"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "5"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BEARING, CRANKSHAFT, NO.1"
+    },
+    {
+        "part_no": "117110Y020",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "5"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "5"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BEARING, CRANKSHAFT, NO.1"
+    },
+    {
+        "part_no": "117110Y100",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "5"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BEARING, CRANKSHAFT, NO.1"
+    },
+    {
+        "part_no": "117110Y100",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "5"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BEARING, CRANKSHAFT, NO.1"
+    },
+    {
+        "part_no": "117110Y100",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "5"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BEARING, CRANKSHAFT, NO.1"
+    },
+    {
+        "part_no": "117110Y100",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "5"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BEARING, CRANKSHAFT, NO.1"
+    },
+    {
+        "part_no": "117210Y050",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "5"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "5"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BEARING, CRANKSHAFT, NO.2"
+    },
+    {
+        "part_no": "117210Y050",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "5"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "5"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BEARING, CRANKSHAFT, NO.2"
+    },
+    {
+        "part_no": "117210Y050",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "5"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "5"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BEARING, CRANKSHAFT, NO.2"
+    },
+    {
+        "part_no": "117210Y050",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "5"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "5"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BEARING, CRANKSHAFT, NO.2"
+    },
+    {
+        "part_no": "117210Y100",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "5"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BEARING, CRANKSHAFT, NO.2"
+    },
+    {
+        "part_no": "117210Y100",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "5"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BEARING, CRANKSHAFT, NO.2"
+    },
+    {
+        "part_no": "117210Y100",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "5"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BEARING, CRANKSHAFT, NO.2"
+    },
+    {
+        "part_no": "117210Y100",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "5"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BEARING, CRANKSHAFT, NO.2"
+    },
+    {
+        "part_no": "117910Y040",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "2"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "WASHER, CRANKSHAFT THRUST, UPR"
+    },
+    {
+        "part_no": "11791B0010",
+        "sub_parts": [
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "2"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "WASHER, CRANKSHAFT THRUST, UPR"
+    },
+    {
+        "part_no": "11791BZ140",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "2"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "WASHER, CRANKSHAFT THRUST, UPR"
+    },
+    {
+        "part_no": "121010Y040",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "PAN SUB-ASSY, OIL"
+    },
+    {
+        "part_no": "12101BZ220",
+        "sub_parts": [
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ]
+    },
+    {
+        "part_no": "12101BZ230",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            }
+        ]
+    },
+    {
+        "part_no": "121210Y030",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "PLATE, OIL PAN BAFFLE"
+    },
+    {
+        "part_no": "121220Y011",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "PLATE, OIL PAN BAFFLE, NO.2"
+    },
+    {
+        "part_no": "121370Y010",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            }
+        ]
+    },
+    {
+        "part_no": "1214447020",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            }
+        ]
+    },
+    {
+        "part_no": "121800H020",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "CAP ASSY, OIL FILLER"
+    },
+    {
+        "part_no": "122610Y041",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "HOSE, VENTILATION, NO.1"
+    },
+    {
+        "part_no": "12261BZ210",
+        "sub_parts": [
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "HOSE, VENTILATION, NO.1"
+    },
+    {
+        "part_no": "12261BZ310",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "HOSE, VENTILATION, NO.1"
+    },
+    {
+        "part_no": "122810Y110",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "HANGER, ENGINE, NO.1"
+    },
+    {
+        "part_no": "122820Y050",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "HANGER, ENGINE, NO.2"
+    },
+    {
+        "part_no": "123150Y010",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BRACKET, ENGINE MOUNTING, RH"
+    },
+    {
+        "part_no": "130110Y030",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "RING SET, PISTON"
+    },
+    {
+        "part_no": "13011BZ210",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "RING SET, PISTON"
+    },
+    {
+        "part_no": "130500Y020",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "GEAR ASSY, CAMSHAFT TIMING"
+    },
+    {
+        "part_no": "13050BZ040",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "GEAR ASSY, CAMSHAFT TIMING"
+    },
+    {
+        "part_no": "130700Y020",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "GEAR ASSY, CAMSHAFT TIMING EXHAUST"
+    },
+    {
+        "part_no": "132010Y080",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "4"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "4"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "4"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "ROD SUB-ASSY, CONNECTING"
+    },
+    {
+        "part_no": "132110Y061",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "4"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "4"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "PISTON"
+    },
+    {
+        "part_no": "13211BZ330",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "4"
+            }
+        ],
+        "plant": "4350",
+        "part_name": "PISTON"
+    },
+    {
+        "part_no": "132510Y030",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "4"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "4"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "4"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "PIN, PISTON"
+    },
+    {
+        "part_no": "132810Y020",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "8"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "8"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "8"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BEARING, CONNECTING ROD"
+    },
+    {
+        "part_no": "132810Y020",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "8"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "8"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "8"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BEARING, CONNECTING ROD"
+    },
+    {
+        "part_no": "132810Y020",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "8"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "8"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "8"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BEARING, CONNECTING ROD"
+    },
+    {
+        "part_no": "134010Y140",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4350",
+        "part_name": "CRANKSHAFT SUB-ASSY"
+    },
+    {
+        "part_no": "13405BZ220",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "FLYWHEEL SUB-ASSY"
+    },
+    {
+        "part_no": "134110Y140",
+        "sub_parts": [
+            {
+                "part_no": "134010Y140",
+                "Qty": "1"
+            },
+            {
+                "part_no": "134010Y140",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "CRANKSHAFT"
+    },
+    {
+        "part_no": "134700Y020",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "PULLEY ASSY, CRANKSHAFT"
+    },
+    {
+        "part_no": "13470BZ120",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "PULLEY ASSY, CRANKSHAFT"
+    },
+    {
+        "part_no": "135010Y050",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4350",
+        "part_name": "CAMSHAFT SUB-ASSY, NO.1"
+    },
+    {
+        "part_no": "13501BZ090",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4350",
+        "part_name": "CAMSHAFT SUB-ASSY, NO.1"
+    },
+    {
+        "part_no": "135020Y050",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4360",
+        "part_name": "CAMSHAFT SUB-ASSY, NO.2"
+    },
+    {
+        "part_no": "13502BZ050",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4350",
+        "part_name": "CAMSHAFT SUB-ASSY, NO.2"
+    },
+    {
+        "part_no": "135060Y040",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "CHAIN SUB-ASSY"
+    },
+    {
+        "part_no": "135110Y050",
+        "sub_parts": [
+            {
+                "part_no": "135010Y050",
+                "Qty": "1"
+            },
+            {
+                "part_no": "135010Y050",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "CAMSHAFT, NO.1"
+    },
+    {
+        "part_no": "13511BZ110",
+        "sub_parts": [
+            {
+                "part_no": "13501BZ090",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "CAMSHAFT, NO.1"
+    },
+    {
+        "part_no": "135120Y050",
+        "sub_parts": [
+            {
+                "part_no": "135020Y050",
+                "Qty": "1"
+            },
+            {
+                "part_no": "135020Y050",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "CAMSHAFT, NO.2"
+    },
+    {
+        "part_no": "13512BZ090",
+        "sub_parts": [
+            {
+                "part_no": "13502BZ050",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "CAMSHAFT, NO.2"
+    },
+    {
+        "part_no": "135210Y040",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "SPROCKET, CRANKSHAFT TIMING"
+    },
+    {
+        "part_no": "135400Y010",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "TENSIONER ASSY, CHAIN"
+    },
+    {
+        "part_no": "135620Y020",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "DAMPER, CHAIN VIBRATION, NO.2"
+    },
+    {
+        "part_no": "135660Y010",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "GUIDE, TIMING CHAIN"
+    },
+    {
+        "part_no": "135910Y010",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "ARM, TIMING CHAIN TENSION"
+    },
+    {
+        "part_no": "137110Y020",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "8"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "8"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "8"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "VALVE, INTAKE"
+    },
+    {
+        "part_no": "137150Y020",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "8"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "8"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "8"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "VALVE, EXHAUST"
+    },
+    {
+        "part_no": "137160C030",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "16"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "16"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "16"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "CAP, VALVE STEM"
+    },
+    {
+        "part_no": "137340C010",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "16"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "16"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "16"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "SEAT, VALVE SPRING"
+    },
+    {
+        "part_no": "137410Y010",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "16"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "16"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "16"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "RETAINER, VALVE SPRING"
+    },
+    {
+        "part_no": "137500C040",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "16"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "16"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "16"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "ADJUSTER ASSY, VALVE LASH"
+    },
+    {
+        "part_no": "138010C030",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "16"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "16"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "16"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "ARM SUB-ASSY, VALVE ROCKER"
+    },
+    {
+        "part_no": "153010Y010",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "GAGE SUB-ASSY, OIL LEVEL"
+    },
+    {
+        "part_no": "15301BZ150",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "GAGE SUB-ASSY, OIL LEVEL"
+    },
+    {
+        "part_no": "153300Y050",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "VALVE ASSY, CAM TIMING OIL CONTROL"
+    },
+    {
+        "part_no": "153300Y060",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "VALVE ASSY, CAM TIMING OIL CONTROL"
+    },
+    {
+        "part_no": "156780Y010",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "FILTER, OIL CONTROL VALVE"
+    },
+    {
+        "part_no": "157080Y040",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "4"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "4"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "4"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "NOZZLE SUB-ASSY, OIL"
+    },
+    {
+        "part_no": "160310Y010",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "INLET SUB-ASSY, WATER W/THERMOSTAT"
+    },
+    {
+        "part_no": "160310Y030",
+        "sub_parts": [
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "INLET SUB-ASSY, WATER W/THERMOSTAT"
+    },
+    {
+        "part_no": "161A0B0010",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "PUMP ASSY, ELECTRIC WATER"
+    },
+    {
+        "part_no": "16206BZ080",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4350",
+        "part_name": "PIPE SUB-ASSY, WATER BY-PASS, NO.1"
+    },
+    {
+        "part_no": "162580Y010",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "GASKET"
+    },
+    {
+        "part_no": "162610Y030",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "HOSE, WATER BY-PASS, NO.1"
+    },
+    {
+        "part_no": "16261BZ750",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "HOSE, WATER BY-PASS, NO.1"
+    },
+    {
+        "part_no": "162640Y080",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "HOSE, WATER BY-PASS, NO.2"
+    },
+    {
+        "part_no": "16264BZ380",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "HOSE, WATER BY-PASS, NO.2"
+    },
+    {
+        "part_no": "162670Y030",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "HOSE, WATER BY-PASS, NO.3"
+    },
+    {
+        "part_no": "162680Y180",
+        "sub_parts": [
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "PIPE, WATER BY-PASS"
+    },
+    {
+        "part_no": "162680Y190",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "PIPE, WATER BY-PASS"
+    },
+    {
+        "part_no": "16270BZ030",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "PIPE ASSY, WATER BY-PASS, NO.2"
+    },
+    {
+        "part_no": "16271BZ090",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "GASKET, WATER PUMP"
+    },
+    {
+        "part_no": "16282BZ110",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "2"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "HOSE, WATER BY-PASS, NO.5"
+    },
+    {
+        "part_no": "16303BZ030",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "HOUSING SUB-ASSY, WATER OUTLET"
+    },
+    {
+        "part_no": "16303BZ040",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "HOUSING SUB-ASSY, WATER OUTLET"
+    },
+    {
+        "part_no": "16321BZ130",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "INLET, WATER"
+    },
+    {
+        "part_no": "16323BZ040",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "HOUSING, WATER INLET"
+    },
+    {
+        "part_no": "16325BZ050",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "GASKET, WATER INLET HOUSING"
+    },
+    {
+        "part_no": "16340B0020",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "THERMOSTAT ASSY, W/GASKET"
+    },
+    {
+        "part_no": "16575BZ090",
+        "sub_parts": [
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BRACKET, WATER HOSE CLAMP"
+    },
+    {
+        "part_no": "1658147020",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "CLAMP, HOSE"
+    },
+    {
+        "part_no": "166200Y061",
+        "sub_parts": [
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "TENSIONER ASSY, V-RIBBED BELT"
+    },
+    {
+        "part_no": "166200Y062",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "TENSIONER ASSY, V-RIBBED BELT"
+    },
+    {
+        "part_no": "171180Y031",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "STAY, EXHAUST MANIFOLD"
+    },
+    {
+        "part_no": "171200Y051",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "MANIFOLD ASSY, INTAKE"
+    },
+    {
+        "part_no": "17120BZ130",
+        "sub_parts": [
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "MANIFOLD ASSY, INTAKE"
+    },
+    {
+        "part_no": "17120BZ210",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "MANIFOLD ASSY, INTAKE"
+    },
+    {
+        "part_no": "171670Y020",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "INSULATOR, EXHAUST MANIFOLD HEAT, NO.1"
+    },
+    {
+        "part_no": "171680Y020",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "INSULATOR, EXHAUST MANIFOLD HEAT, NO.2"
+    },
+    {
+        "part_no": "171730Y030",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "GASKET, EXHAUST MANIFOLD"
+    },
+    {
+        "part_no": "193150Y020",
+        "sub_parts": [
+            {
+                "part_no": "134010Y140",
+                "Qty": "1"
+            },
+            {
+                "part_no": "134010Y140",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "PLATE, CRANK ANGLE SENSOR"
+    },
+    {
+        "part_no": "220300Y020",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BODY ASSY, THROTTLE W/MOTOR"
+    },
+    {
+        "part_no": "22030BZ160",
+        "sub_parts": [
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BODY ASSY, THROTTLE W/MOTOR"
+    },
+    {
+        "part_no": "22030BZ180",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BODY ASSY, THROTTLE W/MOTOR"
+    },
+    {
+        "part_no": "232090Y030",
+        "sub_parts": [
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "4"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "INJECTOR SET, FUEL"
+    },
+    {
+        "part_no": "23209BZ100",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "4"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "INJECTOR SET, FUEL"
+    },
+    {
+        "part_no": "2320947060",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "4"
+            }
+        ]
+    },
+    {
+        "part_no": "232910Y020",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "4"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "4"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "4"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "INSULATOR, INJECTOR VIBRATION"
+    },
+    {
+        "part_no": "238140Y010",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "PIPE, FUEL DELIVERY"
+    },
+    {
+        "part_no": "2389147040",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "2"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "2"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "2"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "SPACER, FUEL DELIVERY, NO.1"
+    },
+    {
+        "part_no": "250510Y060",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "CONVERTER SUB-ASSY, EXHAUST MANIFOLD"
+    },
+    {
+        "part_no": "25051BZ150",
+        "sub_parts": [
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "CONVERTER SUB-ASSY, EXHAUST MANIFOLD"
+    },
+    {
+        "part_no": "25051BZ260",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "CONVERTER SUB-ASSY, EXHAUST MANIFOLD"
+    },
+    {
+        "part_no": "312700J010",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "DAMPER ASSY, TRANSMISSION INPUT"
+    },
+    {
+        "part_no": "32101BZ100",
+        "sub_parts": [
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "GEAR SUB-ASSY, DRIVE PLATE & RING"
+    },
+    {
+        "part_no": "3211152110",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "PLATE, PUMP IMPELLER DRIVE"
+    },
+    {
+        "part_no": "32113BZ070",
+        "sub_parts": [
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "PLATE, CENTERING"
+    },
+    {
+        "part_no": "3211612030",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "SPACER, DRIVE PLATE, FR"
+    },
+    {
+        "part_no": "3211712040",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "SPACER, DRIVE PLATE, RR"
+    },
+    {
+        "part_no": "82124BZ020",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "WIRE, ENGINE, NO.4"
+    },
+    {
+        "part_no": "822190D110",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "WIRE, THERMOSENSOR"
+    },
+    {
+        "part_no": "827150DM60",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BRACKET, WIRING HARNESS CLAMP"
+    },
+    {
+        "part_no": "827150DM70",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BRACKET, WIRING HARNESS CLAMP"
+    },
+    {
+        "part_no": "8271512P80",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BRACKET, WIRING HARNESS CLAMP"
+    },
+    {
+        "part_no": "827155C360",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BRACKET, WIRING HARNESS CLAMP"
+    },
+    {
+        "part_no": "82715BZK60",
+        "sub_parts": [
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BRACKET, WIRING HARNESS CLAMP"
+    },
+    {
+        "part_no": "82715BZK80",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BRACKET, WIRING HARNESS CLAMP"
+    },
+    {
+        "part_no": "82715BZQ60",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BRACKET, WIRING HARNESS CLAMP"
+    },
+    {
+        "part_no": "8353060020",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "SWITCH ASSY, OIL PRESSURE"
+    },
+    {
+        "part_no": "8942233030",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "SENSOR, WATER TEMPERATURE"
+    },
+    {
+        "part_no": "89422B2030",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "SENSOR, WATER TEMPERATURE"
+    },
+    {
+        "part_no": "89439BZ210",
+        "sub_parts": [
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BRACKET, SENSOR"
+    },
+    {
+        "part_no": "8946730050",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "SENSOR, AIR FUEL RATIO"
+    },
+    {
+        "part_no": "89467BZ020",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "SENSOR, AIR FUEL RATIO"
+    },
+    {
+        "part_no": "8961520090",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "SENSOR, KNOCK CONTROL"
+    },
+    {
+        "part_no": "9004A10200",
+        "sub_parts": [
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "8"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BOLT, WASHER BASED HEAD HEXAGON"
+    },
+    {
+        "part_no": "9004A11240",
+        "sub_parts": [
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BOLT, FLANGE W/WASHER"
+    },
+    {
+        "part_no": "9004A11353",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BOLT, FLANGE W/WASHER"
+    },
+    {
+        "part_no": "9004A46411",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "CLIP"
+    },
+    {
+        "part_no": "9010506345",
+        "sub_parts": [
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BOLT, FLANGE"
+    },
+    {
+        "part_no": "9010508373",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "4"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BOLT, FLANGE"
+    },
+    {
+        "part_no": "9010510095",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "8"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BOLT, WASHER BASED HEAD HEXAGON"
+    },
+    {
+        "part_no": "90105T0051",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BOLT, FLANGE"
+    },
+    {
+        "part_no": "90105T0052",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "10"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "10"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "10"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BOLT, FLANGE"
+    },
+    {
+        "part_no": "90105T0085",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "2"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "2"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "2"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BOLT, FLANGE"
+    },
+    {
+        "part_no": "90105T0120",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "2"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BOLT, FLANGE"
+    },
+    {
+        "part_no": "90105T0125",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "2"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "2"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "2"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BOLT, FLANGE"
+    },
+    {
+        "part_no": "90105T0126",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "2"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "2"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "2"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BOLT, FLANGE"
+    },
+    {
+        "part_no": "90105T0130",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "7"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "7"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "7"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BOLT, FLANGE"
+    },
+    {
+        "part_no": "90105T0156",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BOLT, FLANGE"
+    },
+    {
+        "part_no": "90105T0211",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "2"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "2"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "2"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BOLT, FLANGE"
+    },
+    {
+        "part_no": "90105T0247",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "7"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "8"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "8"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BOLT, FLANGE"
+    },
+    {
+        "part_no": "90105T0269",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "12"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "12"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "12"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BOLT, FLANGE"
+    },
+    {
+        "part_no": "90105T0270",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "5"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "5"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "5"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BOLT, FLANGE"
+    },
+    {
+        "part_no": "90105T0271",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "17"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "17"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "17"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BOLT, FLANGE"
+    },
+    {
+        "part_no": "90105T0272",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "3"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "2"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "2"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BOLT, FLANGE"
+    },
+    {
+        "part_no": "90105T0273",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "2"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "2"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "2"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BOLT, FLANGE"
+    },
+    {
+        "part_no": "90105T0283",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BOLT, FLANGE"
+    },
+    {
+        "part_no": "90105T0347",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "5"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "5"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "5"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BOLT, FLANGE"
+    },
+    {
+        "part_no": "90109T0055",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "14"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "14"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "14"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BOLT"
+    },
+    {
+        "part_no": "90110T0002",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "4"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "4"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "4"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BOLT, HEXAGON SOCKET HEAD CAP"
+    },
+    {
+        "part_no": "9011908D36",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BOLT, W/WASHER"
+    },
+    {
+        "part_no": "90119T0136",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "7"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "7"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "7"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BOLT, W/WASHER"
+    },
+    {
+        "part_no": "90119T0219",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "4"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "4"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "4"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BOLT, W/WASHER"
+    },
+    {
+        "part_no": "90119T0237",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BOLT, W/WASHER"
+    },
+    {
+        "part_no": "90119T0240",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "4"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "4"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "4"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BOLT, W/WASHER"
+    },
+    {
+        "part_no": "90119T0260",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "7"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "7"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "7"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BOLT, W/WASHER"
+    },
+    {
+        "part_no": "90119T0342",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "6"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "6"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "6"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BOLT, W/WASHER"
+    },
+    {
+        "part_no": "90119T0444",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BOLT, W/WASHER"
+    },
+    {
+        "part_no": "9012608063",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "5"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "6"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "5"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "STUD, HEXALOBULAR"
+    },
+    {
+        "part_no": "90126T0012",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "2"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "STUD, HEXALOBULAR"
+    },
+    {
+        "part_no": "90126T0019",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "2"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "2"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "2"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "STUD, HEXALOBULAR"
+    },
+    {
+        "part_no": "9017708003",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "6"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "6"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "6"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "NUT, LOCK"
+    },
+    {
+        "part_no": "90178T0019",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "2"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "2"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "2"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "NUT, FLANGE"
+    },
+    {
+        "part_no": "90178T0053",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "2"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "2"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "2"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "NUT, FLANGE"
+    },
+    {
+        "part_no": "9020106047",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "2"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "2"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "2"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "WASHER, PLATE"
+    },
+    {
+        "part_no": "9020110344",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "10"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "10"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "10"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "WASHER, PLATE"
+    },
+    {
+        "part_no": "90210T0002",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "2"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "2"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "2"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "WASHER, SEAL"
+    },
+    {
+        "part_no": "9025004097",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "2"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "2"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "2"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "PIN, STRAIGHT"
+    },
+    {
+        "part_no": "9025005027",
+        "sub_parts": [
+            {
+                "part_no": "135010Y050",
+                "Qty": "1"
+            },
+            {
+                "part_no": "135020Y050",
+                "Qty": "1"
+            },
+            {
+                "part_no": "135010Y050",
+                "Qty": "1"
+            },
+            {
+                "part_no": "135020Y050",
+                "Qty": "1"
+            },
+            {
+                "part_no": "13501BZ090",
+                "Qty": "1"
+            },
+            {
+                "part_no": "13502BZ050",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "PIN, STRAIGHT"
+    },
+    {
+        "part_no": "90250T0018",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "2"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "2"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "2"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "PIN, STRAIGHT"
+    },
+    {
+        "part_no": "90250T0019",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "PIN, STRAIGHT"
+    },
+    {
+        "part_no": "9025311004",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "2"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "2"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "2"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "PIN, RING"
+    },
+    {
+        "part_no": "9025312002",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "2"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "2"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "2"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "PIN, RING"
+    },
+    {
+        "part_no": "9025313017",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "2"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "2"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "2"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "PIN, RING"
+    },
+    {
+        "part_no": "9028004001",
+        "sub_parts": [
+            {
+                "part_no": "134010Y140",
+                "Qty": "1"
+            },
+            {
+                "part_no": "134010Y140",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "KEY, WOOD RUFF"
+    },
+    {
+        "part_no": "90301T0055",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "RING, O"
+    },
+    {
+        "part_no": "90301T0057",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "RING, O"
+    },
+    {
+        "part_no": "90301T0059",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "RING, O"
+    },
+    {
+        "part_no": "90301T0060",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "RING, O"
+    },
+    {
+        "part_no": "90311T0074",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "SEAL, TYPE T OIL"
+    },
+    {
+        "part_no": "90311T0076",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "SEAL, TYPE T OIL"
+    },
+    {
+        "part_no": "90331T0013",
+        "sub_parts": [
+            {
+                "part_no": "114010Y060",
+                "Qty": "5"
+            },
+            {
+                "part_no": "114010Y060",
+                "Qty": "5"
+            },
+            {
+                "part_no": "11401BZ220",
+                "Qty": "5"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "PLUG, TIGHT"
+    },
+    {
+        "part_no": "90331T0014",
+        "sub_parts": [
+            {
+                "part_no": "114010Y060",
+                "Qty": "1"
+            },
+            {
+                "part_no": "114010Y060",
+                "Qty": "1"
+            },
+            {
+                "part_no": "11401BZ220",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "PLUG, TIGHT"
+    },
+    {
+        "part_no": "90331T0015",
+        "sub_parts": [
+            {
+                "part_no": "111010Y050",
+                "Qty": "4"
+            },
+            {
+                "part_no": "111010Y050",
+                "Qty": "4"
+            },
+            {
+                "part_no": "11101BZ250",
+                "Qty": "4"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "PLUG, TIGHT"
+    },
+    {
+        "part_no": "9034453008",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "PLUG, TAPER SCREW"
+    },
+    {
+        "part_no": "90360T0012",
+        "sub_parts": [
+            {
+                "part_no": "111010Y050",
+                "Qty": "3"
+            },
+            {
+                "part_no": "111010Y050",
+                "Qty": "3"
+            },
+            {
+                "part_no": "11101BZ250",
+                "Qty": "3"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BALL"
+    },
+    {
+        "part_no": "90406T0009",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "TUBE, UNION"
+    },
+    {
+        "part_no": "90406T0011",
+        "sub_parts": [
+            {
+                "part_no": "111010Y050",
+                "Qty": "1"
+            },
+            {
+                "part_no": "111010Y050",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "TUBE, UNION"
+    },
+    {
+        "part_no": "90406T0013",
+        "sub_parts": [
+            {
+                "part_no": "111010Y050",
+                "Qty": "1"
+            },
+            {
+                "part_no": "111010Y050",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "TUBE, UNION"
+    },
+    {
+        "part_no": "90406T0014",
+        "sub_parts": [
+            {
+                "part_no": "111010Y050",
+                "Qty": "1"
+            },
+            {
+                "part_no": "111010Y050",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "TUBE, ELBOW"
+    },
+    {
+        "part_no": "9043012221",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "GASKET"
+    },
+    {
+        "part_no": "90430T0023",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "GASKET"
+    },
+    {
+        "part_no": "90466T0015",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "4"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "4"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "2"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "CLIP, HOSE"
+    },
+    {
+        "part_no": "90466T0050",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "2"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "2"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "CLIP, HOSE"
+    },
+    {
+        "part_no": "90466T0061",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "CLIP, HOSE"
+    },
+    {
+        "part_no": "90466T0062",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "CLIP, HOSE"
+    },
+    {
+        "part_no": "90469T0014",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "CLAMP"
+    },
+    {
+        "part_no": "90501T0045",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "16"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "16"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "16"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "SPRING, COMPRESSION"
+    },
+    {
+        "part_no": "90910T2012",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "10"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "10"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "10"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BOLT"
+    },
+    {
+        "part_no": "90910T2013",
+        "sub_parts": [
+            {
+                "part_no": "114010Y060",
+                "Qty": "10"
+            },
+            {
+                "part_no": "114010Y060",
+                "Qty": "10"
+            },
+            {
+                "part_no": "11401BZ220",
+                "Qty": "10"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BOLT"
+    },
+    {
+        "part_no": "9091301029",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "8"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BOLT, FLYWHEEL"
+    },
+    {
+        "part_no": "9091303028",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "32"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "32"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "32"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "LOCK, VALVE SPRING RETAINER"
+    },
+    {
+        "part_no": "90913T2004",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "8"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "8"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "8"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "SEAL, VALVE STEM OIL"
+    },
+    {
+        "part_no": "90913T2005",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "8"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "8"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "8"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "SEAL, VALVE STEM OIL"
+    },
+    {
+        "part_no": "90915TA001",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "FILTER, OIL"
+    },
+    {
+        "part_no": "9091510009",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ]
+    },
+    {
+        "part_no": "9091901275",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "4"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "4"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "PLUG, SPARK"
+    },
+    {
+        "part_no": "9091901289",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "4"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "PLUG, SPARK"
+    },
+    {
+        "part_no": "90919T2011",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "4"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "4"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "4"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "COIL, IGNITION"
+    },
+    {
+        "part_no": "90919T5001",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "SENSOR, CRANK POSITION"
+    },
+    {
+        "part_no": "90919T5002",
+        "sub_parts": [
+            {
+                "part_no": "160000Y540",
+                "Qty": "2"
+            },
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "2"
+            },
+            {
+                "part_no": "16000BZY90 (ICE)",
+                "Qty": "2"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "SENSOR, CRANK POSITION"
+    },
+    {
+        "part_no": "9155110818",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "6"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BOLT, FLANGE"
+    },
+    {
+        "part_no": "9155180620",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "2"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BOLT, FLANGE"
+    },
+    {
+        "part_no": "9155180828",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "2"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BOLT, FLANGE"
+    },
+    {
+        "part_no": "9155180890",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "BOLT, FLANGE"
+    },
+    {
+        "part_no": "9613642501",
+        "sub_parts": [
+            {
+                "part_no": "16000BZZ00 (HEV)",
+                "Qty": "4"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "CLIP, HOSE"
+    },
+    {
+        "part_no": "9641162500",
+        "sub_parts": [
+            {
+                "part_no": "111010Y050",
+                "Qty": "1"
+            },
+            {
+                "part_no": "111010Y050",
+                "Qty": "1"
+            }
+        ],
+        "plant": "4340",
+        "part_name": "PLUG, TIGHT"
+    }
+]

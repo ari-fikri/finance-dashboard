@@ -238,6 +238,7 @@ export default function PPRPage() {
                 <th rowSpan="2" style={{...headerBandStyle("#cccccc"), ...thSticky, border: "1px solid #059669"}}>No.</th>
                 <th rowSpan="2" style={{...headerBandStyle("#cccccc"), ...thSticky, border: "1px solid #059669"}}>PartNo</th>
                 <th rowSpan="2" style={{...headerBandStyle("#cccccc"), ...thSticky, border: "1px solid #059669"}}>PartName</th>
+                <th rowSpan="2" style={{...headerBandStyle("#cccccc"), ...thSticky, border: "1px solid #059669"}}>Plant</th>
                 <th colSpan="3" style={{...headerBandStyle("#dff7e6"), border: "1px solid #059669"}}>Purchase Part</th>
                 <th colSpan="3" style={{...headerBandStyle("#b9faf8"), border: "1px solid #059669"}}>Raw Material</th>
                 <th colSpan="12" style={{...headerBandStyle("#e0aaff"), border: "1px solid #059669"}}>Processing Cost</th>
@@ -292,7 +293,7 @@ export default function PPRPage() {
                     <td style={td}>{startIndex + currentRecords.indexOf(r) + 1}</td>
                     <td style={td}>{r.partNo}</td>
                     <td style={td}>{r.partName}</td>
-
+                    <td style={td}>{r.plant}</td>
                     <td style={tdPrev}>{formatNumber(r.toolingOHPrev)}</td>
                     <td style={td}>{formatNumber(r.toolingOH)}</td>
                     <td style={(() => {
