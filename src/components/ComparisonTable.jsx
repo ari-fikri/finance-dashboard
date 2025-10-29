@@ -42,19 +42,15 @@ const ComparisonTable = ({
             <th rowSpan="2" style={{...headerBandStyle("#cccccc"), ...thSticky, border: "1px solid #059669"}}>No.</th>
             <th rowSpan="2" style={{...headerBandStyle("#cccccc"), ...thSticky, border: "1px solid #059669"}}>PartNo.</th>
             <th rowSpan="2" style={{...headerBandStyle("#cccccc"), ...thSticky, border: "1px solid #059669"}}>PartName</th>
-            <th colSpan="6" style={{...headerBandStyle("#dff7e6"), border: "1px solid #059669"}}>Purchase Part</th>
+            <th colSpan="3" style={{...headerBandStyle("#dff7e6"), border: "1px solid #059669"}}>Purchase Part</th>
             <th colSpan="3" style={{...headerBandStyle("#b9faf8"), border: "1px solid #059669"}}>Raw Material</th>
             <th colSpan="12" style={{...headerBandStyle("#e0aaff"), border: "1px solid #059669"}}>Processing Cost</th>
             <th rowSpan="2" style={{...headerBandStyle("#e0aaff"), ...thSticky, border: "1px solid #059669"}}>Total Process Cost</th>
             <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>Exclusive Investment</th>
             <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>{`Total Cost (${comparedMonth1 || 'P1'})`}</th>
             <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>{`Total Cost (${comparedMonth2 || 'P2'})`}</th>
-            <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>Diff</th>
           </tr>
           <tr style={{ background: "#dff7e6", border: "1px solid #059669" }}>
-            <th style={{...thSticky, backgroundColor: "#d0f0d2", border: "1px solid #059669"}}>{comparedMonth1 || 'Period 1'}</th>
-            <th style={{...thSticky, border: "1px solid #059669"}}>Local OH</th>
-            <th style={{...thSticky, border: "1px solid #059669"}}>% Diff</th>
             <th style={{...thSticky, backgroundColor: "#d0f0d2", border: "1px solid #059669"}}>{comparedMonth1 || 'Period 1'}</th>
             <th style={{...thSticky, border: "1px solid #059669"}}>Tooling OH</th>
             <th style={{...thSticky, border: "1px solid #059669"}}>% Diff</th>
@@ -90,11 +86,6 @@ const ComparisonTable = ({
                 <td style={td}>{r.no}</td>
                 <td style={td}>{r.partNo}</td>
                 <td style={td}>{r.partName}</td>
-                <td style={tdPrev}>{r.localOHPrev ?? "-"}</td>
-                <td style={td}>{r.localOH ?? "-"}</td>
-                <td style={getDiffStyle(calculatePercentageDiff(r.localOH, r.localOHPrev), tdNum)}>
-                  {formatPercentage(calculatePercentageDiff(r.localOH, r.localOHPrev))}
-                </td>
                 <td style={tdPrev}>{formatNumber(r.toolingOHPrev)}</td>
                 <td style={td}>{formatNumber(r.toolingOH)}</td>
                 <td style={getDiffStyle(calculatePercentageDiff(r.toolingOH, r.toolingOHPrev), tdNum)}>
@@ -129,9 +120,6 @@ const ComparisonTable = ({
                 <td style={td}>{formatNumber(r.exclusiveInvestment)}</td>
                 <td style={td}>{formatNumber(r.totalCostPrev)}</td>
                 <td style={td}>{formatNumber(r.totalCost)}</td>
-                <td style={getDiffStyle(r.diff, tdNum)}>
-                  {formatPercentage(r.diff)}
-                </td>
               </tr>
             );
           })}
