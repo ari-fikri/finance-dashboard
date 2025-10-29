@@ -133,11 +133,12 @@ export default function PPRPage() {
   };
 
   const handleDetailClick = (part) => {
+    const comparisonPeriod = "Jul-25"; // This should be dynamic in a real app
     navigate(`/cost-movement-detail/${part.partNo}`, {
       state: {
         part: part,
         currentPeriod: selectedMonth,
-        comparisonPeriod: "2023-01-01", // Hardcoded for now
+        comparisonPeriod: comparisonPeriod,
       },
     });
   };
