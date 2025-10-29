@@ -79,7 +79,7 @@ function PeriodComparisonPage() {
           comparedMonth2={comparedMonth2}
           exchangeRates={exchangeRates}
         />
-
+      
         <div
           style={{
             display: 'flex',

@@ -20,11 +20,28 @@ const ComparisonHeader = ({
 
   return (
     <div>
-      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 24 }}>
+      <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", marginBottom: 16 }}>
         <div>
-          <h1 style={{ margin: 0, fontSize: 28, fontWeight: 600 }}>
-            Period-over-Period Comparison
-          </h1>
+          <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
+            <button
+              className="btn"
+              onClick={() => navigate(-1)}
+              style={{
+                backgroundColor: "#007bff",
+                color: "white",
+                border: "none",
+                padding: "8px 12px",
+                fontSize: 14,
+                cursor: "pointer",
+                borderRadius: 6
+              }}
+            >
+              &larr; Back
+            </button>
+            <h1 style={{ margin: 0 }}>
+              Period-over-Period Comparison
+            </h1>
+          </div>
           <p style={{ margin: '6px 0 0', color: '#6b7280', fontSize: 14 }}>
             Select two periods to compare the cost differences.
           </p>
