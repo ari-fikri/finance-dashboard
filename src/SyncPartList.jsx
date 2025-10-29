@@ -49,6 +49,13 @@ export default function SyncPartList() {
     []
   );
 
+  // format Part No with '-' every 5 characters: "1234512345" -> "12345-12345"
+  const formatPartNo = (v) => {
+    if (!v && v !== 0) return "";
+    const s = String(v);
+    return s.replace(/(.{5})/g, "$1-").replace(/-$/, "");
+  };
+  
   // Compare / modal state
   const [showCompareModal, setShowCompareModal] = useState(false);
   const [compareType, setCompareType] = useState("all"); // "ifast" | "sap" | "all"
@@ -108,7 +115,7 @@ export default function SyncPartList() {
       headers.join(","),
       ...results.map((r) =>
         [
-          r.partNo,
+          formatPartNo(r.partNo),
           `"${r.partName.replace(/"/g, '""')}"`,
           `"${r.supplier.replace(/"/g, '""')}"`,
           r.cmd ? "TRUE" : "FALSE",
@@ -213,7 +220,7 @@ export default function SyncPartList() {
                 return (
                   <tr key={r.partNo} style={{ borderBottom: "1px solid rgba(0,0,0,0.04)" }}>
                     <td style={tdStyleCenter}>{recordNo}</td>
-                    <td style={tdStylePartNo}>{r.partNo}</td>
+                    <td style={tdStylePartNo}>{formatPartNo(r.partNo)}</td>
                     <td style={tdStylePartName}>{r.partName}</td>
                     <td style={tdStyle}>{r.supplier}</td>
 
@@ -294,7 +301,7 @@ export default function SyncPartList() {
                   )}
                   {compareResults.map((r) => (
                     <tr key={r.partNo} style={{ borderBottom: "1px solid rgba(0,0,0,0.04)" }}>
-                      <td style={{ padding: "8px 10px" }}>{r.partNo}</td>
+                      <td style={{ padding: "8px 10px" }}>{formatPartNo(r.partNo)}</td>
                       <td style={{ padding: "8px 10px" }}>{r.partName}</td>
                       <td style={{ padding: "8px 10px" }}>{r.supplier}</td>
                       <td style={{ textAlign: "center", padding: "8px 10px" }}>{r.cmd ? "✓" : "—"}</td>
