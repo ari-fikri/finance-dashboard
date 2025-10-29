@@ -252,7 +252,7 @@ export default function SyncPartList() {
                   {compareType === "ifast" ? "Compare: CMD vs IFAST" : compareType === "sap" ? "Compare: CMD vs SAP" : "Compare Results (CMD / SAP / IFAST)"}
                 </h3>
                 <div style={{ display: "flex", gap: 8 }}>
-                  
+                  <button className="btn btn-ghost" onClick={() => setShowCompareModal(false)}>Close</button>
                   <button className="btn btn-primary" onClick={() => handleExportCompareCSV()} disabled={compareResults.length === 0}>Export CSV</button>
                 </div>
               </div>

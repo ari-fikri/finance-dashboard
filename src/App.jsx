@@ -111,10 +111,10 @@ export default function App() {
     <div className="app-container">
       <header className="app-header">
         <div className="app-header-left">
-          <h1>Data Dashboard</h1>
-          <p>Overview of source syncs and master-data tools</p>
-        </div>
-      </header>
+          <h1>Dashboard IH Cost</h1>
+           <p>Overview of source syncs and master-data tools</p>
+         </div>
+       </header>
 
       <main>
         <section>
