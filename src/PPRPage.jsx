@@ -15,6 +15,8 @@ export default function PPRPage() {
   const [editingRemark, setEditingRemark] = useState(null);
   const [remarkValues, setRemarkValues] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
+  const [partNoFilter, setPartNoFilter] = useState("");
+  const [appliedPartNoFilter, setAppliedPartNoFilter] = useState("");
   const recordsPerPage = 10;
   const threshold = 10; // 10% threshold
 
@@ -22,7 +24,7 @@ export default function PPRPage() {
   const [qualityGates, setQualityGates] = useState({
     rhLhFilter: false,
     plantMhRate: false,
-    fiveDigitsPartNo: false,
+    partNoFilter: false,
   });
 
   // Toggle quality gate buttons (only one can be active at a time)
@@ -31,12 +33,18 @@ export default function PPRPage() {
       const newState = {
         rhLhFilter: false,
         plantMhRate: false,
-        fiveDigitsPartNo: false,
+        partNoFilter: false,
       };
       
       // Only set the clicked gate to true if it wasn't already active
       if (!prev[gate]) {
         newState[gate] = true;
+      } else {
+        // If clicking the active gate, deactivate it and clear the filter
+        if (gate === 'partNoFilter') {
+          setAppliedPartNoFilter("");
+          setPartNoFilter("");
+        }
       }
       
       return newState;
@@ -53,6 +61,11 @@ export default function PPRPage() {
   // Sample data (filtered by selected period and quality gates)
   const rows = useMemo(() => {
     let data = pprDataByPeriod[selectedMonth] || [];
+
+    // Apply Part No filter if active
+    if (qualityGates.partNoFilter && appliedPartNoFilter) {
+      data = data.filter(item => item.partNo.includes(appliedPartNoFilter));
+    }
 
     // Apply RH/LH filter if active
     if (qualityGates.rhLhFilter) {
@@ -98,7 +111,7 @@ export default function PPRPage() {
     });
     
     return dataWithAveragedCost;
-  }, [selectedMonth, qualityGates.rhLhFilter]);
+  }, [selectedMonth, qualityGates.rhLhFilter, qualityGates.partNoFilter, appliedPartNoFilter]);
 
   // Pagination calculations
   const totalRecords = rows.length;
@@ -195,20 +208,50 @@ export default function PPRPage() {
               </button>
               
               <button
-                onClick={() => toggleQualityGate('fiveDigitsPartNo')}
+                onClick={() => toggleQualityGate('partNoFilter')}
                 style={{
                   padding: "4px 12px",
                   fontSize: "12px",
                   borderRadius: 6,
                   border: "1px solid #d1d5db",
-                  backgroundColor: qualityGates.fiveDigitsPartNo ? "#059669" : "white",
-                  color: qualityGates.fiveDigitsPartNo ? "white" : "#374151",
+                  backgroundColor: qualityGates.partNoFilter ? "#059669" : "white",
+                  color: qualityGates.partNoFilter ? "white" : "#374151",
                   cursor: "pointer",
                   transition: "all 0.2s ease"
                 }}
               >
-                Five Digits Part No
+                Part No Filter
               </button>
+              {qualityGates.partNoFilter && (
+                <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
+                  <input
+                    type="text"
+                    value={partNoFilter}
+                    onChange={(e) => setPartNoFilter(e.target.value)}
+                    placeholder="Enter Part No"
+                    style={{
+                      padding: '4px 8px',
+                      fontSize: '12px',
+                      borderRadius: 6,
+                      border: '1px solid #d1d5db',
+                    }}
+                  />
+                  <button
+                    onClick={() => setAppliedPartNoFilter(partNoFilter)}
+                    style={{
+                      padding: '4px 12px',
+                      fontSize: '12px',
+                      borderRadius: 6,
+                      border: '1px solid #d1d5db',
+                      backgroundColor: '#007bff',
+                      color: 'white',
+                      cursor: 'pointer',
+                    }}
+                  >
+                    Filter
+                  </button>
+                </div>
+              )}
             </div>
           </div>
 
