@@ -53,14 +53,14 @@ export default function PPRPage() {
   // Sample data (filtered by selected period and quality gates)
   const rows = useMemo(() => {
     let data = pprDataByPeriod[selectedMonth] || [];
-    
+
     // Apply RH/LH filter if active
     if (qualityGates.rhLhFilter) {
       data = data.filter(item => {
         const partName = item.partName.toUpperCase();
         return partName.endsWith(' RH') || partName.endsWith(' LH');
       });
-      
+
       // Sort by similar part names (group RH/LH pairs together)
       data = data.sort((a, b) => {
         // Remove RH/LH suffix for comparison
@@ -76,8 +76,28 @@ export default function PPRPage() {
         return baseName_a.localeCompare(baseName_b);
       });
     }
+
+    // Calculate averaged_cost
+    const dataWithAveragedCost = data.map((item, index, arr) => {
+      const partName = item.partName.toUpperCase();
+      const hasRh = partName.endsWith(' RH');
+      const hasLh = partName.endsWith(' LH');
+
+      if (hasRh || hasLh) {
+        const baseName = item.partName.replace(/ (RH|LH)$/, '').toUpperCase();
+        const rhPart = arr.find(p => p.partName.toUpperCase() === `${baseName} RH`);
+        const lhPart = arr.find(p => p.partName.toUpperCase() === `${baseName} LH`);
+
+        if (rhPart && lhPart) {
+          const averaged_cost = (rhPart.totalCost + lhPart.totalCost) / 2;
+          return { ...item, averaged_cost };
+        }
+      }
+
+      return { ...item, averaged_cost: item.totalCost };
+    });
     
-    return data;
+    return dataWithAveragedCost;
   }, [selectedMonth, qualityGates.rhLhFilter]);
 
   // Pagination calculations
@@ -94,6 +114,14 @@ export default function PPRPage() {
   // Helper function to check if diff is outside threshold
   const isOutsideThreshold = (diff) => {
     return Math.abs(diff) > threshold;
+  };
+
+  const shouldShowRedTriangle = (part) => {
+    const partName = part.partName.toUpperCase();
+    const hasRhLh = partName.includes(' RH') || partName.includes(' LH');
+    const priceDiff = part.totalCost !== part.prevPeriod;
+
+    return qualityGates.rhLhFilter && hasRhLh && priceDiff;
   };
 
   // Helper function to get remark value (from state or original data)
@@ -366,7 +394,23 @@ export default function PPRPage() {
                     <td style={td}>{formatNumber(r.totalProcessCost)}</td>
                     <td style={td}>{formatNumber(r.exclusiveInvestment)}</td>
                     <td style={td}>{formatNumber(r.prevPeriod)}</td>
-                    <td style={redStyle}>{formatNumber(r.totalCost)}</td>
+                    <td style={{ ...redStyle, position: 'relative' }}>
+                      {formatNumber(r.averaged_cost)}
+                      {shouldShowRedTriangle(r) && (
+                        <div 
+                          style={{
+                            position: 'absolute',
+                            top: 0,
+                            right: 0,
+                            width: 0,
+                            height: 0,
+                            borderTop: '12px solid red',
+                            borderLeft: '12px solid transparent',
+                          }}
+                          title={`Prev Cost: ${formatNumber(r.totalCost)}`}
+                        />
+                      )}
+                    </td>
                     <td style={redStyle}>{formatPercentage(r.diff)}</td>
                     <td style={td}>
                       <div style={{ display: "flex", gap: 4, alignItems: "center" }}>
