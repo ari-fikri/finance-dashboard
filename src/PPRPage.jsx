@@ -236,24 +236,20 @@ export default function PPRPage() {
               {/* First header row: colored bands */}
               <tr style={{ border: "1px solid #059669" }}>
                 <th rowSpan="2" style={{...headerBandStyle("#cccccc"), ...thSticky, border: "1px solid #059669"}}>No.</th>
-                <th rowSpan="2" style={{...headerBandStyle("#cccccc"), ...thSticky, border: "1px solid #059669"}}>PartNo.</th>
+                <th rowSpan="2" style={{...headerBandStyle("#cccccc"), ...thSticky, border: "1px solid #059669"}}>PartNo</th>
                 <th rowSpan="2" style={{...headerBandStyle("#cccccc"), ...thSticky, border: "1px solid #059669"}}>PartName</th>
-                <th colSpan="6" style={{...headerBandStyle("#dff7e6"), border: "1px solid #059669"}}>Purchase Part</th>
+                <th colSpan="3" style={{...headerBandStyle("#dff7e6"), border: "1px solid #059669"}}>Purchase Part</th>
                 <th colSpan="3" style={{...headerBandStyle("#b9faf8"), border: "1px solid #059669"}}>Raw Material</th>
                 <th colSpan="12" style={{...headerBandStyle("#e0aaff"), border: "1px solid #059669"}}>Processing Cost</th>
                 <th rowSpan="2" style={{...headerBandStyle("#e0aaff"), ...thSticky, border: "1px solid #059669"}}>Total Process Cost</th>
                 <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>Exclusive Investment</th>
                 <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>Prev Period</th>
                 <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>Total Cost</th>
-                <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>Diff</th>
                 <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>Remark</th>
               </tr>
 
               {/* Second header row: column group titles */}
               <tr style={{ background: "#dff7e6", border: "1px solid #059669" }}>
-                <th style={{...thSticky, backgroundColor: "#d0f0d2", border: "1px solid #059669"}}>Prev</th>
-                <th style={{...thSticky, border: "1px solid #059669"}}>Local OH</th>
-                <th style={{...thSticky, border: "1px solid #059669"}}>% Diff</th>
                 <th style={{...thSticky, backgroundColor: "#d0f0d2", border: "1px solid #059669"}}>Prev</th>
                 <th style={{...thSticky, border: "1px solid #059669"}}>Tooling OH</th>
                 <th style={{...thSticky, border: "1px solid #059669"}}>% Diff</th>
@@ -296,17 +292,6 @@ export default function PPRPage() {
                     <td style={td}>{r.partNo}</td>
                     <td style={td}>{r.partName}</td>
 
-                    <td style={tdPrev}>{r.localOHPrev ?? "-"}</td>
-                    <td style={td}>{r.localOH ?? "-"}</td>
-                    <td style={(() => {
-                      const diff = calculatePercentageDiff(r.localOH, r.localOHPrev);
-                      return getTdDiffStyle(diff);
-                    })()}>
-                      {(() => {
-                        const diff = calculatePercentageDiff(r.localOH, r.localOHPrev);
-                        return diff !== null ? formatPercentage(diff) : "-";
-                      })()}
-                    </td>
                     <td style={tdPrev}>{formatNumber(r.toolingOHPrev)}</td>
                     <td style={td}>{formatNumber(r.toolingOH)}</td>
                     <td style={(() => {
@@ -380,7 +365,7 @@ export default function PPRPage() {
                     <td style={td}>{formatNumber(r.exclusiveInvestment)}</td>
                     <td style={td}>{formatNumber(r.prevPeriod)}</td>
                     <td style={redStyle}>{formatNumber(r.totalCost)}</td>
-                    <td style={redStyle}>{formatPercentage(r.diff)}</td>
+                    <td style={td}>{formatPercentage(r.diff)}</td>
                     <td style={td}>
                       <div style={{ display: "flex", gap: 4, alignItems: "center" }}>
                         <div style={{ flex: 1 }}>
