@@ -1,18 +1,14 @@
 import React, { useMemo, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { pprDataByPeriod } from "./data/pprSampleData";
-import InlineEditableTextarea from "./components/InlineEditableTextarea";
+import PPRHeader from "./components/PPR/PPRHeader";
+import PPRToolbar from "./components/PPR/PPRToolbar";
+import PPRTable from "./components/PPR/PPRTable";
+import Pagination from "./components/Pagination";
 
-/**
- * PPRPage - Presents a wide multi-row header table similar to the provided screenshot.
- * - Sticky multi-row header
- * - Horizontal scroll for many columns
- * - Example/sample data included
- */
 export default function PPRPage() {
   const navigate = useNavigate();
   const [selectedMonth, setSelectedMonth] = useState("Aug-25");
-  const [editingRemark, setEditingRemark] = useState(null);
   const [remarkValues, setRemarkValues] = useState({});
   const [currentPage, setCurrentPage] = useState(1);
   const [partNoFilter, setPartNoFilter] = useState("");
@@ -20,100 +16,91 @@ export default function PPRPage() {
   const recordsPerPage = 10;
   const threshold = 10; // 10% threshold
 
-  // Quality gates toggle states
   const [qualityGates, setQualityGates] = useState({
     rhLhFilter: false,
     plantMhRate: false,
     partNoFilter: false,
   });
 
-  // Toggle quality gate buttons (only one can be active at a time)
   const toggleQualityGate = (gate) => {
-    setQualityGates(prev => {
+    setQualityGates((prev) => {
       const newState = {
         rhLhFilter: false,
         plantMhRate: false,
         partNoFilter: false,
       };
-      
-      // Only set the clicked gate to true if it wasn't already active
       if (!prev[gate]) {
         newState[gate] = true;
       } else {
-        // If clicking the active gate, deactivate it and clear the filter
-        if (gate === 'partNoFilter') {
+        if (gate === "partNoFilter") {
           setAppliedPartNoFilter("");
           setPartNoFilter("");
         }
       }
-      
       return newState;
     });
   };
 
-  // Exchange rates for different months
   const exchangeRates = {
     "Aug-25": "15,650",
-    "Jul-25": "15,420", 
-    "Jun-25": "15,890"
+    "Jul-25": "15,420",
+    "Jun-25": "15,890",
   };
 
-  // Sample data (filtered by selected period and quality gates)
   const rows = useMemo(() => {
     let data = pprDataByPeriod[selectedMonth] || [];
-
-    // Apply Part No filter if active
     if (qualityGates.partNoFilter && appliedPartNoFilter) {
-      data = data.filter(item => item.partNo.includes(appliedPartNoFilter));
+      data = data.filter((item) =>
+        item.partNo.includes(appliedPartNoFilter)
+      );
     }
-
-    // Apply RH/LH filter if active
     if (qualityGates.rhLhFilter) {
-      data = data.filter(item => {
+      data = data.filter((item) => {
         const partName = item.partName.toUpperCase();
-        return partName.endsWith(' RH') || partName.endsWith(' LH');
+        return partName.endsWith(" RH") || partName.endsWith(" LH");
       });
-
-      // Sort by similar part names (group RH/LH pairs together)
       data = data.sort((a, b) => {
-        // Remove RH/LH suffix for comparison
-        const baseName_a = a.partName.replace(/ (RH|LH)$/, '').toUpperCase();
-        const baseName_b = b.partName.replace(/ (RH|LH)$/, '').toUpperCase();
-        
+        const baseName_a = a.partName
+          .replace(/ (RH|LH)$/, "")
+          .toUpperCase();
+        const baseName_b = b.partName
+          .replace(/ (RH|LH)$/, "")
+          .toUpperCase();
         if (baseName_a === baseName_b) {
-          // If same base name, sort RH before LH
-          return a.partName.includes('RH') ? -1 : 1;
+          return a.partName.includes("RH") ? -1 : 1;
         }
-        
-        // Sort by base name
         return baseName_a.localeCompare(baseName_b);
       });
     }
-
-    // Calculate averaged_cost
     const dataWithAveragedCost = data.map((item, index, arr) => {
       const partName = item.partName.toUpperCase();
-      const hasRh = partName.endsWith(' RH');
-      const hasLh = partName.endsWith(' LH');
-
+      const hasRh = partName.endsWith(" RH");
+      const hasLh = partName.endsWith(" LH");
       if (hasRh || hasLh) {
-        const baseName = item.partName.replace(/ (RH|LH)$/, '').toUpperCase();
-        const rhPart = arr.find(p => p.partName.toUpperCase() === `${baseName} RH`);
-        const lhPart = arr.find(p => p.partName.toUpperCase() === `${baseName} LH`);
-
+        const baseName = item.partName
+          .replace(/ (RH|LH)$/, "")
+          .toUpperCase();
+        const rhPart = arr.find(
+          (p) => p.partName.toUpperCase() === `${baseName} RH`
+        );
+        const lhPart = arr.find(
+          (p) => p.partName.toUpperCase() === `${baseName} LH`
+        );
         if (rhPart && lhPart) {
           const averaged_cost = (rhPart.totalCost + lhPart.totalCost) / 2;
           return { ...item, averaged_cost };
         }
       }
-
       return { ...item, averaged_cost: item.totalCost };
     });
-    
     return dataWithAveragedCost;
-  }, [selectedMonth, qualityGates.rhLhFilter, qualityGates.partNoFilter, appliedPartNoFilter]);
+  }, [
+    selectedMonth,
+    qualityGates.rhLhFilter,
+    qualityGates.partNoFilter,
+    appliedPartNoFilter,
+  ]);
 
-  // Pagination calculations
   const totalRecords = rows.length;
   const totalPages = Math.ceil(totalRecords / recordsPerPage);
   const startIndex = (currentPage - 1) * recordsPerPage;
@@ -124,433 +111,83 @@ export default function PPRPage() {
     setCurrentPage(Math.max(1, Math.min(page, totalPages)));
   };
 
-  // Helper function to check if diff is outside threshold
   const isOutsideThreshold = (diff) => {
     return Math.abs(diff) > threshold;
   };
 
   const shouldShowRedTriangle = (part) => {
     const partName = part.partName.toUpperCase();
-    const hasRhLh = partName.includes(' RH') || partName.includes(' LH');
+    const hasRhLh = partName.includes(" RH") || partName.includes(" LH");
     const priceDiff = part.totalCost !== part.prevPeriod;
-
     return qualityGates.rhLhFilter && hasRhLh && priceDiff;
   };
 
-  // Helper function to get remark value (from state or original data)
   const getRemarkValue = (partNo, originalRemark) => {
-    return remarkValues[partNo] !== undefined ? remarkValues[partNo] : originalRemark;
+    return remarkValues[partNo] !== undefined
+      ? remarkValues[partNo]
+      : originalRemark;
   };
 
-  // Handle remark editing
   const handleRemarkSave = (partNo, value) => {
-    setRemarkValues(prev => ({ ...prev, [partNo]: value }));
+    setRemarkValues((prev) => ({ ...prev, [partNo]: value }));
   };
 
-  const handleDetailClick = (partNo) => {
-    // Handle detail button click - you can implement navigation or modal here
-    alert(`Detail view for Part: ${partNo}`);
+  const handleDetailClick = (part) => {
+    navigate(`/cost-movement-detail/${part.partNo}`, {
+      state: {
+        part: part,
+        currentPeriod: selectedMonth,
+        comparisonPeriod: "2023-01-01", // Hardcoded for now
+      },
+    });
   };
 
   return (
     <div style={{ padding: 20 }}>
       <div style={{ maxWidth: "95vw", margin: "0 auto" }}>
-        <div style={{ display: "flex", justifyContent: "space-between", alignItems: "flex-start", gap: 12 }}>
-          <div>
-            <div style={{ display: "flex", alignItems: "center", gap: 12 }}>
-              <button
-                className="btn"
-                onClick={() => navigate(-1)}
-                style={{
-                  backgroundColor: "#007bff",
-                  color: "white",
-                  border: "none"
-                }}
-              >
-                ← Back
-              </button>
-              <h1 style={{ margin: 0 }}>PPR</h1>
-            </div>
-            <p style={{ margin: "6px 0 8px", color: "#6b7280" }}>Part process & cost report (wide table)</p>
-            
-            {/* Quality Gates Buttons */}
-            <div style={{ display: "flex", gap: 8, marginTop: 8 }}>
-              <button
-                onClick={() => toggleQualityGate('rhLhFilter')}
-                style={{
-                  padding: "4px 12px",
-                  fontSize: "12px",
-                  borderRadius: 6,
-                  border: "1px solid #d1d5db",
-                  backgroundColor: qualityGates.rhLhFilter ? "#059669" : "white",
-                  color: qualityGates.rhLhFilter ? "white" : "#374151",
-                  cursor: "pointer",
-                  transition: "all 0.2s ease"
-                }}
-              >
-                RH/LH Filter
-              </button>
-              
-              <button
-                onClick={() => toggleQualityGate('plantMhRate')}
-                style={{
-                  padding: "4px 12px",
-                  fontSize: "12px",
-                  borderRadius: 6,
-                  border: "1px solid #d1d5db",
-                  backgroundColor: qualityGates.plantMhRate ? "#059669" : "white",
-                  color: qualityGates.plantMhRate ? "white" : "#374151",
-                  cursor: "pointer",
-                  transition: "all 0.2s ease"
-                }}
-              >
-                Plant & MH Rate
-              </button>
-              
-              <button
-                onClick={() => toggleQualityGate('partNoFilter')}
-                style={{
-                  padding: "4px 12px",
-                  fontSize: "12px",
-                  borderRadius: 6,
-                  border: "1px solid #d1d5db",
-                  backgroundColor: qualityGates.partNoFilter ? "#059669" : "white",
-                  color: qualityGates.partNoFilter ? "white" : "#374151",
-                  cursor: "pointer",
-                  transition: "all 0.2s ease"
-                }}
-              >
-                Part No Filter
-              </button>
-              {qualityGates.partNoFilter && (
-                <div style={{ display: 'flex', gap: 8, alignItems: 'center' }}>
-                  <input
-                    type="text"
-                    value={partNoFilter}
-                    onChange={(e) => setPartNoFilter(e.target.value)}
-                    placeholder="Enter Part No"
-                    style={{
-                      padding: '4px 8px',
-                      fontSize: '12px',
-                      borderRadius: 6,
-                      border: '1px solid #d1d5db',
-                    }}
-                  />
-                  <button
-                    onClick={() => setAppliedPartNoFilter(partNoFilter)}
-                    style={{
-                      padding: '4px 12px',
-                      fontSize: '12px',
-                      borderRadius: 6,
-                      border: '1px solid #d1d5db',
-                      backgroundColor: '#007bff',
-                      color: 'white',
-                      cursor: 'pointer',
-                    }}
-                  >
-                    Filter
-                  </button>
-                </div>
-              )}
-            </div>
-          </div>
-
-          <div style={{ display: "flex", gap: 8, alignItems: "center" }}>
-            <select 
-              value={selectedMonth}
-              onChange={(e) => {
-                setSelectedMonth(e.target.value);
-                setCurrentPage(1); // Reset to first page when period changes
-              }}
-              style={{ padding: "6px 10px", borderRadius: 8, border: "1px solid rgba(0,0,0,0.12)" }}
-            >
-              <option value="Aug-25">Aug-25</option>
-              <option value="Jul-25">Jul-25</option>
-              <option value="Jun-25">Jun-25</option>
-            </select>
-
-            <input
-              type="text"
-              value={`USD/IDR: ${exchangeRates[selectedMonth]}`}
-              readOnly
-              style={{
-                padding: "6px 10px",
-                borderRadius: 8,
-                border: "1px solid rgba(0,0,0,0.12)",
-                backgroundColor: "#f8f9fa",
-                color: "#495057",
-                width: "150px",
-                fontSize: "13px"
-              }}
-            />
-
-            <button
-              onClick={() => navigate("/period-comparison")}
-              className="btn btn-primary"
-              style={{
-                marginLeft: "16px",
-              }}
-            >
-              Period Comparison
-            </button>
-
-            <button className="btn btn-primary" onClick={() => alert("Export CSV (preview)")}>Export</button>
-          </div>
+        <div
+          style={{
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "flex-start",
+            gap: 12,
+          }}
+        >
+          <PPRHeader
+            qualityGates={qualityGates}
+            toggleQualityGate={toggleQualityGate}
+            partNoFilter={partNoFilter}
+            setPartNoFilter={setPartNoFilter}
+            setAppliedPartNoFilter={setAppliedPartNoFilter}
+          />
+          <PPRToolbar
+            selectedMonth={selectedMonth}
+            setSelectedMonth={setSelectedMonth}
+            setCurrentPage={setCurrentPage}
+            exchangeRates={exchangeRates}
+          />
         </div>
 
         <div style={{ height: 16 }} />
 
-        {/* Table container with horizontal scroll */}
-        <div style={{ overflow: "auto", border: "1px solid rgba(0,0,0,0.06)", borderRadius: 8 }}>
-          <table style={{ borderCollapse: "collapse", minWidth: 1440, width: "100%" }}>
-            <thead style={{ border: "2px solid #059669" }}>
-              {/* First header row: colored bands */}
-              <tr style={{ border: "1px solid #059669" }}>
-                <th rowSpan="2" style={{...headerBandStyle("#cccccc"), ...thSticky, border: "1px solid #059669"}}>No.</th>
-                <th rowSpan="2" style={{...headerBandStyle("#cccccc"), ...thSticky, border: "1px solid #059669"}}>PartNo</th>
-                <th rowSpan="2" style={{...headerBandStyle("#cccccc"), ...thSticky, border: "1px solid #059669"}}>PartName</th>
-                <th rowSpan="2" style={{...headerBandStyle("#cccccc"), ...thSticky, border: "1px solid #059669"}}>Plant</th>
-                <th colSpan="3" style={{...headerBandStyle("#dff7e6"), border: "1px solid #059669"}}>Purchase Part</th>
-                <th colSpan="3" style={{...headerBandStyle("#b9faf8"), border: "1px solid #059669"}}>Raw Material</th>
-                <th colSpan="12" style={{...headerBandStyle("#e0aaff"), border: "1px solid #059669"}}>Processing Cost</th>
-                <th rowSpan="2" style={{...headerBandStyle("#e0aaff"), ...thSticky, border: "1px solid #059669"}}>Total Process Cost</th>
-                <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>Exclusive Investment</th>
-                <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>Prev Period</th>
-                <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>Total Cost</th>
-                <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>Diff</th>
-                <th rowSpan="2" style={{...headerBandStyle("#dff7e6"), ...thSticky, border: "1px solid #059669"}}>Remark</th>
-              </tr>
+        <PPRTable
+          currentRecords={currentRecords}
+          startIndex={startIndex}
+          isOutsideThreshold={isOutsideThreshold}
+          getRemarkValue={getRemarkValue}
+          handleRemarkSave={handleRemarkSave}
+          handleDetailClick={handleDetailClick}
+          shouldShowRedTriangle={shouldShowRedTriangle}
+        />
 
-              {/* Second header row: column group titles */}
-              <tr style={{ background: "#dff7e6", border: "1px solid #059669" }}>
-                <th style={{...thSticky, backgroundColor: "#d0f0d2", border: "1px solid #059669"}}>Prev</th>
-                <th style={{...thSticky, border: "1px solid #059669"}}>Tooling OH</th>
-                <th style={{...thSticky, border: "1px solid #059669"}}>% Diff</th>
-
-                <th style={{...thSticky, backgroundColor: "#a6f6f3", border: "1px solid #059669"}}>Prev</th>
-                <th style={{...thSticky, backgroundColor: "#b9faf8", border: "1px solid #059669"}}>Current</th>
-                <th style={{...thSticky, backgroundColor: "#b9faf8", border: "1px solid #059669"}}>% Diff</th>
-
-                <th style={{...thSticky, backgroundColor: "#d89cff", border: "1px solid #059669"}}>Prev</th>
-                <th style={{...thSticky, backgroundColor: "#e0aaff", border: "1px solid #059669"}}>Labor</th>
-                <th style={{...thSticky, backgroundColor: "#e0aaff", border: "1px solid #059669"}}>% Diff</th>
-                <th style={{...thSticky, backgroundColor: "#d89cff", border: "1px solid #059669"}}>Prev</th>
-                <th style={{...thSticky, backgroundColor: "#e0aaff", border: "1px solid #059669"}}>FOH Fixed</th>
-                <th style={{...thSticky, backgroundColor: "#e0aaff", border: "1px solid #059669"}}>% Diff</th>
-                <th style={{...thSticky, backgroundColor: "#d89cff", border: "1px solid #059669"}}>Prev</th>
-                <th style={{...thSticky, backgroundColor: "#e0aaff", border: "1px solid #059669"}}>FOH Var</th>
-                <th style={{...thSticky, backgroundColor: "#e0aaff", border: "1px solid #059669"}}>% Diff</th>
-                <th style={{...thSticky, backgroundColor: "#d89cff", border: "1px solid #059669"}}>Prev</th>
-                <th style={{...thSticky, backgroundColor: "#e0aaff", border: "1px solid #059669"}}>Unfinish Depre.</th>
-                <th style={{...thSticky, backgroundColor: "#e0aaff", border: "1px solid #059669"}}>% Diff</th>
-              </tr>
-            </thead>
-
-            <tbody>
-              {currentRecords.map((r, index) => {
-                const isThresholdExceeded = isOutsideThreshold(r.diff);
-                const redStyle = isThresholdExceeded ? { ...td, color: "red", fontWeight: "bold" } : td;
-                const currentRemark = getRemarkValue(r.partNo, r.remark);
-                const isEvenRow = index % 2 === 0;
-                
-                return (
-                  <tr 
-                    key={r.partNo} 
-                    style={{ 
-                      borderBottom: "1px solid rgba(0,0,0,0.04)",
-                      backgroundColor: isEvenRow ? "#f9fafb" : "white"
-                    }}
-                  >
-                    <td style={td}>{startIndex + currentRecords.indexOf(r) + 1}</td>
-                    <td style={td}>{r.partNo}</td>
-                    <td style={td}>{r.partName}</td>
-                    <td style={td}>{r.plant}</td>
-                    <td style={tdPrev}>{formatNumber(r.toolingOHPrev)}</td>
-                    <td style={td}>{formatNumber(r.toolingOH)}</td>
-                    <td style={(() => {
-                      const diff = calculatePercentageDiff(r.toolingOH, r.toolingOHPrev);
-                      return getTdDiffStyle(diff);
-                    })()}>
-                      {(() => {
-                        const diff = calculatePercentageDiff(r.toolingOH, r.toolingOHPrev);
-                        return diff !== null ? formatPercentage(diff) : "-";
-                      })()}
-                    </td>
-
-                    <td style={tdPrev}>{formatNumber(r.rawMaterialPrev)}</td>
-                    <td style={td}>{formatNumber(r.rawMaterial)}</td>
-                    <td style={(() => {
-                      const diff = calculatePercentageDiff(r.rawMaterial, r.rawMaterialPrev);
-                      return getTdDiffStyle(diff);
-                    })()}>
-                      {(() => {
-                        const diff = calculatePercentageDiff(r.rawMaterial, r.rawMaterialPrev);
-                        return diff !== null ? formatPercentage(diff) : "-";
-                      })()}
-                    </td>
-
-                    <td style={tdPrev}>{formatNumber(r.laborPrev)}</td>
-                    <td style={td}>{formatNumber(r.labor)}</td>
-                    <td style={(() => {
-                      const diff = calculatePercentageDiff(r.labor, r.laborPrev);
-                      return getTdDiffStyle(diff);
-                    })()}>
-                      {(() => {
-                        const diff = calculatePercentageDiff(r.labor, r.laborPrev);
-                        return diff !== null ? formatPercentage(diff) : "-";
-                      })()}
-                    </td>
-                    <td style={tdPrev}>{formatNumber(r.fohFixPrev)}</td>
-                    <td style={td}>{formatNumber(r.fohFix)}</td>
-                    <td style={(() => {
-                      const diff = calculatePercentageDiff(r.fohFix, r.fohFixPrev);
-                      return getTdDiffStyle(diff);
-                    })()}>
-                      {(() => {
-                        const diff = calculatePercentageDiff(r.fohFix, r.fohFixPrev);
-                        return diff !== null ? formatPercentage(diff) : "-";
-                      })()}
-                    </td>
-                    <td style={tdPrev}>{formatNumber(r.fohVarPrev)}</td>
-                    <td style={td}>{formatNumber(r.fohVar)}</td>
-                    <td style={(() => {
-                      const diff = calculatePercentageDiff(r.fohVar, r.fohVarPrev);
-                      return getTdDiffStyle(diff);
-                    })()}>
-                      {(() => {
-                        const diff = calculatePercentageDiff(r.fohVar, r.fohVarPrev);
-                        return diff !== null ? formatPercentage(diff) : "-";
-                      })()}
-                    </td>
-                    <td style={tdPrev}>{formatNumber(r.unfinishDeprePrev)}</td>
-                    <td style={td}>{formatNumber(r.unfinishDepre)}</td>
-                    <td style={(() => {
-                      const diff = calculatePercentageDiff(r.unfinishDepre, r.unfinishDeprePrev);
-                      return getTdDiffStyle(diff);
-                    })()}>
-                      {(() => {
-                        const diff = calculatePercentageDiff(r.unfinishDepre, r.unfinishDeprePrev);
-                        return diff !== null ? formatPercentage(diff) : "-";
-                      })()}
-                    </td>
-
-                    <td style={td}>{formatNumber(r.totalProcessCost)}</td>
-                    <td style={td}>{formatNumber(r.exclusiveInvestment)}</td>
-                    <td style={td}>{formatNumber(r.prevPeriod)}</td>
-                    <td style={{ ...redStyle, position: 'relative' }}>
-                      {formatNumber(r.averaged_cost)}
-                      {shouldShowRedTriangle(r) && (
-                        <div 
-                          style={{
-                            position: 'absolute',
-                            top: 0,
-                            right: 0,
-                            width: 0,
-                            height: 0,
-                            borderTop: '12px solid red',
-                            borderLeft: '12px solid transparent',
-                          }}
-                          title={`Prev Cost: ${formatNumber(r.totalCost)}`}
-                        />
-                      )}
-                    </td>
-                    <td style={redStyle}>{formatPercentage(r.diff)}</td>
-                    <td style={td}>
-                      <div style={{ display: "flex", gap: 4, alignItems: "center" }}>
-                        <div style={{ flex: 1 }}>
-                          {isThresholdExceeded ? (
-                            <InlineEditableTextarea
-                              value={currentRemark}
-                              onSave={(value) => handleRemarkSave(r.partNo, value)}
-                              placeholder="Click to add remark..."
-                            />
-                          ) : (
-                            <span style={{ color: "#999", fontSize: "12px" }}>-</span>
-                          )}
-                        </div>
-                        <button
-                          onClick={() => handleDetailClick(r.partNo)}
-                          style={{
-                            padding: "2px 6px",
-                            fontSize: 10,
-                            border: "1px solid #007bff",
-                            borderRadius: 3,
-                            background: "#007bff",
-                            color: "white",
-                            cursor: "pointer",
-                            whiteSpace: "nowrap"
-                          }}
-                        >
-                          Detail
-                        </button>
-                      </div>
-                    </td>
-                  </tr>
-                );
-              })}
-            </tbody>
-          </table>
-        </div>
-
-        {/* Pagination */}
-        <div style={{ 
-          marginTop: 16, 
-          display: "flex", 
-          justifyContent: "space-between", 
-          alignItems: "center" 
-        }}>
-          <div style={{ fontSize: 13, color: "#6b7280" }}>
-            Showing {startIndex + 1} to {Math.min(endIndex, totalRecords)} of {totalRecords} records
-          </div>
-          
-          <div style={{ display: "flex", gap: 4, alignItems: "center" }}>
-            <button
-              onClick={() => goToPage(currentPage - 1)}
-              disabled={currentPage === 1}
-              className="btn btn-ghost"
-              style={{ 
-                padding: "4px 8px", 
-                fontSize: 12,
-                opacity: currentPage === 1 ? 0.5 : 1,
-                cursor: currentPage === 1 ? "not-allowed" : "pointer"
-              }}
-            >
-              Previous
-            </button>
-            
-            {/* Page numbers */}
-            {Array.from({ length: totalPages }, (_, i) => i + 1).map((page) => (
-              <button
-                key={page}
-                onClick={() => goToPage(page)}
-                className={page === currentPage ? "btn btn-primary" : "btn btn-ghost"}
-                style={{ 
-                  padding: "4px 8px", 
-                  fontSize: 12,
-                  minWidth: 32
-                }}
-              >
-                {page}
-              </button>
-            ))}
-            
-            <button
-              onClick={() => goToPage(currentPage + 1)}
-              disabled={currentPage === totalPages}
-              className="btn btn-ghost"
-              style={{ 
-                padding: "4px 8px", 
-                fontSize: 12,
-                opacity: currentPage === totalPages ? 0.5 : 1,
-                cursor: currentPage === totalPages ? "not-allowed" : "pointer"
-              }}
-            >
-              Next
-            </button>
-          </div>
-        </div>
-
-
+        <Pagination
+          currentPage={currentPage}
+          totalPages={totalPages}
+          goToPage={goToPage}
+          totalRecords={totalRecords}
+          startIndex={startIndex}
+          endIndex={endIndex}
+        />
       </div>
     </div>
   );
