@@ -6,6 +6,19 @@ import MasterDataModal from "./MasterDataModal";
 import DownloadModal from "./DownloadModal";
 import templateIcon from './assets/template.png';
 
+const fileManifest = {
+  cmd: [
+    { name: "CMD_Report_2023_10_22.csv", uploadDate: "2023-10-22T10:00:00Z" },
+    { name: "CMD_Report_2023_10_21.csv", uploadDate: "2023-10-21T10:00:00Z" },
+  ],
+  ifast: [
+    { name: "IFAST_Data_2023_10_22.csv", uploadDate: "2023-10-22T11:00:00Z" },
+  ],
+  sap: [
+    { name: "SAP_Export_2023_10_22.csv", uploadDate: "2023-10-22T12:00:00Z" },
+  ],
+};
+
 export default function App() {
   const [sources] = useState([
     { id: "cmd", name: "CMD", lastUpdate: "2025-10-22" },
@@ -30,14 +43,8 @@ export default function App() {
   const navigate = useNavigate();
 
   function downloadSource(source) {
-    const csv = `source,updated\n${source.name},${source.lastUpdate}\n`;
-    const blob = new Blob([csv], { type: "text/csv" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `${source.name}-metadata.csv`;
-    a.click();
-    URL.revokeObjectURL(url);
+    const files = fileManifest[source.id] || [];
+    openDownloadModal(source.id, files);
   }
 
   function openMaintain() {
@@ -94,24 +101,25 @@ export default function App() {
     }
   }
 
-  function openDownloadModal(type) {
+  function openDownloadModal(type, files) {
+    setDownloadableFiles(files);
     if (type === 'material') {
-      setDownloadableFiles(materialFiles);
       setDownloadModalTitle("Download Material Cost Files");
     } else if (type === 'process') {
-      setDownloadableFiles(processFiles);
       setDownloadModalTitle("Download Process Cost Files");
+    } else {
+      setDownloadModalTitle(`Download ${type.toUpperCase()} Files`);
     }
     setIsDownloadModalOpen(true);
   }
 
   // download process cost sample or previously uploaded process file
   function downloadProcessCost() {
-    openDownloadModal('process');
+    openDownloadModal('process', processFiles);
   }
 
   function downloadMaterialData() {
-    openDownloadModal('material');
+    openDownloadModal('material', materialFiles);
   }
 
   function downloadTemplate(type) {
