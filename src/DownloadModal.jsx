@@ -1,6 +1,6 @@
 import React from 'react';
 
-const DownloadModal = ({ isOpen, onClose, files, title }) => {
+const DownloadModal = ({ isOpen, onClose, files, title, onDelete }) => {
   if (!isOpen) return null;
 
   const handleDownload = (file) => {
@@ -32,9 +32,14 @@ const DownloadModal = ({ isOpen, onClose, files, title }) => {
                     Uploaded: {new Date(file.uploadDate).toLocaleString()}
                   </div>
                 </div>
-                <button onClick={() => handleDownload(file)} style={styles.downloadButton}>
-                  Download
-                </button>
+                <div style={{display: 'flex', gap: '10px'}}>
+                  <button onClick={() => handleDownload(file)} style={styles.downloadButton}>
+                    Download
+                  </button>
+                  <button onClick={() => onDelete(file.name)} style={styles.deleteButton}>
+                    Delete
+                  </button>
+                </div>
               </div>
             ))
           ) : (
@@ -103,6 +108,14 @@ const styles = {
   },
   downloadButton: {
     backgroundColor: '#007bff',
+    color: 'white',
+    border: 'none',
+    padding: '8px 12px',
+    borderRadius: '6px',
+    cursor: 'pointer',
+  },
+  deleteButton: {
+    backgroundColor: '#dc3545',
     color: 'white',
     border: 'none',
     padding: '8px 12px',

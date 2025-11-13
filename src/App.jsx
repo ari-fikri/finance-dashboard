@@ -1,5 +1,5 @@
 // src/App.jsx
-import React, { useState } from "react";
+import React, { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import MasterDataModal from "./MasterDataModal";
@@ -16,6 +16,13 @@ const fileManifest = {
   ],
   sap: [
     { name: "SAP_Export_2023_10_22.csv", uploadDate: "2023-10-22T12:00:00Z" },
+  ],
+  process: [
+    { name: "Process_Cost_2023_10.csv", uploadDate: "2023-10-22T12:00:00Z" },
+    { name: "Process_Cost_2023_12.csv", uploadDate: "2023-12-22T12:00:00Z" },
+  ],
+  material: [
+    { name: "Material_Cost_2023_10.csv", uploadDate: "2023-10-22T12:00:00Z" },
   ],
 };
 
@@ -39,8 +46,38 @@ export default function App() {
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
   const [downloadableFiles, setDownloadableFiles] = useState([]);
   const [downloadModalTitle, setDownloadModalTitle] = useState("");
+  const [currentModalType, setCurrentModalType] = useState("");
+
+  const latestProcessFile = useMemo(() => {
+    const allFiles = [...(fileManifest.process || []), ...processFiles];
+    if (allFiles.length === 0) return null;
+    // Sort by date descending to find the latest
+    allFiles.sort((a, b) => new Date(b.uploadDate) - new Date(a.uploadDate));
+    return allFiles[0];
+  }, [processFiles]);
+
+  const latestMaterialFile = useMemo(() => {
+    const allFiles = [...(fileManifest.material || []), ...materialFiles];
+    if (allFiles.length === 0) return null;
+    // Sort by date descending to find the latest
+    allFiles.sort((a, b) => new Date(b.uploadDate) - new Date(a.uploadDate));
+    return allFiles[0];
+  }, [materialFiles]);
 
   const navigate = useNavigate();
+
+  function handleDeleteFile(fileName) {
+    // This is a mock deletion. In a real app, you'd also make an API call.
+    console.log(`Deleting ${fileName} from ${currentModalType}`);
+    if (currentModalType === 'process') {
+      setProcessFiles(prevFiles => prevFiles.filter(f => f.name !== fileName));
+    } else if (currentModalType === 'material') {
+      setMaterialFiles(prevFiles => prevFiles.filter(f => f.name !== fileName));
+    }
+    // Note: This doesn't delete from fileManifest, only from uploaded files state.
+    // To "delete" from the modal, we can filter the downloadableFiles state
+    setDownloadableFiles(prevFiles => prevFiles.filter(f => f.name !== fileName));
+  }
 
   function downloadSource(source) {
     const files = fileManifest[source.id] || [];
@@ -103,6 +140,7 @@ export default function App() {
 
   function openDownloadModal(type, files) {
     setDownloadableFiles(files);
+    setCurrentModalType(type);
     if (type === 'material') {
       setDownloadModalTitle("Download Material Cost Files");
     } else if (type === 'process') {
@@ -115,15 +153,18 @@ export default function App() {
 
   // download process cost sample or previously uploaded process file
   function downloadProcessCost() {
-    openDownloadModal('process', processFiles);
+    const files = [...(fileManifest.process || []), ...processFiles];
+    openDownloadModal('process', files);
   }
 
   function downloadMaterialData() {
-    openDownloadModal('material', materialFiles);
+    const files = [...(fileManifest.material || []), ...materialFiles];
+    openDownloadModal('material', files);
   }
 
   function downloadTemplate(type) {
-    let csvContent, fileName;
+    let fileName = "";
+    let csvContent;
 
     if (type === 'process') {
       csvContent = `Process,CostType,Amount,Currency\nLabor,Direct,0,USD\nFOH,Overhead,0,USD`;
@@ -328,11 +369,7 @@ export default function App() {
                   </a>
                 </div>
                 <div className="meta">
-                  {processFiles.length > 0 ? (
-                    <>Last Update: <span>{new Date(processFiles[processFiles.length - 1].uploadDate).toLocaleDateString('en-CA')}</span></>
-                  ) : (
-                    <>Last Update: <span>-</span></>
-                  )}
+                  Last Update: <span>{latestProcessFile ? new Date(latestProcessFile.uploadDate).toLocaleDateString('en-CA') : '-'}</span>
                 </div>
                 <div style={{ marginTop: 10 }} className="small">
                   Labor, FOH, depreciation, and other processing costs used in calculations.
@@ -341,7 +378,11 @@ export default function App() {
             
               <div className="card-footer">
                 <div className="small">
-                  <strong style={{ color: "#059669" }}>Ready</strong>
+                  {latestProcessFile ? (
+                    <strong style={{ color: "#059669" }}>Ready</strong>
+                  ) : (
+                    <strong style={{ color: "#F59E0B" }}>Upload required</strong>
+                  )}
                 </div>
                 <div className="card-actions">
                   {/* Process Cost: Upload File */}
@@ -362,8 +403,8 @@ export default function App() {
                   <button
                     onClick={downloadProcessCost}
                     className="btn btn-primary"
-                    disabled={processFiles.length === 0}
-                    style={processFiles.length === 0 ? { opacity: 0.5, cursor: "not-allowed" } : {}}
+                    disabled={!latestProcessFile}
+                    style={!latestProcessFile ? { opacity: 0.5, cursor: "not-allowed" } : {}}
                   >
                     Download
                   </button>
@@ -387,28 +428,23 @@ export default function App() {
                   </a>
                 </div>
                 <div className="meta">
-                  {materialFiles.length > 0 ? (
-                    <>Last Update: <span>{new Date(materialFiles[materialFiles.length - 1].uploadDate).toLocaleDateString('en-CA')}</span></>
-                  ) : (
-                    <>Last Update: <span>-</span></>
-                  )}
+                  Last Update: <span>{latestMaterialFile ? new Date(latestMaterialFile.uploadDate).toLocaleDateString('en-CA') : '-'}</span>
                 </div>
-                {materialFiles.length > 0 && (
-                  <div className="small" style={{ marginTop: 8 }}>
-                    File: {materialFiles[materialFiles.length - 1].name}
-                  </div>
-                )}
+                <div style={{ marginTop: 10 }} className="small">
+                  Raw material costs, including prices, quantities, and supplier information.
+                </div>
               </div>
             
               <div className="card-footer">
                 <div className="small">
-                  {materialFiles.length > 0 ? (
+                  {latestMaterialFile ? (
                     <strong style={{ color: "#059669" }}>Ready</strong>
                   ) : (
-                    <strong style={{ color: "#dc2626" }}>Upload Required</strong>
+                    <strong style={{ color: "#F59E0B" }}>Upload required</strong>
                   )}
                 </div>
                 <div className="card-actions">
+                  {/* Material Cost: Upload File */}
                   <input
                     type="file"
                     accept=".xls,.xlsx"
@@ -426,8 +462,8 @@ export default function App() {
                   <button
                     onClick={downloadMaterialData}
                     className="btn btn-primary"
-                    disabled={materialFiles.length === 0}
-                    style={materialFiles.length === 0 ? { opacity: 0.5, cursor: "not-allowed" } : {}}
+                    disabled={!latestMaterialFile}
+                    style={!latestMaterialFile ? { opacity: 0.5, cursor: "not-allowed" } : {}}
                   >
                     Download
                   </button>
@@ -570,6 +606,7 @@ export default function App() {
         onClose={() => setIsDownloadModalOpen(false)}
         files={downloadableFiles}
         title={downloadModalTitle}
+        onDelete={handleDeleteFile}
       />
     </div>
   );
