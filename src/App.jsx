@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import MasterDataModal from "./MasterDataModal";
+import templateIcon from './assets/template.png';
 
 export default function App() {
   const [sources] = useState([
@@ -127,6 +128,28 @@ FOH,Overhead,450,USD,${new Date(uploadedProcessFile.uploadDate).toLocaleDateStri
     URL.revokeObjectURL(url);
   }
 
+  function downloadTemplate(type) {
+    let csvContent, fileName;
+
+    if (type === 'process') {
+      csvContent = `Process,CostType,Amount,Currency\nLabor,Direct,0,USD\nFOH,Overhead,0,USD`;
+      fileName = 'process-cost-template.csv';
+    } else if (type === 'material') {
+      csvContent = `Part Number,Material Type,Cost per Unit,Currency\nPART-001,Steel,0,USD`;
+      fileName = 'material-cost-template.csv';
+    } else {
+      return;
+    }
+
+    const blob = new Blob([csvContent], { type: 'text/csv' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = fileName;
+    a.click();
+    URL.revokeObjectURL(url);
+  }
+
   function openPartPairing() {
     navigate("/part-pairing");
   }
@@ -148,6 +171,32 @@ FOH,Overhead,450,USD,${new Date(uploadedProcessFile.uploadDate).toLocaleDateStri
 
   return (
     <div className="app-container">
+      <style>{`
+        .template-link {
+          display: flex;
+          flex-direction: column;
+          align-items: center;
+          text-decoration: none;
+          color: #6b7280;
+        }
+        .template-link:hover {
+          color: #1d4ed8;
+        }
+        .template-link img {
+          width: 16px;
+          height: 16px;
+          opacity: 0.6;
+          transition: opacity 0.2s;
+        }
+        .template-link:hover img {
+          opacity: 1;
+        }
+        .template-link span {
+          font-size: 10px;
+          margin-top: 2px;
+          transition: color 0.2s;
+        }
+      `}</style>
       <header className="app-header">
         <div className="app-header-left">
           <h1>Dashboard IH Cost</h1>
@@ -277,8 +326,20 @@ FOH,Overhead,450,USD,${new Date(uploadedProcessFile.uploadDate).toLocaleDateStri
               className="card"
             >
               <div>
-                <div className="title">Process Cost</div>
-                <div className="meta">Manufacturing and processing cost data</div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                  <div className="title">Process Cost</div>
+                  <a href="#" onClick={(e) => { e.preventDefault(); downloadTemplate('process'); }} className="template-link">
+                    <img src={templateIcon} alt="Download Template" />
+                    <span>Template</span>
+                  </a>
+                </div>
+                <div className="meta">
+                  {uploadedProcessFile ? (
+                    <>Last Update: <span>{new Date(uploadedProcessFile.uploadDate).toLocaleDateString('en-CA')}</span></>
+                  ) : (
+                    <>Last Update: <span>-</span></>
+                  )}
+                </div>
                 <div style={{ marginTop: 10 }} className="small">
                   Labor, FOH, depreciation, and other processing costs used in calculations.
                 </div>
@@ -324,17 +385,23 @@ FOH,Overhead,450,USD,${new Date(uploadedProcessFile.uploadDate).toLocaleDateStri
               className="card"
             >
               <div>
-                <div className="title">Material Cost</div>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                  <div className="title">Material Cost</div>
+                  <a href="#" onClick={(e) => { e.preventDefault(); downloadTemplate('material'); }} className="template-link">
+                    <img src={templateIcon} alt="Download Template" />
+                    <span>Template</span>
+                  </a>
+                </div>
                 <div className="meta">
                   {uploadedFile ? (
-                    <>File: <span>{uploadedFile.name}</span></>
+                    <>Last Update: <span>{new Date(uploadedFile.uploadDate).toLocaleDateString('en-CA')}</span></>
                   ) : (
-                    <>Status: <span style={{ color: "#dc2626" }}>No file uploaded</span></>
+                    <>Last Update: <span>-</span></>
                   )}
                 </div>
                 {uploadedFile && (
                   <div className="small" style={{ marginTop: 8 }}>
-                    Uploaded: {new Date(uploadedFile.uploadDate).toLocaleDateString()}
+                    File: {uploadedFile.name}
                   </div>
                 )}
               </div>
