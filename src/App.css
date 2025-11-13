@@ -40,3 +40,101 @@
 .read-the-docs {
   color: #888;
 }
+
+.template-link {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-decoration: none;
+  color: #6b7280;
+}
+.template-link:hover {
+  color: #1d4ed8;
+}
+.template-link img {
+  width: 16px;
+  height: 16px;
+  opacity: 0.6;
+  transition: opacity 0.2s;
+}
+.template-link:hover img {
+  opacity: 1;
+}
+.template-link span {
+  font-size: 10px;
+  margin-top: 2px;
+  transition: color 0.2s;
+}
+
+.grid-5 {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 16px;
+  align-items: stretch;
+}
+
+.grid-4 {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 16px;
+  align-items: stretch;
+}
+
+.grid-2 {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  align-items: start;
+}
+
+.arrow-card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  color: #94a3b8;
+  min-height: auto;
+  height: fit-content;
+  width: fit-content;
+  justify-self: center;
+  align-self: center;
+  padding: 15px;
+  margin: 15px;
+}
+
+.sync-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.card-title-flex {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+}
+
+.card-meta-margin {
+    margin-top: 10px;
+}
+
+.status-ok {
+  color: #059669;
+}
+
+.status-warning {
+  color: #F59E0B;
+}
+
+.upload-label {
+  cursor: pointer;
+}
+
+.ihp-result {
+    margin-top: 8px;
+    color: #059669;
+}
+
+.sync-button {
+    min-width: 120px;
+}

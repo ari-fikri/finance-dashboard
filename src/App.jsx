@@ -5,6 +5,7 @@ import { useNavigate } from "react-router-dom";
 import MasterDataModal from "./MasterDataModal";
 import DownloadModal from "./DownloadModal";
 import templateIcon from './assets/template.png';
+import './App.css';
 
 const fileManifest = {
   cmd: [
@@ -135,7 +136,7 @@ export default function App() {
       // upload logic for process cost file goes here
     } else {
       alert("Please select a valid Excel file (.xls or .xlsx)");
-    }
+}
   }
 
   function openDownloadModal(type, files) {
@@ -206,32 +207,6 @@ export default function App() {
 
   return (
     <div className="app-container">
-      <style>{`
-        .template-link {
-          display: flex;
-          flex-direction: column;
-          align-items: center;
-          text-decoration: none;
-          color: #6b7280;
-        }
-        .template-link:hover {
-          color: #1d4ed8;
-        }
-        .template-link img {
-          width: 16px;
-          height: 16px;
-          opacity: 0.6;
-          transition: opacity 0.2s;
-        }
-        .template-link:hover img {
-          opacity: 1;
-        }
-        .template-link span {
-          font-size: 10px;
-          margin-top: 2px;
-          transition: color 0.2s;
-        }
-      `}</style>
       <header className="app-header">
         <div className="app-header-left">
           <h1>Dashboard IH Cost</h1>
@@ -244,13 +219,7 @@ export default function App() {
           <h2 className="section-title">Data Synchronization</h2>
 
           <div
-            className="grid-3"
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(5, 1fr)",
-              gap: "16px",
-              alignItems: "stretch",
-            }}
+            className="grid-5"
           >
             {/* CMD / IFAST / SAP cards */}
             {sources.map((s) => (
@@ -268,7 +237,7 @@ export default function App() {
             
                 <div className="card-footer">
                   <div className="small">
-                    Status: <strong style={{ color: "#059669" }}>OK</strong>
+                    Status: <strong className="status-ok">OK</strong>
                   </div>
                   <div className="card-actions">
                     <button
@@ -289,21 +258,7 @@ export default function App() {
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.28, delay: 0.05 }}
-              className="card"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: 28,
-                color: "#94a3b8",
-                minHeight: "auto",
-                height: "fit-content",
-                width: "fit-content",
-                justifySelf: "center",
-                alignSelf: "center",
-                padding: "15px",
-                margin: "15px",
-              }}
+              className="card arrow-card"
             >
               ➜
             </motion.div>
@@ -313,12 +268,7 @@ export default function App() {
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.28, delay: 0.1 }}
-              className="card"
-              style={{
-                display: "flex",
-                flexDirection: "column",
-                justifyContent: "space-between",
-              }}
+              className="card sync-card"
             >
               <div>
                 <div className="title">Synchronize Part List</div>
@@ -329,9 +279,8 @@ export default function App() {
                 <div />
                 <div className="card-actions">
                   <button
-                    className="btn btn-primary"
+                    className="btn btn-primary sync-button"
                     onClick={synchronize}
-                    style={{ minWidth: 120 }}
                   >
                     Synchronize
                   </button>
@@ -346,12 +295,6 @@ export default function App() {
 
           <div 
             className="grid-4"
-            style={{
-              display: "grid",
-              gridTemplateColumns: "repeat(4, 1fr)",
-              gap: "16px",
-              alignItems: "stretch",
-            }}
           >
             {/* Process Cost Card */}
             <motion.div
@@ -361,7 +304,7 @@ export default function App() {
               className="card"
             >
               <div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                <div className="card-title-flex">
                   <div className="title">Process Cost</div>
                   <a href="#" onClick={(e) => { e.preventDefault(); downloadTemplate('process'); }} className="template-link">
                     <img src={templateIcon} alt="Download Template" />
@@ -371,7 +314,7 @@ export default function App() {
                 <div className="meta">
                   Last Update: <span>{latestProcessFile ? new Date(latestProcessFile.uploadDate).toLocaleDateString('en-CA') : '-'}</span>
                 </div>
-                <div style={{ marginTop: 10 }} className="small">
+                <div className="small card-meta-margin">
                   Labor, FOH, depreciation, and other processing costs used in calculations.
                 </div>
               </div>
@@ -379,9 +322,9 @@ export default function App() {
               <div className="card-footer">
                 <div className="small">
                   {latestProcessFile ? (
-                    <strong style={{ color: "#059669" }}>Ready</strong>
+                    <strong className="status-ok">Ready</strong>
                   ) : (
-                    <strong style={{ color: "#F59E0B" }}>Upload required</strong>
+                    <strong className="status-warning">Upload required</strong>
                   )}
                 </div>
                 <div className="card-actions">
@@ -395,8 +338,7 @@ export default function App() {
                   />
                   <label
                     htmlFor="process-cost-upload"
-                    className="btn btn-ghost"
-                    style={{ cursor: "pointer" }}
+                    className="btn btn-ghost upload-label"
                   >
                     Upload
                   </label>
@@ -420,7 +362,7 @@ export default function App() {
               className="card"
             >
               <div>
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-start' }}>
+                <div className="card-title-flex">
                   <div className="title">Material Cost</div>
                   <a href="#" onClick={(e) => { e.preventDefault(); downloadTemplate('material'); }} className="template-link">
                     <img src={templateIcon} alt="Download Template" />
@@ -430,7 +372,7 @@ export default function App() {
                 <div className="meta">
                   Last Update: <span>{latestMaterialFile ? new Date(latestMaterialFile.uploadDate).toLocaleDateString('en-CA') : '-'}</span>
                 </div>
-                <div style={{ marginTop: 10 }} className="small">
+                <div className="small card-meta-margin">
                   Raw material costs, including prices, quantities, and supplier information.
                 </div>
               </div>
@@ -438,9 +380,9 @@ export default function App() {
               <div className="card-footer">
                 <div className="small">
                   {latestMaterialFile ? (
-                    <strong style={{ color: "#059669" }}>Ready</strong>
+                    <strong className="status-ok">Ready</strong>
                   ) : (
-                    <strong style={{ color: "#F59E0B" }}>Upload required</strong>
+                    <strong className="status-warning">Upload required</strong>
                   )}
                 </div>
                 <div className="card-actions">
@@ -454,8 +396,7 @@ export default function App() {
                   />
                   <label
                     htmlFor="material-cost-upload"
-                    className="btn btn-ghost"
-                    style={{ cursor: "pointer" }}
+                    className="btn btn-ghost upload-label"
                   >
                     Upload
                   </label>
@@ -476,21 +417,7 @@ export default function App() {
               initial={{ opacity: 0, y: 6 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.28, delay: 0.06 }}
-              className="card"
-              style={{
-                display: "flex",
-                alignItems: "center",
-                justifyContent: "center",
-                fontSize: 28,
-                color: "#94a3b8",
-                minHeight: "auto",
-                height: "fit-content",
-                width: "fit-content",
-                justifySelf: "center",
-                alignSelf: "center",
-                padding: "15px",
-                margin: "15px",
-              }}
+              className="card arrow-card"
             >
               ➜
             </motion.div>
@@ -506,7 +433,7 @@ export default function App() {
                 <div className="title">IHP</div>
                 <div className="meta">Perform calculation for IHP metrics across synced sources.</div>
                 {ihpResult && (
-                  <div style={{ marginTop: 8, color: "#059669" }} className="small">
+                  <div className="small ihp-result">
                     Last result: {ihpResult.value} (calculated at {new Date(ihpResult.timestamp).toLocaleString()})
                   </div>
                 )}
@@ -532,7 +459,7 @@ export default function App() {
         <section>
           <h2 className="section-title">Master Data</h2>
 
-          <div className="grid-2" style={{ alignItems: "start" }}>
+          <div className="grid-2">
             <motion.div
               className="card master-card"
               initial={{ opacity: 0, y: 6 }}
@@ -542,7 +469,7 @@ export default function App() {
               <div>
                 <div className="title">Master Assumption</div>
                 <div className="meta">Last Period: <span>{masterData.lastPeriod}</span></div>
-                <div style={{ marginTop: 10 }} className="small">
+                <div className="small card-meta-margin">
                   Maintain core reference tables used by the synchronization processes. Use the button below to manage values.
                 </div>
               </div>
@@ -569,14 +496,14 @@ export default function App() {
               <div>
                 <div className="title">Part Pairing Management</div>
                 <div className="meta">Cross-system part mapping and relationships</div>
-                <div style={{ marginTop: 10 }} className="small">
+                <div className="small card-meta-margin">
                   Manage part number mappings between CMD, SAP, and IFAST systems. Define equivalency relationships and maintain cross-reference tables.
                 </div>
               </div>
 
               <div className="card-footer">
                 <div className="small">
-                  Status: <strong style={{ color: "#059669" }}>Ready</strong>
+                  Status: <strong className="status-ok">Ready</strong>
                 </div>
                 <div className="card-actions">
                   <button className="btn btn-primary" onClick={openPartPairing}>
