@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
 import MasterDataModal from "./MasterDataModal";
+import DownloadModal from "./DownloadModal";
 import templateIcon from './assets/template.png';
 
 export default function App() {
@@ -16,9 +17,16 @@ export default function App() {
   const [isMaintaining, setIsMaintaining] = useState(false);
   const [isCalculating, setIsCalculating] = useState(false);
   const [ihpResult, setIhpResult] = useState(null);
-  const [uploadedFile, setUploadedFile] = useState(null);
-  // process cost upload state
-  const [uploadedProcessFile, setUploadedProcessFile] = useState(null);
+  
+  // State for uploaded files
+  const [materialFiles, setMaterialFiles] = useState([]);
+  const [processFiles, setProcessFiles] = useState([]);
+
+  // State for download modal
+  const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
+  const [downloadableFiles, setDownloadableFiles] = useState([]);
+  const [downloadModalTitle, setDownloadModalTitle] = useState("");
+
   const navigate = useNavigate();
 
   function downloadSource(source) {
@@ -56,11 +64,12 @@ export default function App() {
   function handleFileUpload(event) {
     const file = event.target.files[0];
     if (file && (file.type === "application/vnd.ms-excel" || file.type === "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")) {
-      setUploadedFile({
+      const newFile = {
         name: file.name,
         size: file.size,
         uploadDate: new Date().toISOString(),
-      });
+      };
+      setMaterialFiles(prevFiles => [...prevFiles, newFile]);
       console.log("File uploaded:", file.name);
       // Here you would typically upload the file to your server
     } else {
@@ -72,11 +81,12 @@ export default function App() {
   function handleProcessFileUpload(event) {
     const file = event.target.files[0];
     if (file && (file.type === "application/vnd.ms-excel" || file.type === "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")) {
-      setUploadedProcessFile({
+      const newFile = {
         name: file.name,
         size: file.size,
         uploadDate: new Date().toISOString(),
-      });
+      };
+      setProcessFiles(prevFiles => [...prevFiles, newFile]);
       console.log("Process file uploaded:", file.name);
       // upload logic for process cost file goes here
     } else {
@@ -84,48 +94,24 @@ export default function App() {
     }
   }
 
+  function openDownloadModal(type) {
+    if (type === 'material') {
+      setDownloadableFiles(materialFiles);
+      setDownloadModalTitle("Download Material Cost Files");
+    } else if (type === 'process') {
+      setDownloadableFiles(processFiles);
+      setDownloadModalTitle("Download Process Cost Files");
+    }
+    setIsDownloadModalOpen(true);
+  }
+
   // download process cost sample or previously uploaded process file
   function downloadProcessCost() {
-    if (!uploadedProcessFile) {
-      alert("No process cost file uploaded yet. Please upload a file first.");
-      return;
-    }
-
-    // Example CSV content for process cost (replace with real export if available)
-    const csvContent = `Process,CostType,Amount,Currency,Last Updated
-Labor,Direct,1200,USD,${new Date(uploadedProcessFile.uploadDate).toLocaleDateString()}
-FOH,Overhead,450,USD,${new Date(uploadedProcessFile.uploadDate).toLocaleDateString()}`;
-
-    const blob = new Blob([csvContent], { type: "text/csv" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = `process-cost-data-${uploadedProcessFile.name ? uploadedProcessFile.name.replace(/\.[^/.]+$/, "") : "export"}.csv`;
-    a.click();
-    URL.revokeObjectURL(url);
+    openDownloadModal('process');
   }
 
   function downloadMaterialData() {
-    if (!uploadedFile) {
-      alert("No file uploaded yet. Please upload an Excel file first.");
-      return;
-    }
-    
-    // Create sample CSV data representing the uploaded material cost data
-    const csvContent = `Part Number,Material Type,Cost per Unit,Currency,Last Updated
-51011-KK050,Steel,15.25,USD,2025-10-22
-51012-KK050,Steel,15.25,USD,2025-10-22
-51201-KK010,Aluminum,8.75,USD,2025-10-21
-51205-KK010,Plastic,2.50,USD,2025-10-20
-51206-KK020,Steel,12.80,USD,2025-10-22`;
-    
-    const blob = new Blob([csvContent], { type: "text/csv" });
-    const url = URL.createObjectURL(blob);
-    const a = document.createElement("a");
-    a.href = url;
-    a.download = "material-cost-data.csv";
-    a.click();
-    URL.revokeObjectURL(url);
+    openDownloadModal('material');
   }
 
   function downloadTemplate(type) {
@@ -334,8 +320,8 @@ FOH,Overhead,450,USD,${new Date(uploadedProcessFile.uploadDate).toLocaleDateStri
                   </a>
                 </div>
                 <div className="meta">
-                  {uploadedProcessFile ? (
-                    <>Last Update: <span>{new Date(uploadedProcessFile.uploadDate).toLocaleDateString('en-CA')}</span></>
+                  {processFiles.length > 0 ? (
+                    <>Last Update: <span>{new Date(processFiles[processFiles.length - 1].uploadDate).toLocaleDateString('en-CA')}</span></>
                   ) : (
                     <>Last Update: <span>-</span></>
                   )}
@@ -368,8 +354,8 @@ FOH,Overhead,450,USD,${new Date(uploadedProcessFile.uploadDate).toLocaleDateStri
                   <button
                     onClick={downloadProcessCost}
                     className="btn btn-primary"
-                    disabled={!uploadedProcessFile}
-                    style={!uploadedProcessFile ? { opacity: 0.5, cursor: "not-allowed" } : {}}
+                    disabled={processFiles.length === 0}
+                    style={processFiles.length === 0 ? { opacity: 0.5, cursor: "not-allowed" } : {}}
                   >
                     Download
                   </button>
@@ -393,22 +379,22 @@ FOH,Overhead,450,USD,${new Date(uploadedProcessFile.uploadDate).toLocaleDateStri
                   </a>
                 </div>
                 <div className="meta">
-                  {uploadedFile ? (
-                    <>Last Update: <span>{new Date(uploadedFile.uploadDate).toLocaleDateString('en-CA')}</span></>
+                  {materialFiles.length > 0 ? (
+                    <>Last Update: <span>{new Date(materialFiles[materialFiles.length - 1].uploadDate).toLocaleDateString('en-CA')}</span></>
                   ) : (
                     <>Last Update: <span>-</span></>
                   )}
                 </div>
-                {uploadedFile && (
+                {materialFiles.length > 0 && (
                   <div className="small" style={{ marginTop: 8 }}>
-                    File: {uploadedFile.name}
+                    File: {materialFiles[materialFiles.length - 1].name}
                   </div>
                 )}
               </div>
             
               <div className="card-footer">
                 <div className="small">
-                  {uploadedFile ? (
+                  {materialFiles.length > 0 ? (
                     <strong style={{ color: "#059669" }}>Ready</strong>
                   ) : (
                     <strong style={{ color: "#dc2626" }}>Upload Required</strong>
@@ -432,8 +418,8 @@ FOH,Overhead,450,USD,${new Date(uploadedProcessFile.uploadDate).toLocaleDateStri
                   <button
                     onClick={downloadMaterialData}
                     className="btn btn-primary"
-                    disabled={!uploadedFile}
-                    style={!uploadedFile ? { opacity: 0.5, cursor: "not-allowed" } : {}}
+                    disabled={materialFiles.length === 0}
+                    style={materialFiles.length === 0 ? { opacity: 0.5, cursor: "not-allowed" } : {}}
                   >
                     Download
                   </button>
@@ -569,6 +555,13 @@ FOH,Overhead,450,USD,${new Date(uploadedProcessFile.uploadDate).toLocaleDateStri
           console.log("Master data saved:", data);
           // Handle the saved data here if needed
         }}
+      />
+
+      <DownloadModal
+        isOpen={isDownloadModalOpen}
+        onClose={() => setIsDownloadModalOpen(false)}
+        files={downloadableFiles}
+        title={downloadModalTitle}
       />
     </div>
   );
