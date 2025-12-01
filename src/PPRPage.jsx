@@ -1,270 +1,268 @@
-import React, { useMemo, useState } from "react";
-import { useNavigate } from "react-router-dom";
-import { pprDataByPeriod } from "./data/pprSampleData";
-import PPRHeader from "./components/PPR/PPRHeader";
-import PPRToolbar from "./components/PPR/PPRToolbar";
-import PPRTable from "./components/PPR/PPRTable";
-import Pagination from "./components/Pagination";
+import React, { useMemo, useState, useEffect } from "react";
+
+const costItems = [
+  "Tooling OH",
+  "Raw Material",
+  "Labor",
+  "FOH Fix",
+  "FOH Var",
+  "Depre Common",
+  "Depre Exclusive",
+  "Total Cost",
+  "MH Cost"
+];
+
+const analysisColumns = [
+  "Volume",
+  "Inflation",
+  "CR",
+  "Material Price Impact",
+  "Gentan-I Impact",
+  "Material Change"
+];
 
 export default function PPRPage() {
-  const navigate = useNavigate();
-  const [selectedMonth, setSelectedMonth] = useState("Aug-25");
-  const [remarkValues, setRemarkValues] = useState({});
-  const [currentPage, setCurrentPage] = useState(1);
-  const [partNoFilter, setPartNoFilter] = useState("");
-  const [appliedPartNoFilter, setAppliedPartNoFilter] = useState("");
-  const recordsPerPage = 10;
-  const threshold = 10; // 10% threshold
+  const [mspData, setMspData] = useState([]);
+  const [selectedPeriod, setSelectedPeriod] = useState("2025-02");
+  const [comparisonPeriod, setComparisonPeriod] = useState("2024-08");
+  const [analysisData, setAnalysisData] = useState({});
 
-  const [qualityGates, setQualityGates] = useState({
-    rhLhFilter: false,
-    plantMhRate: false,
-    partNoFilter: false,
-  });
+  useEffect(() => {
+    fetch("/msp.json")
+      .then((res) => res.json())
+      .then((data) => {
+        setMspData(data.items || []);
+      })
+      .catch((err) => console.error("Failed to load msp.json:", err));
+  }, []);
 
-  const toggleQualityGate = (gate) => {
-    setQualityGates((prev) => {
-      const newState = {
-        rhLhFilter: false,
-        plantMhRate: false,
-        partNoFilter: false,
-      };
-      if (!prev[gate]) {
-        newState[gate] = true;
-      } else {
-        if (gate === "partNoFilter") {
-          setAppliedPartNoFilter("");
-          setPartNoFilter("");
-        }
+  const costItemKeys = {
+    "Tooling OH": "tooling_oh",
+    "Raw Material": "raw_material",
+    "Labor": "labor",
+    "FOH Fix": "foh_fixed",
+    "FOH Var": "foh_var",
+    "Depre Common": "depre_common",
+    "Depre Exclusive": "depre_exclusive",
+    "Total Cost": "total_cost",
+    "MH Cost": "mh_cost"
+  };
+
+  const getCostValue = (part, period, costItem) => {
+    if (!part.months || !part.months[period]) return null;
+    const key = costItemKeys[costItem];
+    return part.months[period][key];
+  };
+
+  const calculateDiff = (current, previous) => {
+    if (!current || !previous) return null;
+    return ((current - previous) / previous) * 100;
+  };
+
+  const handleAnalysisChange = (partNo, costItem, column, value) => {
+    const key = `${partNo}-${costItem}-${column}`;
+    setAnalysisData(prev => ({
+      ...prev,
+      [key]: value
+    }));
+  };
+
+  const getAnalysisValue = (partNo, costItem, column) => {
+    const key = `${partNo}-${costItem}-${column}`;
+    return analysisData[key] || "";
+  };
+
+  const availablePeriods = useMemo(() => {
+    const periods = new Set();
+    mspData.forEach(item => {
+      if (item.months) {
+        Object.keys(item.months).forEach(month => periods.add(month));
       }
-      return newState;
     });
-  };
-
-  const exchangeRates = {
-    "Aug-25": "15,650",
-    "Jul-25": "15,420",
-    "Jun-25": "15,890",
-  };
-
-  const rows = useMemo(() => {
-    let data = pprDataByPeriod[selectedMonth] || [];
-    if (qualityGates.partNoFilter && appliedPartNoFilter) {
-      data = data.filter((item) =>
-        item.partNo.includes(appliedPartNoFilter)
-      );
-    }
-    if (qualityGates.rhLhFilter) {
-      data = data.filter((item) => {
-        const partName = item.partName.toUpperCase();
-        return partName.endsWith(" RH") || partName.endsWith(" LH");
-      });
-      data = data.sort((a, b) => {
-        const baseName_a = a.partName
-          .replace(/ (RH|LH)$/, "")
-          .toUpperCase();
-        const baseName_b = b.partName
-          .replace(/ (RH|LH)$/, "")
-          .toUpperCase();
-        if (baseName_a === baseName_b) {
-          return a.partName.includes("RH") ? -1 : 1;
-        }
-        return baseName_a.localeCompare(baseName_b);
-      });
-    }
-    const dataWithAveragedCost = data.map((item, index, arr) => {
-      const partName = item.partName.toUpperCase();
-      const hasRh = partName.endsWith(" RH");
-      const hasLh = partName.endsWith(" LH");
-      if (hasRh || hasLh) {
-        const baseName = item.partName
-          .replace(/ (RH|LH)$/, "")
-          .toUpperCase();
-        const rhPart = arr.find(
-          (p) => p.partName.toUpperCase() === `${baseName} RH`
-        );
-        const lhPart = arr.find(
-          (p) => p.partName.toUpperCase() === `${baseName} LH`
-        );
-        if (rhPart && lhPart) {
-          const averaged_cost = (rhPart.totalCost + lhPart.totalCost) / 2;
-          return { ...item, averaged_cost };
-        }
-      }
-      return { ...item, averaged_cost: item.totalCost };
-    });
-    return dataWithAveragedCost;
-  }, [
-    selectedMonth,
-    qualityGates.rhLhFilter,
-    qualityGates.partNoFilter,
-    appliedPartNoFilter,
-  ]);
-
-  const totalRecords = rows.length;
-  const totalPages = Math.ceil(totalRecords / recordsPerPage);
-  const startIndex = (currentPage - 1) * recordsPerPage;
-  const endIndex = startIndex + recordsPerPage;
-  const currentRecords = rows.slice(startIndex, endIndex);
-
-  const goToPage = (page) => {
-    setCurrentPage(Math.max(1, Math.min(page, totalPages)));
-  };
-
-  const isOutsideThreshold = (diff) => {
-    return Math.abs(diff) > threshold;
-  };
-
-  const shouldShowRedTriangle = (part) => {
-    const partName = part.partName.toUpperCase();
-    const hasRhLh = partName.includes(" RH") || partName.includes(" LH");
-    const priceDiff = part.totalCost !== part.prevPeriod;
-    return qualityGates.rhLhFilter && hasRhLh && priceDiff;
-  };
-
-  const getRemarkValue = (partNo, originalRemark) => {
-    return remarkValues[partNo] !== undefined
-      ? remarkValues[partNo]
-      : originalRemark;
-  };
-
-  const handleRemarkSave = (partNo, value) => {
-    setRemarkValues((prev) => ({ ...prev, [partNo]: value }));
-  };
-
-  const handleDetailClick = (part) => {
-    const comparisonPeriod = "Jul-25"; // This should be dynamic in a real app
-    navigate(`/cost-movement-detail/${part.partNo}`, {
-      state: {
-        part: part,
-        currentPeriod: selectedMonth,
-        comparisonPeriod: comparisonPeriod,
-      },
-    });
-  };
+    return Array.from(periods).sort().reverse();
+  }, [mspData]);
 
   return (
-    <div style={{ padding: 20 }}>
-      <div style={{ maxWidth: "95vw", margin: "0 auto" }}>
-        <div
-          style={{
-            display: "flex",
-            justifyContent: "space-between",
-            alignItems: "flex-start",
-            gap: 12,
-          }}
-        >
-          <PPRHeader
-            qualityGates={qualityGates}
-            toggleQualityGate={toggleQualityGate}
-            partNoFilter={partNoFilter}
-            setPartNoFilter={setPartNoFilter}
-            setAppliedPartNoFilter={setAppliedPartNoFilter}
-          />
-          <PPRToolbar
-            selectedMonth={selectedMonth}
-            setSelectedMonth={setSelectedMonth}
-            setCurrentPage={setCurrentPage}
-            exchangeRates={exchangeRates}
-          />
+    <div style={{ padding: 20, background: "#fff" }}>
+      <div style={{ marginBottom: 20 }}>
+        <h1 style={{ margin: "0 0 12px 0", fontSize: 20, fontWeight: 600 }}>
+          Cost Analysis Report
+        </h1>
+        <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
+          <div>
+            <label style={{ fontSize: 12, color: "#666", marginRight: 8 }}>
+              Period:
+            </label>
+            <select
+              value={selectedPeriod}
+              onChange={(e) => setSelectedPeriod(e.target.value)}
+              style={{
+                padding: "6px 10px",
+                borderRadius: 4,
+                border: "1px solid #d1d5db",
+                fontSize: 12
+              }}
+            >
+              {availablePeriods.map(period => (
+                <option key={period} value={period}>{period}</option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label style={{ fontSize: 12, color: "#666", marginRight: 8 }}>
+              Compare with:
+            </label>
+            <select
+              value={comparisonPeriod}
+              onChange={(e) => setComparisonPeriod(e.target.value)}
+              style={{
+                padding: "6px 10px",
+                borderRadius: 4,
+                border: "1px solid #d1d5db",
+                fontSize: 12
+              }}
+            >
+              {availablePeriods.map(period => (
+                <option key={period} value={period}>{period}</option>
+              ))}
+            </select>
+          </div>
         </div>
+      </div>
 
-        <div style={{ height: 16 }} />
+      <div style={{ overflowX: "auto", background: "#fff" }}>
+        <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 12 }}>
+          <thead>
+            <tr style={{ background: "#e8f1f7", borderBottom: "2px solid #d1d5db" }}>
+              <th style={{ ...thStyle, minWidth: 120, background: "#d9e8f5" }}>Part No</th>
+              <th style={{ ...thStyle, minWidth: 150, background: "#d9e8f5" }}>Cost Item</th>
+              
+              {/* Calculation section */}
+              <th colSpan={6} style={{ textAlign: "center", padding: "8px", background: "#a8d8f0", fontWeight: 600, borderBottom: "1px solid #d1d5db" }}>
+                Calculation
+              </th>
+              
+              {/* Analysis section */}
+              <th colSpan={analysisColumns.length} style={{ textAlign: "center", padding: "8px", background: "#f5d5a8", fontWeight: 600, borderBottom: "1px solid #d1d5db" }}>
+                Analysis
+              </th>
+            </tr>
+            <tr style={{ borderBottom: "1px solid #d1d5db" }}>
+              <th style={{ ...thStyle, minWidth: 120 }}></th>
+              <th style={{ ...thStyle, minWidth: 150 }}></th>
+              <th style={{ ...thStyle, minWidth: 100 }}>{selectedPeriod}</th>
+              <th style={{ ...thStyle, minWidth: 100 }}>{comparisonPeriod}</th>
+              <th style={{ ...thStyle, minWidth: 80 }}>diff %</th>
+              <th style={{ ...thStyle, minWidth: 80 }}>PBMD</th>
+              <th style={{ ...thStyle, minWidth: 100 }}>Adj Value</th>
+              <th style={{ ...thStyle, minWidth: 100 }}>Remark</th>
+              {analysisColumns.map(col => (
+                <th key={col} style={{ ...thStyle, minWidth: 100 }}>{col}</th>
+              ))}
+            </tr>
+          </thead>
+          <tbody>
+            {mspData.map((part) => (
+              costItems.map((costItem, idx) => {
+                const currentValue = getCostValue(part, selectedPeriod, costItem);
+                const previousValue = getCostValue(part, comparisonPeriod, costItem);
+                const diffPercent = calculateDiff(currentValue, previousValue);
+                const isLastRow = idx === costItems.length - 1;
 
-        <PPRTable
-          currentRecords={currentRecords}
-          startIndex={startIndex}
-          isOutsideThreshold={isOutsideThreshold}
-          getRemarkValue={getRemarkValue}
-          handleRemarkSave={handleRemarkSave}
-          handleDetailClick={handleDetailClick}
-          shouldShowRedTriangle={shouldShowRedTriangle}
-        />
-
-        <Pagination
-          currentPage={currentPage}
-          totalPages={totalPages}
-          goToPage={goToPage}
-          totalRecords={totalRecords}
-          startIndex={startIndex}
-          endIndex={endIndex}
-        />
+                return (
+                  <tr
+                    key={`${part.part_no}-${costItem}`}
+                    style={{
+                      borderBottom: isLastRow ? "3px solid #d1d5db" : "1px solid #e5e7eb",
+                      background: idx % 2 === 0 ? "#fafafa" : "#fff"
+                    }}
+                  >
+                    {idx === 0 && (
+                      <td
+                        rowSpan={costItems.length}
+                        style={{
+                          ...tdStyle,
+                          fontWeight: 600,
+                          background: "#e8f1f7",
+                          verticalAlign: "top",
+                          borderRight: "2px solid #d1d5db"
+                        }}
+                      >
+                        {part.part_no}
+                      </td>
+                    )}
+                    <td style={{ ...tdStyle, fontWeight: 500, borderRight: "1px solid #e5e7eb" }}>
+                      {costItem}
+                    </td>
+                    <td style={{ ...tdStyle, textAlign: "right" }}>
+                      {currentValue ? currentValue.toLocaleString() : "-"}
+                    </td>
+                    <td style={{ ...tdStyle, textAlign: "right", background: "#f0f0f0" }}>
+                      {previousValue ? previousValue.toLocaleString() : "-"}
+                    </td>
+                    <td style={{
+                      ...tdStyle,
+                      textAlign: "right",
+                      color: diffPercent && Math.abs(diffPercent) > 15 ? "#dc2626" : "inherit",
+                      fontWeight: diffPercent && Math.abs(diffPercent) > 15 ? 600 : "normal"
+                    }}>
+                      {diffPercent ? `${diffPercent.toFixed(2)}%` : "-"}
+                    </td>
+                    <td style={{ ...tdStyle, textAlign: "center" }}>
+                      <input
+                        type="text"
+                        placeholder="-"
+                        style={{ width: "100%", padding: "4px", border: "1px solid #d1d5db", borderRadius: 3, fontSize: 11 }}
+                      />
+                    </td>
+                    <td style={{ ...tdStyle, textAlign: "center" }}>
+                      <input
+                        type="text"
+                        placeholder="-"
+                        style={{ width: "100%", padding: "4px", border: "1px solid #d1d5db", borderRadius: 3, fontSize: 11 }}
+                      />
+                    </td>
+                    <td style={{ ...tdStyle, textAlign: "center" }}>
+                      <input
+                        type="text"
+                        placeholder="-"
+                        style={{ width: "100%", padding: "4px", border: "1px solid #d1d5db", borderRadius: 3, fontSize: 11 }}
+                      />
+                    </td>
+                    {analysisColumns.map(col => (
+                      <td key={col} style={{ ...tdStyle, textAlign: "center" }}>
+                        <input
+                          type="text"
+                          placeholder="-"
+                          value={getAnalysisValue(part.part_no, costItem, col)}
+                          onChange={(e) => handleAnalysisChange(part.part_no, costItem, col, e.target.value)}
+                          style={{ width: "100%", padding: "4px", border: "1px solid #d1d5db", borderRadius: 3, fontSize: 11 }}
+                        />
+                      </td>
+                    ))}
+                  </tr>
+                );
+              })
+            ))}
+          </tbody>
+        </table>
       </div>
     </div>
   );
 }
 
-/* helpers and styles */
-const headerBandStyle = (bg) => ({
-  background: bg,
-  height: 18,
-  borderTop: "3px solid rgba(0,0,0,0.08)",
-});
-
-const thSticky = {
-  position: "sticky",
-  top: 0,
-  zIndex: 10,
+const thStyle = {
   padding: "8px 10px",
-  textAlign: "left",
-  fontSize: 12,
+  textAlign: "center",
+  fontWeight: 600,
   color: "#0b1220",
-  fontWeight: 700,
-  borderBottom: "1px solid rgba(0,0,0,0.06)"
+  fontSize: 12,
+  borderRight: "1px solid #d1d5db"
 };
 
-const filterInputStyle = {
-  width: "100%",
-  padding: "6px 8px",
-  borderRadius: 6,
-  border: "1px solid rgba(0,0,0,0.06)",
-};
-
-const filterSelectStyle = {
-  padding: "6px 8px",
-  borderRadius: 6,
-  border: "1px solid rgba(0,0,0,0.06)",
-};
-
-const filterThStyle = {
-  padding: "6px 8px",
-  textAlign: "left",
-  minWidth: 80
-};
-
-const td = { padding: "8px 10px", fontSize: 13, color: "#111827" };
-
-// Background color for "Prev" data columns
-const tdPrev = { ...td, backgroundColor: "#f5f5f5" };
-
-// Helper function to get style for percentage diff based on threshold
-const getTdDiffStyle = (diffValue) => {
-  if (diffValue !== null && Math.abs(diffValue) > 15) {
-    return { ...td, color: "red", fontWeight: "bold" };
-  }
-  return td;
-};
-
-const formatNumber = (v) => {
-  if (v == null || v === "") return "-";
-  // shows with thousand separators and 3 decimals if float
-  if (typeof v === "number") return v.toLocaleString(undefined, { minimumFractionDigits: 3, maximumFractionDigits: 3 });
-  return v;
-};
-
-const formatPercentage = (v) => {
-  if (v == null || v === "") return "-";
-  if (typeof v === "number") {
-    const formatted = v.toFixed(2);
-    return v >= 0 ? `+${formatted}%` : `${formatted}%`;
-  }
-  return v;
-};
-
-const calculatePercentageDiff = (current, previous) => {
-  if (!current || !previous || current === "" || previous === "") return null;
-  const currentNum = typeof current === "string" ? parseFloat(current) : current;
-  const prevNum = typeof previous === "string" ? parseFloat(previous) : previous;
-  if (isNaN(currentNum) || isNaN(prevNum) || prevNum === 0) return null;
-  return ((currentNum - prevNum) / prevNum) * 100;
+const tdStyle = {
+  padding: "8px 10px",
+  fontSize: 12,
+  color: "#374151",
+  borderRight: "1px solid #e5e7eb"
 };
