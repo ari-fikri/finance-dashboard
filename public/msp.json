@@ -11,6 +11,8 @@
           "raw_material": 3322,
           "labor": 3901,
           "depre_common": 3527,
+          "depre_exclusive": 529,
+          "mh_cost": 390,
           "total_cost": 21659
         },
         "2025-02": {
@@ -21,6 +23,8 @@
           "raw_material": 3427,
           "labor": 3694,
           "depre_common": 3510,
+          "depre_exclusive": 527,
+          "mh_cost": 369,
           "total_cost": 20725
         },
         "pbmd_values": {
@@ -31,6 +35,8 @@
           "raw_material": 3427,
           "labor": 3694,
           "depre_common": 3510,
+          "depre_exclusive": 527,
+          "mh_cost": 369,
           "total_cost": 20725
         },
         "adj_values": {
@@ -41,9 +47,85 @@
           "raw_material": 3427,
           "labor": 3694,
           "depre_common": 3510,
+          "depre_exclusive": 527,
+          "mh_cost": 369,
           "total_cost": 20725
+        },
+        "volume": {
+          "std_cost": 11347,
+          "foh_var": 3447,
+          "foh_fixed": 3585,
+          "tooling_oh": 3583,
+          "raw_material": 3411,
+          "labor": 3681,
+          "depre_common": 3502,
+          "depre_exclusive": 527,
+          "mh_cost": 369,
+          "total_cost": 20760
+        },
+        "inflation": {
+          "std_cost": 11355,
+          "foh_var": 3449,
+          "foh_fixed": 3588,
+          "tooling_oh": 3586,
+          "raw_material": 3413,
+          "labor": 3684,
+          "depre_common": 3505,
+          "depre_exclusive": 527,
+          "mh_cost": 369,
+          "total_cost": 20775
+        },
+        "CR": {
+          "std_cost": 11363,
+          "foh_var": 3452,
+          "foh_fixed": 3590,
+          "tooling_oh": 3588,
+          "raw_material": 3415,
+          "labor": 3686,
+          "depre_common": 3507,
+          "depre_exclusive": 527,
+          "mh_cost": 370,
+          "total_cost": 20789
+        },
+        "material_price_impact": {
+          "std_cost": 11371,
+          "foh_var": 3454,
+          "foh_fixed": 3593,
+          "tooling_oh": 3591,
+          "raw_material": 3418,
+          "labor": 3689,
+          "depre_common": 3510,
+          "depre_exclusive": 528,
+          "mh_cost": 370,
+          "total_cost": 20804
+        },
+        "gentan_i_impact": {
+          "std_cost": 11379,
+          "foh_var": 3456,
+          "foh_fixed": 3595,
+          "tooling_oh": 3593,
+          "raw_material": 3420,
+          "labor": 3691,
+          "depre_common": 3512,
+          "depre_exclusive": 528,
+          "mh_cost": 370,
+          "total_cost": 20818
+        },
+        "material_change": {
+          "std_cost": 11387,
+          "foh_var": 3459,
+          "foh_fixed": 3598,
+          "tooling_oh": 3596,
+          "raw_material": 3423,
+          "labor": 3694,
+          "depre_common": 3515,
+          "depre_exclusive": 528,
+          "mh_cost": 370,
+          "total_cost": 20833
         }
-      }
+      },
+      "importer": "TAR",
+      "category": "H2V"
     },
     {
       "part_no": "51400-KS6-305",
@@ -56,6 +138,8 @@
           "raw_material": 7428,
           "labor": 7793,
           "depre_common": 7690,
+          "depre_exclusive": 1154,
+          "mh_cost": 779,
           "total_cost": 44331
         },
         "2025-02": {
@@ -66,9 +150,109 @@
           "raw_material": 7592,
           "labor": 7930,
           "depre_common": 7455,
+          "depre_exclusive": 1120,
+          "mh_cost": 793,
           "total_cost": 45399
+        },
+        "pbmd_values": {
+          "std_cost": 19890,
+          "foh_var": 7842,
+          "foh_fixed": 7350,
+          "tooling_oh": 7230,
+          "raw_material": 7592,
+          "labor": 7930,
+          "depre_common": 7455,
+          "depre_exclusive": 1120,
+          "mh_cost": 793,
+          "total_cost": 45399
+        },
+        "adj_values": {
+          "std_cost": 19890,
+          "foh_var": 7842,
+          "foh_fixed": 7350,
+          "tooling_oh": 7230,
+          "raw_material": 7592,
+          "labor": 7930,
+          "depre_common": 7455,
+          "depre_exclusive": 1120,
+          "mh_cost": 793,
+          "total_cost": 45399
+        },
+        "volume": {
+          "std_cost": 19697,
+          "foh_var": 7776,
+          "foh_fixed": 7298,
+          "tooling_oh": 7188,
+          "raw_material": 7558,
+          "labor": 7905,
+          "depre_common": 7441,
+          "depre_exclusive": 1119,
+          "mh_cost": 794,
+          "total_cost": 45490
+        },
+        "inflation": {
+          "std_cost": 19711,
+          "foh_var": 7782,
+          "foh_fixed": 7303,
+          "tooling_oh": 7193,
+          "raw_material": 7563,
+          "labor": 7910,
+          "depre_common": 7446,
+          "depre_exclusive": 1120,
+          "mh_cost": 794,
+          "total_cost": 45522
+        },
+        "CR": {
+          "std_cost": 19725,
+          "foh_var": 7787,
+          "foh_fixed": 7308,
+          "tooling_oh": 7198,
+          "raw_material": 7568,
+          "labor": 7916,
+          "depre_common": 7451,
+          "depre_exclusive": 1121,
+          "mh_cost": 795,
+          "total_cost": 45553
+        },
+        "material_price_impact": {
+          "std_cost": 19739,
+          "foh_var": 7793,
+          "foh_fixed": 7313,
+          "tooling_oh": 7203,
+          "raw_material": 7574,
+          "labor": 7921,
+          "depre_common": 7456,
+          "depre_exclusive": 1122,
+          "mh_cost": 795,
+          "total_cost": 45585
+        },
+        "gentan_i_impact": {
+          "std_cost": 19753,
+          "foh_var": 7798,
+          "foh_fixed": 7318,
+          "tooling_oh": 7208,
+          "raw_material": 7579,
+          "labor": 7927,
+          "depre_common": 7462,
+          "depre_exclusive": 1122,
+          "mh_cost": 796,
+          "total_cost": 45617
+        },
+        "material_change": {
+          "std_cost": 19767,
+          "foh_var": 7804,
+          "foh_fixed": 7324,
+          "tooling_oh": 7213,
+          "raw_material": 7584,
+          "labor": 7932,
+          "depre_common": 7467,
+          "depre_exclusive": 1123,
+          "mh_cost": 796,
+          "total_cost": 45649
         }
-      }
+      },
+      "importer": "TDM",
+      "category": "ICE"
     },
     {
       "part_no": "52400-KYZ-902",
@@ -81,6 +265,8 @@
           "raw_material": 6509,
           "labor": 6315,
           "depre_common": 6067,
+          "depre_exclusive": 910,
+          "mh_cost": 632,
           "total_cost": 37865
         },
         "2025-02": {
@@ -91,9 +277,109 @@
           "raw_material": 6430,
           "labor": 6484,
           "depre_common": 5936,
+          "depre_exclusive": 890,
+          "mh_cost": 648,
           "total_cost": 37446
+        },
+        "pbmd_values": {
+          "std_cost": 15877,
+          "foh_var": 6074,
+          "foh_fixed": 6620,
+          "tooling_oh": 5902,
+          "raw_material": 6430,
+          "labor": 6484,
+          "depre_common": 5936,
+          "depre_exclusive": 890,
+          "mh_cost": 648,
+          "total_cost": 37446
+        },
+        "adj_values": {
+          "std_cost": 15877,
+          "foh_var": 6074,
+          "foh_fixed": 6620,
+          "tooling_oh": 5902,
+          "raw_material": 6430,
+          "labor": 6484,
+          "depre_common": 5936,
+          "depre_exclusive": 890,
+          "mh_cost": 648,
+          "total_cost": 37446
+        },
+        "volume": {
+          "std_cost": 15728,
+          "foh_var": 6025,
+          "foh_fixed": 6575,
+          "tooling_oh": 5870,
+          "raw_material": 6403,
+          "labor": 6465,
+          "depre_common": 5927,
+          "depre_exclusive": 890,
+          "mh_cost": 649,
+          "total_cost": 37532
+        },
+        "inflation": {
+          "std_cost": 15739,
+          "foh_var": 6029,
+          "foh_fixed": 6580,
+          "tooling_oh": 5874,
+          "raw_material": 6407,
+          "labor": 6470,
+          "depre_common": 5931,
+          "depre_exclusive": 890,
+          "mh_cost": 649,
+          "total_cost": 37558
+        },
+        "CR": {
+          "std_cost": 15750,
+          "foh_var": 6033,
+          "foh_fixed": 6584,
+          "tooling_oh": 5878,
+          "raw_material": 6412,
+          "labor": 6474,
+          "depre_common": 5935,
+          "depre_exclusive": 891,
+          "mh_cost": 650,
+          "total_cost": 37585
+        },
+        "material_price_impact": {
+          "std_cost": 15761,
+          "foh_var": 6038,
+          "foh_fixed": 6589,
+          "tooling_oh": 5882,
+          "raw_material": 6416,
+          "labor": 6479,
+          "depre_common": 5939,
+          "depre_exclusive": 892,
+          "mh_cost": 650,
+          "total_cost": 37611
+        },
+        "gentan_i_impact": {
+          "std_cost": 15772,
+          "foh_var": 6042,
+          "foh_fixed": 6594,
+          "tooling_oh": 5886,
+          "raw_material": 6421,
+          "labor": 6483,
+          "depre_common": 5943,
+          "depre_exclusive": 892,
+          "mh_cost": 650,
+          "total_cost": 37637
+        },
+        "material_change": {
+          "std_cost": 15783,
+          "foh_var": 6046,
+          "foh_fixed": 6598,
+          "tooling_oh": 5890,
+          "raw_material": 6425,
+          "labor": 6488,
+          "depre_common": 5947,
+          "depre_exclusive": 893,
+          "mh_cost": 651,
+          "total_cost": 37663
         }
-      }
+      },
+      "importer": "TASA",
+      "category": "ICE"
     },
     {
       "part_no": "51400-KGN-901",
@@ -106,6 +392,8 @@
           "raw_material": 6909,
           "labor": 7894,
           "depre_common": 7187,
+          "depre_exclusive": 1078,
+          "mh_cost": 789,
           "total_cost": 44569
         },
         "2025-02": {
@@ -116,9 +404,109 @@
           "raw_material": 7010,
           "labor": 7805,
           "depre_common": 7055,
+          "depre_exclusive": 1058,
+          "mh_cost": 781,
           "total_cost": 44073
+        },
+        "pbmd_values": {
+          "std_cost": 18810,
+          "foh_var": 7268,
+          "foh_fixed": 7644,
+          "tooling_oh": 7291,
+          "raw_material": 7010,
+          "labor": 7805,
+          "depre_common": 7055,
+          "depre_exclusive": 1058,
+          "mh_cost": 781,
+          "total_cost": 44073
+        },
+        "adj_values": {
+          "std_cost": 18810,
+          "foh_var": 7268,
+          "foh_fixed": 7644,
+          "tooling_oh": 7291,
+          "raw_material": 7010,
+          "labor": 7805,
+          "depre_common": 7055,
+          "depre_exclusive": 1058,
+          "mh_cost": 781,
+          "total_cost": 44073
+        },
+        "volume": {
+          "std_cost": 18639,
+          "foh_var": 7211,
+          "foh_fixed": 7594,
+          "tooling_oh": 7253,
+          "raw_material": 6983,
+          "labor": 7785,
+          "depre_common": 7046,
+          "depre_exclusive": 1058,
+          "mh_cost": 782,
+          "total_cost": 44188
+        },
+        "inflation": {
+          "std_cost": 18652,
+          "foh_var": 7216,
+          "foh_fixed": 7600,
+          "tooling_oh": 7258,
+          "raw_material": 6988,
+          "labor": 7790,
+          "depre_common": 7051,
+          "depre_exclusive": 1059,
+          "mh_cost": 783,
+          "total_cost": 44218
+        },
+        "CR": {
+          "std_cost": 18665,
+          "foh_var": 7221,
+          "foh_fixed": 7605,
+          "tooling_oh": 7263,
+          "raw_material": 6992,
+          "labor": 7796,
+          "depre_common": 7056,
+          "depre_exclusive": 1059,
+          "mh_cost": 783,
+          "total_cost": 44249
+        },
+        "material_price_impact": {
+          "std_cost": 18678,
+          "foh_var": 7227,
+          "foh_fixed": 7610,
+          "tooling_oh": 7268,
+          "raw_material": 6997,
+          "labor": 7801,
+          "depre_common": 7061,
+          "depre_exclusive": 1060,
+          "mh_cost": 784,
+          "total_cost": 44280
+        },
+        "gentan_i_impact": {
+          "std_cost": 18691,
+          "foh_var": 7232,
+          "foh_fixed": 7616,
+          "tooling_oh": 7274,
+          "raw_material": 7002,
+          "labor": 7807,
+          "depre_common": 7066,
+          "depre_exclusive": 1061,
+          "mh_cost": 784,
+          "total_cost": 44311
+        },
+        "material_change": {
+          "std_cost": 18705,
+          "foh_var": 7237,
+          "foh_fixed": 7621,
+          "tooling_oh": 7279,
+          "raw_material": 7007,
+          "labor": 7812,
+          "depre_common": 7071,
+          "depre_exclusive": 1062,
+          "mh_cost": 785,
+          "total_cost": 44342
         }
-      }
+      },
+      "importer": "TMT",
+      "category": "H2V"
     },
     {
       "part_no": "51401-KWW-641",
@@ -131,6 +519,8 @@
           "raw_material": 6240,
           "labor": 6004,
           "depre_common": 6942,
+          "depre_exclusive": 1041,
+          "mh_cost": 600,
           "total_cost": 39961
         },
         "2025-02": {
@@ -141,9 +531,109 @@
           "raw_material": 6050,
           "labor": 6551,
           "depre_common": 6890,
+          "depre_exclusive": 1034,
+          "mh_cost": 655,
           "total_cost": 41135
+        },
+        "pbmd_values": {
+          "std_cost": 17109,
+          "foh_var": 7204,
+          "foh_fixed": 7740,
+          "tooling_oh": 6750,
+          "raw_material": 6050,
+          "labor": 6551,
+          "depre_common": 6890,
+          "depre_exclusive": 1034,
+          "mh_cost": 655,
+          "total_cost": 41135
+        },
+        "adj_values": {
+          "std_cost": 17109,
+          "foh_var": 7204,
+          "foh_fixed": 7740,
+          "tooling_oh": 6750,
+          "raw_material": 6050,
+          "labor": 6551,
+          "depre_common": 6890,
+          "depre_exclusive": 1034,
+          "mh_cost": 655,
+          "total_cost": 41135
+        },
+        "volume": {
+          "std_cost": 16958,
+          "foh_var": 7150,
+          "foh_fixed": 7692,
+          "tooling_oh": 6717,
+          "raw_material": 6028,
+          "labor": 6536,
+          "depre_common": 6883,
+          "depre_exclusive": 1034,
+          "mh_cost": 656,
+          "total_cost": 41254
+        },
+        "inflation": {
+          "std_cost": 16970,
+          "foh_var": 7155,
+          "foh_fixed": 7697,
+          "tooling_oh": 6722,
+          "raw_material": 6032,
+          "labor": 6541,
+          "depre_common": 6888,
+          "depre_exclusive": 1035,
+          "mh_cost": 657,
+          "total_cost": 41283
+        },
+        "CR": {
+          "std_cost": 16982,
+          "foh_var": 7160,
+          "foh_fixed": 7703,
+          "tooling_oh": 6726,
+          "raw_material": 6037,
+          "labor": 6545,
+          "depre_common": 6893,
+          "depre_exclusive": 1036,
+          "mh_cost": 657,
+          "total_cost": 41312
+        },
+        "material_price_impact": {
+          "std_cost": 16994,
+          "foh_var": 7165,
+          "foh_fixed": 7708,
+          "tooling_oh": 6731,
+          "raw_material": 6041,
+          "labor": 6550,
+          "depre_common": 6898,
+          "depre_exclusive": 1036,
+          "mh_cost": 657,
+          "total_cost": 41341
+        },
+        "gentan_i_impact": {
+          "std_cost": 17006,
+          "foh_var": 7170,
+          "foh_fixed": 7714,
+          "tooling_oh": 6736,
+          "raw_material": 6045,
+          "labor": 6554,
+          "depre_common": 6902,
+          "depre_exclusive": 1037,
+          "mh_cost": 658,
+          "total_cost": 41369
+        },
+        "material_change": {
+          "std_cost": 17018,
+          "foh_var": 7175,
+          "foh_fixed": 7719,
+          "tooling_oh": 6741,
+          "raw_material": 6049,
+          "labor": 6559,
+          "depre_common": 6907,
+          "depre_exclusive": 1038,
+          "mh_cost": 658,
+          "total_cost": 41398
         }
-      }
+      },
+      "importer": "TAR",
+      "category": "ICE"
     },
     {
       "part_no": "51401-KWW-643",
@@ -156,6 +646,8 @@
           "raw_material": 7063,
           "labor": 6060,
           "depre_common": 6702,
+          "depre_exclusive": 1005,
+          "mh_cost": 606,
           "total_cost": 39345
         },
         "2025-02": {
@@ -166,9 +658,109 @@
           "raw_material": 6884,
           "labor": 6448,
           "depre_common": 6987,
+          "depre_exclusive": 1048,
+          "mh_cost": 645,
           "total_cost": 40522
+        },
+        "pbmd_values": {
+          "std_cost": 15455,
+          "foh_var": 6711,
+          "foh_fixed": 6660,
+          "tooling_oh": 6832,
+          "raw_material": 6884,
+          "labor": 6448,
+          "depre_common": 6987,
+          "depre_exclusive": 1048,
+          "mh_cost": 645,
+          "total_cost": 40522
+        },
+        "adj_values": {
+          "std_cost": 15455,
+          "foh_var": 6711,
+          "foh_fixed": 6660,
+          "tooling_oh": 6832,
+          "raw_material": 6884,
+          "labor": 6448,
+          "depre_common": 6987,
+          "depre_exclusive": 1048,
+          "mh_cost": 645,
+          "total_cost": 40522
+        },
+        "volume": {
+          "std_cost": 15324,
+          "foh_var": 6663,
+          "foh_fixed": 6621,
+          "tooling_oh": 6801,
+          "raw_material": 6861,
+          "labor": 6435,
+          "depre_common": 6982,
+          "depre_exclusive": 1049,
+          "mh_cost": 646,
+          "total_cost": 40652
+        },
+        "inflation": {
+          "std_cost": 15334,
+          "foh_var": 6667,
+          "foh_fixed": 6625,
+          "tooling_oh": 6805,
+          "raw_material": 6866,
+          "labor": 6440,
+          "depre_common": 6987,
+          "depre_exclusive": 1049,
+          "mh_cost": 647,
+          "total_cost": 40680
+        },
+        "CR": {
+          "std_cost": 15345,
+          "foh_var": 6672,
+          "foh_fixed": 6630,
+          "tooling_oh": 6810,
+          "raw_material": 6871,
+          "labor": 6444,
+          "depre_common": 6992,
+          "depre_exclusive": 1050,
+          "mh_cost": 647,
+          "total_cost": 40708
+        },
+        "material_price_impact": {
+          "std_cost": 15356,
+          "foh_var": 6677,
+          "foh_fixed": 6635,
+          "tooling_oh": 6815,
+          "raw_material": 6876,
+          "labor": 6449,
+          "depre_common": 6997,
+          "depre_exclusive": 1051,
+          "mh_cost": 648,
+          "total_cost": 40737
+        },
+        "gentan_i_impact": {
+          "std_cost": 15367,
+          "foh_var": 6681,
+          "foh_fixed": 6639,
+          "tooling_oh": 6820,
+          "raw_material": 6881,
+          "labor": 6453,
+          "depre_common": 7002,
+          "depre_exclusive": 1052,
+          "mh_cost": 648,
+          "total_cost": 40765
+        },
+        "material_change": {
+          "std_cost": 15378,
+          "foh_var": 6686,
+          "foh_fixed": 6644,
+          "tooling_oh": 6824,
+          "raw_material": 6885,
+          "labor": 6458,
+          "depre_common": 7007,
+          "depre_exclusive": 1052,
+          "mh_cost": 648,
+          "total_cost": 40793
         }
-      }
+      },
+      "importer": "KUO",
+      "category": "ICE"
     },
     {
       "part_no": "51402-KYZ-902",
@@ -181,6 +773,8 @@
           "raw_material": 2987,
           "labor": 2769,
           "depre_common": 3311,
+          "depre_exclusive": 497,
+          "mh_cost": 277,
           "total_cost": 17881
         },
         "2025-02": {
@@ -191,9 +785,109 @@
           "raw_material": 3101,
           "labor": 2980,
           "depre_common": 3370,
+          "depre_exclusive": 506,
+          "mh_cost": 298,
           "total_cost": 19162
+        },
+        "pbmd_values": {
+          "std_cost": 9437,
+          "foh_var": 3203,
+          "foh_fixed": 3120,
+          "tooling_oh": 3388,
+          "raw_material": 3101,
+          "labor": 2980,
+          "depre_common": 3370,
+          "depre_exclusive": 506,
+          "mh_cost": 298,
+          "total_cost": 19162
+        },
+        "adj_values": {
+          "std_cost": 9437,
+          "foh_var": 3203,
+          "foh_fixed": 3120,
+          "tooling_oh": 3388,
+          "raw_material": 3101,
+          "labor": 2980,
+          "depre_common": 3370,
+          "depre_exclusive": 506,
+          "mh_cost": 298,
+          "total_cost": 19162
+        },
+        "volume": {
+          "std_cost": 9360,
+          "foh_var": 3181,
+          "foh_fixed": 3103,
+          "tooling_oh": 3373,
+          "raw_material": 3092,
+          "labor": 2975,
+          "depre_common": 3369,
+          "depre_exclusive": 506,
+          "mh_cost": 299,
+          "total_cost": 19229
+        },
+        "inflation": {
+          "std_cost": 9366,
+          "foh_var": 3183,
+          "foh_fixed": 3105,
+          "tooling_oh": 3376,
+          "raw_material": 3094,
+          "labor": 2977,
+          "depre_common": 3371,
+          "depre_exclusive": 507,
+          "mh_cost": 299,
+          "total_cost": 19242
+        },
+        "CR": {
+          "std_cost": 9373,
+          "foh_var": 3185,
+          "foh_fixed": 3107,
+          "tooling_oh": 3378,
+          "raw_material": 3096,
+          "labor": 2979,
+          "depre_common": 3373,
+          "depre_exclusive": 507,
+          "mh_cost": 299,
+          "total_cost": 19256
+        },
+        "material_price_impact": {
+          "std_cost": 9379,
+          "foh_var": 3188,
+          "foh_fixed": 3109,
+          "tooling_oh": 3381,
+          "raw_material": 3098,
+          "labor": 2981,
+          "depre_common": 3376,
+          "depre_exclusive": 508,
+          "mh_cost": 299,
+          "total_cost": 19269
+        },
+        "gentan_i_impact": {
+          "std_cost": 9386,
+          "foh_var": 3190,
+          "foh_fixed": 3111,
+          "tooling_oh": 3383,
+          "raw_material": 3100,
+          "labor": 2983,
+          "depre_common": 3378,
+          "depre_exclusive": 508,
+          "mh_cost": 299,
+          "total_cost": 19283
+        },
+        "material_change": {
+          "std_cost": 9393,
+          "foh_var": 3192,
+          "foh_fixed": 3113,
+          "tooling_oh": 3385,
+          "raw_material": 3103,
+          "labor": 2985,
+          "depre_common": 3380,
+          "depre_exclusive": 508,
+          "mh_cost": 300,
+          "total_cost": 19296
         }
-      }
+      },
+      "importer": "TDR",
+      "category": "H2V"
     },
     {
       "part_no": "51402-KWW-641",
@@ -206,6 +900,8 @@
           "raw_material": 2828,
           "labor": 3090,
           "depre_common": 2997,
+          "depre_exclusive": 450,
+          "mh_cost": 309,
           "total_cost": 17547
         },
         "2025-02": {
@@ -216,9 +912,109 @@
           "raw_material": 2731,
           "labor": 3102,
           "depre_common": 2850,
+          "depre_exclusive": 428,
+          "mh_cost": 310,
           "total_cost": 17474
+        },
+        "pbmd_values": {
+          "std_cost": 8732,
+          "foh_var": 2951,
+          "foh_fixed": 3180,
+          "tooling_oh": 2660,
+          "raw_material": 2731,
+          "labor": 3102,
+          "depre_common": 2850,
+          "depre_exclusive": 428,
+          "mh_cost": 310,
+          "total_cost": 17474
+        },
+        "adj_values": {
+          "std_cost": 8732,
+          "foh_var": 2951,
+          "foh_fixed": 3180,
+          "tooling_oh": 2660,
+          "raw_material": 2731,
+          "labor": 3102,
+          "depre_common": 2850,
+          "depre_exclusive": 428,
+          "mh_cost": 310,
+          "total_cost": 17474
+        },
+        "volume": {
+          "std_cost": 8663,
+          "foh_var": 2932,
+          "foh_fixed": 3163,
+          "tooling_oh": 2649,
+          "raw_material": 2724,
+          "labor": 3098,
+          "depre_common": 2850,
+          "depre_exclusive": 429,
+          "mh_cost": 311,
+          "total_cost": 17540
+        },
+        "inflation": {
+          "std_cost": 8669,
+          "foh_var": 2934,
+          "foh_fixed": 3165,
+          "tooling_oh": 2651,
+          "raw_material": 2726,
+          "labor": 3100,
+          "depre_common": 2852,
+          "depre_exclusive": 429,
+          "mh_cost": 311,
+          "total_cost": 17553
+        },
+        "CR": {
+          "std_cost": 8675,
+          "foh_var": 2936,
+          "foh_fixed": 3168,
+          "tooling_oh": 2653,
+          "raw_material": 2727,
+          "labor": 3102,
+          "depre_common": 2854,
+          "depre_exclusive": 429,
+          "mh_cost": 311,
+          "total_cost": 17565
+        },
+        "material_price_impact": {
+          "std_cost": 8681,
+          "foh_var": 2938,
+          "foh_fixed": 3170,
+          "tooling_oh": 2655,
+          "raw_material": 2729,
+          "labor": 3104,
+          "depre_common": 2856,
+          "depre_exclusive": 429,
+          "mh_cost": 311,
+          "total_cost": 17577
+        },
+        "gentan_i_impact": {
+          "std_cost": 8687,
+          "foh_var": 2940,
+          "foh_fixed": 3172,
+          "tooling_oh": 2657,
+          "raw_material": 2731,
+          "labor": 3106,
+          "depre_common": 2858,
+          "depre_exclusive": 430,
+          "mh_cost": 312,
+          "total_cost": 17589
+        },
+        "material_change": {
+          "std_cost": 8694,
+          "foh_var": 2942,
+          "foh_fixed": 3174,
+          "tooling_oh": 2659,
+          "raw_material": 2733,
+          "labor": 3109,
+          "depre_common": 2860,
+          "depre_exclusive": 430,
+          "mh_cost": 312,
+          "total_cost": 17602
         }
-      }
+      },
+      "importer": "TMV",
+      "category": "H2V"
     },
     {
       "part_no": "51402-KWW-643",
@@ -231,6 +1027,8 @@
           "raw_material": 2669,
           "labor": 3058,
           "depre_common": 3149,
+          "depre_exclusive": 472,
+          "mh_cost": 306,
           "total_cost": 17876
         },
         "2025-02": {
@@ -241,9 +1039,109 @@
           "raw_material": 2999,
           "labor": 2831,
           "depre_common": 3011,
+          "depre_exclusive": 452,
+          "mh_cost": 283,
           "total_cost": 17947
+        },
+        "pbmd_values": {
+          "std_cost": 9011,
+          "foh_var": 3111,
+          "foh_fixed": 3030,
+          "tooling_oh": 2965,
+          "raw_material": 2999,
+          "labor": 2831,
+          "depre_common": 3011,
+          "depre_exclusive": 452,
+          "mh_cost": 283,
+          "total_cost": 17947
+        },
+        "adj_values": {
+          "std_cost": 9011,
+          "foh_var": 3111,
+          "foh_fixed": 3030,
+          "tooling_oh": 2965,
+          "raw_material": 2999,
+          "labor": 2831,
+          "depre_common": 3011,
+          "depre_exclusive": 452,
+          "mh_cost": 283,
+          "total_cost": 17947
+        },
+        "volume": {
+          "std_cost": 8943,
+          "foh_var": 3091,
+          "foh_fixed": 3015,
+          "tooling_oh": 2954,
+          "raw_material": 2992,
+          "labor": 2828,
+          "depre_common": 3012,
+          "depre_exclusive": 453,
+          "mh_cost": 284,
+          "total_cost": 18021
+        },
+        "inflation": {
+          "std_cost": 8949,
+          "foh_var": 3094,
+          "foh_fixed": 3017,
+          "tooling_oh": 2956,
+          "raw_material": 2994,
+          "labor": 2830,
+          "depre_common": 3014,
+          "depre_exclusive": 453,
+          "mh_cost": 284,
+          "total_cost": 18033
+        },
+        "CR": {
+          "std_cost": 8955,
+          "foh_var": 3096,
+          "foh_fixed": 3019,
+          "tooling_oh": 2958,
+          "raw_material": 2996,
+          "labor": 2832,
+          "depre_common": 3016,
+          "depre_exclusive": 453,
+          "mh_cost": 284,
+          "total_cost": 18046
+        },
+        "material_price_impact": {
+          "std_cost": 8961,
+          "foh_var": 3098,
+          "foh_fixed": 3021,
+          "tooling_oh": 2960,
+          "raw_material": 2998,
+          "labor": 2834,
+          "depre_common": 3018,
+          "depre_exclusive": 454,
+          "mh_cost": 284,
+          "total_cost": 18058
+        },
+        "gentan_i_impact": {
+          "std_cost": 8968,
+          "foh_var": 3100,
+          "foh_fixed": 3023,
+          "tooling_oh": 2962,
+          "raw_material": 3000,
+          "labor": 2836,
+          "depre_common": 3020,
+          "depre_exclusive": 454,
+          "mh_cost": 285,
+          "total_cost": 18071
+        },
+        "material_change": {
+          "std_cost": 8974,
+          "foh_var": 3102,
+          "foh_fixed": 3025,
+          "tooling_oh": 2964,
+          "raw_material": 3002,
+          "labor": 2838,
+          "depre_common": 3022,
+          "depre_exclusive": 454,
+          "mh_cost": 285,
+          "total_cost": 18083
         }
-      }
+      },
+      "importer": "TDR",
+      "category": "ICE"
     }
   ]
 }

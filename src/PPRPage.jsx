@@ -3,11 +3,13 @@ import React, { useMemo, useState, useEffect } from "react";
 const costItems = [
   "Tooling OH",
   "Raw Material",
+  "Total Purchase Cost",
   "Labor",
   "FOH Fix",
   "FOH Var",
   "Depre Common",
   "Depre Exclusive",
+  "Total Process Cost",
   "Total Cost",
   "MH Cost"
 ];
@@ -59,17 +61,62 @@ export default function PPRPage() {
     return ((current - previous) / previous) * 100;
   };
 
-  const handleAnalysisChange = (partNo, costItem, column, value) => {
-    const key = `${partNo}-${costItem}-${column}`;
-    setAnalysisData(prev => ({
-      ...prev,
-      [key]: value
-    }));
+  const getCellStateKey = (partNo, costItem, column) => `${partNo}:::${costItem}:::${column}`;
+
+  const handleCellChange = (partNo, costItem, column, value) => {
+    const key = getCellStateKey(partNo, costItem, column);
+    setAnalysisData(prev => ({ ...prev, [key]: value }));
   };
 
-  const getAnalysisValue = (partNo, costItem, column) => {
-    const key = `${partNo}-${costItem}-${column}`;
-    return analysisData[key] || "";
+  const getCellValueFromState = (partNo, costItem, column) => {
+    const key = getCellStateKey(partNo, costItem, column);
+    return analysisData.hasOwnProperty(key) ? analysisData[key] : undefined;
+  };
+
+  const getPBMDValue = (part, costItem) => {
+    const key = costItemKeys[costItem];
+    const stateVal = getCellValueFromState(part.part_no, costItem, "PBMD");
+    if (stateVal !== undefined) return stateVal;
+    return part.months && part.months.pbmd_values ? part.months.pbmd_values[key] : "";
+  };
+
+  const getAdjValue = (part, costItem) => {
+    const key = costItemKeys[costItem];
+    const stateVal = getCellValueFromState(part.part_no, costItem, "Adj");
+    if (stateVal !== undefined) return stateVal;
+    return part.months && part.months.adj_values ? part.months.adj_values[key] : "";
+  };
+
+  const getRemarkValue = (part) => {
+    const stateVal = getCellValueFromState(part.part_no, "__remark__", "Remark");
+    if (stateVal !== undefined) return stateVal;
+    if (part.months && part.months.adj_values && part.months.adj_values.remark) return part.months.adj_values.remark;
+    if (part.months && part.months.pbmd_values && part.months.pbmd_values.remark) return part.months.pbmd_values.remark;
+    return "";
+  };
+
+  const getAnalysisDefault = (part, costItem, column) => {
+    // map display column labels to the exact month keys stored in msp.json
+    const columnToMonthKey = {
+      'Volume': 'volume',
+      'Inflation': 'inflation',
+      'CR': 'CR',
+      'Material Price Impact': 'material_price_impact',
+      'Gentan-I Impact': 'gentan_i_impact',
+      'Material Change': 'material_change'
+    };
+
+    const blockKey = columnToMonthKey[column] || column.toLowerCase().replace(/ /g, "_");
+    const costKey = costItemKeys[costItem];
+    if (part.months && part.months[blockKey]) return part.months[blockKey][costKey];
+    return "";
+  };
+
+  const getAnalysisValue = (part, costItem, column) => {
+    const stateVal = getCellValueFromState(part.part_no, costItem, column);
+    if (stateVal !== undefined) return stateVal;
+    const def = getAnalysisDefault(part, costItem, column);
+    return def !== undefined && def !== null ? def : "";
   };
 
   const availablePeriods = useMemo(() => {
@@ -83,8 +130,8 @@ export default function PPRPage() {
   }, [mspData]);
 
   return (
-    <div style={{ padding: 20, background: "#fff" }}>
-      <div style={{ marginBottom: 20 }}>
+    <div style={{ background: "#fff" }}>
+      <div style={{ padding: "20px 28px", marginBottom: 20 }}>
         <h1 style={{ margin: "0 0 12px 0", fontSize: 20, fontWeight: 600 }}>
           Cost Analysis Report
         </h1>
@@ -134,11 +181,13 @@ export default function PPRPage() {
         <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 12 }}>
           <thead>
             <tr style={{ background: "#e8f1f7", borderBottom: "2px solid #d1d5db" }}>
-              <th style={{ ...thStyle, minWidth: 120, background: "#d9e8f5" }}>Part No</th>
-              <th style={{ ...thStyle, minWidth: 150, background: "#d9e8f5" }}>Cost Item</th>
+              <th style={{ ...thStyle, minWidth: 100, background: "#d9e8f5", paddingLeft: "28px" }}>Part No</th>
+              <th style={{ ...thStyle, minWidth: 80, background: "#d9e8f5" }}>Importer</th>
+              <th style={{ ...thStyle, minWidth: 80, background: "#d9e8f5" }}>Category</th>
+              <th style={{ ...thStyle, minWidth: 120, background: "#d9e8f5" }}>Cost Item</th>
               
               {/* Calculation section */}
-              <th colSpan={6} style={{ textAlign: "center", padding: "8px", background: "#a8d8f0", fontWeight: 600, borderBottom: "1px solid #d1d5db" }}>
+              <th colSpan={5} style={{ textAlign: "center", padding: "8px", background: "#a8d8f0", fontWeight: 600, borderBottom: "1px solid #d1d5db" }}>
                 Calculation
               </th>
               
@@ -146,65 +195,124 @@ export default function PPRPage() {
               <th colSpan={analysisColumns.length} style={{ textAlign: "center", padding: "8px", background: "#f5d5a8", fontWeight: 600, borderBottom: "1px solid #d1d5db" }}>
                 Analysis
               </th>
+              <th rowSpan={2} style={{ ...thStyle, minWidth: 70, background: "#bbfebb" }}>Remark</th>
             </tr>
             <tr style={{ borderBottom: "1px solid #d1d5db" }}>
+              <th style={{ ...thStyle, minWidth: 100, paddingLeft: "28px" }}></th>
+              <th style={{ ...thStyle, minWidth: 80 }}></th>
+              <th style={{ ...thStyle, minWidth: 80 }}></th>
               <th style={{ ...thStyle, minWidth: 120 }}></th>
-              <th style={{ ...thStyle, minWidth: 150 }}></th>
-              <th style={{ ...thStyle, minWidth: 100 }}>{selectedPeriod}</th>
-              <th style={{ ...thStyle, minWidth: 100 }}>{comparisonPeriod}</th>
-              <th style={{ ...thStyle, minWidth: 80 }}>diff %</th>
-              <th style={{ ...thStyle, minWidth: 80 }}>PBMD</th>
-              <th style={{ ...thStyle, minWidth: 100 }}>Adj Value</th>
-              <th style={{ ...thStyle, minWidth: 100 }}>Remark</th>
+              <th style={{ ...thStyle, minWidth: 80 }}>{selectedPeriod}</th>
+              <th style={{ ...thStyle, minWidth: 80 }}>{comparisonPeriod}</th>
+              <th style={{ ...thStyle, minWidth: 60 }}>diff %</th>
+              <th style={{ ...thStyle, minWidth: 70 }}>PBMD</th>
+              <th style={{ ...thStyle, minWidth: 70 }}>Adj Value</th>
               {analysisColumns.map(col => (
-                <th key={col} style={{ ...thStyle, minWidth: 100 }}>{col}</th>
+                <th key={col} style={{ ...thStyle, minWidth: 80 }}>{col}</th>
               ))}
             </tr>
           </thead>
           <tbody>
             {mspData.map((part) => (
               costItems.map((costItem, idx) => {
-                const currentValue = getCostValue(part, selectedPeriod, costItem);
-                const previousValue = getCostValue(part, comparisonPeriod, costItem);
+                let currentValue;
+                let previousValue;
+
+                if (costItem === "Total Purchase Cost") {
+                  const toolingOHCurrent = getCostValue(part, selectedPeriod, "Tooling OH") || 0;
+                  const rawMaterialCurrent = getCostValue(part, selectedPeriod, "Raw Material") || 0;
+                  currentValue = toolingOHCurrent + rawMaterialCurrent;
+
+                  const toolingOHPrevious = getCostValue(part, comparisonPeriod, "Tooling OH") || 0;
+                  const rawMaterialPrevious = getCostValue(part, comparisonPeriod, "Raw Material") || 0;
+                  previousValue = toolingOHPrevious + rawMaterialPrevious;
+                } else if (costItem === "Total Process Cost") {
+                  const laborCurrent = getCostValue(part, selectedPeriod, "Labor") || 0;
+                  const fohFixCurrent = getCostValue(part, selectedPeriod, "FOH Fix") || 0;
+                  const fohVarCurrent = getCostValue(part, selectedPeriod, "FOH Var") || 0;
+                  const depreCommonCurrent = getCostValue(part, selectedPeriod, "Depre Common") || 0;
+                  const depreExclusiveCurrent = getCostValue(part, selectedPeriod, "Depre Exclusive") || 0;
+                  currentValue = laborCurrent + fohFixCurrent + fohVarCurrent + depreCommonCurrent + depreExclusiveCurrent;
+
+                  const laborPrevious = getCostValue(part, comparisonPeriod, "Labor") || 0;
+                  const fohFixPrevious = getCostValue(part, comparisonPeriod, "FOH Fix") || 0;
+                  const fohVarPrevious = getCostValue(part, comparisonPeriod, "FOH Var") || 0;
+                  const depreCommonPrevious = getCostValue(part, comparisonPeriod, "Depre Common") || 0;
+                  const depreExclusivePrevious = getCostValue(part, comparisonPeriod, "Depre Exclusive") || 0;
+                  previousValue = laborPrevious + fohFixPrevious + fohVarPrevious + depreCommonPrevious + depreExclusivePrevious;
+                } else {
+                  currentValue = getCostValue(part, selectedPeriod, costItem);
+                  previousValue = getCostValue(part, comparisonPeriod, costItem);
+                }
+                
                 const diffPercent = calculateDiff(currentValue, previousValue);
                 const isLastRow = idx === costItems.length - 1;
+                const isCalculatedRow = costItem === "Total Purchase Cost" || costItem === "Total Process Cost";
+                const isSummaryRow = ["Total Purchase Cost", "Total Process Cost", "Total Cost"].includes(costItem);
 
                 return (
                   <tr
                     key={`${part.part_no}-${costItem}`}
                     style={{
                       borderBottom: isLastRow ? "3px solid #d1d5db" : "1px solid #e5e7eb",
-                      background: idx % 2 === 0 ? "#fafafa" : "#fff"
+                      background: isSummaryRow ? "#f9facd" : (idx % 2 === 0 ? "#fafafa" : "#fff")
                     }}
                   >
                     {idx === 0 && (
-                      <td
-                        rowSpan={costItems.length}
-                        style={{
-                          ...tdStyle,
-                          fontWeight: 600,
-                          background: "#e8f1f7",
-                          verticalAlign: "top",
-                          borderRight: "2px solid #d1d5db"
-                        }}
-                      >
-                        {part.part_no}
-                      </td>
+                      <>
+                        <td
+                          rowSpan={costItems.length}
+                          style={{
+                            ...tdStyle,
+                            fontWeight: "bold",
+                            background: "#e8f1f7",
+                            verticalAlign: "middle",
+                            borderRight: "2px solid #d1d5db",
+                            paddingLeft: "28px"
+                          }}
+                        >
+                          {part.part_no}
+                        </td>
+                        <td
+                          rowSpan={costItems.length}
+                          style={{
+                            ...tdStyle,
+                            fontWeight: "bold",
+                            background: "#e8f1f7",
+                            verticalAlign: "middle",
+                            borderRight: "2px solid #d1d5db"
+                          }}
+                        >
+                          {part.importer}
+                        </td>
+                        <td
+                          rowSpan={costItems.length}
+                          style={{
+                            ...tdStyle,
+                            fontWeight: "bold",
+                            background: "#e8f1f7",
+                            verticalAlign: "middle",
+                            borderRight: "2px solid #d1d5db"
+                          }}
+                        >
+                          {part.category}
+                        </td>
+                      </>
                     )}
-                    <td style={{ ...tdStyle, fontWeight: 500, borderRight: "1px solid #e5e7eb" }}>
+                    <td style={{ ...tdStyle, fontWeight: isSummaryRow ? 'bold' : 500, borderRight: "1px solid #e5e7eb" }}>
                       {costItem}
                     </td>
-                    <td style={{ ...tdStyle, textAlign: "right" }}>
+                    <td style={{ ...tdStyle, textAlign: "right", fontWeight: isSummaryRow ? 'bold' : 'normal' }}>
                       {currentValue ? currentValue.toLocaleString() : "-"}
                     </td>
-                    <td style={{ ...tdStyle, textAlign: "right", background: "#f0f0f0" }}>
+                    <td style={{ ...tdStyle, textAlign: "right", background: "#f0f0f0", fontWeight: isSummaryRow ? 'bold' : 'normal' }}>
                       {previousValue ? previousValue.toLocaleString() : "-"}
                     </td>
                     <td style={{
                       ...tdStyle,
                       textAlign: "right",
                       color: diffPercent && Math.abs(diffPercent) > 15 ? "#dc2626" : "inherit",
-                      fontWeight: diffPercent && Math.abs(diffPercent) > 15 ? 600 : "normal"
+                      fontWeight: isSummaryRow ? 'bold' : (diffPercent && Math.abs(diffPercent) > 15 ? 600 : "normal")
                     }}>
                       {diffPercent ? `${diffPercent.toFixed(2)}%` : "-"}
                     </td>
@@ -212,21 +320,20 @@ export default function PPRPage() {
                       <input
                         type="text"
                         placeholder="-"
+                        value={isCalculatedRow ? "" : getPBMDValue(part, costItem) || ""}
+                        onChange={(e) => handleCellChange(part.part_no, costItem, "PBMD", e.target.value)}
                         style={{ width: "100%", padding: "4px", border: "1px solid #d1d5db", borderRadius: 3, fontSize: 11 }}
+                        disabled={isCalculatedRow}
                       />
                     </td>
                     <td style={{ ...tdStyle, textAlign: "center" }}>
                       <input
                         type="text"
                         placeholder="-"
+                        value={isCalculatedRow ? "" : getAdjValue(part, costItem) || ""}
+                        onChange={(e) => handleCellChange(part.part_no, costItem, "Adj", e.target.value)}
                         style={{ width: "100%", padding: "4px", border: "1px solid #d1d5db", borderRadius: 3, fontSize: 11 }}
-                      />
-                    </td>
-                    <td style={{ ...tdStyle, textAlign: "center" }}>
-                      <input
-                        type="text"
-                        placeholder="-"
-                        style={{ width: "100%", padding: "4px", border: "1px solid #d1d5db", borderRadius: 3, fontSize: 11 }}
+                        disabled={isCalculatedRow}
                       />
                     </td>
                     {analysisColumns.map(col => (
@@ -234,12 +341,23 @@ export default function PPRPage() {
                         <input
                           type="text"
                           placeholder="-"
-                          value={getAnalysisValue(part.part_no, costItem, col)}
-                          onChange={(e) => handleAnalysisChange(part.part_no, costItem, col, e.target.value)}
+                          value={isCalculatedRow ? "" : getAnalysisValue(part, costItem, col) || ""}
+                          onChange={(e) => handleCellChange(part.part_no, costItem, col, e.target.value)}
                           style={{ width: "100%", padding: "4px", border: "1px solid #d1d5db", borderRadius: 3, fontSize: 11 }}
+                          disabled={isCalculatedRow}
                         />
                       </td>
                     ))}
+                    <td style={{ ...tdStyle, textAlign: "center" }}>
+                      <input
+                        type="text"
+                        placeholder="-"
+                        value={isCalculatedRow ? "" : getRemarkValue(part) || ""}
+                        onChange={(e) => handleCellChange(part.part_no, "__remark__", "Remark", e.target.value)}
+                        style={{ width: "100%", padding: "4px", border: "1px solid #d1d5db", borderRadius: 3, fontSize: 11 }}
+                        disabled={isCalculatedRow}
+                      />
+                    </td>
                   </tr>
                 );
               })
