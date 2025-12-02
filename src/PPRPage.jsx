@@ -35,6 +35,8 @@ export default function PPRPage() {
   const [filteredPartNos, setFilteredPartNos] = useState([]);
   const [showImporterFilter, setShowImporterFilter] = useState(false);
   const [filteredImporters, setFilteredImporters] = useState([]);
+  const [showCategoryFilter, setShowCategoryFilter] = useState(false);
+  const [filteredCategories, setFilteredCategories] = useState([]);
 
   useEffect(() => {
     const fetchData = async () => {
@@ -44,6 +46,7 @@ export default function PPRPage() {
           setMspData(data.items || []);
           setFilteredPartNos(Array.from(new Set(data.items.map(item => item.part_no))));
           setFilteredImporters(Array.from(new Set(data.items.map(item => item.importer))));
+          setFilteredCategories(Array.from(new Set(data.items.map(item => item.category))));
         })
         .catch((err) => console.error("Failed to load msp.json:", err));
     }
@@ -151,6 +154,10 @@ export default function PPRPage() {
     return Array.from(new Set(mspData.map(item => item.importer)));
   }, [mspData]);
 
+  const uniqueCategories = useMemo(() => {
+    return Array.from(new Set(mspData.map(item => item.category)));
+  }, [mspData]);
+
   const handleApplyFilter = (selectedPartNos) => {
     setFilteredPartNos(selectedPartNos);
     setShowFilter(false);
@@ -161,9 +168,15 @@ export default function PPRPage() {
     setShowImporterFilter(false);
   };
 
+  const handleApplyCategoryFilter = (selectedCategories) => {
+    setFilteredCategories(selectedCategories);
+    setShowCategoryFilter(false);
+  };
+
   const filteredMspData = mspData.filter(item => 
     filteredPartNos.includes(item.part_no) &&
-    filteredImporters.includes(item.importer)
+    filteredImporters.includes(item.importer) &&
+    filteredCategories.includes(item.category)
   );
 
   return (
@@ -248,8 +261,20 @@ export default function PPRPage() {
                   />
                 )}
               </th>
-              <th rowSpan={2} className="tbl-header">
-                category
+              <th rowSpan={2} className="tbl-header" style={{position: 'relative'}}>
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <span>category</span>
+                  <span style={{ cursor: 'pointer' }} onClick={() => setShowCategoryFilter(true)}><FunnelIcon /></span>
+                </div>
+                {showCategoryFilter && (
+                  <FilterDialog
+                    title="Category"
+                    values={uniqueCategories}
+                    initialCheckedValues={filteredCategories}
+                    onApply={handleApplyCategoryFilter}
+                    onClose={() => setShowCategoryFilter(false)}
+                  />
+                )}
               </th>
               <th rowSpan={2} className="tbl-header">Cost Item</th>
               
