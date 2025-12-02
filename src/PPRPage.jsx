@@ -183,12 +183,27 @@ export default function PPRPage() {
 
       <div style={{ overflowX: "auto", background: "#fff" }}>
         <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 12 }}>
-          <thead>
-            <tr style={{ background: "#e8f1f7", borderBottom: "2px solid #d1d5db" }}>
-              <th rowSpan={2} style={{ ...thStyle, minWidth: 100, background: "#d9e8f5", paddingLeft: "28px" }}>Part No</th>
-              <th rowSpan={2} style={{ ...thStyle, minWidth: 80, background: "#d9e8f5" }}>Importer</th>
-              <th rowSpan={2} style={{ ...thStyle, minWidth: 80, background: "#d9e8f5" }}>Category</th>
-              <th rowSpan={2} style={{ ...thStyle, minWidth: 120, background: "#d9e8f5" }}>Cost Item</th>
+          <thead style={{ position: "sticky", top: 0, zIndex: 10 }}>
+            <tr style={{ borderBottom: "1px solid #d1d5db" }}>
+              <th rowSpan={2} className="tbl-header">
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <span>Part No</span>
+                  <span style={{ cursor: 'pointer' }}><FunnelIcon /></span>
+                </div>
+              </th>
+              <th rowSpan={2} className="tbl-header">
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <span>Importer</span>
+                  <span style={{ cursor: 'pointer' }}><FunnelIcon /></span>
+                </div>
+              </th>
+              <th rowSpan={2} className="tbl-header">
+                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                  <span>Category</span>
+                  <span style={{ cursor: 'pointer' }}><FunnelIcon /></span>
+                </div>
+              </th>
+              <th rowSpan={2} className="tbl-header">Cost Item</th>
               
               {/* Calculation section */}
               <th colSpan={6} style={{ textAlign: "center", padding: "8px", background: "#a8d8f0", fontWeight: 600, borderBottom: "1px solid #d1d5db" }}>
@@ -199,17 +214,17 @@ export default function PPRPage() {
               <th colSpan={analysisColumns.length} style={{ textAlign: "center", padding: "8px", background: "#f5d5a8", fontWeight: 600, borderBottom: "1px solid #d1d5db" }}>
                 Analysis
               </th>
-              <th rowSpan={2} style={{ ...thStyle, minWidth: 70, background: "#bbfebb" }}>Remark</th>
+              <th rowSpan={2} className="tbl-header" style={{minWidth: 70, background: "#bbfebb" }}>Remark</th>
             </tr>
             <tr style={{ borderBottom: "1px solid #d1d5db" }}>
-              <th style={{ ...thStyle, minWidth: 80, background: '#e3f6ff' }}>{comparisonPeriod}</th>
-              <th style={{ ...thStyle, minWidth: 80, background: '#e3f6ff' }}>{selectedPeriod}</th>
-              <th style={{ ...thStyle, minWidth: 70, background: '#e3f6ff' }}>diff Amt</th>
-              <th style={{ ...thStyle, minWidth: 60, background: '#e3f6ff' }}>diff %</th>
-              <th style={{ ...thStyle, minWidth: 70, background: '#e3f6ff' }}>PBMD</th>
-              <th style={{ ...thStyle, minWidth: 70, background: '#e3f6ff' }}>Adj Value</th>
+              <th className="tbl-header" style={{ minWidth: 80, background: '#e3f6ff' }}>{comparisonPeriod}</th>
+              <th className="tbl-header" style={{minWidth: 80, background: '#e3f6ff' }}>{selectedPeriod}</th>
+              <th className="tbl-header" style={{minWidth: 70, background: '#e3f6ff' }}>diff Amt</th>
+              <th className="tbl-header" style={{minWidth: 60, background: '#e3f6ff' }}>diff %</th>
+              <th className="tbl-header" style={{minWidth: 70, background: '#e3f6ff' }}>PBMD</th>
+              <th className="tbl-header" style={{minWidth: 70, background: '#e3f6ff' }}>Adj Value</th>
               {analysisColumns.map(col => (
-                <th key={col} style={{ ...thStyle, minWidth: 80, background: '#faebd7' }}>{col}</th>
+                <th key={col} className="tbl-header"  style={{minWidth: 80, background: '#faebd7' }}>{col}</th>
               ))}
             </tr>
           </thead>
@@ -264,8 +279,8 @@ export default function PPRPage() {
                       <>
                         <td
                           rowSpan={costItems.length}
+                          className="td-default"
                           style={{
-                            ...tdStyle,
                             fontWeight: "bold",
                             background: "#e8f1f7",
                             verticalAlign: "middle",
@@ -278,7 +293,6 @@ export default function PPRPage() {
                         <td
                           rowSpan={costItems.length}
                           style={{
-                            ...tdStyle,
                             fontWeight: "bold",
                             background: "#e8f1f7",
                             verticalAlign: "middle",
@@ -290,7 +304,6 @@ export default function PPRPage() {
                         <td
                           rowSpan={costItems.length}
                           style={{
-                            ...tdStyle,
                             fontWeight: "bold",
                             background: "#e8f1f7",
                             verticalAlign: "middle",
@@ -301,27 +314,26 @@ export default function PPRPage() {
                         </td>
                       </>
                     )}
-                    <td style={{ ...tdStyle, fontWeight: isSummaryRow ? 'bold' : 500, borderRight: "1px solid #e5e7eb" }}>
+                    <td className="td-default" style={{fontWeight: isSummaryRow ? 'bold' : 500, borderRight: "1px solid #e5e7eb" }}>
                       {costItem}
                     </td>
-                    <td style={{ ...tdStyle, textAlign: "right", fontWeight: isSummaryRow ? 'bold' : 'normal' }}>
+                    <td className="td-default" style={{textAlign: "right", fontWeight: isSummaryRow ? 'bold' : 'normal' }}>
                       {currentValue ? currentValue.toLocaleString() : "-"}
                     </td>
-                    <td style={{ ...tdStyle, textAlign: "right", fontWeight: isSummaryRow ? 'bold' : 'normal' }}>
+                    <td className="td-default" style={{textAlign: "right", fontWeight: isSummaryRow ? 'bold' : 'normal' }}>
                       {previousValue ? previousValue.toLocaleString() : "-"}
                     </td>
-                    <td style={{ ...tdStyle, textAlign: "right", fontWeight: isSummaryRow ? 'bold' : 'normal' }}>
+                    <td className="td-default" style={{textAlign: "right", fontWeight: isSummaryRow ? 'bold' : 'normal' }}>
                       {diffAmt !== null ? diffAmt.toLocaleString() : "-"}
                     </td>
-                    <td style={{
-                      ...tdStyle,
+                    <td className="td-default" style={{
                       textAlign: "right",
                       color: diffPercent && Math.abs(diffPercent) > 15 ? "#dc2626" : "inherit",
                       fontWeight: isSummaryRow ? 'bold' : (diffPercent && Math.abs(diffPercent) > 15 ? 600 : "normal")
                     }}>
                       {diffPercent ? `${diffPercent.toFixed(2)}%` : "-"}
                     </td>
-                    <td style={{ ...tdStyle, textAlign: "center" }}>
+                    <td className="td-default" style={{textAlign: "center" }}>
                       <input
                         type="text"
                         placeholder="-"
@@ -331,7 +343,7 @@ export default function PPRPage() {
                         disabled={isCalculatedRow}
                       />
                     </td>
-                    <td style={{ ...tdStyle, textAlign: "center" }}>
+                    <td className="td-default" style={{textAlign: "center" }}>
                       <input
                         type="text"
                         placeholder="-"
@@ -342,7 +354,7 @@ export default function PPRPage() {
                       />
                     </td>
                     {analysisColumns.map(col => (
-                      <td key={col} style={{ ...tdStyle, textAlign: "center" }}>
+                      <td key={col} className="td-default" style={{textAlign: "center" }}>
                         <input
                           type="text"
                           placeholder="-"
@@ -353,7 +365,7 @@ export default function PPRPage() {
                         />
                       </td>
                     ))}
-                    <td style={{ ...tdStyle, textAlign: "center" }}>
+                    <td classNamestyle={{textAlign: "center" }}>
                       <input
                         type="text"
                         placeholder="-"
@@ -374,18 +386,18 @@ export default function PPRPage() {
   );
 }
 
-const thStyle = {
-  padding: "8px 10px",
-  textAlign: "center",
-  fontWeight: 600,
-  color: "#0b1220",
-  fontSize: 12,
-  borderRight: "1px solid #d1d5db"
-};
-
-const tdStyle = {
-  padding: "8px 10px",
-  fontSize: 12,
-  color: "#374151",
-  borderRight: "1px solid #e5e7eb"
-};
+const FunnelIcon = () => (
+  <svg
+    width="14"
+    height="14"
+    viewBox="0 0 24 24"
+    fill="none"
+    xmlns="http://www.w3.org/2000/svg"
+    stroke="currentColor"
+    strokeWidth="2"
+    strokeLinecap="round"
+    strokeLinejoin="round"
+  >
+    <path d="M3 4H21V6.58579C21 7.11236 20.7893 7.61714 20.4142 8L14 14.4142V20L10 22V14.4142L3.58579 8C3.21071 7.61714 3 7.11236 3 6.58579V4Z" />
+  </svg>
+);
