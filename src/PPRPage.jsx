@@ -1,4 +1,5 @@
 import React, { useMemo, useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import FilterDialog from "./components/FilterDialog";
 
 const costItems = [
@@ -181,7 +182,10 @@ export default function PPRPage() {
 
   return (
     <div style={{ background: "#fff" }}>
-      <div style={{ padding: "20px 28px", marginBottom: 20 }}>
+      <div style={{ padding: "20px 28px", marginBottom: 20, position: 'relative' }}>
+        <Link to="/" style={{ position: 'absolute', top: 20, right: 28, fontSize: 24, textDecoration: 'none', color: '#333', lineHeight: 1 }}>
+          &times;
+        </Link>
         <h1 style={{ margin: "0 0 12px 0", fontSize: 20, fontWeight: 600 }}>
           Cost Analysis Report
         </h1>
