@@ -148,20 +148,16 @@ body {
 /* footer spacing */
 .page-bottom { height:40px; }
 
-.tbl-header {
-    padding: 8px 10px;
-    text-align: center;
-    font-weight: 600;
-    color: #0b1220;
-    font-size: 12px;
-    border-right: 1px solid #d1d5db;
-    min-width: 100px;
-    background-color: #d9e8f5;
+.td-default {
+  padding: 6px 6px;
 }
 
-.td-default {
-  padding: 8px 10px;
-  font-size: 12;
-  color: "#374151";
-  border-right: 1px solid #e5e7eb;
-};
+.tbl-header {
+    padding: "8px 10px";
+    text-align: center;
+    font-weight: 600;
+    color: "#0b1220";
+    background: #a8d8f0;
+    border: 1px solid #b5a7a7;
+    padding: 0px 4px;
+}

@@ -185,7 +185,7 @@ export default function PPRPage() {
         <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 12 }}>
           <thead style={{ position: "sticky", top: 0, zIndex: 10 }}>
             <tr style={{ borderBottom: "1px solid #d1d5db" }}>
-              <th rowSpan={2} className="tbl-header">
+              <th rowSpan={2} className="tbl-header" style={{ minWidth: 130 }}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                   <span>Part No</span>
                   <span style={{ cursor: 'pointer' }}><FunnelIcon /></span>
@@ -285,7 +285,7 @@ export default function PPRPage() {
                             background: "#e8f1f7",
                             verticalAlign: "middle",
                             borderRight: "2px solid #d1d5db",
-                            paddingLeft: "28px"
+                            paddingLeft: "2px"
                           }}
                         >
                           {part.part_no}
