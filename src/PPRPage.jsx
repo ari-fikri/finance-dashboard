@@ -209,6 +209,7 @@ export default function PPRPage() {
                   <FilterDialog
                     title="Part No"
                     values={uniquePartNos}
+                    initialCheckedValues={filteredPartNos}
                     onApply={handleApplyFilter}
                     onClose={() => setShowFilter(false)}
                   />

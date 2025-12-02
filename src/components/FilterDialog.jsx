@@ -5,9 +5,10 @@ const FilterDialog = ({
   values,
   onApply,
   onClose,
+  initialCheckedValues,
 }) => {
   const [searchText, setSearchText] = useState('');
-  const [checkedValues, setCheckedValues] = useState(values);
+  const [checkedValues, setCheckedValues] = useState(initialCheckedValues);
 
   const handleCheckboxChange = (value) => {
     setCheckedValues((prev) =>
