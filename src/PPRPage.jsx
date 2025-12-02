@@ -191,7 +191,7 @@ export default function PPRPage() {
               <th rowSpan={2} style={{ ...thStyle, minWidth: 120, background: "#d9e8f5" }}>Cost Item</th>
               
               {/* Calculation section */}
-              <th colSpan={5} style={{ textAlign: "center", padding: "8px", background: "#a8d8f0", fontWeight: 600, borderBottom: "1px solid #d1d5db" }}>
+              <th colSpan={6} style={{ textAlign: "center", padding: "8px", background: "#a8d8f0", fontWeight: 600, borderBottom: "1px solid #d1d5db" }}>
                 Calculation
               </th>
               
@@ -202,8 +202,9 @@ export default function PPRPage() {
               <th rowSpan={2} style={{ ...thStyle, minWidth: 70, background: "#bbfebb" }}>Remark</th>
             </tr>
             <tr style={{ borderBottom: "1px solid #d1d5db" }}>
-              <th style={{ ...thStyle, minWidth: 80, background: '#e3f6ff' }}>{selectedPeriod}</th>
               <th style={{ ...thStyle, minWidth: 80, background: '#e3f6ff' }}>{comparisonPeriod}</th>
+              <th style={{ ...thStyle, minWidth: 80, background: '#e3f6ff' }}>{selectedPeriod}</th>
+              <th style={{ ...thStyle, minWidth: 70, background: '#e3f6ff' }}>diff Amt</th>
               <th style={{ ...thStyle, minWidth: 60, background: '#e3f6ff' }}>diff %</th>
               <th style={{ ...thStyle, minWidth: 70, background: '#e3f6ff' }}>PBMD</th>
               <th style={{ ...thStyle, minWidth: 70, background: '#e3f6ff' }}>Adj Value</th>
@@ -245,10 +246,11 @@ export default function PPRPage() {
                   previousValue = getCostValue(part, comparisonPeriod, costItem);
                 }
                 
+                const diffAmt = (currentValue !== null && previousValue !== null) ? currentValue - previousValue : null;
                 const diffPercent = calculateDiff(currentValue, previousValue);
                 const isLastRow = idx === costItems.length - 1;
                 const isCalculatedRow = costItem === "Total Purchase Cost" || costItem === "Total Process Cost";
-                const isSummaryRow = ["Total Purchase Cost", "Total Process Cost", "Total Cost"].includes(costItem);
+                const isSummaryRow = isCalculatedRow || costItem === "Total Cost";
 
                 return (
                   <tr
@@ -307,6 +309,9 @@ export default function PPRPage() {
                     </td>
                     <td style={{ ...tdStyle, textAlign: "right", fontWeight: isSummaryRow ? 'bold' : 'normal' }}>
                       {previousValue ? previousValue.toLocaleString() : "-"}
+                    </td>
+                    <td style={{ ...tdStyle, textAlign: "right", fontWeight: isSummaryRow ? 'bold' : 'normal' }}>
+                      {diffAmt !== null ? diffAmt.toLocaleString() : "-"}
                     </td>
                     <td style={{
                       ...tdStyle,
