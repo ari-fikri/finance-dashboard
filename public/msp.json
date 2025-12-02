@@ -13,7 +13,9 @@
           "depre_common": 3527,
           "depre_exclusive": 529,
           "mh_cost": 390,
-          "total_cost": 21659
+          "total_cost": 21659,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "2025-02": {
           "std_cost": 11462,
@@ -25,7 +27,9 @@
           "depre_common": 3510,
           "depre_exclusive": 527,
           "mh_cost": 369,
-          "total_cost": 20725
+          "total_cost": 20725,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "pbmd_values": {
           "std_cost": 11462,
@@ -37,7 +41,9 @@
           "depre_common": 3510,
           "depre_exclusive": 527,
           "mh_cost": 369,
-          "total_cost": 20725
+          "total_cost": 20725,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "adj_values": {
           "std_cost": 11462,
@@ -49,7 +55,9 @@
           "depre_common": 3510,
           "depre_exclusive": 527,
           "mh_cost": 369,
-          "total_cost": 20725
+          "total_cost": 20725,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "volume": {
           "std_cost": 11347,
@@ -61,7 +69,9 @@
           "depre_common": 3502,
           "depre_exclusive": 527,
           "mh_cost": 369,
-          "total_cost": 20760
+          "total_cost": 20760,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "inflation": {
           "std_cost": 11355,
@@ -73,7 +83,9 @@
           "depre_common": 3505,
           "depre_exclusive": 527,
           "mh_cost": 369,
-          "total_cost": 20775
+          "total_cost": 20775,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "CR": {
           "std_cost": 11363,
@@ -85,7 +97,9 @@
           "depre_common": 3507,
           "depre_exclusive": 527,
           "mh_cost": 370,
-          "total_cost": 20789
+          "total_cost": 20789,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "material_price_impact": {
           "std_cost": 11371,
@@ -97,7 +111,9 @@
           "depre_common": 3510,
           "depre_exclusive": 528,
           "mh_cost": 370,
-          "total_cost": 20804
+          "total_cost": 20804,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "gentan_i_impact": {
           "std_cost": 11379,
@@ -109,7 +125,9 @@
           "depre_common": 3512,
           "depre_exclusive": 528,
           "mh_cost": 370,
-          "total_cost": 20818
+          "total_cost": 20818,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "material_change": {
           "std_cost": 11387,
@@ -121,7 +139,9 @@
           "depre_common": 3515,
           "depre_exclusive": 528,
           "mh_cost": 370,
-          "total_cost": 20833
+          "total_cost": 20833,
+          "sales_volume": 0,
+          "prod_volume": 0
         }
       },
       "importer": "TAR",
@@ -140,7 +160,9 @@
           "depre_common": 7690,
           "depre_exclusive": 1154,
           "mh_cost": 779,
-          "total_cost": 44331
+          "total_cost": 44331,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "2025-02": {
           "std_cost": 19890,
@@ -152,7 +174,9 @@
           "depre_common": 7455,
           "depre_exclusive": 1120,
           "mh_cost": 793,
-          "total_cost": 45399
+          "total_cost": 45399,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "pbmd_values": {
           "std_cost": 19890,
@@ -164,7 +188,9 @@
           "depre_common": 7455,
           "depre_exclusive": 1120,
           "mh_cost": 793,
-          "total_cost": 45399
+          "total_cost": 45399,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "adj_values": {
           "std_cost": 19890,
@@ -176,7 +202,9 @@
           "depre_common": 7455,
           "depre_exclusive": 1120,
           "mh_cost": 793,
-          "total_cost": 45399
+          "total_cost": 45399,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "volume": {
           "std_cost": 19697,
@@ -188,7 +216,9 @@
           "depre_common": 7441,
           "depre_exclusive": 1119,
           "mh_cost": 794,
-          "total_cost": 45490
+          "total_cost": 45490,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "inflation": {
           "std_cost": 19711,
@@ -200,7 +230,9 @@
           "depre_common": 7446,
           "depre_exclusive": 1120,
           "mh_cost": 794,
-          "total_cost": 45522
+          "total_cost": 45522,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "CR": {
           "std_cost": 19725,
@@ -212,7 +244,9 @@
           "depre_common": 7451,
           "depre_exclusive": 1121,
           "mh_cost": 795,
-          "total_cost": 45553
+          "total_cost": 45553,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "material_price_impact": {
           "std_cost": 19739,
@@ -224,7 +258,9 @@
           "depre_common": 7456,
           "depre_exclusive": 1122,
           "mh_cost": 795,
-          "total_cost": 45585
+          "total_cost": 45585,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "gentan_i_impact": {
           "std_cost": 19753,
@@ -236,7 +272,9 @@
           "depre_common": 7462,
           "depre_exclusive": 1122,
           "mh_cost": 796,
-          "total_cost": 45617
+          "total_cost": 45617,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "material_change": {
           "std_cost": 19767,
@@ -248,7 +286,9 @@
           "depre_common": 7467,
           "depre_exclusive": 1123,
           "mh_cost": 796,
-          "total_cost": 45649
+          "total_cost": 45649,
+          "sales_volume": 0,
+          "prod_volume": 0
         }
       },
       "importer": "TDM",
@@ -267,7 +307,9 @@
           "depre_common": 6067,
           "depre_exclusive": 910,
           "mh_cost": 632,
-          "total_cost": 37865
+          "total_cost": 37865,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "2025-02": {
           "std_cost": 15877,
@@ -279,7 +321,9 @@
           "depre_common": 5936,
           "depre_exclusive": 890,
           "mh_cost": 648,
-          "total_cost": 37446
+          "total_cost": 37446,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "pbmd_values": {
           "std_cost": 15877,
@@ -291,7 +335,9 @@
           "depre_common": 5936,
           "depre_exclusive": 890,
           "mh_cost": 648,
-          "total_cost": 37446
+          "total_cost": 37446,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "adj_values": {
           "std_cost": 15877,
@@ -303,7 +349,9 @@
           "depre_common": 5936,
           "depre_exclusive": 890,
           "mh_cost": 648,
-          "total_cost": 37446
+          "total_cost": 37446,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "volume": {
           "std_cost": 15728,
@@ -315,7 +363,9 @@
           "depre_common": 5927,
           "depre_exclusive": 890,
           "mh_cost": 649,
-          "total_cost": 37532
+          "total_cost": 37532,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "inflation": {
           "std_cost": 15739,
@@ -327,7 +377,9 @@
           "depre_common": 5931,
           "depre_exclusive": 890,
           "mh_cost": 649,
-          "total_cost": 37558
+          "total_cost": 37558,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "CR": {
           "std_cost": 15750,
@@ -339,7 +391,9 @@
           "depre_common": 5935,
           "depre_exclusive": 891,
           "mh_cost": 650,
-          "total_cost": 37585
+          "total_cost": 37585,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "material_price_impact": {
           "std_cost": 15761,
@@ -351,7 +405,9 @@
           "depre_common": 5939,
           "depre_exclusive": 892,
           "mh_cost": 650,
-          "total_cost": 37611
+          "total_cost": 37611,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "gentan_i_impact": {
           "std_cost": 15772,
@@ -363,7 +419,9 @@
           "depre_common": 5943,
           "depre_exclusive": 892,
           "mh_cost": 650,
-          "total_cost": 37637
+          "total_cost": 37637,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "material_change": {
           "std_cost": 15783,
@@ -375,7 +433,9 @@
           "depre_common": 5947,
           "depre_exclusive": 893,
           "mh_cost": 651,
-          "total_cost": 37663
+          "total_cost": 37663,
+          "sales_volume": 0,
+          "prod_volume": 0
         }
       },
       "importer": "TASA",
@@ -394,7 +454,9 @@
           "depre_common": 7187,
           "depre_exclusive": 1078,
           "mh_cost": 789,
-          "total_cost": 44569
+          "total_cost": 44569,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "2025-02": {
           "std_cost": 18810,
@@ -406,7 +468,9 @@
           "depre_common": 7055,
           "depre_exclusive": 1058,
           "mh_cost": 781,
-          "total_cost": 44073
+          "total_cost": 44073,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "pbmd_values": {
           "std_cost": 18810,
@@ -418,7 +482,9 @@
           "depre_common": 7055,
           "depre_exclusive": 1058,
           "mh_cost": 781,
-          "total_cost": 44073
+          "total_cost": 44073,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "adj_values": {
           "std_cost": 18810,
@@ -430,7 +496,9 @@
           "depre_common": 7055,
           "depre_exclusive": 1058,
           "mh_cost": 781,
-          "total_cost": 44073
+          "total_cost": 44073,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "volume": {
           "std_cost": 18639,
@@ -442,7 +510,9 @@
           "depre_common": 7046,
           "depre_exclusive": 1058,
           "mh_cost": 782,
-          "total_cost": 44188
+          "total_cost": 44188,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "inflation": {
           "std_cost": 18652,
@@ -454,7 +524,9 @@
           "depre_common": 7051,
           "depre_exclusive": 1059,
           "mh_cost": 783,
-          "total_cost": 44218
+          "total_cost": 44218,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "CR": {
           "std_cost": 18665,
@@ -466,7 +538,9 @@
           "depre_common": 7056,
           "depre_exclusive": 1059,
           "mh_cost": 783,
-          "total_cost": 44249
+          "total_cost": 44249,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "material_price_impact": {
           "std_cost": 18678,
@@ -478,7 +552,9 @@
           "depre_common": 7061,
           "depre_exclusive": 1060,
           "mh_cost": 784,
-          "total_cost": 44280
+          "total_cost": 44280,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "gentan_i_impact": {
           "std_cost": 18691,
@@ -490,7 +566,9 @@
           "depre_common": 7066,
           "depre_exclusive": 1061,
           "mh_cost": 784,
-          "total_cost": 44311
+          "total_cost": 44311,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "material_change": {
           "std_cost": 18705,
@@ -502,7 +580,9 @@
           "depre_common": 7071,
           "depre_exclusive": 1062,
           "mh_cost": 785,
-          "total_cost": 44342
+          "total_cost": 44342,
+          "sales_volume": 0,
+          "prod_volume": 0
         }
       },
       "importer": "TMT",
@@ -521,7 +601,9 @@
           "depre_common": 6942,
           "depre_exclusive": 1041,
           "mh_cost": 600,
-          "total_cost": 39961
+          "total_cost": 39961,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "2025-02": {
           "std_cost": 17109,
@@ -533,7 +615,9 @@
           "depre_common": 6890,
           "depre_exclusive": 1034,
           "mh_cost": 655,
-          "total_cost": 41135
+          "total_cost": 41135,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "pbmd_values": {
           "std_cost": 17109,
@@ -545,7 +629,9 @@
           "depre_common": 6890,
           "depre_exclusive": 1034,
           "mh_cost": 655,
-          "total_cost": 41135
+          "total_cost": 41135,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "adj_values": {
           "std_cost": 17109,
@@ -557,7 +643,9 @@
           "depre_common": 6890,
           "depre_exclusive": 1034,
           "mh_cost": 655,
-          "total_cost": 41135
+          "total_cost": 41135,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "volume": {
           "std_cost": 16958,
@@ -569,7 +657,9 @@
           "depre_common": 6883,
           "depre_exclusive": 1034,
           "mh_cost": 656,
-          "total_cost": 41254
+          "total_cost": 41254,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "inflation": {
           "std_cost": 16970,
@@ -581,7 +671,9 @@
           "depre_common": 6888,
           "depre_exclusive": 1035,
           "mh_cost": 657,
-          "total_cost": 41283
+          "total_cost": 41283,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "CR": {
           "std_cost": 16982,
@@ -593,7 +685,9 @@
           "depre_common": 6893,
           "depre_exclusive": 1036,
           "mh_cost": 657,
-          "total_cost": 41312
+          "total_cost": 41312,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "material_price_impact": {
           "std_cost": 16994,
@@ -605,7 +699,9 @@
           "depre_common": 6898,
           "depre_exclusive": 1036,
           "mh_cost": 657,
-          "total_cost": 41341
+          "total_cost": 41341,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "gentan_i_impact": {
           "std_cost": 17006,
@@ -617,7 +713,9 @@
           "depre_common": 6902,
           "depre_exclusive": 1037,
           "mh_cost": 658,
-          "total_cost": 41369
+          "total_cost": 41369,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "material_change": {
           "std_cost": 17018,
@@ -629,7 +727,9 @@
           "depre_common": 6907,
           "depre_exclusive": 1038,
           "mh_cost": 658,
-          "total_cost": 41398
+          "total_cost": 41398,
+          "sales_volume": 0,
+          "prod_volume": 0
         }
       },
       "importer": "TAR",
@@ -648,7 +748,9 @@
           "depre_common": 6702,
           "depre_exclusive": 1005,
           "mh_cost": 606,
-          "total_cost": 39345
+          "total_cost": 39345,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "2025-02": {
           "std_cost": 15455,
@@ -660,7 +762,9 @@
           "depre_common": 6987,
           "depre_exclusive": 1048,
           "mh_cost": 645,
-          "total_cost": 40522
+          "total_cost": 40522,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "pbmd_values": {
           "std_cost": 15455,
@@ -672,7 +776,9 @@
           "depre_common": 6987,
           "depre_exclusive": 1048,
           "mh_cost": 645,
-          "total_cost": 40522
+          "total_cost": 40522,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "adj_values": {
           "std_cost": 15455,
@@ -684,7 +790,9 @@
           "depre_common": 6987,
           "depre_exclusive": 1048,
           "mh_cost": 645,
-          "total_cost": 40522
+          "total_cost": 40522,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "volume": {
           "std_cost": 15324,
@@ -696,7 +804,9 @@
           "depre_common": 6982,
           "depre_exclusive": 1049,
           "mh_cost": 646,
-          "total_cost": 40652
+          "total_cost": 40652,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "inflation": {
           "std_cost": 15334,
@@ -708,7 +818,9 @@
           "depre_common": 6987,
           "depre_exclusive": 1049,
           "mh_cost": 647,
-          "total_cost": 40680
+          "total_cost": 40680,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "CR": {
           "std_cost": 15345,
@@ -720,7 +832,9 @@
           "depre_common": 6992,
           "depre_exclusive": 1050,
           "mh_cost": 647,
-          "total_cost": 40708
+          "total_cost": 40708,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "material_price_impact": {
           "std_cost": 15356,
@@ -732,7 +846,9 @@
           "depre_common": 6997,
           "depre_exclusive": 1051,
           "mh_cost": 648,
-          "total_cost": 40737
+          "total_cost": 40737,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "gentan_i_impact": {
           "std_cost": 15367,
@@ -744,7 +860,9 @@
           "depre_common": 7002,
           "depre_exclusive": 1052,
           "mh_cost": 648,
-          "total_cost": 40765
+          "total_cost": 40765,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "material_change": {
           "std_cost": 15378,
@@ -756,7 +874,9 @@
           "depre_common": 7007,
           "depre_exclusive": 1052,
           "mh_cost": 648,
-          "total_cost": 40793
+          "total_cost": 40793,
+          "sales_volume": 0,
+          "prod_volume": 0
         }
       },
       "importer": "KUO",
@@ -775,7 +895,9 @@
           "depre_common": 3311,
           "depre_exclusive": 497,
           "mh_cost": 277,
-          "total_cost": 17881
+          "total_cost": 17881,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "2025-02": {
           "std_cost": 9437,
@@ -787,7 +909,9 @@
           "depre_common": 3370,
           "depre_exclusive": 506,
           "mh_cost": 298,
-          "total_cost": 19162
+          "total_cost": 19162,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "pbmd_values": {
           "std_cost": 9437,
@@ -799,7 +923,9 @@
           "depre_common": 3370,
           "depre_exclusive": 506,
           "mh_cost": 298,
-          "total_cost": 19162
+          "total_cost": 19162,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "adj_values": {
           "std_cost": 9437,
@@ -811,7 +937,9 @@
           "depre_common": 3370,
           "depre_exclusive": 506,
           "mh_cost": 298,
-          "total_cost": 19162
+          "total_cost": 19162,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "volume": {
           "std_cost": 9360,
@@ -823,7 +951,9 @@
           "depre_common": 3369,
           "depre_exclusive": 506,
           "mh_cost": 299,
-          "total_cost": 19229
+          "total_cost": 19229,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "inflation": {
           "std_cost": 9366,
@@ -835,7 +965,9 @@
           "depre_common": 3371,
           "depre_exclusive": 507,
           "mh_cost": 299,
-          "total_cost": 19242
+          "total_cost": 19242,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "CR": {
           "std_cost": 9373,
@@ -847,7 +979,9 @@
           "depre_common": 3373,
           "depre_exclusive": 507,
           "mh_cost": 299,
-          "total_cost": 19256
+          "total_cost": 19256,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "material_price_impact": {
           "std_cost": 9379,
@@ -859,7 +993,9 @@
           "depre_common": 3376,
           "depre_exclusive": 508,
           "mh_cost": 299,
-          "total_cost": 19269
+          "total_cost": 19269,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "gentan_i_impact": {
           "std_cost": 9386,
@@ -871,7 +1007,9 @@
           "depre_common": 3378,
           "depre_exclusive": 508,
           "mh_cost": 299,
-          "total_cost": 19283
+          "total_cost": 19283,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "material_change": {
           "std_cost": 9393,
@@ -883,7 +1021,9 @@
           "depre_common": 3380,
           "depre_exclusive": 508,
           "mh_cost": 300,
-          "total_cost": 19296
+          "total_cost": 19296,
+          "sales_volume": 0,
+          "prod_volume": 0
         }
       },
       "importer": "TDR",
@@ -902,7 +1042,9 @@
           "depre_common": 2997,
           "depre_exclusive": 450,
           "mh_cost": 309,
-          "total_cost": 17547
+          "total_cost": 17547,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "2025-02": {
           "std_cost": 8732,
@@ -914,7 +1056,9 @@
           "depre_common": 2850,
           "depre_exclusive": 428,
           "mh_cost": 310,
-          "total_cost": 17474
+          "total_cost": 17474,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "pbmd_values": {
           "std_cost": 8732,
@@ -926,7 +1070,9 @@
           "depre_common": 2850,
           "depre_exclusive": 428,
           "mh_cost": 310,
-          "total_cost": 17474
+          "total_cost": 17474,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "adj_values": {
           "std_cost": 8732,
@@ -938,7 +1084,9 @@
           "depre_common": 2850,
           "depre_exclusive": 428,
           "mh_cost": 310,
-          "total_cost": 17474
+          "total_cost": 17474,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "volume": {
           "std_cost": 8663,
@@ -950,7 +1098,9 @@
           "depre_common": 2850,
           "depre_exclusive": 429,
           "mh_cost": 311,
-          "total_cost": 17540
+          "total_cost": 17540,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "inflation": {
           "std_cost": 8669,
@@ -962,7 +1112,9 @@
           "depre_common": 2852,
           "depre_exclusive": 429,
           "mh_cost": 311,
-          "total_cost": 17553
+          "total_cost": 17553,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "CR": {
           "std_cost": 8675,
@@ -974,7 +1126,9 @@
           "depre_common": 2854,
           "depre_exclusive": 429,
           "mh_cost": 311,
-          "total_cost": 17565
+          "total_cost": 17565,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "material_price_impact": {
           "std_cost": 8681,
@@ -986,7 +1140,9 @@
           "depre_common": 2856,
           "depre_exclusive": 429,
           "mh_cost": 311,
-          "total_cost": 17577
+          "total_cost": 17577,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "gentan_i_impact": {
           "std_cost": 8687,
@@ -998,7 +1154,9 @@
           "depre_common": 2858,
           "depre_exclusive": 430,
           "mh_cost": 312,
-          "total_cost": 17589
+          "total_cost": 17589,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "material_change": {
           "std_cost": 8694,
@@ -1010,7 +1168,9 @@
           "depre_common": 2860,
           "depre_exclusive": 430,
           "mh_cost": 312,
-          "total_cost": 17602
+          "total_cost": 17602,
+          "sales_volume": 0,
+          "prod_volume": 0
         }
       },
       "importer": "TMV",
@@ -1029,7 +1189,9 @@
           "depre_common": 3149,
           "depre_exclusive": 472,
           "mh_cost": 306,
-          "total_cost": 17876
+          "total_cost": 17876,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "2025-02": {
           "std_cost": 9011,
@@ -1041,7 +1203,9 @@
           "depre_common": 3011,
           "depre_exclusive": 452,
           "mh_cost": 283,
-          "total_cost": 17947
+          "total_cost": 17947,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "pbmd_values": {
           "std_cost": 9011,
@@ -1053,7 +1217,9 @@
           "depre_common": 3011,
           "depre_exclusive": 452,
           "mh_cost": 283,
-          "total_cost": 17947
+          "total_cost": 17947,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "adj_values": {
           "std_cost": 9011,
@@ -1065,7 +1231,9 @@
           "depre_common": 3011,
           "depre_exclusive": 452,
           "mh_cost": 283,
-          "total_cost": 17947
+          "total_cost": 17947,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "volume": {
           "std_cost": 8943,
@@ -1077,7 +1245,9 @@
           "depre_common": 3012,
           "depre_exclusive": 453,
           "mh_cost": 284,
-          "total_cost": 18021
+          "total_cost": 18021,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "inflation": {
           "std_cost": 8949,
@@ -1089,7 +1259,9 @@
           "depre_common": 3014,
           "depre_exclusive": 453,
           "mh_cost": 284,
-          "total_cost": 18033
+          "total_cost": 18033,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "CR": {
           "std_cost": 8955,
@@ -1101,7 +1273,9 @@
           "depre_common": 3016,
           "depre_exclusive": 453,
           "mh_cost": 284,
-          "total_cost": 18046
+          "total_cost": 18046,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "material_price_impact": {
           "std_cost": 8961,
@@ -1113,7 +1287,9 @@
           "depre_common": 3018,
           "depre_exclusive": 454,
           "mh_cost": 284,
-          "total_cost": 18058
+          "total_cost": 18058,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "gentan_i_impact": {
           "std_cost": 8968,
@@ -1125,7 +1301,9 @@
           "depre_common": 3020,
           "depre_exclusive": 454,
           "mh_cost": 285,
-          "total_cost": 18071
+          "total_cost": 18071,
+          "sales_volume": 0,
+          "prod_volume": 0
         },
         "material_change": {
           "std_cost": 8974,
@@ -1137,7 +1315,9 @@
           "depre_common": 3022,
           "depre_exclusive": 454,
           "mh_cost": 285,
-          "total_cost": 18083
+          "total_cost": 18083,
+          "sales_volume": 0,
+          "prod_volume": 0
         }
       },
       "importer": "TDR",

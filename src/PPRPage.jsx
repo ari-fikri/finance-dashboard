@@ -11,7 +11,9 @@ const costItems = [
   "Depre Exclusive",
   "Total Process Cost",
   "Total Cost",
-  "MH Cost"
+  "MH Cost",
+  "Sales Volume",
+  "Prod Volume"
 ];
 
 const analysisColumns = [
@@ -47,7 +49,9 @@ export default function PPRPage() {
     "Depre Common": "depre_common",
     "Depre Exclusive": "depre_exclusive",
     "Total Cost": "total_cost",
-    "MH Cost": "mh_cost"
+    "MH Cost": "mh_cost",
+    "Sales Volume": "sales_volume",
+    "Prod Volume": "prod_volume"
   };
 
   const getCostValue = (part, period, costItem) => {
@@ -181,10 +185,10 @@ export default function PPRPage() {
         <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 12 }}>
           <thead>
             <tr style={{ background: "#e8f1f7", borderBottom: "2px solid #d1d5db" }}>
-              <th style={{ ...thStyle, minWidth: 100, background: "#d9e8f5", paddingLeft: "28px" }}>Part No</th>
-              <th style={{ ...thStyle, minWidth: 80, background: "#d9e8f5" }}>Importer</th>
-              <th style={{ ...thStyle, minWidth: 80, background: "#d9e8f5" }}>Category</th>
-              <th style={{ ...thStyle, minWidth: 120, background: "#d9e8f5" }}>Cost Item</th>
+              <th rowSpan={2} style={{ ...thStyle, minWidth: 100, background: "#d9e8f5", paddingLeft: "28px" }}>Part No</th>
+              <th rowSpan={2} style={{ ...thStyle, minWidth: 80, background: "#d9e8f5" }}>Importer</th>
+              <th rowSpan={2} style={{ ...thStyle, minWidth: 80, background: "#d9e8f5" }}>Category</th>
+              <th rowSpan={2} style={{ ...thStyle, minWidth: 120, background: "#d9e8f5" }}>Cost Item</th>
               
               {/* Calculation section */}
               <th colSpan={5} style={{ textAlign: "center", padding: "8px", background: "#a8d8f0", fontWeight: 600, borderBottom: "1px solid #d1d5db" }}>
@@ -198,17 +202,13 @@ export default function PPRPage() {
               <th rowSpan={2} style={{ ...thStyle, minWidth: 70, background: "#bbfebb" }}>Remark</th>
             </tr>
             <tr style={{ borderBottom: "1px solid #d1d5db" }}>
-              <th style={{ ...thStyle, minWidth: 100, paddingLeft: "28px" }}></th>
-              <th style={{ ...thStyle, minWidth: 80 }}></th>
-              <th style={{ ...thStyle, minWidth: 80 }}></th>
-              <th style={{ ...thStyle, minWidth: 120 }}></th>
-              <th style={{ ...thStyle, minWidth: 80 }}>{selectedPeriod}</th>
-              <th style={{ ...thStyle, minWidth: 80 }}>{comparisonPeriod}</th>
-              <th style={{ ...thStyle, minWidth: 60 }}>diff %</th>
-              <th style={{ ...thStyle, minWidth: 70 }}>PBMD</th>
-              <th style={{ ...thStyle, minWidth: 70 }}>Adj Value</th>
+              <th style={{ ...thStyle, minWidth: 80, background: '#e3f6ff' }}>{selectedPeriod}</th>
+              <th style={{ ...thStyle, minWidth: 80, background: '#e3f6ff' }}>{comparisonPeriod}</th>
+              <th style={{ ...thStyle, minWidth: 60, background: '#e3f6ff' }}>diff %</th>
+              <th style={{ ...thStyle, minWidth: 70, background: '#e3f6ff' }}>PBMD</th>
+              <th style={{ ...thStyle, minWidth: 70, background: '#e3f6ff' }}>Adj Value</th>
               {analysisColumns.map(col => (
-                <th key={col} style={{ ...thStyle, minWidth: 80 }}>{col}</th>
+                <th key={col} style={{ ...thStyle, minWidth: 80, background: '#faebd7' }}>{col}</th>
               ))}
             </tr>
           </thead>
@@ -305,7 +305,7 @@ export default function PPRPage() {
                     <td style={{ ...tdStyle, textAlign: "right", fontWeight: isSummaryRow ? 'bold' : 'normal' }}>
                       {currentValue ? currentValue.toLocaleString() : "-"}
                     </td>
-                    <td style={{ ...tdStyle, textAlign: "right", background: "#f0f0f0", fontWeight: isSummaryRow ? 'bold' : 'normal' }}>
+                    <td style={{ ...tdStyle, textAlign: "right", fontWeight: isSummaryRow ? 'bold' : 'normal' }}>
                       {previousValue ? previousValue.toLocaleString() : "-"}
                     </td>
                     <td style={{
