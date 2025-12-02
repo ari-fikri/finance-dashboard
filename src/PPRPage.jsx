@@ -33,15 +33,21 @@ export default function PPRPage() {
   const [analysisData, setAnalysisData] = useState({});
   const [showFilter, setShowFilter] = useState(false);
   const [filteredPartNos, setFilteredPartNos] = useState([]);
+  const [showImporterFilter, setShowImporterFilter] = useState(false);
+  const [filteredImporters, setFilteredImporters] = useState([]);
 
   useEffect(() => {
-    fetch("/msp.json")
-      .then((res) => res.json())
-      .then((data) => {
-        setMspData(data.items || []);
-        setFilteredPartNos(Array.from(new Set(data.items.map(item => item.part_no))));
-      })
-      .catch((err) => console.error("Failed to load msp.json:", err));
+    const fetchData = async () => {
+      fetch("/msp.json")
+        .then((res) => res.json())
+        .then((data) => {
+          setMspData(data.items || []);
+          setFilteredPartNos(Array.from(new Set(data.items.map(item => item.part_no))));
+          setFilteredImporters(Array.from(new Set(data.items.map(item => item.importer))));
+        })
+        .catch((err) => console.error("Failed to load msp.json:", err));
+    }
+    fetchData();
   }, []);
 
   const costItemKeys = {
@@ -141,12 +147,24 @@ export default function PPRPage() {
     return Array.from(new Set(mspData.map(item => item.part_no)));
   }, [mspData]);
 
+  const uniqueImporters = useMemo(() => {
+    return Array.from(new Set(mspData.map(item => item.importer)));
+  }, [mspData]);
+
   const handleApplyFilter = (selectedPartNos) => {
     setFilteredPartNos(selectedPartNos);
     setShowFilter(false);
   };
 
-  const filteredMspData = mspData.filter(item => filteredPartNos.includes(item.part_no));
+  const handleApplyImporterFilter = (selectedImporters) => {
+    setFilteredImporters(selectedImporters);
+    setShowImporterFilter(false);
+  };
+
+  const filteredMspData = mspData.filter(item => 
+    filteredPartNos.includes(item.part_no) &&
+    filteredImporters.includes(item.importer)
+  );
 
   return (
     <div style={{ background: "#fff" }}>
@@ -215,17 +233,23 @@ export default function PPRPage() {
                   />
                 )}
               </th>
-              <th rowSpan={2} className="tbl-header">
+              <th rowSpan={2} className="tbl-header" style={{position: 'relative'}}>
                 <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <span>Importer</span>
-                  <span style={{ cursor: 'pointer' }}><FunnelIcon /></span>
+                  <span>importer</span>
+                  <span style={{ cursor: 'pointer' }} onClick={() => setShowImporterFilter(true)}><FunnelIcon /></span>
                 </div>
+                {showImporterFilter && (
+                  <FilterDialog
+                    title="Importer"
+                    values={uniqueImporters}
+                    initialCheckedValues={filteredImporters}
+                    onApply={handleApplyImporterFilter}
+                    onClose={() => setShowImporterFilter(false)}
+                  />
+                )}
               </th>
               <th rowSpan={2} className="tbl-header">
-                <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                  <span>Category</span>
-                  <span style={{ cursor: 'pointer' }}><FunnelIcon /></span>
-                </div>
+                category
               </th>
               <th rowSpan={2} className="tbl-header">Cost Item</th>
               
@@ -389,7 +413,7 @@ export default function PPRPage() {
                         />
                       </td>
                     ))}
-                    <td classNamestyle={{textAlign: "center" }}>
+                    <td className="td-default" style={{textAlign: "center" }}>
                       <input
                         type="text"
                         placeholder="-"
