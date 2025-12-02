@@ -252,7 +252,7 @@ export default function PPRPage() {
             </tr>
           </thead>
           <tbody>
-            {mspData.map((part) => (
+            {filteredMspData.map((part) => (
               costItems.map((costItem, idx) => {
                 let currentValue;
                 let previousValue;
