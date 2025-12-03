@@ -10,7 +10,7 @@ import PeriodComparisonPage from "./PeriodComparisonPage";
 import CostMovementDetail from './CostMovementDetail';
 
 const base = process.env.NODE_ENV === "production"
-  ? "/packing-cost-fe/"
+  ? "/finance-dashboard/"
   : "/";
   
 createRoot(document.getElementById('root')).render(
