@@ -9,9 +9,13 @@ import PartPairingPage from "./PartPairingPage";
 import PeriodComparisonPage from "./PeriodComparisonPage";
 import CostMovementDetail from './CostMovementDetail';
 
+const base = process.env.NODE_ENV === "production"
+  ? "/packing-cost-fe/"
+  : "/";
+  
 createRoot(document.getElementById('root')).render(
     <React.StrictMode>
-    <BrowserRouter>
+    <BrowserRouter basename={base}>
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/sync" element={<SyncPartList />} />
