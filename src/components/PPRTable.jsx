@@ -30,6 +30,8 @@ export function PPRTable(props) {
     thresholdActive
   } = props;
 
+  const isAnyFilterActive = Object.values(filterStates).some(state => state);
+
   return (
     <div style={{ overflowX: "auto", background: "#fff" }}>
       <div style={{ padding: '8px 0px', background: '#fff', borderBottom: '1px solid #d1d5db', display: 'flex', gap: '8px' }}>
@@ -54,7 +56,7 @@ export function PPRTable(props) {
             <th rowSpan={2} className="tbl-header" style={{ minWidth: 120, position: 'relative' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <span>Part No</span>
-                <span style={{ cursor: 'pointer' }} onClick={() => toggleFilter('partNo')}><FunnelIcon /></span>
+                <span style={{ cursor: 'pointer' }} onClick={() => !isAnyFilterActive || filterStates.partNo ? toggleFilter('partNo') : null}><FunnelIcon /></span>
               </div>
               {filterStates.partNo && (
                 <FilterDialog
@@ -69,7 +71,7 @@ export function PPRTable(props) {
             <th rowSpan={2} className="tbl-header" style={{position: 'relative'}}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <span>importer</span>
-                <span style={{ cursor: 'pointer' }} onClick={() => toggleFilter('importer')}><FunnelIcon /></span>
+                <span style={{ cursor: 'pointer' }} onClick={() => !isAnyFilterActive || filterStates.importer ? toggleFilter('importer') : null}><FunnelIcon /></span>
               </div>
               {filterStates.importer && (
                 <FilterDialog
@@ -84,7 +86,7 @@ export function PPRTable(props) {
             <th rowSpan={2} className="tbl-header" style={{position: 'relative'}}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <span>category</span>
-                <span style={{ cursor: 'pointer' }} onClick={() => toggleFilter('category')}><FunnelIcon /></span>
+                <span style={{ cursor: 'pointer' }} onClick={() => !isAnyFilterActive || filterStates.category ? toggleFilter('category') : null}><FunnelIcon /></span>
               </div>
               {filterStates.category && (
                 <FilterDialog
