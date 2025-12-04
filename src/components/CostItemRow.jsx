@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { ANALYSIS_COLUMNS, COST_ITEMS } from "../utils/pprConstants";
 import { getAnalysisValue, getRemarkValue, getAnalysisValueForSummaryRow } from "../utils/pprHelpers";
 
@@ -17,8 +17,9 @@ export function CostItemRow(props) {
   } = props;
 
   const { currentValue, previousValue } = calculateCostValues(part, costItem, selectedPeriod, comparisonPeriod);
-  const { pbmdDisplayValue, adjDisplayValue } = getDisplayValues(part, costItem);
-  
+  const { pbmdDisplayValue, adjDisplayValue } = getDisplayValues(part, costItem, analysisData);
+  const [isEditing, setIsEditing] = useState(false);
+
   const diffAmt = (currentValue !== null && previousValue !== null) ? currentValue - previousValue : null;
   const diffPercent = calculateDiff(currentValue, previousValue);
   const isLastRow = idx === COST_ITEMS.length - 1;
@@ -124,15 +125,22 @@ export function CostItemRow(props) {
         </td>
       );
       })}
-      <td className="td-default" style={{textAlign: "center" }}>
-        <input
-          type="text"
-          placeholder="-"
-          value={isCalculatedRow ? "" : getRemarkValue(part, analysisData) || ""}
-          onChange={(e) => handleCellChange(part.part_no, "__remark__", "Remark", e.target.value)}
-          style={{ width: "100%", padding: "4px", border: "1px solid #d1d5db", borderRadius: 3, fontSize: 11, textAlign: "right" }}
-          disabled={isCalculatedRow}
-        />
+      <td className="td-default" style={{textAlign: "center" }} onClick={() => !isCalculatedRow && setIsEditing(true)}>
+        {isEditing ? (
+          <textarea
+            placeholder="-"
+            value={isCalculatedRow ? "" : getRemarkValue(part, costItem, analysisData) || ""}
+            onChange={(e) => handleCellChange(part.part_no, costItem, "Remark", e.target.value)}
+            onBlur={() => setIsEditing(false)}
+            autoFocus
+            style={{ width: "100%", minHeight: "50px", padding: "4px", border: "1px solid #d1d5db", borderRadius: 3, fontSize: 11, textAlign: "left", resize: "vertical" }}
+            disabled={isCalculatedRow}
+          />
+        ) : (
+          <span style={{ display: "block", width: "100%", minHeight: "24px", textAlign: "left", whiteSpace: "pre-wrap" }}>
+            {isCalculatedRow ? "" : getRemarkValue(part, costItem, analysisData) || ""}
+          </span>
+        )}
       </td>
     </tr>
   );

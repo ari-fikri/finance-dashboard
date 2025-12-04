@@ -98,13 +98,9 @@ export const calculateAdjTotal = (part, items, analysisData) => {
 /**
  * Get remark value for a part
  */
-export const getRemarkValue = (part, analysisData) => {
-  const stateVal = getCellValueFromState(part.part_no, "__remark__", "Remark", analysisData);
+export const getRemarkValue = (part, costItem, analysisData) => {
+  const stateVal = getCellValueFromState(part.part_no, costItem, "Remark", analysisData);
   if (stateVal !== undefined) return stateVal;
-  if (part.months && part.months.adj_values && part.months.adj_values.remark) 
-    return part.months.adj_values.remark;
-  if (part.months && part.months.pbmd_values && part.months.pbmd_values.remark) 
-    return part.months.pbmd_values.remark;
   return "";
 };
 
