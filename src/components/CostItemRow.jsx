@@ -23,7 +23,7 @@ export function CostItemRow(props) {
   const diffAmt = (currentValue !== null && previousValue !== null) ? currentValue - previousValue : null;
   const diffPercent = calculateDiff(currentValue, previousValue);
   const isLastRow = idx === COST_ITEMS.length - 1;
-  const isCalculatedRow = costItem === "Total Purchase Cost" || costItem === "Total Process Cost";
+  const isCalculatedRow = costItem === "Total Purchase Cost" || costItem === "Total Process Cost" || costItem === "Total Cost";
   const isSummaryRow = isCalculatedRow || costItem === "Total Cost";
 
   return (
@@ -76,13 +76,13 @@ export function CostItemRow(props) {
         {costItem}
       </td>
       <td className="td-default" style={{textAlign: "right", fontWeight: isSummaryRow ? 'bold' : 'normal' }}>
-        {currentValue ? currentValue.toLocaleString() : "-"}
+        {currentValue ? currentValue.toLocaleString(undefined, { maximumFractionDigits: 0 }) : "-"}
       </td>
       <td className="td-default" style={{textAlign: "right", fontWeight: isSummaryRow ? 'bold' : 'normal' }}>
-        {previousValue ? previousValue.toLocaleString() : "-"}
+        {previousValue ? previousValue.toLocaleString(undefined, { maximumFractionDigits: 0 }) : "-"}
       </td>
       <td className="td-default" style={{textAlign: "right", fontWeight: isSummaryRow ? 'bold' : 'normal' }}>
-        {diffAmt !== null ? diffAmt.toLocaleString() : "-"}
+        {diffAmt !== null ? diffAmt.toLocaleString(undefined, { maximumFractionDigits: 0 }) : "-"}
       </td>
       <td className="td-default" style={{
         textAlign: "right",
@@ -99,7 +99,7 @@ export function CostItemRow(props) {
           placeholder="-"
           value={pbmdDisplayValue}
           onChange={(e) => handleCellChange(part.part_no, costItem, "PBMD", e.target.value)}
-          style={{ width: "100%", padding: "4px", border: "1px solid #d1d5db", borderRadius: 3, fontSize: 11, textAlign: "right" }}
+          style={{ width: "100%", padding: "4px", border: "1px solid #d1d5db", borderRadius: 3, fontSize: 11, textAlign: "right", fontWeight: isSummaryRow ? 'bold' : 'normal' }}
           disabled={isCalculatedRow}
         />
       </td>
@@ -109,13 +109,13 @@ export function CostItemRow(props) {
           placeholder="-"
           value={adjDisplayValue}
           onChange={(e) => handleCellChange(part.part_no, costItem, "Adj", e.target.value)}
-          style={{ width: "100%", padding: "4px", border: "1px solid #d1d5db", borderRadius: 3, fontSize: 11, textAlign: "right" }}
+          style={{ width: "100%", padding: "4px", border: "1px solid #d1d5db", borderRadius: 3, fontSize: 11, textAlign: "right", fontWeight: isSummaryRow ? 'bold' : 'normal' }}
           disabled={isCalculatedRow}
         />
       </td>
       {ANALYSIS_COLUMNS.map(col => {
         const analysisValue = isCalculatedRow ? getAnalysisValueForSummaryRow(part, costItem, col, analysisData) : getAnalysisValue(part, costItem, col, analysisData);
-        const displayValue = (analysisValue !== null && analysisValue !== "" && analysisValue !== undefined) ? (typeof analysisValue === 'number' ? analysisValue.toLocaleString() : analysisValue) : "";
+        const displayValue = (analysisValue !== null && analysisValue !== "" && analysisValue !== undefined) ? (typeof analysisValue === 'number' ? analysisValue.toLocaleString(undefined, { maximumFractionDigits: 0 }) : analysisValue) : "";
         return (
         <td key={col} className="td-default" style={{textAlign: "center" }}>
           <input
@@ -123,7 +123,7 @@ export function CostItemRow(props) {
             placeholder="-"
             value={displayValue}
             onChange={(e) => handleCellChange(part.part_no, costItem, col, e.target.value)}
-            style={{ width: "100%", padding: "4px", border: "1px solid #d1d5db", borderRadius: 3, fontSize: 11, textAlign: "right" }}
+            style={{ width: "100%", padding: "4px", border: "1px solid #d1d5db", borderRadius: 3, fontSize: 11, textAlign: "right", fontWeight: isSummaryRow ? 'bold' : 'normal' }}
             disabled={isCalculatedRow}
           />
         </td>
