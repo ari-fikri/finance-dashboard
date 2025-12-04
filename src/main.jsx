@@ -4,7 +4,7 @@ import { BrowserRouter, Routes, Route } from "react-router-dom";
 import './index.css'
 import App from './App.jsx'
 import SyncPartList from "./SyncPartList";
-import PPRPage from "./PPRPage";
+import PPRPage from "./pprpage";
 import PartPairingPage from "./PartPairingPage";
 import PeriodComparisonPage from "./PeriodComparisonPage";
 import CostMovementDetail from './CostMovementDetail';

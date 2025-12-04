@@ -88,7 +88,11 @@ export function CostItemRow(props) {
         textAlign: "right",
         color: diffPercent && Math.abs(diffPercent) > 15 ? "#dc2626" : "inherit",
         fontWeight: isSummaryRow ? 'bold' : (diffPercent && Math.abs(diffPercent) > 15 ? 600 : "normal")
-      }}>{diffPercent ? `${diffPercent.toFixed(2)}%` : "-"}</td>
+      }}>
+        {diffPercent ? (
+          `(${diffPercent.toFixed(2)}%)`
+        ) : "-"}
+      </td>
       <td className="td-default" style={{textAlign: "center" }}>
         <input
           type="text"
