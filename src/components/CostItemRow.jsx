@@ -94,7 +94,7 @@ export function CostItemRow(props) {
           placeholder="-"
           value={pbmdDisplayValue}
           onChange={(e) => handleCellChange(part.part_no, costItem, "PBMD", e.target.value)}
-          style={{ width: "100%", padding: "4px", border: "1px solid #d1d5db", borderRadius: 3, fontSize: 11 }}
+          style={{ width: "100%", padding: "4px", border: "1px solid #d1d5db", borderRadius: 3, fontSize: 11, textAlign: "right" }}
           disabled={isCalculatedRow}
         />
       </td>
@@ -104,7 +104,7 @@ export function CostItemRow(props) {
           placeholder="-"
           value={adjDisplayValue}
           onChange={(e) => handleCellChange(part.part_no, costItem, "Adj", e.target.value)}
-          style={{ width: "100%", padding: "4px", border: "1px solid #d1d5db", borderRadius: 3, fontSize: 11 }}
+          style={{ width: "100%", padding: "4px", border: "1px solid #d1d5db", borderRadius: 3, fontSize: 11, textAlign: "right" }}
           disabled={isCalculatedRow}
         />
       </td>
@@ -118,7 +118,7 @@ export function CostItemRow(props) {
             placeholder="-"
             value={displayValue}
             onChange={(e) => handleCellChange(part.part_no, costItem, col, e.target.value)}
-            style={{ width: "100%", padding: "4px", border: "1px solid #d1d5db", borderRadius: 3, fontSize: 11 }}
+            style={{ width: "100%", padding: "4px", border: "1px solid #d1d5db", borderRadius: 3, fontSize: 11, textAlign: "right" }}
             disabled={isCalculatedRow}
           />
         </td>
@@ -130,7 +130,7 @@ export function CostItemRow(props) {
           placeholder="-"
           value={isCalculatedRow ? "" : getRemarkValue(part, analysisData) || ""}
           onChange={(e) => handleCellChange(part.part_no, "__remark__", "Remark", e.target.value)}
-          style={{ width: "100%", padding: "4px", border: "1px solid #d1d5db", borderRadius: 3, fontSize: 11 }}
+          style={{ width: "100%", padding: "4px", border: "1px solid #d1d5db", borderRadius: 3, fontSize: 11, textAlign: "right" }}
           disabled={isCalculatedRow}
         />
       </td>

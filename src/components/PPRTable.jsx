@@ -89,17 +89,17 @@ export function PPRTable(props) {
             <th colSpan={ANALYSIS_COLUMNS.length} style={{ textAlign: "center", padding: "8px", background: "#f5d5a8", fontWeight: 600, borderBottom: "1px solid #d1d5db" }}>
               Analysis
             </th>
-            <th rowSpan={2} className="tbl-header" style={{minWidth: 70, background: "#bbfebb" }}>Remark</th>
+            <th rowSpan={2} className="tbl-header" style={{minWidth: 150, background: "#bbfebb" }}>Remark</th>
           </tr>
           <tr style={{ borderBottom: "1px solid #d1d5db" }}>
-            <th className="tbl-header" style={{ minWidth: 80, background: '#e3f6ff' }}>{comparisonPeriod}</th>
-            <th className="tbl-header" style={{minWidth: 80, background: '#e3f6ff' }}>{selectedPeriod}</th>
-            <th className="tbl-header" style={{minWidth: 70, background: '#e3f6ff' }}>diff Amt</th>
-            <th className="tbl-header" style={{minWidth: 60, background: '#e3f6ff' }}>diff %</th>
-            <th className="tbl-header" style={{minWidth: 70, background: '#e3f6ff' }}>PBMD</th>
-            <th className="tbl-header" style={{minWidth: 70, background: '#e3f6ff' }}>Adj Value</th>
+            <th className="tbl-header" style={{ minWidth: 70, background: '#e3f6ff' }}>{comparisonPeriod}</th>
+            <th className="tbl-header" style={{minWidth: 70, background: '#e3f6ff' }}>{selectedPeriod}</th>
+            <th className="tbl-header" style={{minWidth: 60, background: '#e3f6ff' }}>diff Amt</th>
+            <th className="tbl-header" style={{minWidth: 50, background: '#e3f6ff' }}>diff %</th>
+            <th className="tbl-header" style={{minWidth: 60, background: '#e3f6ff' }}>PBMD</th>
+            <th className="tbl-header" style={{minWidth: 60, background: '#e3f6ff' }}>Adj Value</th>
             {ANALYSIS_COLUMNS.map(col => (
-              <th key={col} className="tbl-header"  style={{minWidth: 80, background: '#faebd7' }}>{col}</th>
+              <th key={col} className="tbl-header"  style={{minWidth: 70, background: '#faebd7' }}>{col}</th>
             ))}
           </tr>
         </thead>
