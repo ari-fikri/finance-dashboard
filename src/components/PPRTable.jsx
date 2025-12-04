@@ -1,7 +1,7 @@
 import React from "react";
 import FilterDialog from "./FilterDialog";
 import { CostItemRow } from "./CostItemRow";
-import { FunnelIcon } from "./FunnelIcon";
+import FunnelIcon from "./FunnelIcon";
 import { ANALYSIS_COLUMNS, COST_ITEMS } from "../utils/pprConstants";
 import { getAnalysisValue, getRemarkValue } from "../utils/pprHelpers";
 

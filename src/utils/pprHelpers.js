@@ -114,7 +114,10 @@ export const getRemarkValue = (part, analysisData) => {
 export const getAnalysisDefault = (part, costItem, column) => {
   const blockKey = COLUMN_TO_MONTH_KEY[column] || column.toLowerCase().replace(/ /g, "_");
   const costKey = COST_ITEM_KEYS[costItem];
-  if (part.months && part.months[blockKey]) return part.months[blockKey][costKey];
+  
+  if (part.months && part.months[blockKey] && part.months[blockKey][costKey] !== undefined) {
+    return part.months[blockKey][costKey];
+  }
   return "";
 };
 
@@ -125,7 +128,7 @@ export const getAnalysisValue = (part, costItem, column, analysisData) => {
   const stateVal = getCellValueFromState(part.part_no, costItem, column, analysisData);
   if (stateVal !== undefined) return stateVal;
   const def = getAnalysisDefault(part, costItem, column);
-  return def !== undefined && def !== null ? def : "";
+  return (def !== undefined && def !== null && def !== "") ? def : "";
 };
 
 /**
@@ -186,4 +189,35 @@ export const getDisplayValues = (part, costItem, analysisData) => {
   }
 
   return { pbmdDisplayValue, adjDisplayValue };
+};
+
+/**
+ * Calculate analysis column total for summary rows
+ */
+export const calculateAnalysisColumnTotal = (part, items, column, analysisData) => {
+  let total = 0;
+  for (const item of items) {
+    const val = getAnalysisValue(part, item, column, analysisData);
+    const numVal = parseFloat(val);
+    if (!isNaN(numVal)) {
+      total += numVal;
+    }
+  }
+  return total;
+};
+
+/**
+ * Get analysis value for summary rows (calculates total if applicable)
+ */
+export const getAnalysisValueForSummaryRow = (part, costItem, column, analysisData) => {
+  if (costItem === "Total Purchase Cost") {
+    return calculateAnalysisColumnTotal(part, PURCHASE_ITEMS, column, analysisData);
+  } else if (costItem === "Total Process Cost") {
+    return calculateAnalysisColumnTotal(part, PROCESS_ITEMS, column, analysisData);
+  } else if (costItem === "Total Cost") {
+    const purchaseTotal = calculateAnalysisColumnTotal(part, PURCHASE_ITEMS, column, analysisData);
+    const processTotal = calculateAnalysisColumnTotal(part, PROCESS_ITEMS, column, analysisData);
+    return purchaseTotal + processTotal;
+  }
+  return getAnalysisValue(part, costItem, column, analysisData);
 };
