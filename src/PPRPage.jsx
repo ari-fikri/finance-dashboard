@@ -40,8 +40,9 @@ export default function PPRPage() {
   const [filteredCategories, setFilteredCategories] = useState([]);
 
   useEffect(() => {
-    const fetchData = async () => {
-      fetch("/msp.json")
+    const fetchData = async () => {      
+      const fileUrl = `${import.meta.env.BASE_URL}msp.json`;
+      fetch(fileUrl)
         .then((res) => res.json())
         .then((data) => {
           setMspData(data.items || []);
