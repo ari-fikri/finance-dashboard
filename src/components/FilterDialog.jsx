@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 
 const FilterDialog = ({
   title,
@@ -10,6 +10,18 @@ const FilterDialog = ({
   const [searchText, setSearchText] = useState('');
   const [checkedValues, setCheckedValues] = useState(initialCheckedValues);
 
+  const filteredValues = values.filter((value) =>
+    value.toLowerCase().includes(searchText.toLowerCase())
+  );
+
+  const handleSelectAllChange = (e) => {
+    if (e.target.checked) {
+      setCheckedValues(filteredValues);
+    } else {
+      setCheckedValues([]);
+    }
+  };
+
   const handleCheckboxChange = (value) => {
     setCheckedValues((prev) =>
       prev.includes(value)
@@ -17,10 +29,6 @@ const FilterDialog = ({
         : [...prev, value]
     );
   };
-
-  const filteredValues = values.filter((value) =>
-    value.toLowerCase().includes(searchText.toLowerCase())
-  );
 
   return (
     <div style={{
@@ -44,6 +52,15 @@ const FilterDialog = ({
         style={{ width: '100%', padding: '8px', marginBottom: '12px', borderRadius: '4px', border: '1px solid #ccc' }}
       />
       <div style={{ maxHeight: '200px', overflowY: 'auto', textAlign: 'left' }}>
+        <div>
+          <input
+            type="checkbox"
+            id="select-all"
+            checked={filteredValues.length > 0 && checkedValues.length === filteredValues.length}
+            onChange={handleSelectAllChange}
+          />
+          <label htmlFor="select-all" style={{ marginLeft: '8px', fontWeight: 'bold' }}>Select All</label>
+        </div>
         {filteredValues.map((value) => (
           <div key={value}>
             <input
