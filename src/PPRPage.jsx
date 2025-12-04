@@ -69,17 +69,35 @@ export default function PPRPage() {
     return Array.from(periods).sort().reverse();
   }, [mspData]);
 
-  const uniquePartNos = useMemo(() => 
-    Array.from(new Set(mspData.map(item => item.part_no))), [mspData]
-  );
+  const availableImporters = useMemo(() => {
+    const importers = new Set();
+    mspData.forEach(item => {
+      if (filteredPartNos.includes(item.part_no) && filteredCategories.includes(item.category)) {
+        importers.add(item.importer);
+      }
+    });
+    return Array.from(importers);
+  }, [mspData, filteredPartNos, filteredCategories]);
 
-  const uniqueImporters = useMemo(() => 
-    Array.from(new Set(mspData.map(item => item.importer))), [mspData]
-  );
+  const availableCategories = useMemo(() => {
+    const categories = new Set();
+    mspData.forEach(item => {
+      if (filteredPartNos.includes(item.part_no) && filteredImporters.includes(item.importer)) {
+        categories.add(item.category);
+      }
+    });
+    return Array.from(categories);
+  }, [mspData, filteredPartNos, filteredImporters]);
 
-  const uniqueCategories = useMemo(() => 
-    Array.from(new Set(mspData.map(item => item.category))), [mspData]
-  );
+  const availablePartNos = useMemo(() => {
+    const partNos = new Set();
+    mspData.forEach(item => {
+      if (filteredImporters.includes(item.importer) && filteredCategories.includes(item.category)) {
+        partNos.add(item.part_no);
+      }
+    });
+    return Array.from(partNos);
+  }, [mspData, filteredImporters, filteredCategories]);
 
   const filteredMspData = useMemo(() => 
     mspData.filter(item => 
@@ -176,9 +194,9 @@ export default function PPRPage() {
         filteredMspData={paginatedMspData}
         filterStates={filterStates}
         toggleFilter={toggleFilter}
-        uniquePartNos={uniquePartNos}
-        uniqueImporters={uniqueImporters}
-        uniqueCategories={uniqueCategories}
+        uniquePartNos={availablePartNos}
+        uniqueImporters={availableImporters}
+        uniqueCategories={availableCategories}
         filteredPartNos={filteredPartNos}
         filteredImporters={filteredImporters}
         filteredCategories={filteredCategories}
