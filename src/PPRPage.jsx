@@ -1,6 +1,7 @@
 import React, { useMemo, useState, useEffect, useCallback } from "react";
 import { PPRHeader } from "./components/PPRHeader";
 import { PPRTable } from "./components/PPRTable";
+import Pagination from "./components/Pagination";
 import { calculateDiff } from "./utils/pprHelpers";
 import {
   getCellStateKey,
@@ -21,6 +22,8 @@ export default function PPRPage() {
   const [filteredPartNos, setFilteredPartNos] = useState([]);
   const [filteredImporters, setFilteredImporters] = useState([]);
   const [filteredCategories, setFilteredCategories] = useState([]);
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 5;
 
   useEffect(() => {
     const fetchData = async () => {      
@@ -29,7 +32,8 @@ export default function PPRPage() {
         const res = await fetch(fileUrl);
         const data = await res.json();
         setMspData(data.items || []);
-        setFilteredPartNos(Array.from(new Set(data.items.map(item => item.part_no))));
+        const allPartNos = Array.from(new Set(data.items.map(item => item.part_no)));
+        setFilteredPartNos(allPartNos);
         setFilteredImporters(Array.from(new Set(data.items.map(item => item.importer))));
         setFilteredCategories(Array.from(new Set(data.items.map(item => item.category))));
       } catch (err) {
@@ -78,19 +82,42 @@ export default function PPRPage() {
     ), [mspData, filteredPartNos, filteredImporters, filteredCategories]
   );
 
+  const uniqueFilteredPartNos = useMemo(() => 
+    Array.from(new Set(filteredMspData.map(item => item.part_no))), 
+    [filteredMspData]
+  );
+
+  const totalPages = Math.ceil(uniqueFilteredPartNos.length / itemsPerPage);
+  const startIndex = (currentPage - 1) * itemsPerPage;
+  const currentPartNos = uniqueFilteredPartNos.slice(startIndex, startIndex + itemsPerPage);
+
+  const paginatedMspData = useMemo(() => 
+    filteredMspData.filter(item => currentPartNos.includes(item.part_no)),
+    [filteredMspData, currentPartNos]
+  );
+
+  const goToPage = (page) => {
+    if (page > 0 && page <= totalPages) {
+      setCurrentPage(page);
+    }
+  };
+
   const handleApplyFilter = useCallback((selectedPartNos) => {
     setFilteredPartNos(selectedPartNos);
     setFilterStates(prev => ({ ...prev, partNo: false }));
+    setCurrentPage(1);
   }, []);
 
   const handleApplyImporterFilter = useCallback((selectedImporters) => {
     setFilteredImporters(selectedImporters);
     setFilterStates(prev => ({ ...prev, importer: false }));
+    setCurrentPage(1);
   }, []);
 
   const handleApplyCategoryFilter = useCallback((selectedCategories) => {
     setFilteredCategories(selectedCategories);
     setFilterStates(prev => ({ ...prev, category: false }));
+    setCurrentPage(1);
   }, []);
 
   const toggleFilter = useCallback((filterType) => {
@@ -98,7 +125,7 @@ export default function PPRPage() {
   }, []);
 
   return (
-    <div style={{ background: "#fff" }}>
+    <div style={{ background: "#fff", padding: "16px" }}>
       <PPRHeader 
         selectedPeriod={selectedPeriod}
         comparisonPeriod={comparisonPeriod}
@@ -108,7 +135,7 @@ export default function PPRPage() {
       />
 
       <PPRTable
-        filteredMspData={filteredMspData}
+        filteredMspData={paginatedMspData}
         filterStates={filterStates}
         toggleFilter={toggleFilter}
         uniquePartNos={uniquePartNos}
@@ -127,6 +154,14 @@ export default function PPRPage() {
         getDisplayValues={wrappedGetDisplayValues}
         handleCellChange={handleCellChange}
         analysisData={analysisData}
+      />
+      <Pagination
+        currentPage={currentPage}
+        totalPages={totalPages}
+        goToPage={goToPage}
+        totalRecords={uniqueFilteredPartNos.length}
+        startIndex={startIndex}
+        endIndex={startIndex + itemsPerPage}
       />
     </div>
   );
