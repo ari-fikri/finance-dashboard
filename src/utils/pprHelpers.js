@@ -179,9 +179,9 @@ export const getDisplayValues = (part, costItem, analysisData) => {
     pbmdDisplayValue = calculatePbmdTotal(part, PROCESS_ITEMS, analysisData);
     adjDisplayValue = calculateAdjTotal(part, PROCESS_ITEMS, analysisData);
   } else if (costItem === "Total Cost") {
-    pbmdDisplayValue = calculatePbmdTotal(part, PURCHASE_ITEMS, analysisData) + 
+    pbmdDisplayValue = calculatePbmdTotal(part, PURCHASE_ITEMS, analysisData) +
                        calculatePbmdTotal(part, PROCESS_ITEMS, analysisData);
-    adjDisplayValue = calculateAdjTotal(part, PURCHASE_ITEMS, analysisData) + 
+    adjDisplayValue = calculateAdjTotal(part, PURCHASE_ITEMS, analysisData) +
                       calculateAdjTotal(part, PROCESS_ITEMS, analysisData);
   } else {
     pbmdDisplayValue = getPBMDValue(part, costItem, analysisData) || "";
