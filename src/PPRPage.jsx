@@ -8,6 +8,7 @@ import {
   calculateCostValues,
   getDisplayValues
 } from "./utils/pprHelpers";
+import { COST_ITEMS } from "./utils/pprConstants";
 
 export default function PPRPage() {
   const [mspData, setMspData] = useState([]);
@@ -23,6 +24,7 @@ export default function PPRPage() {
   const [filteredImporters, setFilteredImporters] = useState([]);
   const [filteredCategories, setFilteredCategories] = useState([]);
   const [currentPage, setCurrentPage] = useState(1);
+  const [thresholdActive, setThresholdActive] = useState(false);
   const itemsPerPage = 5;
 
   useEffect(() => {
@@ -41,6 +43,11 @@ export default function PPRPage() {
       }
     }
     fetchData();
+  }, []);
+
+  const toggleThresholdFilter = useCallback(() => {
+    setThresholdActive(prev => !prev);
+    setCurrentPage(1);
   }, []);
 
   const handleCellChange = useCallback((partNo, costItem, column, value) => {
@@ -82,9 +89,40 @@ export default function PPRPage() {
     ), [mspData, filteredPartNos, filteredImporters, filteredCategories]
   );
 
+  const partNosWithThresholdIssues = useMemo(() => {
+    const partNos = new Set();
+    const uniqueParts = [];
+    const seenPartNos = new Set();
+
+    for (const item of filteredMspData) {
+      if (!seenPartNos.has(item.part_no)) {
+        uniqueParts.push(item);
+        seenPartNos.add(item.part_no);
+      }
+    }
+
+    uniqueParts.forEach(part => {
+      COST_ITEMS.forEach(costItem => {
+        const { currentValue, previousValue } = calculateCostValues(part, costItem, selectedPeriod, comparisonPeriod);
+        const diffPercent = calculateDiff(currentValue, previousValue);
+        if (diffPercent && Math.abs(diffPercent) > 15) {
+          partNos.add(part.part_no);
+        }
+      });
+    });
+    return Array.from(partNos);
+  }, [filteredMspData, selectedPeriod, comparisonPeriod]);
+
+  const finalFilteredData = useMemo(() => {
+    if (thresholdActive) {
+      return filteredMspData.filter(item => partNosWithThresholdIssues.includes(item.part_no));
+    }
+    return filteredMspData;
+  }, [filteredMspData, thresholdActive, partNosWithThresholdIssues]);
+
   const uniqueFilteredPartNos = useMemo(() => 
-    Array.from(new Set(filteredMspData.map(item => item.part_no))), 
-    [filteredMspData]
+    Array.from(new Set(finalFilteredData.map(item => item.part_no))), 
+    [finalFilteredData]
   );
 
   const totalPages = Math.ceil(uniqueFilteredPartNos.length / itemsPerPage);
@@ -92,8 +130,8 @@ export default function PPRPage() {
   const currentPartNos = uniqueFilteredPartNos.slice(startIndex, startIndex + itemsPerPage);
 
   const paginatedMspData = useMemo(() => 
-    filteredMspData.filter(item => currentPartNos.includes(item.part_no)),
-    [filteredMspData, currentPartNos]
+    finalFilteredData.filter(item => currentPartNos.includes(item.part_no)),
+    [finalFilteredData, currentPartNos]
   );
 
   const goToPage = (page) => {
@@ -154,6 +192,8 @@ export default function PPRPage() {
         getDisplayValues={wrappedGetDisplayValues}
         handleCellChange={handleCellChange}
         analysisData={analysisData}
+        toggleThresholdFilter={toggleThresholdFilter}
+        thresholdActive={thresholdActive}
       />
       <Pagination
         currentPage={currentPage}

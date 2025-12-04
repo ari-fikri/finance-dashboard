@@ -25,11 +25,29 @@ export function PPRTable(props) {
     calculateDiff,
     getDisplayValues,
     handleCellChange,
-    analysisData
+    analysisData,
+    toggleThresholdFilter,
+    thresholdActive
   } = props;
 
   return (
     <div style={{ overflowX: "auto", background: "#fff" }}>
+      <div style={{ padding: '8px 0px', background: '#fff', borderBottom: '1px solid #d1d5db', display: 'flex', gap: '8px' }}>
+        <button
+          onClick={toggleThresholdFilter}
+          style={{
+            padding: '6px 12px',
+            fontSize: 12,
+            background: thresholdActive ? '#2563eb' : '#e5e7eb',
+            color: thresholdActive ? '#fff' : '#1f2937',
+            border: '1px solid #d1d5db',
+            borderRadius: 4,
+            cursor: 'pointer'
+          }}
+        >
+          Threshold
+        </button>
+      </div>
       <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 12 }}>
         <thead style={{ position: "sticky", top: 0, zIndex: 10 }}>
           <tr style={{ borderBottom: "1px solid #d1d5db" }}>
