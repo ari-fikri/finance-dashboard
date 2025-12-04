@@ -106,6 +106,13 @@ export default function PPRPage() {
     return part.months && part.months.adj_values ? part.months.adj_values[key] : "";
   };
 
+  const calculatePbmdTotal = (part, items) => {
+    return items.reduce((sum, item) => {
+      const val = parseFloat(getPBMDValue(part, item)) || 0;
+      return sum + val;
+    }, 0);
+  };
+
   const getRemarkValue = (part) => {
     const stateVal = getCellValueFromState(part.part_no, "__remark__", "Remark");
     if (stateVal !== undefined) return stateVal;
@@ -334,6 +341,30 @@ export default function PPRPage() {
                   const depreCommonPrevious = getCostValue(part, comparisonPeriod, "Depre Common") || 0;
                   const depreExclusivePrevious = getCostValue(part, comparisonPeriod, "Depre Exclusive") || 0;
                   previousValue = laborPrevious + fohFixPrevious + fohVarPrevious + depreCommonPrevious + depreExclusivePrevious;
+                } else if (costItem === "Total Cost") {
+                  const toolingOHCurrent = getCostValue(part, selectedPeriod, "Tooling OH") || 0;
+                  const rawMaterialCurrent = getCostValue(part, selectedPeriod, "Raw Material") || 0;
+                  const totalPurchaseCurrent = toolingOHCurrent + rawMaterialCurrent;
+
+                  const laborCurrent = getCostValue(part, selectedPeriod, "Labor") || 0;
+                  const fohFixCurrent = getCostValue(part, selectedPeriod, "FOH Fix") || 0;
+                  const fohVarCurrent = getCostValue(part, selectedPeriod, "FOH Var") || 0;
+                  const depreCommonCurrent = getCostValue(part, selectedPeriod, "Depre Common") || 0;
+                  const depreExclusiveCurrent = getCostValue(part, selectedPeriod, "Depre Exclusive") || 0;
+                  const totalProcessCurrent = laborCurrent + fohFixCurrent + fohVarCurrent + depreCommonCurrent + depreExclusiveCurrent;
+                  currentValue = totalPurchaseCurrent + totalProcessCurrent;
+
+                  const toolingOHPrevious = getCostValue(part, comparisonPeriod, "Tooling OH") || 0;
+                  const rawMaterialPrevious = getCostValue(part, comparisonPeriod, "Raw Material") || 0;
+                  const totalPurchasePrevious = toolingOHPrevious + rawMaterialPrevious;
+
+                  const laborPrevious = getCostValue(part, comparisonPeriod, "Labor") || 0;
+                  const fohFixPrevious = getCostValue(part, comparisonPeriod, "FOH Fix") || 0;
+                  const fohVarPrevious = getCostValue(part, comparisonPeriod, "FOH Var") || 0;
+                  const depreCommonPrevious = getCostValue(part, comparisonPeriod, "Depre Common") || 0;
+                  const depreExclusivePrevious = getCostValue(part, comparisonPeriod, "Depre Exclusive") || 0;
+                  const totalProcessPrevious = laborPrevious + fohFixPrevious + fohVarPrevious + depreCommonPrevious + depreExclusivePrevious;
+                  previousValue = totalPurchasePrevious + totalProcessPrevious;
                 } else {
                   currentValue = getCostValue(part, selectedPeriod, costItem);
                   previousValue = getCostValue(part, comparisonPeriod, costItem);
@@ -344,6 +375,19 @@ export default function PPRPage() {
                 const isLastRow = idx === costItems.length - 1;
                 const isCalculatedRow = costItem === "Total Purchase Cost" || costItem === "Total Process Cost";
                 const isSummaryRow = isCalculatedRow || costItem === "Total Cost";
+
+                let pbmdDisplayValue;
+                if (costItem === "Total Purchase Cost") {
+                  const total = calculatePbmdTotal(part, ["Tooling OH", "Raw Material"]);
+                  pbmdDisplayValue = total || "";
+                } else if (costItem === "Total Process Cost") {
+                  const total = calculatePbmdTotal(part, ["Labor", "FOH Fix", "FOH Var", "Depre Common", "Depre Exclusive"]);
+                  pbmdDisplayValue = total || "";
+                } else if (isCalculatedRow) {
+                  pbmdDisplayValue = "";
+                } else {
+                  pbmdDisplayValue = getPBMDValue(part, costItem) || "";
+                }
 
                 return (
                   <tr
@@ -408,14 +452,12 @@ export default function PPRPage() {
                       textAlign: "right",
                       color: diffPercent && Math.abs(diffPercent) > 15 ? "#dc2626" : "inherit",
                       fontWeight: isSummaryRow ? 'bold' : (diffPercent && Math.abs(diffPercent) > 15 ? 600 : "normal")
-                    }}>
-                      {diffPercent ? `${diffPercent.toFixed(2)}%` : "-"}
-                    </td>
+                    }}>{diffPercent ? `${diffPercent.toFixed(2)}%` : "-"}</td>
                     <td className="td-default" style={{textAlign: "center" }}>
                       <input
                         type="text"
                         placeholder="-"
-                        value={isCalculatedRow ? "" : getPBMDValue(part, costItem) || ""}
+                        value={pbmdDisplayValue}
                         onChange={(e) => handleCellChange(part.part_no, costItem, "PBMD", e.target.value)}
                         style={{ width: "100%", padding: "4px", border: "1px solid #d1d5db", borderRadius: 3, fontSize: 11 }}
                         disabled={isCalculatedRow}
