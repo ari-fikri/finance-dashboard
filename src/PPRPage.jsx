@@ -113,6 +113,13 @@ export default function PPRPage() {
     }, 0);
   };
 
+  const calculateAdjTotal = (part, items) => {
+    return items.reduce((sum, item) => {
+      const val = parseFloat(getAdjValue(part, item)) || 0;
+      return sum + val;
+    }, 0);
+  };
+
   const getRemarkValue = (part) => {
     const stateVal = getCellValueFromState(part.part_no, "__remark__", "Remark");
     if (stateVal !== undefined) return stateVal;
@@ -379,14 +386,31 @@ export default function PPRPage() {
                 let pbmdDisplayValue;
                 if (costItem === "Total Purchase Cost") {
                   const total = calculatePbmdTotal(part, ["Tooling OH", "Raw Material"]);
-                  pbmdDisplayValue = total || "";
+                  pbmdDisplayValue = total;
                 } else if (costItem === "Total Process Cost") {
                   const total = calculatePbmdTotal(part, ["Labor", "FOH Fix", "FOH Var", "Depre Common", "Depre Exclusive"]);
-                  pbmdDisplayValue = total || "";
-                } else if (isCalculatedRow) {
-                  pbmdDisplayValue = "";
+                  pbmdDisplayValue = total;
+                } else if (costItem === "Total Cost") {
+                  const purchaseTotal = calculatePbmdTotal(part, ["Tooling OH", "Raw Material"]);
+                  const processTotal = calculatePbmdTotal(part, ["Labor", "FOH Fix", "FOH Var", "Depre Common", "Depre Exclusive"]);
+                  pbmdDisplayValue = purchaseTotal + processTotal;
                 } else {
                   pbmdDisplayValue = getPBMDValue(part, costItem) || "";
+                }
+
+                let adjDisplayValue;
+                if (costItem === "Total Purchase Cost") {
+                  const total = calculateAdjTotal(part, ["Tooling OH", "Raw Material"]);
+                  adjDisplayValue = total;
+                } else if (costItem === "Total Process Cost") {
+                  const total = calculateAdjTotal(part, ["Labor", "FOH Fix", "FOH Var", "Depre Common", "Depre Exclusive"]);
+                  adjDisplayValue = total;
+                } else if (costItem === "Total Cost") {
+                  const purchaseTotal = calculateAdjTotal(part, ["Tooling OH", "Raw Material"]);
+                  const processTotal = calculateAdjTotal(part, ["Labor", "FOH Fix", "FOH Var", "Depre Common", "Depre Exclusive"]);
+                  adjDisplayValue = purchaseTotal + processTotal;
+                } else {
+                  adjDisplayValue = getAdjValue(part, costItem) || "";
                 }
 
                 return (
@@ -467,7 +491,7 @@ export default function PPRPage() {
                       <input
                         type="text"
                         placeholder="-"
-                        value={isCalculatedRow ? "" : getAdjValue(part, costItem) || ""}
+                        value={adjDisplayValue}
                         onChange={(e) => handleCellChange(part.part_no, costItem, "Adj", e.target.value)}
                         style={{ width: "100%", padding: "4px", border: "1px solid #d1d5db", borderRadius: 3, fontSize: 11 }}
                         disabled={isCalculatedRow}
