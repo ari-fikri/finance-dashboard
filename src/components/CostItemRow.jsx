@@ -115,17 +115,25 @@ export function CostItemRow(props) {
       </td>
       {ANALYSIS_COLUMNS.map(col => {
         const analysisValue = isCalculatedRow ? getAnalysisValueForSummaryRow(part, costItem, col, analysisData) : getAnalysisValue(part, costItem, col, analysisData);
-        const displayValue = (analysisValue !== null && analysisValue !== "" && analysisValue !== undefined) ? (typeof analysisValue === 'number' ? analysisValue.toLocaleString(undefined, { maximumFractionDigits: 0 }) : analysisValue) : "";
+        const displayValue = (analysisValue !== null && analysisValue !== "" && analysisValue !== undefined) ? (typeof analysisValue === 'number' ? analysisValue.toLocaleString(undefined, { maximumFractionDigits: 0 }) : analysisValue) : "-";
+        const isEditable = !["Volume", "Inflation", "CR", "Material Price Impact", "Gentan-I Impact", "Material Change"].includes(col);
+
         return (
         <td key={col} className="td-default" style={{textAlign: "center" }}>
-          <input
-            type="text"
-            placeholder="-"
-            value={displayValue}
-            onChange={(e) => handleCellChange(part.part_no, costItem, col, e.target.value)}
-            style={{ width: "100%", padding: "4px", border: "1px solid #d1d5db", borderRadius: 3, fontSize: 11, textAlign: "right", fontWeight: isSummaryRow ? 'bold' : 'normal' }}
-            disabled={isCalculatedRow}
-          />
+          {isEditable ? (
+            <input
+              type="text"
+              placeholder="-"
+              value={displayValue === '-' ? '' : displayValue}
+              onChange={(e) => handleCellChange(part.part_no, costItem, col, e.target.value)}
+              style={{ width: "100%", padding: "4px", border: "1px solid #d1d5db", borderRadius: 3, fontSize: 11, textAlign: "right", fontWeight: isSummaryRow ? 'bold' : 'normal' }}
+              disabled={isCalculatedRow}
+            />
+          ) : (
+            <span style={{ padding: "4px", fontSize: 11, fontWeight: isSummaryRow ? 'bold' : 'normal', textAlign: "right", display: 'block' }}>
+              {displayValue}
+            </span>
+          )}
         </td>
       );
       })}
