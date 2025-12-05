@@ -56,7 +56,9 @@ export function PPRTable(props) {
             <th rowSpan={2} className="tbl-header" style={{ minWidth: 120, position: 'relative' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <span>Part No</span>
-                <span style={{ cursor: 'pointer' }} onClick={() => !isAnyFilterActive || filterStates.partNo ? toggleFilter('partNo') : null}><FunnelIcon /></span>
+                <span style={{ cursor: 'pointer' }} onClick={() => !isAnyFilterActive || filterStates.partNo ? toggleFilter('partNo') : null}>
+                  <FunnelIcon filled={filteredPartNos.length < uniquePartNos.length} />
+                </span>
               </div>
               {filterStates.partNo && (
                 <FilterDialog
@@ -71,7 +73,9 @@ export function PPRTable(props) {
             <th rowSpan={2} className="tbl-header" style={{position: 'relative'}}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <span>importer</span>
-                <span style={{ cursor: 'pointer' }} onClick={() => !isAnyFilterActive || filterStates.importer ? toggleFilter('importer') : null}><FunnelIcon /></span>
+                <span style={{ cursor: 'pointer' }} onClick={() => !isAnyFilterActive || filterStates.importer ? toggleFilter('importer') : null}>
+                  <FunnelIcon filled={filteredImporters.length < uniqueImporters.length} />
+                </span>
               </div>
               {filterStates.importer && (
                 <FilterDialog
@@ -86,7 +90,9 @@ export function PPRTable(props) {
             <th rowSpan={2} className="tbl-header" style={{position: 'relative'}}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <span>category</span>
-                <span style={{ cursor: 'pointer' }} onClick={() => !isAnyFilterActive || filterStates.category ? toggleFilter('category') : null}><FunnelIcon /></span>
+                <span style={{ cursor: 'pointer' }} onClick={() => !isAnyFilterActive || filterStates.category ? toggleFilter('category') : null}>
+                  <FunnelIcon filled={filteredCategories.length < uniqueCategories.length} />
+                </span>
               </div>
               {filterStates.category && (
                 <FilterDialog
