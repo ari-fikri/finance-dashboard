@@ -72,7 +72,7 @@ export function PPRTable(props) {
             </th>
             <th rowSpan={2} className="tbl-header" style={{position: 'relative'}}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span>importer</span>
+                <span>Importer</span>
                 <span style={{ cursor: 'pointer' }} onClick={() => !isAnyFilterActive || filterStates.importer ? toggleFilter('importer') : null}>
                   <FunnelIcon filled={filteredImporters.length < uniqueImporters.length} />
                 </span>
@@ -89,7 +89,7 @@ export function PPRTable(props) {
             </th>
             <th rowSpan={2} className="tbl-header" style={{position: 'relative'}}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
-                <span>category</span>
+                <span>Category</span>
                 <span style={{ cursor: 'pointer' }} onClick={() => !isAnyFilterActive || filterStates.category ? toggleFilter('category') : null}>
                   <FunnelIcon filled={filteredCategories.length < uniqueCategories.length} />
                 </span>
@@ -119,10 +119,10 @@ export function PPRTable(props) {
           </tr>
           <tr style={{ borderBottom: "1px solid #d1d5db" }}>
             <th className="tbl-header" style={{ minWidth: 70, background: '#e3f6ff' }}>{comparisonPeriod}</th>
+            <th className="tbl-header" style={{minWidth: 120, background: '#e3f6ff' }}>{`PBMD ${comparisonPeriod}`}</th>
             <th className="tbl-header" style={{minWidth: 70, background: '#e3f6ff' }}>{selectedPeriod}</th>
-            <th className="tbl-header" style={{minWidth: 60, background: '#e3f6ff' }}>diff Amt</th>
-            <th className="tbl-header" style={{minWidth: 50, background: '#e3f6ff' }}>diff %</th>
-            <th className="tbl-header" style={{minWidth: 60, background: '#e3f6ff' }}>PBMD</th>
+            <th className="tbl-header" style={{minWidth: 60, background: '#e3f6ff' }}>Diff Amt</th>
+            <th className="tbl-header" style={{minWidth: 50, background: '#e3f6ff' }}>Diff %</th>
             <th className="tbl-header" style={{minWidth: 60, background: '#e3f6ff' }}>Adj Value</th>
             {ANALYSIS_COLUMNS.map(col => (
               <th key={col} className="tbl-header"  style={{minWidth: 70, background: '#faebd7' }}>{col}</th>

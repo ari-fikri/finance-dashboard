@@ -75,19 +75,23 @@ export function CostItemRow(props) {
       <td className="td-default" style={{fontWeight: isSummaryRow ? 'bold' : 500, borderRight: "1px solid #e5e7eb" }}>
         {costItem}
       </td>
-      <td className="td-default" style={{textAlign: "right", fontWeight: isSummaryRow ? 'bold' : 'normal' }}>
-        {currentValue ? currentValue.toLocaleString(undefined, { maximumFractionDigits: 0 }) : "-"}
-      </td>
-      <td className="td-default" style={{textAlign: "right", fontWeight: isSummaryRow ? 'bold' : 'normal' }}>
+      <td className="td-default" style={{textAlign: "right", fontWeight: isSummaryRow ? 'bold' : 'normal', padding:"6px" }}>
         {previousValue ? previousValue.toLocaleString(undefined, { maximumFractionDigits: 0 }) : "-"}
       </td>
-      <td className="td-default" style={{textAlign: "right", fontWeight: isSummaryRow ? 'bold' : 'normal' }}>
+      <td className="td-default" style={{textAlign: "right", fontWeight: isSummaryRow ? 'bold' : 'normal', padding:"6px" }}>
+        {pbmdDisplayValue || "-"}
+      </td>
+      <td className="td-default" style={{textAlign: "right", fontWeight: isSummaryRow ? 'bold' : 'normal', padding:"6px" }}>
+        {currentValue ? currentValue.toLocaleString(undefined, { maximumFractionDigits: 0 }) : "-"}
+      </td>
+      <td className="td-default" style={{textAlign: "right", fontWeight: isSummaryRow ? 'bold' : 'normal', padding:"6px" }}>
         {diffAmt !== null ? diffAmt.toLocaleString(undefined, { maximumFractionDigits: 0 }) : "-"}
       </td>
       <td className="td-default" style={{
         textAlign: "right",
         color: diffPercent && Math.abs(diffPercent) > 15 ? "#dc2626" : "inherit",
-        fontWeight: isSummaryRow ? 'bold' : (diffPercent && Math.abs(diffPercent) > 15 ? 600 : "normal")
+        fontWeight: isSummaryRow ? 'bold' : (diffPercent && Math.abs(diffPercent) > 15 ? 600 : "normal"),
+        padding:"6px"
       }}>
         {diffPercent ? (
           `(${diffPercent.toFixed(2)}%)`
@@ -97,19 +101,9 @@ export function CostItemRow(props) {
         <input
           type="text"
           placeholder="-"
-          value={pbmdDisplayValue}
-          onChange={(e) => handleCellChange(part.part_no, costItem, "PBMD", e.target.value)}
-          style={{ width: "100%", padding: "4px", border: "1px solid #d1d5db", borderRadius: 3, fontSize: 11, textAlign: "right", fontWeight: isSummaryRow ? 'bold' : 'normal' }}
-          disabled={isCalculatedRow}
-        />
-      </td>
-      <td className="td-default" style={{textAlign: "center" }}>
-        <input
-          type="text"
-          placeholder="-"
           value={adjDisplayValue}
           onChange={(e) => handleCellChange(part.part_no, costItem, "Adj", e.target.value)}
-          style={{ width: "100%", padding: "4px", border: "1px solid #d1d5db", borderRadius: 3, fontSize: 11, textAlign: "right", fontWeight: isSummaryRow ? 'bold' : 'normal' }}
+          style={{ width: "100%", padding: "6px", border: "1px solid #d1d5db", borderRadius: 3, fontSize: 11, textAlign: "right", fontWeight: isSummaryRow ? 'bold' : 'normal' }}
           disabled={isCalculatedRow}
         />
       </td>
