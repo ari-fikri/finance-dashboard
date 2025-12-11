@@ -1,7 +1,29 @@
+/**
+ * @file CostItemRow.jsx
+ * @description This component renders a single row in the PPR table, representing a cost item for a specific part.
+ * It displays calculated cost values, differences, and analysis data, and allows for editing certain fields.
+ */
+
 import React, { useState } from "react";
 import { ANALYSIS_COLUMNS, COST_ITEMS } from "../utils/pprConstants";
 import { getAnalysisValue, getRemarkValue, getAnalysisValueForSummaryRow } from "../utils/pprHelpers";
 
+/**
+ * A component that renders a single row for a cost item within the main table.
+ *
+ * @param {object} props - The props for the component.
+ * @param {object} props.part - The part data for the current row.
+ * @param {string} props.costItem - The name of the cost item for the current row.
+ * @param {number} props.idx - The index of the current row.
+ * @param {string} props.selectedPeriod - The currently selected reporting period.
+ * @param {string} props.comparisonPeriod - The period to compare against.
+ * @param {function} props.calculateCostValues - A function to calculate current and previous cost values.
+ * @param {function} props.calculateDiff - A function to calculate the difference between two values.
+ * @param {function} props.getDisplayValues - A function to get display values for PBMD and Adj.
+ * @param {function} props.handleCellChange - A callback function to handle changes in cell values.
+ * @param {object} props.analysisData - The analysis data for the current part.
+ * @returns {JSX.Element} The rendered cost item row.
+ */
 export function CostItemRow(props) {
   const {
     part,
@@ -16,14 +38,22 @@ export function CostItemRow(props) {
     analysisData
   } = props;
 
+  // Calculate cost values for the current and previous periods.
   const { currentValue, previousValue } = calculateCostValues(part, costItem, selectedPeriod, comparisonPeriod);
+  // Get display values for PBMD and Adj from analysis data.
   const { pbmdDisplayValue, adjDisplayValue } = getDisplayValues(part, costItem, analysisData);
+  // State to manage the editing mode for the remarks column.
   const [isEditing, setIsEditing] = useState(false);
 
+  // Calculate the difference amount and percentage.
   const diffAmt = (currentValue !== null && previousValue !== null) ? currentValue - previousValue : null;
   const diffPercent = calculateDiff(currentValue, previousValue);
+
+  // Determine if the current row is the last row to apply a thicker border.
   const isLastRow = idx === COST_ITEMS.length - 1;
+  // Determine if the row is a calculated row (summary rows that are not editable).
   const isCalculatedRow = costItem === "Total Purchase Cost" || costItem === "Total Process Cost" || costItem === "Total Cost";
+  // Determine if the row is a summary row to apply special styling.
   const isSummaryRow = isCalculatedRow || costItem === "Total Cost";
 
   return (
@@ -33,6 +63,7 @@ export function CostItemRow(props) {
         background: isSummaryRow ? "#f9facd" : (idx % 2 === 0 ? "#fafafa" : "#fff")
       }}
     >
+      {/* Render part details (Part No, Importer, Category) only for the first cost item row. */}
       {idx === 0 && (
         <>
           <td
@@ -72,21 +103,27 @@ export function CostItemRow(props) {
           </td>
         </>
       )}
+      {/* Cost Item column */}
       <td className="td-default" style={{fontWeight: isSummaryRow ? 'bold' : 500, borderRight: "1px solid #e5e7eb" }}>
         {costItem}
       </td>
+      {/* Comparison Period Value */}
       <td className="td-default" style={{textAlign: "right", fontWeight: isSummaryRow ? 'bold' : 'normal', padding:"6px" }}>
         {previousValue ? previousValue.toLocaleString(undefined, { maximumFractionDigits: 0 }) : "-"}
       </td>
+      {/* PBMD Value */}
       <td className="td-default" style={{textAlign: "right", fontWeight: isSummaryRow ? 'bold' : 'normal', padding:"6px" }}>
         {pbmdDisplayValue || "-"}
       </td>
+      {/* Selected Period Value */}
       <td className="td-default" style={{textAlign: "right", fontWeight: isSummaryRow ? 'bold' : 'normal', padding:"6px" }}>
         {currentValue ? currentValue.toLocaleString(undefined, { maximumFractionDigits: 0 }) : "-"}
       </td>
+      {/* Difference Amount */}
       <td className="td-default" style={{textAlign: "right", fontWeight: isSummaryRow ? 'bold' : 'normal', padding:"6px" }}>
         {diffAmt !== null ? diffAmt.toLocaleString(undefined, { maximumFractionDigits: 0 }) : "-"}
       </td>
+      {/* Difference Percentage */}
       <td className="td-default" style={{
         textAlign: "right",
         color: diffPercent && Math.abs(diffPercent) > 15 ? "#dc2626" : "inherit",
@@ -97,6 +134,7 @@ export function CostItemRow(props) {
           `(${diffPercent.toFixed(2)}%)`
         ) : "-"}
       </td>
+      {/* Adjustment Value */}
       <td className="td-default" style={{textAlign: "center" }}>
         <input
           type="text"
@@ -107,6 +145,7 @@ export function CostItemRow(props) {
           disabled={isCalculatedRow}
         />
       </td>
+      {/* Dynamically rendered analysis columns */}
       {ANALYSIS_COLUMNS.map(col => {
         const analysisValue = isCalculatedRow ? getAnalysisValueForSummaryRow(part, costItem, col, analysisData) : getAnalysisValue(part, costItem, col, analysisData);
         const displayValue = (analysisValue !== null && analysisValue !== "" && analysisValue !== undefined) ? (typeof analysisValue === 'number' ? analysisValue.toLocaleString(undefined, { maximumFractionDigits: 0 }) : analysisValue) : "-";
@@ -131,6 +170,7 @@ export function CostItemRow(props) {
         </td>
       );
       })}
+      {/* Remark column with in-place editing */}
       <td className="td-default" style={{textAlign: "center" }} onClick={() => !isCalculatedRow && setIsEditing(true)}>
         {isEditing ? (
           <textarea
