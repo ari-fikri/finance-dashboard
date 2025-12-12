@@ -12,6 +12,7 @@ import {
 } from "./utils/pprHelpers";
 import { COST_ITEMS, ANALYSIS_COLUMNS } from "./utils/pprConstants";
 import ExcelJS from "exceljs";
+import { exportPPRToExcel } from "./utils/exportPPRToExcel";
 
 export default function PPRPage() {
   const [mspData, setMspData] = useState([]);
@@ -353,4 +354,18 @@ export default function PPRPage() {
       />
     </div>
   );
+}
+
+async function handleDownload() {
+  await exportPPRToExcel({
+    filteredMspData,
+    COST_ITEMS,
+    ANALYSIS_COLUMNS,
+    selectedPeriod,
+    comparisonPeriod,
+    calculateCostValues,
+    calculateDiff,
+    getAnalysisValue,
+    getRemarkValue,
+  });
 }
