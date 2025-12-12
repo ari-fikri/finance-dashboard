@@ -8,6 +8,7 @@ import PPRPage from "./pprpage";
 import PartPairingPage from "./PartPairingPage";
 import PeriodComparisonPage from "./PeriodComparisonPage";
 import CostMovementDetail from './CostMovementDetail';
+import CastingMaterialPage from "./CastingMaterialPage";
 
 const base = process.env.NODE_ENV === "production"
   ? "/finance-dashboard/"
@@ -23,6 +24,7 @@ createRoot(document.getElementById('root')).render(
         <Route path="/part-pairing" element={<PartPairingPage />} />
         <Route path="/period-comparison" element={<PeriodComparisonPage />} />
         <Route path="/cost-movement-detail/:partNo" element={<CostMovementDetail />} />
+        <Route path="/casting-material" element={<CastingMaterialPage />} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

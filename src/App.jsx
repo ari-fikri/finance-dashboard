@@ -158,11 +158,6 @@ export default function App() {
     openDownloadModal('process', files);
   }
 
-  function downloadMaterialData() {
-    const files = [...(fileManifest.material || []), ...materialFiles];
-    openDownloadModal('material', files);
-  }
-
   function downloadTemplate(type) {
     let fileName = "";
     let csvContent;
@@ -401,12 +396,12 @@ export default function App() {
                     Upload
                   </label>
                   <button
-                    onClick={downloadMaterialData}
+                    onClick={() => navigate("/casting-material")}
                     className="btn btn-primary"
                     disabled={!latestMaterialFile}
                     style={!latestMaterialFile ? { opacity: 0.5, cursor: "not-allowed" } : {}}
                   >
-                    Download
+                    Calculate
                   </button>
                 </div>
               </div>

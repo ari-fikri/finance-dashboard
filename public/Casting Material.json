@@ -1,0 +1,4377 @@
+[
+ {
+   "EG Model": "",
+   "Category": "",
+   "Casting Part": "",
+   "CC": "",
+   "Material No": "",
+   "Material Name": "",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      " Price ",
+      " Gentani ",
+      " Total "
+   ],
+   "Apr-Sep'25": [
+      " Price ",
+      " Gentani ",
+      " Total "
+   ],
+   "Diff Amount": "",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": ""
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-010517",
+   "Material Name": "ANTIMON  SB 99.0 % MAX (EX. JAPAN YUSHIN )",
+   "Material Category": "Additive",
+   "Oct'24-Mar'25": [
+      " 1.100.000 ",
+      " 0,020 ",
+      " 21.669 "
+   ],
+   "Apr-Sep'25": [
+      " 328.333 ",
+      " 0,015 ",
+      " 4.790 "
+   ],
+   "Diff Amount": " 16.880 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "Increasing gentani"
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-010518",
+   "Material Name": "ANTIMON (SB) SHOT S 3-8 MM KINSEI MATEC",
+   "Material Category": "Additive",
+   "Oct'24-Mar'25": [
+      " 730.000 ",
+      " 0,007 ",
+      " 5.025 "
+   ],
+   "Apr-Sep'25": [
+      " 443.500 ",
+      " 0,005 ",
+      " 2.340 "
+   ],
+   "Diff Amount": " 2.685 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": ""
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-010519",
+   "Material Name": "ANTIMON METAL",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 300.000 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-022001",
+   "Material Name": "CARBON LOW NITROGEN",
+   "Material Category": "Additive",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 19.500 ",
+      " 0,659 ",
+      " 12.843 "
+   ],
+   "Diff Amount": " (12.843)",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "delete material"
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-022002",
+   "Material Name": "Carbonet Tokufun N asashi coke",
+   "Material Category": "Additive",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 20.025 ",
+      " 0,115 ",
+      " 4.595 "
+   ],
+   "Diff Amount": " (4.595)",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "delete material"
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-022003",
+   "Material Name": "RECARBURIZER SG-3 KINSEI MATEC",
+   "Material Category": "Additive",
+   "Oct'24-Mar'25": [
+      " 19.200 ",
+      " 0,548 ",
+      " 10.526 "
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " 10.526 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "New Material"
+},
+ {
+   "EG Model": "TR",
+   "Category": "2TR",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-031515",
+   "Material Name": "CARBURIZER HG YUSHIN FOR FCD",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 22.653 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-031559",
+   "Material Name": "CARBURIZER GRAPH HEX-99 LARPEN",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 19.675 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "2TR",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-031559",
+   "Material Name": "CARBURIZER GRAPH HEX-99 LARPEN FC",
+   "Material Category": "Additive",
+   "Oct'24-Mar'25": [
+      " 18.950 ",
+      " 0,385 ",
+      " 7.293 "
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " 7.293 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "New Material"
+},
+ {
+   "EG Model": "TR",
+   "Category": "2TR",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-031560",
+   "Material Name": "CARBON DTCA-09 DURATIGHT / OCTO",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 22.500 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-031561",
+   "Material Name": "CARBURIZER CARBON RISER HCM-A(CPC-A)OCTO",
+   "Material Category": "Additive",
+   "Oct'24-Mar'25": [
+      " 17.950 ",
+      " 1,318 ",
+      " 23.652 "
+   ],
+   "Apr-Sep'25": [
+      " 18.546 ",
+      " 1,385 ",
+      " 25.677 "
+   ],
+   "Diff Amount": " (2.024)",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": ""
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-033558",
+   "Material Name": "RECARBURIZER DG-LNS MARUTOYO",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 10.900 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "2TR",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-061516",
+   "Material Name": "FeSiMg Denodul - OCS",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-061517",
+   "Material Name": "FERRO SILICON 0.75 (EXFESIL) YUSHIN",
+   "Material Category": "Additive",
+   "Oct'24-Mar'25": [
+      " 27.000 ",
+      " 1,372 ",
+      " 37.057 "
+   ],
+   "Apr-Sep'25": [
+      " 28.000 ",
+      " 0,795 ",
+      " 21.974 "
+   ],
+   "Diff Amount": " 15.083 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "Increasing gentani"
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-061518",
+   "Material Name": "FERRO SILICON 0.75 (EXFESIL)",
+   "Material Category": "Additive",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 24.500 ",
+      " 0,613 ",
+      " 15.010 "
+   ],
+   "Diff Amount": " (15.010)",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "delete material"
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-061519",
+   "Material Name": "FERRO MANGAN for FC (87%)",
+   "Material Category": "Additive",
+   "Oct'24-Mar'25": [
+      " 22.000 ",
+      " 0,146 ",
+      " 3.208 "
+   ],
+   "Apr-Sep'25": [
+      " 22.000 ",
+      " 0,158 ",
+      " 3.468 "
+   ],
+   "Diff Amount": " (261)",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": ""
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-061519",
+   "Material Name": "FERRO MANGAN for FCD Cams(13%)",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 22.000 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-061521",
+   "Material Name": "FERRO MANGAN HALTRACO for FC",
+   "Material Category": "Additive",
+   "Oct'24-Mar'25": [
+      " 26.000 ",
+      " 0,058 ",
+      " 1.503 "
+   ],
+   "Apr-Sep'25": [
+      " 26.000 ",
+      " 0,046 ",
+      " 1.784 "
+   ],
+   "Diff Amount": " (282)",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": ""
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-062518",
+   "Material Name": "Ferro Silicon Low Al Kinsei Matex Cam's",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 29.567 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-062519",
+   "Material Name": "SILICON MAGNESIUM TDCR-4 HRSP TOYODENKA",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 124.055 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-080556",
+   "Material Name": "CARBON G-HIGH JG-01",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 18.160 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-080556",
+   "Material Name": "CARBON G-HIGH JG-01 FC",
+   "Material Category": "Additive",
+   "Oct'24-Mar'25": [
+      " 16.500 ",
+      " 1,249 ",
+      " 20.608 "
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " 20.608 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "New Material"
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-090207",
+   "Material Name": "Inoculant Ultraseed MSI size 0,2-0,7mm",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 83.950 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-090720",
+   "Material Name": "Inoculant Ultraseed LG  size 0,7-2mm",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 81.649 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-091504",
+   "Material Name": "INOCULANT TOYO BARON TOYODENKA (LMC)",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 95.600 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-091505",
+   "Material Name": "INOCARB 0,5/2MM FERRO GLOBE",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 47.200 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "2TR",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-091515",
+   "Material Name": "INOKURIN MATRIK (INOCARB)",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 37.867 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-091524",
+   "Material Name": "INOCULANT FOUNDRISIL Msi",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 52.500 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-091525",
+   "Material Name": "INOCULANT ASK",
+   "Material Category": "Additive",
+   "Oct'24-Mar'25": [
+      " 66.100 ",
+      " 0,064 ",
+      " 4.216 "
+   ],
+   "Apr-Sep'25": [
+      " 65.025 ",
+      " 0,056 ",
+      " 3.659 "
+   ],
+   "Diff Amount": " 557 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": ""
+},
+ {
+   "EG Model": "TR",
+   "Category": "2TR",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-091526",
+   "Material Name": "INOCULANT BARINOC LG 0.7-0.3 MM",
+   "Material Category": "Additive",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 48.450 ",
+      " 0,020 ",
+      " 2.854 "
+   ],
+   "Diff Amount": " (2.854)",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "delete material"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-091535",
+   "Material Name": "INOCULANT TOYO BARON Cams (3%)",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 40.481 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-091535",
+   "Material Name": "INOCULANT TOYO BARON FC(97%)",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 40.481 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-091545",
+   "Material Name": "INOCULANT ASK Ba - Si",
+   "Material Category": "Additive",
+   "Oct'24-Mar'25": [
+      " 70.350 ",
+      " 0,187 ",
+      " 13.186 "
+   ],
+   "Apr-Sep'25": [
+      " 69.568 ",
+      " 0,134 ",
+      " 9.321 "
+   ],
+   "Diff Amount": " 3.866 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": ""
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-135922",
+   "Material Name": "Magnesium Lamet 5922 size 3-25mm",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 57.575 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-160013",
+   "Material Name": "Cu for Cam's",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 163.172 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-160015",
+   "Material Name": "Sn Metal  (Yushin) for Cam's",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 798.667 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-160016",
+   "Material Name": "CU - RMM",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-160900",
+   "Material Name": "Scrap ex Import Stamping (inhouse) 99.44%",
+   "Material Category": "Scrap IH",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 1 ",
+      " 14,756 ",
+      " 15 "
+   ],
+   "Diff Amount": " (15)",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "delete material"
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-160900",
+   "Material Name": "STEEL RAW MATERIAL SHEET EX STAMPING",
+   "Material Category": "Scrap IH",
+   "Oct'24-Mar'25": [
+      " 1 ",
+      " 12,352 ",
+      " 12 "
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " 12 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "New Material"
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-160901",
+   "Material Name": "Scrap ex Karawang (Inhouse) 0.16%",
+   "Material Category": "Scrap IH",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 1.000 ",
+      " 3,101 ",
+      " 3.101 "
+   ],
+   "Diff Amount": " (3.101)",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "delete material"
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-160901",
+   "Material Name": "STEEL RAW MATERIAL IN-HOUSE CASTING (KRW)",
+   "Material Category": "Scrap IH",
+   "Oct'24-Mar'25": [
+      " 1.000 ",
+      " 4,359 ",
+      " 4.359 "
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " 4.359 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "New Material"
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-160902",
+   "Material Name": "Scrap Curah (HJ)",
+   "Material Category": "Scrap OH",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 10.000 ",
+      " 8,583 ",
+      " 85.827 "
+   ],
+   "Diff Amount": " (85.827)",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "delete material"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-160902",
+   "Material Name": "STEEL RAW MATERIAL OUT-HOUSE CASTING - HJ",
+   "Material Category": "Scrap OH",
+   "Oct'24-Mar'25": [
+      " 10.000 ",
+      " 11,525 ",
+      " 115.246 "
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " 115.246 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "New Material"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-160903",
+   "Material Name": "Scrap Curah (AMS)",
+   "Material Category": "Scrap OH",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 13.000 ",
+      " 5,684 ",
+      " 73.891 "
+   ],
+   "Diff Amount": " (73.891)",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "delete material"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-160903",
+   "Material Name": "STEEL RAW MATERIAL OUT-HOUSE  CASTING - AMS",
+   "Material Category": "Scrap OH",
+   "Oct'24-Mar'25": [
+      " 13.000 ",
+      " 8,607 ",
+      " 111.897 "
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " 111.897 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "New Material"
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-160904",
+   "Material Name": "Scrap Curah (HM)",
+   "Material Category": "Scrap OH",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 9.500 ",
+      " 9,156 ",
+      " 86.983 "
+   ],
+   "Diff Amount": " (86.983)",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "delete material"
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-160904",
+   "Material Name": "STEEL RAW MATERIAL OUT-HOUSE CASTING - HM",
+   "Material Category": "Scrap OH",
+   "Oct'24-Mar'25": [
+      " 9.500 ",
+      " 15,545 ",
+      " 147.675 "
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " 147.675 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "New Material"
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-160905",
+   "Material Name": "STEEL RAW MATERIAL SHEET SPH6270 - HM",
+   "Material Category": "Scrap OH",
+   "Oct'24-Mar'25": [
+      " 14.850 ",
+      " 5,533 ",
+      " 82.165 "
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " 82.165 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "New Material"
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-160905",
+   "Material Name": "Steel SPH (HM)",
+   "Material Category": "Scrap OH",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 14.850 ",
+      " 4,604 ",
+      " 68.363 "
+   ],
+   "Diff Amount": " (68.363)",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "delete material"
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-160906",
+   "Material Name": "STEEL RAW MATERIAL SHEET SPC2700 - TS",
+   "Material Category": "Scrap OH",
+   "Oct'24-Mar'25": [
+      " 14.500 ",
+      " 1,773 ",
+      " 25.707 "
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " 25.707 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "New Material"
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-160906",
+   "Material Name": "Tricentrum SPC ",
+   "Material Category": "Scrap OH",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 14.500 ",
+      " 1,545 ",
+      " 22.408 "
+   ],
+   "Diff Amount": " (22.408)",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "delete material"
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-160907",
+   "Material Name": "STEEL RAW MATERIAL OUT-HOUSE  CASTING - KBI",
+   "Material Category": "Scrap OH",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-160907",
+   "Material Name": "Steel Sheet Krakatau Baja Indonesia",
+   "Material Category": "Scrap OH",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 14.200 ",
+      " 0,370 ",
+      " 31.499 "
+   ],
+   "Diff Amount": " (31.499)",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "delete material"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-160910",
+   "Material Name": "import/Koil TTMI",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 14.650 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-160910",
+   "Material Name": "STEEL RAW MATERIAL AC CLASS SCI",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC100",
+   "Material No": "B895-750703",
+   "Material Name": "INNOCULANT SUPERSEED 75 LG SIZE 0,7 - 3 MM",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC501",
+   "Material No": "B821-000011",
+   "Material Name": "CELVA BLACK LITER 7K,TR",
+   "Material Category": "Additive",
+   "Oct'24-Mar'25": [
+      " 59.600 ",
+      " 0,058 ",
+      " 3.453 "
+   ],
+   "Apr-Sep'25": [
+      " 59.600 ",
+      " 0,052 ",
+      " 3.093 "
+   ],
+   "Diff Amount": " 360 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": ""
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Block Cylinder",
+   "CC": "AZC501",
+   "Material No": "B836-775502",
+   "Material Name": "THINNER LACQUER 55 ",
+   "Material Category": "Additive",
+   "Oct'24-Mar'25": [
+      " 31.394 ",
+      " 0,062 ",
+      " 1.934 "
+   ],
+   "Apr-Sep'25": [
+      " 29.083 ",
+      " 0,051 ",
+      " 1.483 "
+   ],
+   "Diff Amount": " 450 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": ""
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-010517",
+   "Material Name": "ANTIMON  SB 99.0 % MAX (EX. JAPAN YUSHIN )",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 328.333 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "2TR",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-010518",
+   "Material Name": "ANTIMON (SB) SHOT S 3-8 MM KINSEI MATEC",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 443.500 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-010519",
+   "Material Name": "ANTIMON METAL",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 300.000 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-022001",
+   "Material Name": "CARBON LOW NITROGEN",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 19.500 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "2TR",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-022002",
+   "Material Name": "Carbonet Tokufun N asashi coke",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 20.025 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "2TR",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-022003",
+   "Material Name": "RECARBURIZER SG-3 KINSEI MATEC",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "2TR",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-031515",
+   "Material Name": "CARBURIZER HG YUSHIN FOR FCD",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 22.653 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-031559",
+   "Material Name": "CARBURIZER GRAPH HEX-99 LARPEN",
+   "Material Category": "Additive",
+   "Oct'24-Mar'25": [
+      " 18.950 ",
+      " 0,047 ",
+      " 890 "
+   ],
+   "Apr-Sep'25": [
+      " 19.675 ",
+      " 0,042 ",
+      " 830 "
+   ],
+   "Diff Amount": " 61 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": ""
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-031559",
+   "Material Name": "CARBURIZER GRAPH HEX-99 LARPEN FC",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "2TR",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-031560",
+   "Material Name": "CARBON DTCA-09 DURATIGHT / OCTO",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 22.500 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-031561",
+   "Material Name": "CARBURIZER CARBON RISER HCM-A(CPC-A)OCTO",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 18.546 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "2TR",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-033558",
+   "Material Name": "RECARBURIZER DG-LNS MARUTOYO",
+   "Material Category": "Additive",
+   "Oct'24-Mar'25": [
+      " 12.400 ",
+      " 0,021 ",
+      " 261 "
+   ],
+   "Apr-Sep'25": [
+      " 10.900 ",
+      " 0,011 ",
+      " 113 "
+   ],
+   "Diff Amount": " 148 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": ""
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-061516",
+   "Material Name": "FeSiMg Denodul - OCS",
+   "Material Category": "Additive",
+   "Oct'24-Mar'25": [
+      " 101.856 ",
+      " 0,040 ",
+      " 4.060 "
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " 4.060 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "New Material"
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-061517",
+   "Material Name": "FERRO SILICON 0.75 (EXFESIL) YUSHIN",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 28.000 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-061518",
+   "Material Name": "FERRO SILICON 0.75 (EXFESIL)",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 24.500 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-061519",
+   "Material Name": "FERRO MANGAN for FC (87%)",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 22.000 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "2TR",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-061519",
+   "Material Name": "FERRO MANGAN for FCD Cams(13%)",
+   "Material Category": "#N/A",
+   "Oct'24-Mar'25": [
+      " 22.000 ",
+      " 0,009 ",
+      " 192 "
+   ],
+   "Apr-Sep'25": [
+      " 22.000 ",
+      " 0,010 ",
+      " 228 "
+   ],
+   "Diff Amount": " (35)",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": ""
+},
+ {
+   "EG Model": "TR",
+   "Category": "2TR",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-061521",
+   "Material Name": "FERRO MANGAN HALTRACO for FC",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 26.000 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-062518",
+   "Material Name": "Ferro Silicon Low Al Kinsei Matex Cam's",
+   "Material Category": "Additive",
+   "Oct'24-Mar'25": [
+      " 30.500 ",
+      " 0,054 ",
+      " 1.642 "
+   ],
+   "Apr-Sep'25": [
+      " 29.567 ",
+      " 0,057 ",
+      " 1.687 "
+   ],
+   "Diff Amount": " (45)",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": ""
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-062519",
+   "Material Name": "SILICON MAGNESIUM TDCR-4 HRSP TOYODENKA",
+   "Material Category": "Additive",
+   "Oct'24-Mar'25": [
+      " 123.841 ",
+      " 0,001 ",
+      " 62 "
+   ],
+   "Apr-Sep'25": [
+      " 124.055 ",
+      " 0,037 ",
+      " 4.570 "
+   ],
+   "Diff Amount": " (4.508)",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": ""
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-080556",
+   "Material Name": "CARBON G-HIGH JG-01",
+   "Material Category": "Additive",
+   "Oct'24-Mar'25": [
+      " 16.500 ",
+      " 0,166 ",
+      " 2.734 "
+   ],
+   "Apr-Sep'25": [
+      " 18.160 ",
+      " 0,092 ",
+      " 1.662 "
+   ],
+   "Diff Amount": " 1.072 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": ""
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-080556",
+   "Material Name": "CARBON G-HIGH JG-01 FC",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-090207",
+   "Material Name": "Inoculant Ultraseed MSI size 0,2-0,7mm",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 83.950 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-090720",
+   "Material Name": "Inoculant Ultraseed LG  size 0,7-2mm",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 81.649 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "2TR",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-091504",
+   "Material Name": "INOCULANT TOYO BARON TOYODENKA (LMC)",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 95.600 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "2TR",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-091505",
+   "Material Name": "INOCARB 0,5/2MM FERRO GLOBE",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 47.200 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-091515",
+   "Material Name": "INOKURIN MATRIK (INOCARB)",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 37.867 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-091524",
+   "Material Name": "INOCULANT FOUNDRISIL Msi",
+   "Material Category": "Additive",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 52.500 ",
+      " 0,000 ",
+      " 25 "
+   ],
+   "Diff Amount": " (25)",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "delete material"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-091525",
+   "Material Name": "INOCULANT ASK",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 65.025 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-091526",
+   "Material Name": "INOCULANT BARINOC LG 0.7-0.3 MM",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 48.450 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-091535",
+   "Material Name": "INOCULANT TOYO BARON Cams (3%)",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 40.481 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-091535",
+   "Material Name": "INOCULANT TOYO BARON FC(97%)",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 40.481 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-091545",
+   "Material Name": "INOCULANT ASK Ba - Si",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 69.568 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-135922",
+   "Material Name": "Magnesium Lamet 5922 size 3-25mm",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 57.575 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-160013",
+   "Material Name": "Cu for Cam's",
+   "Material Category": "Additive",
+   "Oct'24-Mar'25": [
+      " 167.500 ",
+      " 0,032 ",
+      " 5.417 "
+   ],
+   "Apr-Sep'25": [
+      " 163.172 ",
+      " 0,032 ",
+      " 5.141 "
+   ],
+   "Diff Amount": " 276 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": ""
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-160015",
+   "Material Name": "Sn Metal  (Yushin) for Cam's",
+   "Material Category": "Additive",
+   "Oct'24-Mar'25": [
+      " 798.000 ",
+      " 0,001 ",
+      " 746 "
+   ],
+   "Apr-Sep'25": [
+      " 798.667 ",
+      " 0,001 ",
+      " 931 "
+   ],
+   "Diff Amount": " (186)",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": ""
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-160016",
+   "Material Name": "CU - RMM",
+   "Material Category": "Additive",
+   "Oct'24-Mar'25": [
+      " 158.000 ",
+      " 0,012 ",
+      " 1.898 "
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " 1.898 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "New Material"
+},
+ {
+   "EG Model": "TR",
+   "Category": "2TR",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-160900",
+   "Material Name": "Scrap ex Import Stamping (inhouse) 99.44%",
+   "Material Category": "#N/A",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 1 ",
+      " 1,047 ",
+      " 1 "
+   ],
+   "Diff Amount": " (1)",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "delete material"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-160900",
+   "Material Name": "STEEL RAW MATERIAL SHEET EX STAMPING",
+   "Material Category": "#N/A",
+   "Oct'24-Mar'25": [
+      " 1 ",
+      " 0,893 ",
+      " 1 "
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " 1 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "New Material"
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-160901",
+   "Material Name": "Scrap ex Karawang (Inhouse) 0.16%",
+   "Material Category": "#N/A",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 1.000 ",
+      " 0,220 ",
+      " 220 "
+   ],
+   "Diff Amount": " (220)",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "delete material"
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-160901",
+   "Material Name": "STEEL RAW MATERIAL IN-HOUSE CASTING (KRW)",
+   "Material Category": "#N/A",
+   "Oct'24-Mar'25": [
+      " 1.000 ",
+      " 0,313 ",
+      " 313 "
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " 313 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "New Material"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-160902",
+   "Material Name": "Scrap Curah (HJ)",
+   "Material Category": "#N/A",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 10.000 ",
+      " 0,609 ",
+      " 6.090 "
+   ],
+   "Diff Amount": " (6.090)",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "delete material"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-160902",
+   "Material Name": "STEEL RAW MATERIAL OUT-HOUSE CASTING - HJ",
+   "Material Category": "#N/A",
+   "Oct'24-Mar'25": [
+      " 10.000 ",
+      " 0,827 ",
+      " 8.274 "
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " 8.274 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "New Material"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-160903",
+   "Material Name": "Scrap Curah (AMS)",
+   "Material Category": "#N/A",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 13.000 ",
+      " 0,403 ",
+      " 5.243 "
+   ],
+   "Diff Amount": " (5.243)",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "delete material"
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-160903",
+   "Material Name": "STEEL RAW MATERIAL OUT-HOUSE  CASTING - AMS",
+   "Material Category": "#N/A",
+   "Oct'24-Mar'25": [
+      " 13.000 ",
+      " 0,619 ",
+      " 8.044 "
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " 8.044 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "New Material"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-160904",
+   "Material Name": "Scrap Curah (HM)",
+   "Material Category": "#N/A",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 9.500 ",
+      " 0,650 ",
+      " 6.172 "
+   ],
+   "Diff Amount": " (6.172)",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "delete material"
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-160904",
+   "Material Name": "STEEL RAW MATERIAL OUT-HOUSE CASTING - HM",
+   "Material Category": "#N/A",
+   "Oct'24-Mar'25": [
+      " 9.500 ",
+      " 1,119 ",
+      " 10.631 "
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " 10.631 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "New Material"
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-160905",
+   "Material Name": "STEEL RAW MATERIAL SHEET SPH6270 - HM",
+   "Material Category": "#N/A",
+   "Oct'24-Mar'25": [
+      " 14.850 ",
+      " 0,398 ",
+      " 5.907 "
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " 5.907 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "New Material"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-160905",
+   "Material Name": "Steel SPH (HM)",
+   "Material Category": "#N/A",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 14.850 ",
+      " 0,327 ",
+      " 4.851 "
+   ],
+   "Diff Amount": " (4.851)",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "delete material"
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-160906",
+   "Material Name": "STEEL RAW MATERIAL SHEET SPC2700 - TS",
+   "Material Category": "#N/A",
+   "Oct'24-Mar'25": [
+      " 14.500 ",
+      " 0,128 ",
+      " 1.851 "
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " 1.851 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "New Material"
+},
+ {
+   "EG Model": "TR",
+   "Category": "2TR",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-160906",
+   "Material Name": "Tricentrum SPC ",
+   "Material Category": "#N/A",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 14.500 ",
+      " 0,110 ",
+      " 1.590 "
+   ],
+   "Diff Amount": " (1.590)",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "delete material"
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-160907",
+   "Material Name": "STEEL RAW MATERIAL OUT-HOUSE  CASTING - KBI",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-160907",
+   "Material Name": "Steel Sheet Krakatau Baja Indonesia",
+   "Material Category": "OH",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 14.200 ",
+      " 0,157 ",
+      " 2.235 "
+   ],
+   "Diff Amount": " (2.235)",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "delete material"
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-160910",
+   "Material Name": "import/Koil TTMI",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 14.650 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "2TR",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-160910",
+   "Material Name": "STEEL RAW MATERIAL AC CLASS SCI",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "2TR",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC100",
+   "Material No": "B895-750703",
+   "Material Name": "INNOCULANT SUPERSEED 75 LG SIZE 0,7 - 3 MM",
+   "Material Category": "Additive",
+   "Oct'24-Mar'25": [
+      " 73.742 ",
+      " 0,006 ",
+      " 419 "
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " 419 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "New Material"
+},
+ {
+   "EG Model": "TR",
+   "Category": "2TR",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC501",
+   "Material No": "B821-000011",
+   "Material Name": "CELVA BLACK LITER 7K,TR",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Camshaft 1",
+   "CC": "AZC501",
+   "Material No": "B836-775502",
+   "Material Name": "THINNER LACQUER 55 ",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-010517",
+   "Material Name": "ANTIMON  SB 99.0 % MAX (EX. JAPAN YUSHIN )",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 328.333 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-010518",
+   "Material Name": "ANTIMON (SB) SHOT S 3-8 MM KINSEI MATEC",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 443.500 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-010519",
+   "Material Name": "ANTIMON METAL",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 300.000 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-022001",
+   "Material Name": "CARBON LOW NITROGEN",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 19.500 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "2TR",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-022002",
+   "Material Name": "Carbonet Tokufun N asashi coke",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 20.025 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-022003",
+   "Material Name": "RECARBURIZER SG-3 KINSEI MATEC",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "2TR",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-031515",
+   "Material Name": "CARBURIZER HG YUSHIN FOR FCD",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 22.653 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "2TR",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-031559",
+   "Material Name": "CARBURIZER GRAPH HEX-99 LARPEN",
+   "Material Category": "Additive",
+   "Oct'24-Mar'25": [
+      " 18.950 ",
+      " 0,045 ",
+      " 861 "
+   ],
+   "Apr-Sep'25": [
+      " 19.675 ",
+      " 0,041 ",
+      " 806 "
+   ],
+   "Diff Amount": " 56 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": ""
+},
+ {
+   "EG Model": "TR",
+   "Category": "2TR",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-031559",
+   "Material Name": "CARBURIZER GRAPH HEX-99 LARPEN FC",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-031560",
+   "Material Name": "CARBON DTCA-09 DURATIGHT / OCTO",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 22.500 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-031561",
+   "Material Name": "CARBURIZER CARBON RISER HCM-A(CPC-A)OCTO",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 18.546 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-033558",
+   "Material Name": "RECARBURIZER DG-LNS MARUTOYO",
+   "Material Category": "Additive",
+   "Oct'24-Mar'25": [
+      " 12.400 ",
+      " 0,020 ",
+      " 253 "
+   ],
+   "Apr-Sep'25": [
+      " 10.900 ",
+      " 0,010 ",
+      " 109 "
+   ],
+   "Diff Amount": " 143 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": ""
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-061516",
+   "Material Name": "FeSiMg Denodul - OCS",
+   "Material Category": "Additive",
+   "Oct'24-Mar'25": [
+      " 101.856 ",
+      " 0,039 ",
+      " 4.013 "
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " 4.013 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "New Material"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-061517",
+   "Material Name": "FERRO SILICON 0.75 (EXFESIL) YUSHIN",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 28.000 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-061518",
+   "Material Name": "FERRO SILICON 0.75 (EXFESIL)",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 24.500 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-061519",
+   "Material Name": "FERRO MANGAN for FC (87%)",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 22.000 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-061519",
+   "Material Name": "FERRO MANGAN for FCD Cams(13%)",
+   "Material Category": "#N/A",
+   "Oct'24-Mar'25": [
+      " 22.000 ",
+      " 0,009 ",
+      " 190 "
+   ],
+   "Apr-Sep'25": [
+      " 22.000 ",
+      " 0,010 ",
+      " 220 "
+   ],
+   "Diff Amount": " (30)",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": ""
+},
+ {
+   "EG Model": "TR",
+   "Category": "2TR",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-061521",
+   "Material Name": "FERRO MANGAN HALTRACO for FC",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 26.000 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-062518",
+   "Material Name": "Ferro Silicon Low Al Kinsei Matex Cam's",
+   "Material Category": "Additive",
+   "Oct'24-Mar'25": [
+      " 30.500 ",
+      " 0,052 ",
+      " 1.588 "
+   ],
+   "Apr-Sep'25": [
+      " 29.567 ",
+      " 0,055 ",
+      " 1.640 "
+   ],
+   "Diff Amount": " (51)",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": ""
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-062519",
+   "Material Name": "SILICON MAGNESIUM TDCR-4 HRSP TOYODENKA",
+   "Material Category": "Additive",
+   "Oct'24-Mar'25": [
+      " 123.841 ",
+      " 0,001 ",
+      " 62 "
+   ],
+   "Apr-Sep'25": [
+      " 124.055 ",
+      " 0,037 ",
+      " 4.570 "
+   ],
+   "Diff Amount": " (4.508)",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": ""
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-080556",
+   "Material Name": "CARBON G-HIGH JG-01",
+   "Material Category": "Additive",
+   "Oct'24-Mar'25": [
+      " 16.500 ",
+      " 0,160 ",
+      " 2.645 "
+   ],
+   "Apr-Sep'25": [
+      " 18.160 ",
+      " 0,089 ",
+      " 1.616 "
+   ],
+   "Diff Amount": " 1.028 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": ""
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-080556",
+   "Material Name": "CARBON G-HIGH JG-01 FC",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-090207",
+   "Material Name": "Inoculant Ultraseed MSI size 0,2-0,7mm",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 83.950 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-090720",
+   "Material Name": "Inoculant Ultraseed LG  size 0,7-2mm",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 81.649 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "2TR",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-091504",
+   "Material Name": "INOCULANT TOYO BARON TOYODENKA (LMC)",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 95.600 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-091505",
+   "Material Name": "INOCARB 0,5/2MM FERRO GLOBE",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 47.200 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-091515",
+   "Material Name": "INOKURIN MATRIK (INOCARB)",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 37.867 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-091524",
+   "Material Name": "INOCULANT FOUNDRISIL Msi",
+   "Material Category": "Additive",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 52.500 ",
+      " 0,000 ",
+      " 24 "
+   ],
+   "Diff Amount": " (24)",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "delete material"
+},
+ {
+   "EG Model": "TR",
+   "Category": "2TR",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-091525",
+   "Material Name": "INOCULANT ASK",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 65.025 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-091526",
+   "Material Name": "INOCULANT BARINOC LG 0.7-0.3 MM",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 48.450 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-091535",
+   "Material Name": "INOCULANT TOYO BARON Cams (3%)",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 40.481 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-091535",
+   "Material Name": "INOCULANT TOYO BARON FC(97%)",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 40.481 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-091545",
+   "Material Name": "INOCULANT ASK Ba - Si",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 69.568 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-135922",
+   "Material Name": "Magnesium Lamet 5922 size 3-25mm",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 57.575 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-160013",
+   "Material Name": "Cu for Cam's",
+   "Material Category": "Additive",
+   "Oct'24-Mar'25": [
+      " 167.500 ",
+      " 0,032 ",
+      " 5.355 "
+   ],
+   "Apr-Sep'25": [
+      " 163.172 ",
+      " 0,032 ",
+      " 5.141 "
+   ],
+   "Diff Amount": " 214 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": ""
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-160015",
+   "Material Name": "Sn Metal  (Yushin) for Cam's",
+   "Material Category": "Additive",
+   "Oct'24-Mar'25": [
+      " 798.000 ",
+      " 0,001 ",
+      " 721 "
+   ],
+   "Apr-Sep'25": [
+      " 798.667 ",
+      " 0,001 ",
+      " 907 "
+   ],
+   "Diff Amount": " (186)",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": ""
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-160016",
+   "Material Name": "CU - RMM",
+   "Material Category": "Additive",
+   "Oct'24-Mar'25": [
+      " 158.000 ",
+      " 0,012 ",
+      " 1.829 "
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " 1.829 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "New Material"
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-160900",
+   "Material Name": "Scrap ex Import Stamping (inhouse) 99.44%",
+   "Material Category": "Scrap IH",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 1 ",
+      " 1,047 ",
+      " 1 "
+   ],
+   "Diff Amount": " (1)",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "delete material"
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-160900",
+   "Material Name": "STEEL RAW MATERIAL SHEET EX STAMPING",
+   "Material Category": "Scrap IH",
+   "Oct'24-Mar'25": [
+      " 1 ",
+      " 0,876 ",
+      " 1 "
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " 1 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "New Material"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-160901",
+   "Material Name": "Scrap ex Karawang (Inhouse) 0.16%",
+   "Material Category": "Scrap IH",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 1.000 ",
+      " 0,220 ",
+      " 220 "
+   ],
+   "Diff Amount": " (220)",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "delete material"
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-160901",
+   "Material Name": "STEEL RAW MATERIAL IN-HOUSE CASTING (KRW)",
+   "Material Category": "Scrap IH",
+   "Oct'24-Mar'25": [
+      " 1.000 ",
+      " 0,309 ",
+      " 309 "
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " 309 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "New Material"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-160902",
+   "Material Name": "Scrap Curah (HJ)",
+   "Material Category": "Scrap OH",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 10.000 ",
+      " 0,609 ",
+      " 6.090 "
+   ],
+   "Diff Amount": " (6.090)",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "delete material"
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-160902",
+   "Material Name": "STEEL RAW MATERIAL OUT-HOUSE CASTING - HJ",
+   "Material Category": "Scrap OH",
+   "Oct'24-Mar'25": [
+      " 10.000 ",
+      " 0,818 ",
+      " 8.178 "
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " 8.178 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "New Material"
+},
+ {
+   "EG Model": "TR",
+   "Category": "2TR",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-160903",
+   "Material Name": "Scrap Curah (AMS)",
+   "Material Category": "Scrap OH",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 13.000 ",
+      " 0,403 ",
+      " 5.243 "
+   ],
+   "Diff Amount": " (5.243)",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "delete material"
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-160903",
+   "Material Name": "STEEL RAW MATERIAL OUT-HOUSE  CASTING - AMS",
+   "Material Category": "Scrap OH",
+   "Oct'24-Mar'25": [
+      " 13.000 ",
+      " 0,611 ",
+      " 7.940 "
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " 7.940 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "New Material"
+},
+ {
+   "EG Model": "NR",
+   "Category": "HEV",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-160904",
+   "Material Name": "Scrap Curah (HM)",
+   "Material Category": "Scrap OH",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 9.500 ",
+      " 0,650 ",
+      " 6.172 "
+   ],
+   "Diff Amount": " (6.172)",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "delete material"
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-160904",
+   "Material Name": "STEEL RAW MATERIAL OUT-HOUSE CASTING - HM",
+   "Material Category": "Scrap OH",
+   "Oct'24-Mar'25": [
+      " 9.500 ",
+      " 1,103 ",
+      " 10.479 "
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " 10.479 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "New Material"
+},
+ {
+   "EG Model": "TR",
+   "Category": "2TR",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-160905",
+   "Material Name": "STEEL RAW MATERIAL SHEET SPH6270 - HM",
+   "Material Category": "Scrap OH",
+   "Oct'24-Mar'25": [
+      " 14.850 ",
+      " 0,393 ",
+      " 5.830 "
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " 5.830 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "New Material"
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-160905",
+   "Material Name": "Steel SPH (HM)",
+   "Material Category": "Scrap OH",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 14.850 ",
+      " 0,327 ",
+      " 4.851 "
+   ],
+   "Diff Amount": " (4.851)",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "delete material"
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-160906",
+   "Material Name": "STEEL RAW MATERIAL SHEET SPC2700 - TS",
+   "Material Category": "Scrap OH",
+   "Oct'24-Mar'25": [
+      " 14.500 ",
+      " 0,126 ",
+      " 1.824 "
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " 1.824 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "New Material"
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-160906",
+   "Material Name": "Tricentrum SPC ",
+   "Material Category": "Scrap OH",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 14.500 ",
+      " 0,110 ",
+      " 1.590 "
+   ],
+   "Diff Amount": " (1.590)",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "delete material"
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-160907",
+   "Material Name": "STEEL RAW MATERIAL OUT-HOUSE  CASTING - KBI",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-160907",
+   "Material Name": "Steel Sheet Krakatau Baja Indonesia",
+   "Material Category": "OH",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 14.200 ",
+      " 0,157 ",
+      " 2.235 "
+   ],
+   "Diff Amount": " (2.235)",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "delete material"
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-160910",
+   "Material Name": "import/Koil TTMI",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      " 14.650 ",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-160910",
+   "Material Name": "STEEL RAW MATERIAL AC CLASS SCI",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "1TR",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC100",
+   "Material No": "B895-750703",
+   "Material Name": "INNOCULANT SUPERSEED 75 LG SIZE 0,7 - 3 MM",
+   "Material Category": "Additive",
+   "Oct'24-Mar'25": [
+      " 73.742 ",
+      " 0,005 ",
+      " 405 "
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      ""
+   ],
+   "Diff Amount": " 405 ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "New Material"
+},
+ {
+   "EG Model": "NR",
+   "Category": "ICE",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC501",
+   "Material No": "B821-000011",
+   "Material Name": "CELVA BLACK LITER 7K,TR",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+},
+ {
+   "EG Model": "TR",
+   "Category": "2TR",
+   "Casting Part": "Camshaft 2",
+   "CC": "AZC501",
+   "Material No": "B836-775502",
+   "Material Name": "THINNER LACQUER 55 ",
+   "Material Category": "",
+   "Oct'24-Mar'25": [
+      "",
+      "",
+      ""
+   ],
+   "Apr-Sep'25": [
+      "",
+      "",
+      " -   "
+   ],
+   "Diff Amount": " -   ",
+   "Diff %": "",
+   "FIELD16": "",
+   "Material Price Impact": "",
+   "Gentani Impact": "",
+   "Remark": "N/A"
+}
+]
