@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import FilterDialog from "./FilterDialog";
 import { CostItemRow } from "./CostItemRow";
 import FunnelIcon from "./FunnelIcon";
@@ -31,6 +31,45 @@ export function PPRTable(props) {
   } = props;
 
   const isAnyFilterActive = Object.values(filterStates).some(state => state);
+  const [costItemFilterOpen, setCostItemFilterOpen] = useState(false);
+  const [filteredCostItems, setFilteredCostItems] = useState(COST_ITEMS);
+
+  const handleApplyCostItemFilter = checkedValues => {
+    setFilteredCostItems(checkedValues);
+    setCostItemFilterOpen(false);
+    // TODO: Add actual filtering logic if needed
+  };
+
+  const [checkedItems, setCheckedItems] = useState(() => COST_ITEMS.map(() => true));
+  const [tempCheckedItems, setTempCheckedItems] = useState(checkedItems);
+
+  const allChecked = tempCheckedItems.every(Boolean);
+
+  const handleSelectAll = () => {
+    setTempCheckedItems(Array(COST_ITEMS.length).fill(!allChecked));
+  };
+
+  const handleCheckboxChange = idx => {
+    setTempCheckedItems(items => {
+      const newItems = [...items];
+      newItems[idx] = !newItems[idx];
+      return newItems;
+    });
+  };
+
+  const handleOpenFilter = () => {
+    setTempCheckedItems(checkedItems);
+    setCostItemFilterOpen(true);
+  };
+
+  const handleApply = () => {
+    setCheckedItems(tempCheckedItems);
+    setCostItemFilterOpen(false);
+  };
+
+  const handleCancel = () => {
+    setCostItemFilterOpen(false);
+  };
 
   return (
     <div style={{ overflowX: "auto", background: "#fff" }}>
@@ -107,10 +146,19 @@ export function PPRTable(props) {
             <th rowSpan={2} className="tbl-header" style={{position: 'relative'}}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <span>Cost Item</span>
-                <span style={{ cursor: 'pointer' }}>
-                  <FunnelIcon filled={false} />
+                <span style={{ cursor: 'pointer' }} onClick={() => setCostItemFilterOpen(true)}>
+                  <FunnelIcon filled={filteredCostItems.length < COST_ITEMS.length} />
                 </span>
               </div>
+              {costItemFilterOpen && (
+                <FilterDialog
+                  title="Cost Item"
+                  values={COST_ITEMS}
+                  initialCheckedValues={filteredCostItems}
+                  onApply={handleApplyCostItemFilter}
+                  onClose={() => setCostItemFilterOpen(false)}
+                />
+              )}
             </th>
             
             {/* Calculation section */}
@@ -125,7 +173,7 @@ export function PPRTable(props) {
             <th rowSpan={2} className="tbl-header" style={{minWidth: 150, background: "#bbfebb" }}>Remark</th>
           </tr>
           <tr style={{ borderBottom: "1px solid #d1d5db" }}>
-            <th className="tbl-header" style={{ minWidth: 70, background: '#e3f6ff' }}>{comparisonPeriod}</th>
+            <th className="tbl-header" style={{minWidth: 70, background: '#e3f6ff' }}>{comparisonPeriod}</th>
             <th className="tbl-header" style={{minWidth: 120, background: '#e3f6ff' }}>{`PBMD ${comparisonPeriod}`}</th>
             <th className="tbl-header" style={{minWidth: 70, background: '#e3f6ff' }}>{selectedPeriod}</th>
             <th className="tbl-header" style={{minWidth: 60, background: '#e3f6ff' }}>Diff Amt</th>
