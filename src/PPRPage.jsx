@@ -30,9 +30,46 @@ export default function PPRPage() {
   const [thresholdActive, setThresholdActive] = useState(false);
   const itemsPerPage = 5;
 
-  const handleDownload = async () => {
+  async function handleDownload() {
     const workbook = new ExcelJS.Workbook();
-    const worksheet = workbook.addWorksheet("PPR Data");
+    const worksheet = workbook.addWorksheet("PPR Table");
+
+    // First header row
+    worksheet.addRow([
+        "Part No",
+        "Importer",
+        "Category",
+        "Cost Item",
+        "Calculation", "", "", "", "", "", // 6 columns for Calculation
+        "Analysis", ...Array(ANALYSIS_COLUMNS.length - 1).fill(""), // N columns for Analysis
+        "Remark"
+    ]);
+
+    // Second header row
+    worksheet.addRow([
+        "", "", "", "",
+        comparisonPeriod,
+        `PBMD ${comparisonPeriod}`,
+        selectedPeriod,
+        "Diff Amt",
+        "Diff %",
+        "Adj Value",
+        ...ANALYSIS_COLUMNS,
+        ""
+    ]);
+
+    // Merge cells for "Calculation" and "Analysis" in the first header row
+    worksheet.mergeCells("E1:J1"); // Calculation spans columns E to J
+    worksheet.mergeCells(`K1:${String.fromCharCode(75 + ANALYSIS_COLUMNS.length - 1)}1`); // Analysis spans columns K onward
+    worksheet.mergeCells("A1:A2");
+    worksheet.mergeCells("B1:B2");
+    worksheet.mergeCells("C1:C2");
+    worksheet.mergeCells("D1:D2");
+    worksheet.mergeCells(`${String.fromCharCode(75 + ANALYSIS_COLUMNS.length)}1:${String.fromCharCode(75 + ANALYSIS_COLUMNS.length)}2`); // Remark column
+
+    // Apply styles (example for header)
+    worksheet.getRow(1).font = { bold: true };
+    worksheet.getRow(2).font = { bold: true };
   
     // Define columns
     worksheet.columns = [
@@ -114,7 +151,7 @@ export default function PPRPage() {
     const url = window.URL.createObjectURL(blob);
     const a = document.createElement("a");
     a.href = url;
-    a.download = "ppr_data_styled.xlsx";
+    a.download = "ppr_table.xlsx";
     a.click();
     window.URL.revokeObjectURL(url);
   };
