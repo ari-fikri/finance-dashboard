@@ -37,38 +37,6 @@ export function PPRTable(props) {
   const handleApplyCostItemFilter = checkedValues => {
     setFilteredCostItems(checkedValues);
     setCostItemFilterOpen(false);
-    // TODO: Add actual filtering logic if needed
-  };
-
-  const [checkedItems, setCheckedItems] = useState(() => COST_ITEMS.map(() => true));
-  const [tempCheckedItems, setTempCheckedItems] = useState(checkedItems);
-
-  const allChecked = tempCheckedItems.every(Boolean);
-
-  const handleSelectAll = () => {
-    setTempCheckedItems(Array(COST_ITEMS.length).fill(!allChecked));
-  };
-
-  const handleCheckboxChange = idx => {
-    setTempCheckedItems(items => {
-      const newItems = [...items];
-      newItems[idx] = !newItems[idx];
-      return newItems;
-    });
-  };
-
-  const handleOpenFilter = () => {
-    setTempCheckedItems(checkedItems);
-    setCostItemFilterOpen(true);
-  };
-
-  const handleApply = () => {
-    setCheckedItems(tempCheckedItems);
-    setCostItemFilterOpen(false);
-  };
-
-  const handleCancel = () => {
-    setCostItemFilterOpen(false);
   };
 
   return (
@@ -186,12 +154,13 @@ export function PPRTable(props) {
         </thead>
         <tbody>
           {filteredMspData.map((part) => (
-            COST_ITEMS.map((costItem, idx) => (
+            filteredCostItems.map((costItem, idx) => (
                 <CostItemRow
                   key={`${part.part_no}-${costItem}`}
                   part={part}
                   costItem={costItem}
                   idx={idx}
+                  filteredCostItemsCount={filteredCostItems.length}
                   selectedPeriod={selectedPeriod}
                   comparisonPeriod={comparisonPeriod}
                   calculateCostValues={calculateCostValues}

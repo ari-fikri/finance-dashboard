@@ -35,7 +35,8 @@ export function CostItemRow(props) {
     calculateDiff,
     getDisplayValues,
     handleCellChange,
-    analysisData
+    analysisData,
+    filteredCostItemsCount
   } = props;
 
   // Calculate cost values for the current and previous periods.
@@ -50,7 +51,7 @@ export function CostItemRow(props) {
   const diffPercent = calculateDiff(currentValue, previousValue);
 
   // Determine if the current row is the last row to apply a thicker border.
-  const isLastRow = idx === COST_ITEMS.length - 1;
+  const isLastRow = idx === filteredCostItemsCount - 1;
   // Determine if the row is a calculated row (summary rows that are not editable).
   const isCalculatedRow = costItem === "Total Purchase Cost" || costItem === "Total Process Cost" || costItem === "Total Cost";
   // Determine if the row is a summary row to apply special styling.
@@ -67,7 +68,7 @@ export function CostItemRow(props) {
       {idx === 0 && (
         <>
           <td
-            rowSpan={COST_ITEMS.length}
+            rowSpan={filteredCostItemsCount}
             className="td-default"
             style={{
               fontWeight: "bold",
@@ -80,7 +81,7 @@ export function CostItemRow(props) {
             {part.part_no}
           </td>
           <td
-            rowSpan={COST_ITEMS.length}
+            rowSpan={filteredCostItemsCount}
             style={{
               fontWeight: "bold",
               background: "#e8f1f7",
@@ -91,7 +92,7 @@ export function CostItemRow(props) {
             {part.importer}
           </td>
           <td
-            rowSpan={COST_ITEMS.length}
+            rowSpan={filteredCostItemsCount}
             style={{
               fontWeight: "bold",
               background: "#e8f1f7",
