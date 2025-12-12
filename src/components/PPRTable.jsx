@@ -104,7 +104,14 @@ export function PPRTable(props) {
                 />
               )}
             </th>
-            <th rowSpan={2} className="tbl-header">Cost Item</th>
+            <th rowSpan={2} className="tbl-header" style={{position: 'relative'}}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <span>Cost Item</span>
+                <span style={{ cursor: 'pointer' }}>
+                  <FunnelIcon filled={false} />
+                </span>
+              </div>
+            </th>
             
             {/* Calculation section */}
             <th colSpan={6} style={{ textAlign: "center", padding: "8px", background: "#a8d8f0", fontWeight: 600, borderBottom: "1px solid #d1d5db" }}>
