@@ -3,7 +3,7 @@ import FunnelIcon from "./FunnelIcon";
 import FilterDialog from "./FilterDialog";
 import xlsIcon from "../assets/xls_icon.png";
 
-export const PPRHeader = ({ selectedPeriod, comparisonPeriod, onPeriodChange, onComparisonPeriodChange, uniquePartNos, uniqueImporters, uniqueCategories, filteredPartNos, setFilteredPartNos, filteredImporters, setFilteredImporters, filteredCategories, setFilteredCategories }) => {
+export const PPRHeader = ({ selectedPeriod, comparisonPeriod, onPeriodChange, onComparisonPeriodChange, uniquePartNos, uniqueImporters, uniqueCategories, filteredPartNos, setFilteredPartNos, filteredImporters, setFilteredImporters, filteredCategories, setFilteredCategories, onDownload }) => {
   const [showPartNoFilter, setShowPartNoFilter] = useState(false);
   const [showImporterFilter, setShowImporterFilter] = useState(false);
   const [showCategoryFilter, setShowCategoryFilter] = useState(false);
@@ -51,6 +51,7 @@ export const PPRHeader = ({ selectedPeriod, comparisonPeriod, onPeriodChange, on
             Submit
           </button>
           <button
+            onClick={onDownload}
             style={{
               display: "flex",
               alignItems: "center",
