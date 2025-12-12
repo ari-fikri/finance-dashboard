@@ -11,7 +11,7 @@ import {
   getRemarkValue,
 } from "./utils/pprHelpers";
 import { COST_ITEMS, ANALYSIS_COLUMNS } from "./utils/pprConstants";
-import * as XLSX from "xlsx";
+import ExcelJS from "exceljs";
 
 export default function PPRPage() {
   const [mspData, setMspData] = useState([]);
@@ -30,238 +30,93 @@ export default function PPRPage() {
   const [thresholdActive, setThresholdActive] = useState(false);
   const itemsPerPage = 5;
 
-  const handleDownload = () => {
-    const headerStyle = (bgColor) => ({
-      fill: { patternType: "solid", fgColor: { rgb: bgColor } },
-      font: { bold: true },
-      alignment: { horizontal: "center", vertical: "center" },
-      border: {
-        top: { style: "thin", color: { rgb: "d1d5db" } },
-        bottom: { style: "thin", color: { rgb: "d1d5db" } },
-        left: { style: "thin", color: { rgb: "d1d5db" } },
-        right: { style: "thin", color: { rgb: "d1d5db" } },
-      },
-    });
-
-    const cellStyle = (bgColor, isBold = false, isRed = false) => ({
-      fill: { patternType: "solid", fgColor: { rgb: bgColor } },
-      font: { bold: isBold, color: { rgb: isRed ? "dc2626" : "000000" } },
-      border: {
-        top: { style: "thin", color: { rgb: "e5e7eb" } },
-        bottom: { style: "thin", color: { rgb: "e5e7eb" } },
-        left: { style: "thin", color: { rgb: "e5e7eb" } },
-        right: { style: "thin", color: { rgb: "e5e7eb" } },
-      },
-      alignment: {
-        vertical: "middle",
-      },
-    });
-
-    const header1 = [
-      "Part No",
-      "Importer",
-      "Category",
-      "Cost Item",
-      "Calculation",
-      ...Array(5).fill(null), // for calculation colspan
-      "Analysis",
-      ...Array(ANALYSIS_COLUMNS.length - 1).fill(null), // for analysis colspan
-      "Remark",
+  const handleDownload = async () => {
+    const workbook = new ExcelJS.Workbook();
+    const worksheet = workbook.addWorksheet("PPR Data");
+  
+    // Define columns
+    worksheet.columns = [
+      { header: "Part No", key: "part_no", width: 15 },
+      { header: "Importer", key: "importer", width: 15 },
+      { header: "Category", key: "category", width: 15 },
+      { header: "Cost Item", key: "cost_item", width: 20 },
+      { header: comparisonPeriod, key: "prev", width: 15 },
+      { header: `PBMD ${comparisonPeriod}`, key: "pbmd", width: 18 },
+      { header: selectedPeriod, key: "curr", width: 15 },
+      { header: "Diff Amt", key: "diff_amt", width: 15 },
+      { header: "Diff %", key: "diff_pct", width: 10 },
+      { header: "Adj Value", key: "adj", width: 15 },
+      ...ANALYSIS_COLUMNS.map(col => ({ header: col, key: col, width: 15 })),
+      { header: "Remark", key: "remark", width: 20 }
     ];
-
-    const header2 = [
-      null,
-      null,
-      null,
-      null, // for part, importer, category, cost item rowspan
-      comparisonPeriod,
-      `PBMD ${comparisonPeriod}`,
-      selectedPeriod,
-      "Diff Amt",
-      "Diff %",
-      "Adj Value",
-      ...ANALYSIS_COLUMNS,
-      null, // for remark rowspan
-    ];
-
-    const dataForSheet = [header1, header2];
-
-    finalFilteredData.forEach((part) => {
-      COST_ITEMS.forEach((costItem, costItemIndex) => {
-        const { currentValue, previousValue } = calculateCostValues(
-          part,
-          costItem,
-          selectedPeriod,
-          comparisonPeriod
-        );
+  
+    // Add header styling
+    worksheet.getRow(1).eachCell((cell, colNumber) => {
+      cell.font = { bold: true };
+      cell.alignment = { vertical: "middle", horizontal: "center" };
+      // Section coloring
+      if (colNumber >= 5 && colNumber <= 10) cell.fill = { type: "pattern", pattern: "solid", fgColor: { argb: "FFA8D8F0" } }; // Calculation
+      if (colNumber >= 11 && colNumber < 11 + ANALYSIS_COLUMNS.length) cell.fill = { type: "pattern", pattern: "solid", fgColor: { argb: "FFF5D5A8" } }; // Analysis
+      if (colNumber === worksheet.columns.length) cell.fill = { type: "pattern", pattern: "solid", fgColor: { argb: "FFBBFEBB" } }; // Remark
+    });
+  
+    // Add data rows
+    finalFilteredData.forEach(part => {
+      COST_ITEMS.forEach((costItem, idx) => {
+        const { currentValue, previousValue } = calculateCostValues(part, costItem, selectedPeriod, comparisonPeriod);
         const diffAmt = currentValue - previousValue;
         const diffPercent = calculateDiff(currentValue, previousValue);
-        const { pbmdDisplayValue, adjDisplayValue } = getDisplayValues(
-          part,
-          costItem,
-          analysisData
-        );
-
-        const row = [];
-        if (costItemIndex === 0) {
-          row.push(part.part_no, part.importer, part.category);
-        } else {
-          row.push(null, null, null);
-        }
-
-        row.push(
-          costItem,
-          previousValue,
-          pbmdDisplayValue,
-          currentValue,
-          diffAmt,
-          diffPercent ? `${diffPercent.toFixed(2)}%` : "-",
-          adjDisplayValue
-        );
-
-        ANALYSIS_COLUMNS.forEach((col) => {
-          const val = getAnalysisValue(part, costItem, col, analysisData);
-          row.push(val !== null && val !== undefined ? val : "-");
+        const { pbmdDisplayValue, adjDisplayValue } = getDisplayValues(part, costItem, analysisData);
+  
+        const rowObj = {
+          part_no: idx === 0 ? part.part_no : "",
+          importer: idx === 0 ? part.importer : "",
+          category: idx === 0 ? part.category : "",
+          cost_item: costItem,
+          prev: previousValue,
+          pbmd: pbmdDisplayValue,
+          curr: currentValue,
+          diff_amt: diffAmt,
+          diff_pct: diffPercent ? `${diffPercent.toFixed(2)}%` : "-",
+          adj: adjDisplayValue,
+          remark: getRemarkValue(part, costItem, analysisData)
+        };
+  
+        ANALYSIS_COLUMNS.forEach(col => {
+          rowObj[col] = getAnalysisValue(part, costItem, col, analysisData);
         });
-
-        row.push(getRemarkValue(part, costItem, analysisData) || "-");
-        dataForSheet.push(row);
+  
+        const row = worksheet.addRow(rowObj);
+  
+        // Row coloring
+        const isSummaryRow = ["Total Purchase Cost", "Total Process Cost", "Total Cost"].includes(costItem);
+        const bgColor = isSummaryRow ? "FFF9FACD" : (idx % 2 === 0 ? "FFFAFAFA" : "FFFFFFFF");
+        row.eachCell((cell, colNumber) => {
+          cell.fill = { type: "pattern", pattern: "solid", fgColor: { argb: bgColor } };
+          cell.border = {
+            top: { style: "thin", color: { argb: "FFE5E7EB" } },
+            bottom: { style: "thin", color: { argb: "FFE5E7EB" } },
+            left: { style: "thin", color: { argb: "FFE5E7EB" } },
+            right: { style: "thin", color: { argb: "FFE5E7EB" } }
+          };
+          if (isSummaryRow) cell.font = { bold: true };
+          // Part/Importer/Category column coloring
+          if (colNumber >= 1 && colNumber <= 3) cell.fill = { type: "pattern", pattern: "solid", fgColor: { argb: "FFE8F1F7" } };
+          // Diff % coloring
+          if (colNumber === 9 && diffPercent && Math.abs(diffPercent) > 15) cell.font = { color: { argb: "FFDC2626" }, bold: true };
+        });
       });
     });
-
-    const worksheet = XLSX.utils.aoa_to_sheet(dataForSheet);
-
-    // Merges
-    const merges = [
-      // Header merges
-      { s: { r: 0, c: 0 }, e: { r: 1, c: 0 } }, // Part No
-      { s: { r: 0, c: 1 }, e: { r: 1, c: 1 } }, // Importer
-      { s: { r: 0, c: 2 }, e: { r: 1, c: 2 } }, // Category
-      { s: { r: 0, c: 3 }, e: { r: 1, c: 3 } }, // Cost Item
-      { s: { r: 0, c: 4 }, e: { r: 0, c: 9 } }, // Calculation
-      {
-        s: { r: 0, c: 10 },
-        e: { r: 0, c: 10 + ANALYSIS_COLUMNS.length - 1 },
-      }, // Analysis
-      {
-        s: { r: 0, c: 10 + ANALYSIS_COLUMNS.length },
-        e: { r: 1, c: 10 + ANALYSIS_COLUMNS.length },
-      }, // Remark
-    ];
-
-    let currentRow = 2;
-    finalFilteredData.forEach(() => {
-      merges.push({
-        s: { r: currentRow, c: 0 },
-        e: { r: currentRow + COST_ITEMS.length - 1, c: 0 },
-      });
-      merges.push({
-        s: { r: currentRow, c: 1 },
-        e: { r: currentRow + COST_ITEMS.length - 1, c: 1 },
-      });
-      merges.push({
-        s: { r: currentRow, c: 2 },
-        e: { r: currentRow + COST_ITEMS.length - 1, c: 2 },
-      });
-      currentRow += COST_ITEMS.length;
-    });
-    worksheet["!merges"] = merges;
-
-    // Header styles
-    const header1_colors = [
-      "ffffff",
-      "ffffff",
-      "ffffff",
-      "ffffff",
-      "a8d8f0",
-      null,
-      null,
-      null,
-      null,
-      null,
-      "f5d5a8",
-      ...Array(ANALYSIS_COLUMNS.length - 1).fill(null),
-      "bbfebb",
-    ];
-    header1.forEach((_, c) => {
-      const cellRef = XLSX.utils.encode_cell({ r: 0, c });
-      if (worksheet[cellRef] && header1_colors[c]) {
-        worksheet[cellRef].s = headerStyle(header1_colors[c]);
-      }
-    });
-
-    const header2_colors = [
-      null,
-      null,
-      null,
-      null,
-      ...Array(6).fill("e3f6ff"),
-      ...Array(ANALYSIS_COLUMNS.length).fill("faebd7"),
-      null,
-    ];
-    header2.forEach((_, c) => {
-      const cellRef = XLSX.utils.encode_cell({ r: 1, c });
-      if (worksheet[cellRef] && header2_colors[c]) {
-        worksheet[cellRef].s = headerStyle(header2_colors[c]);
-      }
-    });
-
-    // Data row styles
-    currentRow = 2;
-    finalFilteredData.forEach((part) => {
-      COST_ITEMS.forEach((costItem, costItemIndex) => {
-        const rowIndex = currentRow + costItemIndex;
-        const isSummaryRow = [
-          "Total Purchase Cost",
-          "Total Process Cost",
-          "Total Cost",
-        ].includes(costItem);
-        const rowBgColor = isSummaryRow
-          ? "f9facd"
-          : costItemIndex % 2 === 0
-          ? "fafafa"
-          : "ffffff";
-
-        for (let colIndex = 0; colIndex < header1.length; colIndex++) {
-          const cellRef = XLSX.utils.encode_cell({ r: rowIndex, c: colIndex });
-          if (!worksheet[cellRef]) continue;
-
-          const isBold = isSummaryRow;
-          let isRed = false;
-          if (colIndex === 8) {
-            // Diff %
-            const { currentValue, previousValue } = calculateCostValues(
-              part,
-              costItem,
-              selectedPeriod,
-              comparisonPeriod
-            );
-            const diffPercent = calculateDiff(currentValue, previousValue);
-            if (diffPercent && Math.abs(diffPercent) > 15) {
-              isRed = true;
-            }
-          }
-
-          let currentBgColor = rowBgColor;
-          if (colIndex >= 0 && colIndex < 3) {
-            currentBgColor = "e8f1f7";
-          }
-
-          worksheet[cellRef].s = cellStyle(currentBgColor, isBold, isRed);
-          if (colIndex > 2) {
-            worksheet[cellRef].t = "n";
-            if (colIndex === 8) worksheet[cellRef].t = "s";
-            if (colIndex === 3) worksheet[cellRef].t = "s";
-            if (colIndex > 9) worksheet[cellRef].t = "s";
-          }
-        }
-      });
-      currentRow += COST_ITEMS.length;
-    });
-
-    const workbook = XLSX.utils.book_new();
-    XLSX.utils.book_append_sheet(workbook, worksheet, "PPR Data");
-    XLSX.writeFile(workbook, "ppr_data_styled.xlsx");
+  
+    // Download file
+    const buffer = await workbook.xlsx.writeBuffer();
+    const blob = new Blob([buffer], { type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement("a");
+    a.href = url;
+    a.download = "ppr_data_styled.xlsx";
+    a.click();
+    window.URL.revokeObjectURL(url);
   };
 
   useEffect(() => {
