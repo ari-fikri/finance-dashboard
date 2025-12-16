@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import Pagination from './components/Pagination';
 import ExcelJS from 'exceljs';
 import CastingMaterialHeader from './components/CastingMaterialHeader';
+import FunnelIcon from './components/FunnelIcon';
 
 const CastingMaterialPage = () => {
   const [data, setData] = useState([]);
@@ -245,13 +246,41 @@ const CastingMaterialPage = () => {
           <thead style={{ position: "sticky", top: 0, zIndex: 10 }}>
             <tr style={{ borderBottom: "1px solid #d1d5db" }}>
               <th rowSpan="2" className="tbl-header">No</th>
-              <th rowSpan="2" className="tbl-header" style={{ background: '#a8d8f1' }}>EG Model</th>
-              <th rowSpan="2" className="tbl-header" style={{ background: '#a8d8f1' }}>Category</th>
-              <th rowSpan="2" className="tbl-header" style={{ background: '#a8d8f1' }}>Casting Part</th>
-              <th rowSpan="2" className="tbl-header" style={{ background: '#a8d8f1' }}>CC</th>
-              <th rowSpan="2" className="tbl-header" style={{ background: '#a8d8f1' }}>Material No</th>
-              <th rowSpan="2" className="tbl-header" style={{ background: '#a8d8f1' }}>Material Name</th>
-              <th rowSpan="2" className="tbl-header" style={{ background: '#a8d8f1' }}>Material Category</th>
+              <th rowSpan="2" className="tbl-header" style={{ background: '#a8d8f1' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  EG Model <FunnelIcon />
+                </div>
+              </th>
+              <th rowSpan="2" className="tbl-header" style={{ background: '#a8d8f1' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  Category <FunnelIcon />
+                </div>
+              </th>
+              <th rowSpan="2" className="tbl-header" style={{ background: '#a8d8f1' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  Casting Part <FunnelIcon />
+                </div>
+              </th>
+              <th rowSpan="2" className="tbl-header" style={{ background: '#a8d8f1' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  CC <FunnelIcon />
+                </div>
+              </th>
+              <th rowSpan="2" className="tbl-header" style={{ background: '#a8d8f1' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  Material No <FunnelIcon />
+                </div>
+              </th>
+              <th rowSpan="2" className="tbl-header" style={{ background: '#a8d8f1' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  Material Name <FunnelIcon />
+                </div>
+              </th>
+              <th rowSpan="2" className="tbl-header" style={{ background: '#a8d8f1' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                  Material Category <FunnelIcon />
+                </div>
+              </th>
               <th colSpan="3" className="tbl-header" style={{ background: '#a8d8f1' }}>Oct'24-Mar'25</th>
               <th colSpan="3" className="tbl-header" style={{ background: '#a8d8f1' }}>Apr-Sep'25</th>
               <th rowSpan="2" className="tbl-header" style={{ background: '#be5014', color: 'white' }}>Diff Amount</th>
