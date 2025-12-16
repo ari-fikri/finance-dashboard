@@ -68,8 +68,8 @@ export function CostItemRow(props) {
       {idx === 0 && (
         <>
           <td
-            rowSpan={filteredCostItemsCount}
             className="td-default"
+            rowSpan={filteredCostItemsCount}
             style={{
               fontWeight: "bold",
               background: "#e8f1f7",
@@ -81,6 +81,7 @@ export function CostItemRow(props) {
             {part.part_no}
           </td>
           <td
+            className="td-default"
             rowSpan={filteredCostItemsCount}
             style={{
               fontWeight: "bold",
@@ -92,6 +93,7 @@ export function CostItemRow(props) {
             {part.importer}
           </td>
           <td
+            className="td-default"
             rowSpan={filteredCostItemsCount}
             style={{
               fontWeight: "bold",

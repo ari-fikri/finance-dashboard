@@ -3,12 +3,14 @@ import FunnelIcon from "./FunnelIcon";
 import FilterDialog from "./FilterDialog";
 import xlsIcon from "../assets/xls_icon.png";
 
-export const PPRHeader = ({ selectedPeriod, comparisonPeriod, onPeriodChange, onComparisonPeriodChange, uniquePartNos, uniqueImporters, uniqueCategories, filteredPartNos, setFilteredPartNos, filteredImporters, setFilteredImporters, filteredCategories, setFilteredCategories, onDownload }) => {
-  const [showPartNoFilter, setShowPartNoFilter] = useState(false);
-  const [showImporterFilter, setShowImporterFilter] = useState(false);
-  const [showCategoryFilter, setShowCategoryFilter] = useState(false);
-  const availablePeriods = ["2024-09", "2024-08", "2024-07", "2024-06"];
-
+export const PPRHeader = ({
+  selectedPeriod,
+  comparisonPeriod,
+  availablePeriods,
+  onPeriodChange,
+  onComparisonPeriodChange,
+  onDownload,
+}) => {
   return (
     <div>
       <div style={{ display: "flex", alignItems: "center", marginBottom: 16 }}>
@@ -23,6 +25,23 @@ export const PPRHeader = ({ selectedPeriod, comparisonPeriod, onPeriodChange, on
             <select
               value={selectedPeriod}
               onChange={(e) => onPeriodChange(e.target.value)}
+              style={{
+                padding: "6px 10px",
+                borderRadius: 4,
+                border: "1px solid #d1d5db",
+                fontSize: 12
+              }}
+            >
+              {availablePeriods.map(period => (
+                <option key={period} value={period}>{period}</option>
+              ))}
+            </select>
+          </div>
+          <div>
+            <label style={{ fontSize: 12, color: "#4B5563" }}>Compare with:</label>
+            <select
+              value={comparisonPeriod}
+              onChange={(e) => onComparisonPeriodChange(e.target.value)}
               style={{
                 padding: "6px 10px",
                 borderRadius: 4,
