@@ -4,6 +4,7 @@ import Pagination from './components/Pagination';
 import ExcelJS from 'exceljs';
 import CastingMaterialHeader from './components/CastingMaterialHeader';
 import FunnelIcon from './components/FunnelIcon';
+import FilterDialog from './components/FilterDialog';
 
 const CastingMaterialPage = () => {
   const [data, setData] = useState([]);
@@ -11,6 +12,12 @@ const CastingMaterialPage = () => {
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const recordsPerPage = 20;
+  const [filterDialog, setFilterDialog] = useState({
+    isOpen: false,
+    column: null,
+    values: [],
+  });
+  const [activeFilters, setActiveFilters] = useState({});
 
   const handleDownload = async () => {
     const workbook = new ExcelJS.Workbook();
@@ -170,6 +177,39 @@ const CastingMaterialPage = () => {
       });
   }, []);
 
+  const getUniqueValues = (key) => {
+    if (!data) return [];
+
+    const otherFilters = { ...activeFilters };
+    delete otherFilters[key];
+
+    const filteredForDialog = data.filter(row => {
+      return Object.entries(otherFilters).every(([filterKey, values]) => {
+        if (values.length === 0) return true;
+        return values.includes(row[filterKey]);
+      });
+    });
+
+    return [...new Set(filteredForDialog.map(item => item[key]))];
+  };
+
+  const handlePageChange = (pageNumber) => {
+    setCurrentPage(pageNumber);
+  };
+
+  const openFilterDialog = (column) => {
+    setFilterDialog({
+      isOpen: true,
+      column,
+      values: getUniqueValues(column),
+    });
+  };
+
+  const handleApplyFilter = (column, selectedValues) => {
+    setActiveFilters(prev => ({ ...prev, [column]: selectedValues }));
+    setFilterDialog({ isOpen: false, column: null, values: [] });
+  };
+
   const formatValue = (value) => {
     if (value === null || value === undefined || String(value).trim() === '-') {
       return String(value).trim();
@@ -198,7 +238,12 @@ const CastingMaterialPage = () => {
     return <div className="p-4">No data available.</div>;
   }
 
-  const tableData = data.slice(1);
+  const tableData = data.slice(1).filter(row => {
+    return Object.entries(activeFilters).every(([column, selectedValues]) => {
+      const cellValue = getCleanValue(row[column]);
+      return selectedValues.includes(cellValue);
+    });
+  });
 
   const indexOfLastRecord = currentPage * recordsPerPage;
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
@@ -246,40 +291,103 @@ const CastingMaterialPage = () => {
           <thead style={{ position: "sticky", top: 0, zIndex: 10 }}>
             <tr style={{ borderBottom: "1px solid #d1d5db" }}>
               <th rowSpan="2" className="tbl-header">No</th>
-              <th rowSpan="2" className="tbl-header" style={{ background: '#a8d8f1' }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  EG Model <FunnelIcon />
+              <th rowSpan="2" className="tbl-header" style={{ background: '#a8d8f1', position: 'relative' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer' }} onClick={() => openFilterDialog('EG Model')}>
+                  EG Model <FunnelIcon filled={activeFilters['EG Model']?.length > 0} />
                 </div>
+                {filterDialog.isOpen && filterDialog.column === 'EG Model' && (
+                  <FilterDialog
+                    title="EG Model"
+                    values={filterDialog.values}
+                    initialCheckedValues={activeFilters['EG Model'] || filterDialog.values}
+                    onApply={(selected) => handleApplyFilter('EG Model', selected)}
+                    onClose={() => setFilterDialog({ isOpen: false, column: null, values: [] })}
+                  />
+                )}
               </th>
-              <th rowSpan="2" className="tbl-header" style={{ background: '#a8d8f1' }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  Category <FunnelIcon />
+              <th rowSpan="2" className="tbl-header" style={{ background: '#a8d8f1', position: 'relative' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer' }} onClick={() => openFilterDialog('Category')}>
+                  Category <FunnelIcon filled={activeFilters['Category']?.length > 0} />
                 </div>
+                {filterDialog.isOpen && filterDialog.column === 'Category' && (
+                  <FilterDialog
+                    title="Category"
+                    values={filterDialog.values}
+                    initialCheckedValues={activeFilters['Category'] || filterDialog.values}
+                    onApply={(selected) => handleApplyFilter('Category', selected)}
+                    onClose={() => setFilterDialog({ isOpen: false, column: null, values: [] })}
+                  />
+                )}
               </th>
-              <th rowSpan="2" className="tbl-header" style={{ background: '#a8d8f1' }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  Casting Part <FunnelIcon />
+              <th rowSpan="2" className="tbl-header" style={{ background: '#a8d8f1', position: 'relative' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer' }} onClick={() => openFilterDialog('Casting Part')}>
+                  Casting Part <FunnelIcon filled={activeFilters['Casting Part']?.length > 0} />
                 </div>
+                {filterDialog.isOpen && filterDialog.column === 'Casting Part' && (
+                  <FilterDialog
+                    title="Casting Part"
+                    values={filterDialog.values}
+                    initialCheckedValues={activeFilters['Casting Part'] || filterDialog.values}
+                    onApply={(selected) => handleApplyFilter('Casting Part', selected)}
+                    onClose={() => setFilterDialog({ isOpen: false, column: null, values: [] })}
+                  />
+                )}
               </th>
-              <th rowSpan="2" className="tbl-header" style={{ background: '#a8d8f1' }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  CC <FunnelIcon />
+              <th rowSpan="2" className="tbl-header" style={{ background: '#a8d8f1', position: 'relative' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer' }} onClick={() => openFilterDialog('CC')}>
+                  CC <FunnelIcon filled={activeFilters['CC']?.length > 0} />
                 </div>
+                {filterDialog.isOpen && filterDialog.column === 'CC' && (
+                  <FilterDialog
+                    title="CC"
+                    values={filterDialog.values}
+                    initialCheckedValues={activeFilters['CC'] || filterDialog.values}
+                    onApply={(selected) => handleApplyFilter('CC', selected)}
+                    onClose={() => setFilterDialog({ isOpen: false, column: null, values: [] })}
+                  />
+                )}
               </th>
-              <th rowSpan="2" className="tbl-header" style={{ background: '#a8d8f1' }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  Material No <FunnelIcon />
+              <th rowSpan="2" className="tbl-header" style={{ background: '#a8d8f1', position: 'relative' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer' }} onClick={() => openFilterDialog('Material No')}>
+                  Material No <FunnelIcon filled={activeFilters['Material No']?.length > 0} />
                 </div>
+                {filterDialog.isOpen && filterDialog.column === 'Material No' && (
+                  <FilterDialog
+                    title="Material No"
+                    values={filterDialog.values}
+                    initialCheckedValues={activeFilters['Material No'] || filterDialog.values}
+                    onApply={(selected) => handleApplyFilter('Material No', selected)}
+                    onClose={() => setFilterDialog({ isOpen: false, column: null, values: [] })}
+                  />
+                )}
               </th>
-              <th rowSpan="2" className="tbl-header" style={{ background: '#a8d8f1' }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  Material Name <FunnelIcon />
+              <th rowSpan="2" className="tbl-header" style={{ background: '#a8d8f1', position: 'relative' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer' }} onClick={() => openFilterDialog('Material Name')}>
+                  Material Name <FunnelIcon filled={activeFilters['Material Name']?.length > 0} />
                 </div>
+                {filterDialog.isOpen && filterDialog.column === 'Material Name' && (
+                  <FilterDialog
+                    title="Material Name"
+                    values={filterDialog.values}
+                    initialCheckedValues={activeFilters['Material Name'] || filterDialog.values}
+                    onApply={(selected) => handleApplyFilter('Material Name', selected)}
+                    onClose={() => setFilterDialog({ isOpen: false, column: null, values: [] })}
+                  />
+                )}
               </th>
-              <th rowSpan="2" className="tbl-header" style={{ background: '#a8d8f1' }}>
-                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
-                  Material Category <FunnelIcon />
+              <th rowSpan="2" className="tbl-header" style={{ background: '#a8d8f1', position: 'relative' }}>
+                <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', cursor: 'pointer' }} onClick={() => openFilterDialog('Material Category')}>
+                  Material Category <FunnelIcon filled={activeFilters['Material Category']?.length > 0} />
                 </div>
+                {filterDialog.isOpen && filterDialog.column === 'Material Category' && (
+                  <FilterDialog
+                    title="Material Category"
+                    values={filterDialog.values}
+                    initialCheckedValues={activeFilters['Material Category'] || filterDialog.values}
+                    onApply={(selected) => handleApplyFilter('Material Category', selected)}
+                    onClose={() => setFilterDialog({ isOpen: false, column: null, values: [] })}
+                  />
+                )}
               </th>
               <th colSpan="3" className="tbl-header" style={{ background: '#a8d8f1' }}>Oct'24-Mar'25</th>
               <th colSpan="3" className="tbl-header" style={{ background: '#a8d8f1' }}>Apr-Sep'25</th>
