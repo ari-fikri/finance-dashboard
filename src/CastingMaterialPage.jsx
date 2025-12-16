@@ -55,57 +55,18 @@ const CastingMaterialPage = () => {
     return <div className="p-4">No data available.</div>;
   }
 
-  const dataWithRowSpans = [];
-  const rows = data.slice(1);
-  let i = 0;
-  while (i < rows.length) {
-    let j = i;
-    while (j < rows.length && rows[j]['Casting Part'] === rows[i]['Casting Part'] && rows[j]['CC'] === rows[i]['CC']) {
-      j++;
-    }
-    const rowSpan = j - i;
-    for (let k = i; k < j; k++) {
-      dataWithRowSpans.push({
-        ...rows[k],
-        rowSpan: k === i ? rowSpan : 0,
-        isFirstOfGroup: k === i
-      });
-    }
-    i = j;
-  }
+  const tableData = data.slice(1);
 
   const indexOfLastRecord = currentPage * recordsPerPage;
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
-  const currentRecords = dataWithRowSpans.slice(indexOfFirstRecord, indexOfLastRecord);
-  const nPages = Math.ceil(dataWithRowSpans.length / recordsPerPage);
+  const currentRecords = tableData.slice(indexOfFirstRecord, indexOfLastRecord);
+  const nPages = Math.ceil(tableData.length / recordsPerPage);
 
   const goToPage = (page) => {
     if (page > 0 && page <= nPages) {
       setCurrentPage(page);
     }
   };
-
-  const recordsToRender = [];
-  if (currentRecords.length > 0) {
-    let i = 0;
-    while (i < currentRecords.length) {
-      let j = i;
-      while (j < currentRecords.length &&
-             currentRecords[j]['Casting Part'] === currentRecords[i]['Casting Part'] &&
-             currentRecords[j]['CC'] === currentRecords[i]['CC']) {
-        j++;
-      }
-      const pageGroupSize = j - i;
-      for (let k = i; k < j; k++) {
-        recordsToRender.push({
-          ...currentRecords[k],
-          rowSpan: k === i ? pageGroupSize : 0,
-          isFirstOfGroup: k === i,
-        });
-      }
-      i = j;
-    }
-  }
 
   return (
     <div style={{ background: "#fff", padding: "16px", position: "relative" }}>
@@ -163,7 +124,7 @@ const CastingMaterialPage = () => {
             </tr>
           </thead>
           <tbody>
-            {recordsToRender.map((row, index) => {
+            {currentRecords.map((row, index) => {
               const remark = getCleanValue(row['Remark']);
               const rowStyle = remark === 'New Material' ? { backgroundColor: '#eaf5e9' } : {};
               const diffAmountStyle = remark === 'delete material' ? { backgroundColor: '#eaf5e9' } : {};
@@ -178,12 +139,8 @@ const CastingMaterialPage = () => {
                   <td className="td-default" style={centerCellStyle}>{indexOfFirstRecord + index + 1}</td>
                   <td className="td-default" style={cellStyle}>{getCleanValue(row['EG Model'])}</td>
                   <td className="td-default" style={cellStyle}>{getCleanValue(row['Category'])}</td>
-                  {row.isFirstOfGroup && (
-                    <>
-                      <td rowSpan={row.rowSpan} className="td-default" style={{...cellStyle, backgroundColor: '#eaf5e9', verticalAlign: 'top'}}>{getCleanValue(row['Casting Part'])}</td>
-                      <td rowSpan={row.rowSpan} className="td-default" style={{...cellStyle, backgroundColor: '#eaf5e9', verticalAlign: 'top'}}>{getCleanValue(row['CC'])}</td>
-                    </>
-                  )}
+                  <td className="td-default" style={{...cellStyle, backgroundColor: '#eaf5e9'}}>{getCleanValue(row['Casting Part'])}</td>
+                  <td className="td-default" style={{...cellStyle, backgroundColor: '#eaf5e9'}}>{getCleanValue(row['CC'])}</td>
                   <td className="td-default" style={cellStyle}>{getCleanValue(row['Material No'])}</td>
                   <td className="td-default" style={cellStyle}>{getCleanValue(row['Material Name'])}</td>
                   <td className="td-default" style={cellStyle}>{getCleanValue(row['Material Category'])}</td>
@@ -208,7 +165,7 @@ const CastingMaterialPage = () => {
         currentPage={currentPage}
         totalPages={nPages}
         goToPage={goToPage}
-        totalRecords={dataWithRowSpans.length}
+        totalRecords={tableData.length}
         startIndex={indexOfFirstRecord}
         endIndex={indexOfLastRecord}
       />
