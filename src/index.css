@@ -149,15 +149,14 @@ body {
 .page-bottom { height:40px; }
 
 .td-default {
-  padding: 1px;
+  padding: 6px 8px;
 }
 
 .tbl-header {
-    padding: "8px 10px";
     text-align: center;
     font-weight: 600;
-    color: "#0b1220";
+    color: #0b1220;
     background: #a8d8f0;
     border: 1px solid #b5a7a7;
-    padding: 0px 4px;
+    padding: 8px 10px;
 }

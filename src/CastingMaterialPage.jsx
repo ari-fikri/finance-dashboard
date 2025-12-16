@@ -440,7 +440,7 @@ const CastingMaterialPage = () => {
               const diffAmountStyle = remark === 'delete material' ? { backgroundColor: '#eaf5e9' } : {};
               const gentaniImpactStyle = remark === 'Increasing gentani' ? { backgroundColor: '#eaf5e9' } : {};
 
-              const cellStyle = { border: '1px solid #e5e7eb', textAlign: 'left', padding: '6px' };
+              const cellStyle = { border: '1px solid #e5e7eb', textAlign: 'left' };
               const rightCellStyle = { ...cellStyle, textAlign: 'right' };
               const centerCellStyle = { ...cellStyle, textAlign: 'center' };
 
