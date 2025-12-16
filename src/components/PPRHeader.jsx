@@ -10,7 +10,7 @@ export const PPRHeader = ({ selectedPeriod, comparisonPeriod, onPeriodChange, on
   const availablePeriods = ["2024-09", "2024-08", "2024-07", "2024-06"];
 
   return (
-    <div style={{ padding: "16px", backgroundColor: "#F3F4F6" }}>
+    <div>
       <div style={{ display: "flex", alignItems: "center", marginBottom: 16 }}>
         <div style={{ display: "flex", alignItems: "center" }}>
           <h1 style={{ fontSize: 24, fontWeight: "bold", color: "#1F2937" }}>Cost Analysis Report</h1>
