@@ -6,6 +6,8 @@ import CastingMaterialHeader from './components/CastingMaterialHeader';
 import FunnelIcon from './components/FunnelIcon';
 import FilterDialog from './components/FilterDialog';
 
+const getCleanValue = (val) => (val && String(val).trim() !== '' ? String(val).trim() : '');
+
 const CastingMaterialPage = () => {
   const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -30,6 +32,16 @@ const CastingMaterialPage = () => {
       const num = Number(String(value).replace(/\./g, '').replace(',', '.'));
       return isNaN(num) ? value : num;
     };
+
+    const dataToDownload = data.slice(1).filter(row => {
+      return Object.entries(activeFilters).every(([column, selectedValues]) => {
+        if (!selectedValues || selectedValues.length === 0) {
+          return true;
+        }
+        const cellValue = getCleanValue(row[column]);
+        return selectedValues.includes(cellValue);
+      });
+    });
 
     // Header Row 1
     worksheet.addRow([
@@ -100,8 +112,7 @@ const CastingMaterialPage = () => {
     });
 
     // Add data
-    const tableData = data.slice(1); // Assuming data[0] is headers
-    tableData.forEach((row, index) => {
+    dataToDownload.forEach((row, index) => {
         worksheet.addRow([
             index + 1,
             getCleanValue(row['EG Model']),
@@ -224,8 +235,6 @@ const CastingMaterialPage = () => {
     return value;
   };
 
-  const getCleanValue = (val) => (val && String(val).trim() !== '' ? String(val).trim() : '');
-
   if (loading) {
     return <div className="p-4">Loading...</div>;
   }
@@ -240,6 +249,9 @@ const CastingMaterialPage = () => {
 
   const tableData = data.slice(1).filter(row => {
     return Object.entries(activeFilters).every(([column, selectedValues]) => {
+      if (!selectedValues || selectedValues.length === 0) {
+        return true;
+      }
       const cellValue = getCleanValue(row[column]);
       return selectedValues.includes(cellValue);
     });
