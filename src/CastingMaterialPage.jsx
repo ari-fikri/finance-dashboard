@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
 import Pagination from './components/Pagination';
+import ExcelJS from 'exceljs';
+import CastingMaterialHeader from './components/CastingMaterialHeader';
 
 const CastingMaterialPage = () => {
   const [data, setData] = useState([]);
@@ -8,6 +10,146 @@ const CastingMaterialPage = () => {
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
   const recordsPerPage = 20;
+
+  const handleDownload = async () => {
+    const workbook = new ExcelJS.Workbook();
+    const worksheet = workbook.addWorksheet('Casting Material');
+
+    const parseValueForExcel = (value) => {
+      if (value === null || value === undefined || String(value).trim() === '-') {
+        return null;
+      }
+      const num = Number(String(value).replace(/\./g, '').replace(',', '.'));
+      return isNaN(num) ? value : num;
+    };
+
+    // Header Row 1
+    worksheet.addRow([
+      'No', 'EG Model', 'Category', 'Casting Part', 'CC', 'Material No', 'Material Name', 'Material Category',
+      "Oct'24-Mar'25", null, null,
+      "Apr-Sep'25", null, null,
+      'Diff Amount', 'Diff %', 'Material Price Impact', 'Gentani Impact', 'Remark'
+    ]);
+
+    // Header Row 2
+    worksheet.addRow([
+      null, null, null, null, null, null, null, null,
+      'Price', 'Gentani', 'Total',
+      'Price', 'Gentani', 'Total',
+      null, null, null, null, null
+    ]);
+
+    // Merging cells for headers
+    worksheet.mergeCells('A1:A2');
+    worksheet.mergeCells('B1:B2');
+    worksheet.mergeCells('C1:C2');
+    worksheet.mergeCells('D1:D2');
+    worksheet.mergeCells('E1:E2');
+    worksheet.mergeCells('F1:F2');
+    worksheet.mergeCells('G1:G2');
+    worksheet.mergeCells('H1:H2');
+    worksheet.mergeCells('I1:K1'); // Oct'24-Mar'25
+    worksheet.mergeCells('L1:N1'); // Apr-Sep'25
+    worksheet.mergeCells('O1:O2');
+    worksheet.mergeCells('P1:P2');
+    worksheet.mergeCells('Q1:Q2');
+    worksheet.mergeCells('R1:R2');
+    worksheet.mergeCells('S1:S2');
+
+    // Sub-headers for periods
+    worksheet.getCell('I2').value = 'Price';
+    worksheet.getCell('J2').value = 'Gentani';
+    worksheet.getCell('K2').value = 'Total';
+    worksheet.getCell('L2').value = 'Price';
+    worksheet.getCell('M2').value = 'Gentani';
+    worksheet.getCell('N2').value = 'Total';
+
+    // Style headers
+    ['A1', 'B1', 'C1', 'D1', 'E1', 'F1', 'G1', 'H1', 'I1', 'L1', 'O1', 'P1', 'Q1', 'R1', 'S1', 'I2', 'J2', 'K2', 'L2', 'M2', 'N2'].forEach(key => {
+        const cell = worksheet.getCell(key);
+        cell.font = { bold: true };
+        cell.alignment = { vertical: 'middle', horizontal: 'center' };
+        cell.fill = {
+            type: 'pattern',
+            pattern:'solid',
+            fgColor:{argb:'FFa8d8f1'}
+        };
+        cell.border = {
+            top: {style:'thin'},
+            left: {style:'thin'},
+            bottom: {style:'thin'},
+            right: {style:'thin'}
+        };
+    });
+    // Special colors
+    ['O1', 'P1', 'Q1', 'R1'].forEach(key => {
+        worksheet.getCell(key).fill = { type: 'pattern', pattern:'solid', fgColor:{argb:'FFbe5014'} };
+        worksheet.getCell(key).font = { bold: true, color: { argb: 'FFFFFFFF' } };
+    });
+    worksheet.getCell('S1').fill = { type: 'pattern', pattern:'solid', fgColor:{argb:'FFbbfebb'} };
+    ['I2', 'J2', 'K2', 'L2', 'M2', 'N2'].forEach(key => {
+        worksheet.getCell(key).fill = { type: 'pattern', pattern:'solid', fgColor:{argb:'FFe3f6ff'} };
+    });
+
+    // Add data
+    const tableData = data.slice(1); // Assuming data[0] is headers
+    tableData.forEach((row, index) => {
+        worksheet.addRow([
+            index + 1,
+            getCleanValue(row['EG Model']),
+            getCleanValue(row['Category']),
+            getCleanValue(row['Casting Part']),
+            getCleanValue(row['CC']),
+            getCleanValue(row['Material No']),
+            getCleanValue(row['Material Name']),
+            getCleanValue(row['Material Category']),
+            parseValueForExcel(row["Oct'24-Mar'25"][0]),
+            parseValueForExcel(row["Oct'24-Mar'25"][1]),
+            parseValueForExcel(row["Oct'24-Mar'25"][2]),
+            parseValueForExcel(row["Apr-Sep'25"][0]),
+            parseValueForExcel(row["Apr-Sep'25"][1]),
+            parseValueForExcel(row["Apr-Sep'25"][2]),
+            parseValueForExcel(row['Diff Amount']),
+            getCleanValue(row['Diff %']),
+            getCleanValue(row['Material Price Impact']),
+            getCleanValue(row['Gentani Impact']),
+            getCleanValue(row['Remark']),
+        ]);
+    });
+
+    // Set column widths
+    worksheet.columns = [
+        { key: 'no', width: 5 },
+        { key: 'eg_model', width: 15 },
+        { key: 'category', width: 15 },
+        { key: 'casting_part', width: 20 },
+        { key: 'cc', width: 10 },
+        { key: 'material_no', width: 15 },
+        { key: 'material_name', width: 30 },
+        { key: 'material_category', width: 20 },
+        { key: 'oct_price', width: 15 },
+        { key: 'oct_gentani', width: 15 },
+        { key: 'oct_total', width: 15 },
+        { key: 'apr_price', width: 15 },
+        { key: 'apr_gentani', width: 15 },
+        { key: 'apr_total', width: 15 },
+        { key: 'diff_amount', width: 15 },
+        { key: 'diff_percent', width: 10 },
+        { key: 'material_price_impact', width: 20 },
+        { key: 'gentani_impact', width: 20 },
+        { key: 'remark', width: 20 },
+    ];
+
+    // Download
+    const buffer = await workbook.xlsx.writeBuffer();
+    const blob = new Blob([buffer], { type: 'application/vnd.openxmlformats-officedocument.spreadsheetml.sheet' });
+    const url = window.URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = 'casting-material.xlsx';
+    a.click();
+    window.URL.revokeObjectURL(url);
+  };
 
   useEffect(() => {
     fetch('/Casting Material.json')
@@ -91,10 +233,14 @@ const CastingMaterialPage = () => {
       >
         X
       </Link>
-      <div className="app-header" style={{ marginBottom: '1rem' }}>
-        <h1 className="text-2xl font-bold">Casting Material</h1>
+
+      <CastingMaterialHeader onDownload={handleDownload} />
+
+      <div style={{ marginTop: "16px" }}>
+        {/* The "Submit" and "Download" buttons are now in the header */}
       </div>
-      <div style={{ overflowX: "auto", background: "#fff" }}>
+
+      <div style={{ overflowX: "auto", width: "100%" }}>
         <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 12 }}>
           <thead style={{ position: "sticky", top: 0, zIndex: 10 }}>
             <tr style={{ borderBottom: "1px solid #d1d5db" }}>
