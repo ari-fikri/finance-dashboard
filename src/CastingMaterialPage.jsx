@@ -108,14 +108,30 @@ const CastingMaterialPage = () => {
   }
 
   return (
-    <div style={{ background: "#fff", padding: "16px" }}>
-      <div className="app-header">
-        <div className="app-header-left">
-          <h1 className="text-2xl font-bold mb-4">Casting Material</h1>
-          <Link to="/" className="text-blue-500 hover:underline">
-            Back to Dashboard
-          </Link>
-        </div>
+    <div style={{ background: "#fff", padding: "16px", position: "relative" }}>
+      <Link
+        to="/"
+        className="btn"
+        style={{
+          position: "absolute",
+          top: "16px",
+          right: "16px",
+          textDecoration: "none",
+          color: "#000",
+          fontSize: "16px",
+          fontWeight: "bold",
+          width: "32px",
+          height: "32px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          borderRadius: "50%",
+        }}
+      >
+        X
+      </Link>
+      <div className="app-header" style={{ marginBottom: '1rem' }}>
+        <h1 className="text-2xl font-bold">Casting Material</h1>
       </div>
       <div style={{ overflowX: "auto", background: "#fff" }}>
         <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 12 }}>

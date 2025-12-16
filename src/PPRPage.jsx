@@ -1,4 +1,5 @@
 import React, { useMemo, useState, useEffect, useCallback } from "react";
+import { Link } from "react-router-dom";
 import { PPRHeader } from "./components/PPRHeader";
 import { PPRTable } from "./components/PPRTable";
 import Pagination from "./components/Pagination";
@@ -311,7 +312,28 @@ export default function PPRPage() {
   }, []);
 
   return (
-    <div style={{ background: "#fff", padding: "16px" }}>
+    <div style={{ background: "#fff", padding: "16px", position: "relative" }}>
+      <Link
+        to="/"
+        className="btn"
+        style={{
+          position: "absolute",
+          top: "16px",
+          right: "16px",
+          textDecoration: "none",
+          color: "#000",
+          fontSize: "16px",
+          fontWeight: "bold",
+          width: "32px",
+          height: "32px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          borderRadius: "50%",
+        }}
+      >
+        X
+      </Link>
       <PPRHeader 
         selectedPeriod={selectedPeriod}
         comparisonPeriod={comparisonPeriod}
