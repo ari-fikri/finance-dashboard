@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useMemo } from 'react';
 import { Link } from 'react-router-dom';
 import Pagination from './components/Pagination';
 import ExcelJS from 'exceljs';
@@ -20,6 +20,14 @@ const CastingMaterialPage = () => {
     values: [],
   });
   const [activeFilters, setActiveFilters] = useState({});
+  const [comparisonPeriod, setComparisonPeriod] = useState("Oct'24-Mar'25");
+  const [selectedPeriod, setSelectedPeriod] = useState("Apr-Sep'25");
+
+  const availablePeriods = useMemo(() => {
+    if (data.length < 2) return [];
+    const firstRow = data[1];
+    return Object.keys(firstRow).filter(key => Array.isArray(firstRow[key]));
+  }, [data]);
 
   const handleDownload = async () => {
     const workbook = new ExcelJS.Workbook();
@@ -46,8 +54,8 @@ const CastingMaterialPage = () => {
     // Header Row 1
     worksheet.addRow([
       'No', 'EG Model', 'Category', 'Casting Part', 'CC', 'Material No', 'Material Name', 'Material Category',
-      "Oct'24-Mar'25", null, null,
-      "Apr-Sep'25", null, null,
+      comparisonPeriod, null, null,
+      selectedPeriod, null, null,
       'Diff Amount', 'Diff %', 'Material Price Impact', 'Gentani Impact', 'Remark'
     ]);
 
@@ -68,8 +76,8 @@ const CastingMaterialPage = () => {
     worksheet.mergeCells('F1:F2');
     worksheet.mergeCells('G1:G2');
     worksheet.mergeCells('H1:H2');
-    worksheet.mergeCells('I1:K1'); // Oct'24-Mar'25
-    worksheet.mergeCells('L1:N1'); // Apr-Sep'25
+    worksheet.mergeCells('I1:K1'); // comparisonPeriod
+    worksheet.mergeCells('L1:N1'); // selectedPeriod
     worksheet.mergeCells('O1:O2');
     worksheet.mergeCells('P1:P2');
     worksheet.mergeCells('Q1:Q2');
@@ -122,12 +130,12 @@ const CastingMaterialPage = () => {
             getCleanValue(row['Material No']),
             getCleanValue(row['Material Name']),
             getCleanValue(row['Material Category']),
-            parseValueForExcel(row["Oct'24-Mar'25"][0]),
-            parseValueForExcel(row["Oct'24-Mar'25"][1]),
-            parseValueForExcel(row["Oct'24-Mar'25"][2]),
-            parseValueForExcel(row["Apr-Sep'25"][0]),
-            parseValueForExcel(row["Apr-Sep'25"][1]),
-            parseValueForExcel(row["Apr-Sep'25"][2]),
+            parseValueForExcel(row[comparisonPeriod]?.[0]),
+            parseValueForExcel(row[comparisonPeriod]?.[1]),
+            parseValueForExcel(row[comparisonPeriod]?.[2]),
+            parseValueForExcel(row[selectedPeriod]?.[0]),
+            parseValueForExcel(row[selectedPeriod]?.[1]),
+            parseValueForExcel(row[selectedPeriod]?.[2]),
             parseValueForExcel(row['Diff Amount']),
             getCleanValue(row['Diff %']),
             getCleanValue(row['Material Price Impact']),
@@ -292,7 +300,14 @@ const CastingMaterialPage = () => {
         X
       </Link>
 
-      <CastingMaterialHeader onDownload={handleDownload} />
+      <CastingMaterialHeader
+        onDownload={handleDownload}
+        selectedPeriod={selectedPeriod}
+        comparisonPeriod={comparisonPeriod}
+        availablePeriods={availablePeriods}
+        onPeriodChange={setSelectedPeriod}
+        onComparisonPeriodChange={setComparisonPeriod}
+      />
 
       <div style={{ marginTop: "16px" }}>
         {/* The "Submit" and "Download" buttons are now in the header */}
@@ -401,8 +416,8 @@ const CastingMaterialPage = () => {
                   />
                 )}
               </th>
-              <th colSpan="3" className="tbl-header" style={{ background: '#a8d8f1' }}>Oct'24-Mar'25</th>
-              <th colSpan="3" className="tbl-header" style={{ background: '#a8d8f1' }}>Apr-Sep'25</th>
+              <th colSpan="3" className="tbl-header" style={{ background: '#a8d8f1' }}>{comparisonPeriod}</th>
+              <th colSpan="3" className="tbl-header" style={{ background: '#a8d8f1' }}>{selectedPeriod}</th>
               <th rowSpan="2" className="tbl-header" style={{ background: '#be5014', color: 'white' }}>Diff Amount</th>
               <th rowSpan="2" className="tbl-header" style={{ background: '#be5014', color: 'white' }}>Diff %</th>
               <th rowSpan="2" className="tbl-header" style={{ background: '#be5014', color: 'white' }}>Material Price Impact</th>
@@ -439,12 +454,12 @@ const CastingMaterialPage = () => {
                   <td className="td-default" style={cellStyle}>{getCleanValue(row['Material No'])}</td>
                   <td className="td-default" style={cellStyle}>{getCleanValue(row['Material Name'])}</td>
                   <td className="td-default" style={cellStyle}>{getCleanValue(row['Material Category'])}</td>
-                  <td className="td-default" style={rightCellStyle}>{formatValue(row["Oct'24-Mar'25"][0])}</td>
-                  <td className="td-default" style={rightCellStyle}>{formatValue(row["Oct'24-Mar'25"][1])}</td>
-                  <td className="td-default" style={rightCellStyle}>{formatValue(row["Oct'24-Mar'25"][2])}</td>
-                  <td className="td-default" style={rightCellStyle}>{formatValue(row["Apr-Sep'25"][0])}</td>
-                  <td className="td-default" style={rightCellStyle}>{formatValue(row["Apr-Sep'25"][1])}</td>
-                  <td className="td-default" style={rightCellStyle}>{formatValue(row["Apr-Sep'25"][2])}</td>
+                  <td className="td-default" style={rightCellStyle}>{formatValue(row[comparisonPeriod]?.[0])}</td>
+                  <td className="td-default" style={rightCellStyle}>{formatValue(row[comparisonPeriod]?.[1])}</td>
+                  <td className="td-default" style={rightCellStyle}>{formatValue(row[comparisonPeriod]?.[2])}</td>
+                  <td className="td-default" style={rightCellStyle}>{formatValue(row[selectedPeriod]?.[0])}</td>
+                  <td className="td-default" style={rightCellStyle}>{formatValue(row[selectedPeriod]?.[1])}</td>
+                  <td className="td-default" style={rightCellStyle}>{formatValue(row[selectedPeriod]?.[2])}</td>
                   <td className="td-default" style={{...rightCellStyle, ...diffAmountStyle}}>{formatValue(row['Diff Amount'])}</td>
                   <td className="td-default" style={rightCellStyle}>{getCleanValue(row['Diff %'])}</td>
                   <td className="td-default" style={cellStyle}>{getCleanValue(row['Material Price Impact'])}</td>

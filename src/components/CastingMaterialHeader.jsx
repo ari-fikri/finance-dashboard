@@ -1,7 +1,14 @@
 import React from "react";
 import xlsIcon from "../assets/xls_icon.png";
 
-export const CastingMaterialHeader = ({ onDownload }) => {
+export const CastingMaterialHeader = ({
+  onDownload,
+  selectedPeriod,
+  comparisonPeriod,
+  availablePeriods,
+  onPeriodChange,
+  onComparisonPeriodChange,
+}) => {
   return (
     <div>
       <div style={{ display: "flex", alignItems: "center", marginBottom: 16 }}>
@@ -11,7 +18,36 @@ export const CastingMaterialHeader = ({ onDownload }) => {
       </div>
       <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
         <div style={{ display: "flex", gap: 16, alignItems: "center" }}>
-          {/* Placeholder for any future left-aligned controls */}
+          {availablePeriods && (
+            <>
+              <div>
+                <label htmlFor="comparison-period-select" style={{ fontSize: 12, marginRight: 8 }}>Compare with</label>
+                <select
+                  id="comparison-period-select"
+                  value={comparisonPeriod}
+                  onChange={(e) => onComparisonPeriodChange(e.target.value)}
+                  style={{ padding: "8px", borderRadius: 4, border: "1px solid #d1d5db", fontSize: 12 }}
+                >
+                  {availablePeriods.map(period => (
+                    <option key={period} value={period}>{period}</option>
+                  ))}
+                </select>
+              </div>
+              <div>
+                <label htmlFor="period-select" style={{ fontSize: 12, marginRight: 8 }}>Select period</label>
+                <select
+                  id="period-select"
+                  value={selectedPeriod}
+                  onChange={(e) => onPeriodChange(e.target.value)}
+                  style={{ padding: "8px", borderRadius: 4, border: "1px solid #d1d5db", fontSize: 12 }}
+                >
+                  {availablePeriods.map(period => (
+                    <option key={period} value={period}>{period}</option>
+                  ))}
+                </select>
+              </div>
+            </>
+          )}
         </div>
         <div style={{ display: "flex", gap: 8 }}>
           <button
