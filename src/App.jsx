@@ -67,6 +67,12 @@ export default function App() {
 
   const navigate = useNavigate();
 
+  const handleLogout = () => {
+    localStorage.removeItem('user');
+    localStorage.removeItem('isAuthenticated');
+    navigate('/login');
+  };
+
   function handleDeleteFile(fileName) {
     // This is a mock deletion. In a real app, you'd also make an API call.
     console.log(`Deleting ${fileName} from ${currentModalType}`);
@@ -207,6 +213,9 @@ export default function App() {
           <h1>Dashboard IH Cost</h1>
            <p>Overview of source syncs and master-data tools</p>
          </div>
+        <div className="header-actions">
+          <button onClick={handleLogout} className="btn btn-ghost" style={{ marginRight: '30px' }}>Logout</button>
+        </div>
        </header>
 
       <main>

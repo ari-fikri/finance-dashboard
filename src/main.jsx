@@ -9,6 +9,8 @@ import PartPairingPage from "./PartPairingPage";
 import PeriodComparisonPage from "./PeriodComparisonPage";
 import CostMovementDetail from './CostMovementDetail';
 import CastingMaterialPage from "./CastingMaterialPage";
+import LoginPage from './auth/LoginPage';
+import PrivateRoute from './auth/PrivateRoute';
 
 const base = process.env.NODE_ENV === "production"
   ? "/finance-dashboard/"
@@ -18,13 +20,14 @@ createRoot(document.getElementById('root')).render(
     <React.StrictMode>
     <BrowserRouter basename={base}>
       <Routes>
-        <Route path="/" element={<App />} />
-        <Route path="/sync" element={<SyncPartList />} />
-        <Route path="/ppr" element={<PPRPage />} />
-        <Route path="/part-pairing" element={<PartPairingPage />} />
-        <Route path="/period-comparison" element={<PeriodComparisonPage />} />
-        <Route path="/cost-movement-detail/:partNo" element={<CostMovementDetail />} />
-        <Route path="/casting-material" element={<CastingMaterialPage />} />
+        <Route path="/login" element={<LoginPage />} />
+        <Route path="/" element={<PrivateRoute><App /></PrivateRoute>} />
+        <Route path="/sync" element={<PrivateRoute><SyncPartList /></PrivateRoute>} />
+        <Route path="/ppr" element={<PrivateRoute><PPRPage /></PrivateRoute>} />
+        <Route path="/part-pairing" element={<PrivateRoute><PartPairingPage /></PrivateRoute>} />
+        <Route path="/period-comparison" element={<PrivateRoute><PeriodComparisonPage /></PrivateRoute>} />
+        <Route path="/cost-movement-detail/:partNo" element={<PrivateRoute><CostMovementDetail /></PrivateRoute>} />
+        <Route path="/casting-material" element={<PrivateRoute><CastingMaterialPage /></PrivateRoute>} />
       </Routes>
     </BrowserRouter>
   </React.StrictMode>

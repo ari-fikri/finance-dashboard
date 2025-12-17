@@ -27,15 +27,16 @@ export function PPRTable(props) {
     handleCellChange,
     analysisData,
     toggleThresholdFilter,
-    thresholdActive
+    thresholdActive,
+    filteredCostItems,
+    onApplyCostItemFilter,
   } = props;
 
   const isAnyFilterActive = Object.values(filterStates).some(state => state);
   const [costItemFilterOpen, setCostItemFilterOpen] = useState(false);
-  const [filteredCostItems, setFilteredCostItems] = useState(COST_ITEMS);
 
   const handleApplyCostItemFilter = checkedValues => {
-    setFilteredCostItems(checkedValues);
+    onApplyCostItemFilter(checkedValues);
     setCostItemFilterOpen(false);
   };
 

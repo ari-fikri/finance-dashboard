@@ -28,6 +28,14 @@ export default function PPRPage() {
   const [filteredPartNos, setFilteredPartNos] = useState([]);
   const [filteredImporters, setFilteredImporters] = useState([]);
   const [filteredCategories, setFilteredCategories] = useState([]);
+
+  const user = JSON.parse(localStorage.getItem("user"));
+  const initialCostItems =
+    user && user.role === "DpH"
+      ? ["Total Purchase Cost", "Total Process Cost", "Total Cost"]
+      : COST_ITEMS;
+  const [filteredCostItems, setFilteredCostItems] = useState(initialCostItems);
+
   const [currentPage, setCurrentPage] = useState(1);
   const [thresholdActive, setThresholdActive] = useState(false);
   const itemsPerPage = 5;
@@ -307,6 +315,10 @@ export default function PPRPage() {
     setCurrentPage(1);
   }, []);
 
+  const handleApplyCostItemFilter = useCallback((selected) => {
+    setFilteredCostItems(selected);
+  }, []);
+
   const toggleFilter = useCallback((filterType) => {
     setFilterStates(prev => ({ ...prev, [filterType]: !prev[filterType] }));
   }, []);
@@ -365,6 +377,8 @@ export default function PPRPage() {
         analysisData={analysisData}
         toggleThresholdFilter={toggleThresholdFilter}
         thresholdActive={thresholdActive}
+        filteredCostItems={filteredCostItems}
+        onApplyCostItemFilter={handleApplyCostItemFilter}
       />
       <Pagination
         currentPage={currentPage}
