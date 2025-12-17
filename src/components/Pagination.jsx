@@ -7,7 +7,11 @@ const Pagination = ({
   totalRecords,
   startIndex,
   endIndex,
+  itemsPerPage,
+  onItemsPerPageChange,
 }) => {
+  const itemsPerPageOptions = [5, 10, 25, 50, 100];
+
   return (
     <div
       style={{
@@ -17,9 +21,25 @@ const Pagination = ({
         alignItems: "center",
       }}
     >
-      <div style={{ fontSize: 13, color: "#6b7280" }}>
-        Showing {startIndex + 1} to {Math.min(endIndex, totalRecords)} of{" "}
-        {totalRecords} records
+      <div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+        <div style={{ fontSize: 13, color: "#6b7280" }}>
+          Showing {startIndex + 1} to {Math.min(endIndex, totalRecords)} of{" "}
+          {totalRecords} records
+        </div>
+        <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+          <select
+            value={itemsPerPage}
+            onChange={(e) => onItemsPerPageChange(Number(e.target.value))}
+            style={{ padding: '4px 8px', fontSize: 12 }}
+          >
+            {itemsPerPageOptions.map(option => (
+              <option key={option} value={option}>
+                {option}
+              </option>
+            ))}
+          </select>
+          <span style={{ fontSize: 13, color: "#6b7280" }}>per page</span>
+        </div>
       </div>
 
       <div style={{ display: "flex", gap: 4, alignItems: "center" }}>

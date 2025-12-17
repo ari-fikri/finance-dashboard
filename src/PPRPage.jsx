@@ -39,7 +39,12 @@ export default function PPRPage() {
 
   const [currentPage, setCurrentPage] = useState(1);
   const [thresholdActive, setThresholdActive] = useState(false);
-  const itemsPerPage = 5;
+  const [itemsPerPage, setItemsPerPage] = useState(5);
+
+  const handleItemsPerPageChange = (value) => {
+    setItemsPerPage(value);
+    setCurrentPage(1);
+  };
 
   const handleLogout = () => {
     localStorage.removeItem('isAuthenticated');
@@ -397,6 +402,8 @@ export default function PPRPage() {
         totalRecords={uniqueFilteredPartNos.length}
         startIndex={startIndex}
         endIndex={startIndex + itemsPerPage}
+        itemsPerPage={itemsPerPage}
+        onItemsPerPageChange={handleItemsPerPageChange}
       />
     </div>
   );
