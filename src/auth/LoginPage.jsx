@@ -21,7 +21,11 @@ const LoginPage = () => {
     if (user) {
       localStorage.setItem('isAuthenticated', 'true');
       localStorage.setItem('user', JSON.stringify(user));
-      navigate(from, { replace: true });
+      if (user.role === 'DpH') {
+        navigate('/ppr', { replace: true });
+      } else {
+        navigate(from, { replace: true });
+      }
     } else {
       alert('Invalid credentials');
     }

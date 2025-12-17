@@ -1,5 +1,5 @@
 import React, { useMemo, useState, useEffect, useCallback } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { PPRHeader } from "./components/PPRHeader";
 import { PPRTable } from "./components/PPRTable";
 import Pagination from "./components/Pagination";
@@ -16,6 +16,7 @@ import ExcelJS from "exceljs";
 import { exportPPRToExcel } from "./utils/exportPPRToExcel";
 
 export default function PPRPage() {
+  const navigate = useNavigate();
   const [mspData, setMspData] = useState([]);
   const [selectedPeriod, setSelectedPeriod] = useState("2025-02");
   const [comparisonPeriod, setComparisonPeriod] = useState("2024-08");
@@ -39,6 +40,12 @@ export default function PPRPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [thresholdActive, setThresholdActive] = useState(false);
   const itemsPerPage = 5;
+
+  const handleLogout = () => {
+    localStorage.removeItem('isAuthenticated');
+    localStorage.removeItem('user');
+    navigate('/login');
+  };
 
   async function handleDownload() {
     const workbook = new ExcelJS.Workbook();
@@ -325,8 +332,8 @@ export default function PPRPage() {
 
   return (
     <div style={{ background: "#fff", padding: "16px", position: "relative" }}>
-      <Link
-        to="/"
+      <button
+        onClick={handleLogout}
         className="btn"
         style={{
           position: "absolute",
@@ -342,10 +349,13 @@ export default function PPRPage() {
           alignItems: "center",
           justifyContent: "center",
           borderRadius: "50%",
+          border: "none",
+          background: "transparent",
+          cursor: "pointer",
         }}
       >
         X
-      </Link>
+      </button>
       <PPRHeader 
         selectedPeriod={selectedPeriod}
         comparisonPeriod={comparisonPeriod}
