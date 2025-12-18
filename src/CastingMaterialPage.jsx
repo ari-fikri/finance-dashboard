@@ -179,7 +179,8 @@ const CastingMaterialPage = () => {
   };
 
   useEffect(() => {
-    fetch('/Casting Material.json')
+    const castingMaterialUrl = `${import.meta.env.BASE_URL}Casting Material.json`;
+    fetch(castingMaterialUrl)
       .then(response => {
         if (!response.ok) {
           throw new Error('Network response was not ok');
