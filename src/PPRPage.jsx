@@ -61,10 +61,13 @@ export default function PPRPage() {
 
     partsToUpdate.forEach(part => {
       COST_ITEMS.forEach(costItem => {
-        const adjValueKey = getCellStateKey(part.part_no, costItem, 'adj');
+        const adjValueKey = getCellStateKey(part.part_no, costItem, 'Adj');
         const adjValue = newAnalysisData[adjValueKey];
+        const { currentValue } = calculateCostValues(part, costItem, selectedPeriod, comparisonPeriod);
+
+        console.log("Adj Value:", adjValue, "Selected Period Value:", currentValue);
+
         if (adjValue === undefined || adjValue === null || adjValue === "" || adjValue == 0) {
-          const { currentValue } = calculateCostValues(part, costItem, selectedPeriod, comparisonPeriod);
           newAnalysisData[adjValueKey] = currentValue;
         }
       });
