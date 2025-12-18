@@ -40,6 +40,9 @@ export default function PPRPage() {
   const [currentPage, setCurrentPage] = useState(1);
   const [thresholdActive, setThresholdActive] = useState(false);
   const [itemsPerPage, setItemsPerPage] = useState(5);
+  const [isDirty, setIsDirty] = useState(false);
+
+  const isDphUser = user?.role === 'DpH';
 
   const handleItemsPerPageChange = (value) => {
     setItemsPerPage(value);
@@ -50,6 +53,24 @@ export default function PPRPage() {
     localStorage.removeItem('isAuthenticated');
     localStorage.removeItem('user');
     navigate('/login');
+  };
+
+  const handleSave = () => {
+    const newAnalysisData = { ...analysisData };
+    const partsToUpdate = mspData.filter(p => uniqueFilteredPartNos.includes(p.part_no));
+
+    partsToUpdate.forEach(part => {
+      COST_ITEMS.forEach(costItem => {
+        const adjValueKey = getCellStateKey(part.part_no, costItem, 'adj');
+        const adjValue = newAnalysisData[adjValueKey];
+        if (adjValue === undefined || adjValue === null || adjValue === "" || adjValue == 0) {
+          const { currentValue } = calculateCostValues(part, costItem, selectedPeriod, comparisonPeriod);
+          newAnalysisData[adjValueKey] = currentValue;
+        }
+      });
+    });
+    setAnalysisData(newAnalysisData);
+    setIsDirty(false);
   };
 
   async function handleDownload() {
@@ -204,10 +225,14 @@ export default function PPRPage() {
   const handleCellChange = useCallback((partNo, costItem, column, value) => {
     const key = getCellStateKey(partNo, costItem, column);
     setAnalysisData(prev => ({ ...prev, [key]: value }));
-  }, []);
+    if (!isDphUser) {
+      setIsDirty(true);
+    }
+  }, [isDphUser]);
 
   const wrappedGetDisplayValues = useCallback((part, costItem) =>
-    getDisplayValues(part, costItem, analysisData), [analysisData]
+    getDisplayValues(part, costItem, analysisData, isDphUser, selectedPeriod, comparisonPeriod),
+    [analysisData, isDphUser, selectedPeriod, comparisonPeriod]
   );
 
   const availablePeriods = useMemo(() => {
@@ -368,6 +393,9 @@ export default function PPRPage() {
         onPeriodChange={setSelectedPeriod}
         onComparisonPeriodChange={setComparisonPeriod}
         onDownload={handleDownload}
+        isDirty={isDirty}
+        onSave={handleSave}
+        isDphUser={isDphUser}
       />
 
       <PPRTable

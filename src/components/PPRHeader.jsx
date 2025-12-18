@@ -10,6 +10,9 @@ export const PPRHeader = ({
   onPeriodChange,
   onComparisonPeriodChange,
   onDownload,
+  isDirty,
+  onSave,
+  isDphUser,
 }) => {
   return (
     <div>
@@ -56,6 +59,22 @@ export const PPRHeader = ({
           </div>
         </div>
         <div style={{ display: "flex", gap: 8 }}>
+          {isDirty && !isDphUser && (
+            <button
+              onClick={onSave}
+              style={{
+                padding: "8px 16px",
+                borderRadius: 4,
+                border: "1px solid #d1d5db",
+                backgroundColor: "#FFC107",
+                color: "white",
+                fontSize: 12,
+                cursor: "pointer",
+              }}
+            >
+              Save
+            </button>
+          )}
           <button
             style={{
               padding: "8px 16px",
@@ -64,8 +83,10 @@ export const PPRHeader = ({
               backgroundColor: "#4CAF50",
               color: "white",
               fontSize: 12,
-              cursor: "pointer"
+              cursor: isDirty ? "not-allowed" : "pointer",
+              opacity: isDirty ? 0.5 : 1,
             }}
+            disabled={isDirty}
           >
             Submit
           </button>
@@ -80,8 +101,10 @@ export const PPRHeader = ({
               backgroundColor: "#2196F3",
               color: "white",
               fontSize: 12,
-              cursor: "pointer"
+              cursor: isDirty ? "not-allowed" : "pointer",
+              opacity: isDirty ? 0.5 : 1,
             }}
+            disabled={isDirty}
           >
             Download
             <img src={xlsIcon} alt="Download" style={{ marginLeft: 8, height: 16 }} />
