@@ -3,21 +3,23 @@ import { Link, useNavigate } from "react-router-dom";
 import { PPRHeader } from "./components/PPRHeader";
 import { PPRTable } from "./components/PPRTable";
 import Pagination from "./components/Pagination";
-import { calculateDiff } from "./utils/pprHelpers";
 import {
   getCellStateKey,
   calculateCostValues,
   getDisplayValues,
   getAnalysisValue,
+  calculateDiff,
   getRemarkValue,
 } from "./utils/pprHelpers";
 import { COST_ITEMS, ANALYSIS_COLUMNS } from "./utils/pprConstants";
 import ExcelJS from "exceljs";
 import { exportPPRToExcel } from "./utils/exportPPRToExcel";
+import NoticeModal from "./components/NoticeModal";
 
 export default function PPRPage() {
   const navigate = useNavigate();
   const [mspData, setMspData] = useState([]);
+  const [periods, setPeriods] = useState([]);
   const [selectedPeriod, setSelectedPeriod] = useState("2025-02");
   const [comparisonPeriod, setComparisonPeriod] = useState("2024-08");
   const [analysisData, setAnalysisData] = useState({});
@@ -41,6 +43,7 @@ export default function PPRPage() {
   const [thresholdActive, setThresholdActive] = useState(false);
   const [itemsPerPage, setItemsPerPage] = useState(5);
   const [isDirty, setIsDirty] = useState(false);
+  const [showNotices, setShowNotices] = useState(false);
 
   const isDphUser = user?.role === 'DpH';
 
@@ -399,6 +402,7 @@ export default function PPRPage() {
         isDirty={isDirty}
         onSave={handleSave}
         isDphUser={isDphUser}
+        onToggleNotices={() => setShowNotices(true)}
       />
 
       <PPRTable
@@ -436,6 +440,7 @@ export default function PPRPage() {
         itemsPerPage={itemsPerPage}
         onItemsPerPageChange={handleItemsPerPageChange}
       />
+      <NoticeModal isOpen={showNotices} onClose={() => setShowNotices(false)} />
     </div>
   );
 }

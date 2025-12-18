@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import FunnelIcon from "./FunnelIcon";
 import FilterDialog from "./FilterDialog";
 import xlsIcon from "../assets/xls_icon.png";
+import chatIcon from "../../dist/assets/chat_icon.png";
 
 export const PPRHeader = ({
   selectedPeriod,
@@ -13,6 +14,7 @@ export const PPRHeader = ({
   isDirty,
   onSave,
   isDphUser,
+  onToggleNotices,
 }) => {
   return (
     <div>
@@ -108,6 +110,20 @@ export const PPRHeader = ({
           >
             Download
             <img src={xlsIcon} alt="Download" style={{ marginLeft: 8, height: 16 }} />
+          </button>
+          <button
+            onClick={onToggleNotices}
+            style={{
+              display: "flex",
+              alignItems: "center",
+              padding: "8px",
+              borderRadius: 4,
+              border: "1px solid #d1d5db",
+              backgroundColor: "#fff",
+              cursor: "pointer",
+            }}
+          >
+            <img src={chatIcon} alt="Notices" style={{ height: 16 }} />
           </button>
         </div>
       </div>
