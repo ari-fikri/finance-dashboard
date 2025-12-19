@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import FunnelIcon from "./FunnelIcon";
 import FilterDialog from "./FilterDialog";
 import xlsIcon from "../assets/xls_icon.png";
-import chatIcon from "../../dist/assets/chat_icon.png";
+import chatIcon from "../assets/chat_icon.png";
 
 export const PPRHeader = ({
   selectedPeriod,
