@@ -1,4 +1,3 @@
-// src/App.jsx
 import React, { useState, useMemo } from "react";
 import { motion } from "framer-motion";
 import { useNavigate } from "react-router-dom";
@@ -6,6 +5,7 @@ import MasterDataModal from "./MasterDataModal";
 import DownloadModal from "./DownloadModal";
 import templateIcon from './assets/template.png';
 import './App.css';
+import { config } from "./config";
 
 const fileManifest = {
   cmd: [
@@ -48,6 +48,14 @@ export default function App() {
   const [downloadableFiles, setDownloadableFiles] = useState([]);
   const [downloadModalTitle, setDownloadModalTitle] = useState("");
   const [currentModalType, setCurrentModalType] = useState("");
+
+  const user = JSON.parse(localStorage.getItem('user'));
+  const userRole = user ? user.role : 'dph'; 
+
+  const canViewSection = (sectionName) => {
+    const roleConfig = config.roles[userRole];
+    return roleConfig && roleConfig.sections.includes(sectionName);
+  };
 
   const latestProcessFile = useMemo(() => {
     const allFiles = [...(fileManifest.process || []), ...processFiles];
@@ -169,10 +177,10 @@ export default function App() {
     let csvContent;
 
     if (type === 'process') {
-      csvContent = `Process,CostType,Amount,Currency\nLabor,Direct,0,USD\nFOH,Overhead,0,USD`;
+      csvContent = `Process,CostType,Amount,Currency\\nLabor,Direct,0,USD\\nFOH,Overhead,0,USD`;
       fileName = 'process-cost-template.csv';
     } else if (type === 'material') {
-      csvContent = `Part Number,Material Type,Cost per Unit,Currency\nPART-001,Steel,0,USD`;
+      csvContent = `Part Number,Material Type,Cost per Unit,Currency\\nPART-001,Steel,0,USD`;
       fileName = 'material-cost-template.csv';
     } else {
       return;
@@ -219,316 +227,289 @@ export default function App() {
        </header>
 
       <main>
-        <section>
-          <h2 className="section-title">Data Synchronization</h2>
-
-          <div
-            className="grid-5"
-          >
-            {/* CMD / IFAST / SAP cards */}
-            {sources.map((s) => (
+        {canViewSection('data_sync') && (
+          <section>
+            <h2 className="section-title">Data Synchronization</h2>
+            <div className="grid-5">
+              {sources.map((s) => (
+                <motion.div
+                  key={s.id}
+                  initial={{ opacity: 0, y: 6 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.28 }}
+                  className="card"
+                >
+                  <div>
+                    <div className="title">{s.name}</div>
+                    <div className="meta">Last Update: <span>{s.lastUpdate}</span></div>
+                  </div>
+                  <div className="card-footer">
+                    <div className="small">
+                      Status: <strong className="status-ok">OK</strong>
+                    </div>
+                    <div className="card-actions">
+                      <button
+                        onClick={() => downloadSource(s)}
+                        className="btn btn-primary"
+                      >
+                        Download
+                      </button>
+                    </div>
+                  </div>
+                </motion.div>
+              ))}
               <motion.div
-                key={s.id}
                 initial={{ opacity: 0, y: 6 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.28 }}
+                transition={{ duration: 0.28, delay: 0.05 }}
+                className="card arrow-card"
+              >
+                ➜
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.28, delay: 0.1 }}
+                className="card sync-card"
+              >
+                <div>
+                  <div className="title">Synchronize Part List</div>
+                  <div className="meta">Combine data from CMD, SAP, and IFAST</div>
+                </div>
+                <div className="card-footer">
+                  <div />
+                  <div className="card-actions">
+                    <button
+                      className="btn btn-primary sync-button"
+                      onClick={synchronize}
+                    >
+                      Synchronize
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </section>
+        )}
+
+        {canViewSection('calculation') && (
+          <section>
+            <h2 className="section-title">Calculation</h2>
+            <div className="grid-4">
+              <motion.div
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.28, delay: 0.02 }}
                 className="card"
               >
                 <div>
-                  <div className="title">{s.name}</div>
-                  <div className="meta">Last Update: <span>{s.lastUpdate}</span></div>
+                  <div className="card-title-flex">
+                    <div className="title">Process Cost</div>
+                    <a href="#" onClick={(e) => { e.preventDefault(); downloadTemplate('process'); }} className="template-link">
+                      <img src={templateIcon} alt="Download Template" />
+                      <span>Template</span>
+                    </a>
+                  </div>
+                  <div className="meta">
+                    Last Update: <span>{latestProcessFile ? new Date(latestProcessFile.uploadDate).toLocaleDateString('en-CA') : '-'}</span>
+                  </div>
+                  <div className="small card-meta-margin">
+                    Labor, FOH, depreciation, and other processing costs used in calculations.
+                  </div>
                 </div>
-            
                 <div className="card-footer">
                   <div className="small">
-                    Status: <strong className="status-ok">OK</strong>
+                    {latestProcessFile ? (
+                      <strong className="status-ok">Ready</strong>
+                    ) : (
+                      <strong className="status-warning">Upload required</strong>
+                    )}
                   </div>
                   <div className="card-actions">
+                    <input
+                      type="file"
+                      accept=".xls,.xlsx"
+                      onChange={handleProcessFileUpload}
+                      style={{ display: "none" }}
+                      id="process-cost-upload"
+                    />
+                    <label
+                      htmlFor="process-cost-upload"
+                      className="btn btn-ghost upload-label"
+                    >
+                      Upload
+                    </label>
                     <button
-                      onClick={() => downloadSource(s)}
+                      onClick={downloadProcessCost}
                       className="btn btn-primary"
+                      disabled={!latestProcessFile}
+                      style={!latestProcessFile ? { opacity: 0.5, cursor: "not-allowed" } : {}}
                     >
                       Download
                     </button>
                   </div>
                 </div>
               </motion.div>
-            ))}
-
-
-
-            {/* Arrow Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.28, delay: 0.05 }}
-              className="card arrow-card"
-            >
-              ➜
-            </motion.div>
-            
-            {/* Synchronize Part List Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.28, delay: 0.1 }}
-              className="card sync-card"
-            >
-              <div>
-                <div className="title">Synchronize Part List</div>
-                <div className="meta">Combine data from CMD, SAP, and IFAST</div>
-              </div>
-            
-              <div className="card-footer">
-                <div />
-                <div className="card-actions">
-                  <button
-                    className="btn btn-primary sync-button"
-                    onClick={synchronize}
-                  >
-                    Synchronize
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </section>
-
-        <section>
-          <h2 className="section-title">Calculation</h2>
-
-          <div 
-            className="grid-4"
-          >
-            {/* Process Cost Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.28, delay: 0.02 }}
-              className="card"
-            >
-              <div>
-                <div className="card-title-flex">
-                  <div className="title">Process Cost</div>
-                  <a href="#" onClick={(e) => { e.preventDefault(); downloadTemplate('process'); }} className="template-link">
-                    <img src={templateIcon} alt="Download Template" />
-                    <span>Template</span>
-                  </a>
-                </div>
-                <div className="meta">
-                  Last Update: <span>{latestProcessFile ? new Date(latestProcessFile.uploadDate).toLocaleDateString('en-CA') : '-'}</span>
-                </div>
-                <div className="small card-meta-margin">
-                  Labor, FOH, depreciation, and other processing costs used in calculations.
-                </div>
-              </div>
-            
-              <div className="card-footer">
-                <div className="small">
-                  {latestProcessFile ? (
-                    <strong className="status-ok">Ready</strong>
-                  ) : (
-                    <strong className="status-warning">Upload required</strong>
-                  )}
-                </div>
-                <div className="card-actions">
-                  {/* Process Cost: Upload File */}
-                  <input
-                    type="file"
-                    accept=".xls,.xlsx"
-                    onChange={handleProcessFileUpload}
-                    style={{ display: "none" }}
-                    id="process-cost-upload"
-                  />
-                  <label
-                    htmlFor="process-cost-upload"
-                    className="btn btn-ghost upload-label"
-                  >
-                    Upload
-                  </label>
-                  <button
-                    onClick={downloadProcessCost}
-                    className="btn btn-primary"
-                    disabled={!latestProcessFile}
-                    style={!latestProcessFile ? { opacity: 0.5, cursor: "not-allowed" } : {}}
-                  >
-                    Download
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Material Cost Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.28, delay: 0.04 }}
-              className="card"
-            >
-              <div>
-                <div className="card-title-flex">
-                  <div className="title">Material Cost</div>
-                  <a href="#" onClick={(e) => { e.preventDefault(); downloadTemplate('material'); }} className="template-link">
-                    <img src={templateIcon} alt="Download Template" />
-                    <span>Template</span>
-                  </a>
-                </div>
-                <div className="meta">
-                  Last Update: <span>{latestMaterialFile ? new Date(latestMaterialFile.uploadDate).toLocaleDateString('en-CA') : '-'}</span>
-                </div>
-                <div className="small card-meta-margin">
-                  Raw material costs, including prices, quantities, and supplier information.
-                </div>
-              </div>
-            
-              <div className="card-footer">
-                <div className="small">
-                  {latestMaterialFile ? (
-                    <strong className="status-ok">Ready</strong>
-                  ) : (
-                    <strong className="status-warning">Upload required</strong>
-                  )}
-                </div>
-                <div className="card-actions">
-                  {/* Material Cost: Upload File */}
-                  <input
-                    type="file"
-                    accept=".xls,.xlsx"
-                    onChange={handleFileUpload}
-                    style={{ display: "none" }}
-                    id="material-cost-upload"
-                  />
-                  <label
-                    htmlFor="material-cost-upload"
-                    className="btn btn-ghost upload-label"
-                  >
-                    Upload
-                  </label>
-                  <button
-                    onClick={() => navigate("/casting-material")}
-                    className="btn btn-primary"
-                    disabled={!latestMaterialFile}
-                    style={!latestMaterialFile ? { opacity: 0.5, cursor: "not-allowed" } : {}}
-                  >
-                    Calculate
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-
-            {/* Arrow Card */}
-            <motion.div
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.28, delay: 0.06 }}
-              className="card arrow-card"
-            >
-              ➜
-            </motion.div>
-
-            {/* IHP Card */}
-            <motion.div
-              className="card ihp-area"
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.28, delay: 0.08 }}
-            >
-              <div>
-                <div className="title">IHP</div>
-                <div className="meta">Perform calculation for IHP metrics across synced sources.</div>
-                {ihpResult && (
-                  <div className="small ihp-result">
-                    Last result: {ihpResult.value} (calculated at {new Date(ihpResult.timestamp).toLocaleString()})
-                  </div>
-                )}
-              </div>
-
-              <div className="card-footer ihp-calc-btn">
-                <div />
+              <motion.div
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.28, delay: 0.04 }}
+                className="card"
+              >
                 <div>
-                  <button
-                    onClick={() => navigate("/ppr")}
-                    disabled={isCalculating}
-                    className="btn btn-primary"
-                    style={isCalculating ? { opacity: 0.7, cursor: "wait" } : {}}
-                  >
-                    {isCalculating ? "Calculating..." : "Calculate IHP"}
-                  </button>
+                  <div className="card-title-flex">
+                    <div className="title">Material Cost</div>
+                    <a href="#" onClick={(e) => { e.preventDefault(); downloadTemplate('material'); }} className="template-link">
+                      <img src={templateIcon} alt="Download Template" />
+                      <span>Template</span>
+                    </a>
+                  </div>
+                  <div className="meta">
+                    Last Update: <span>{latestMaterialFile ? new Date(latestMaterialFile.uploadDate).toLocaleDateString('en-CA') : '-'}</span>
+                  </div>
+                  <div className="small card-meta-margin">
+                    Raw material costs, including prices, quantities, and supplier information.
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-          </div>
-        </section>
+                <div className="card-footer">
+                  <div className="small">
+                    {latestMaterialFile ? (
+                      <strong className="status-ok">Ready</strong>
+                    ) : (
+                      <strong className="status-warning">Upload required</strong>
+                    )}
+                  </div>
+                  <div className="card-actions">
+                    <input
+                      type="file"
+                      accept=".xls,.xlsx"
+                      onChange={handleFileUpload}
+                      style={{ display: "none" }}
+                      id="material-cost-upload"
+                    />
+                    <label
+                      htmlFor="material-cost-upload"
+                      className="btn btn-ghost upload-label"
+                    >
+                      Upload
+                    </label>
+                    <button
+                      onClick={() => navigate("/casting-material")}
+                      className="btn btn-primary"
+                      disabled={!latestMaterialFile}
+                      style={!latestMaterialFile ? { opacity: 0.5, cursor: "not-allowed" } : {}}
+                    >
+                      Calculate
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.28, delay: 0.06 }}
+                className="card arrow-card"
+              >
+                ➜
+              </motion.div>
+              <motion.div
+                className="card ihp-area"
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.28, delay: 0.08 }}
+              >
+                <div>
+                  <div className="title">IHP</div>
+                  <div className="meta">Perform calculation for IHP metrics across synced sources.</div>
+                  {ihpResult && (
+                    <div className="small ihp-result">
+                      Last result: {ihpResult.value} (calculated at {new Date(ihpResult.timestamp).toLocaleString()})
+                    </div>
+                  )}
+                </div>
+                <div className="card-footer ihp-calc-btn">
+                  <div />
+                  <div>
+                    <button
+                      onClick={() => navigate("/ppr")}
+                      disabled={isCalculating}
+                      className="btn btn-primary"
+                      style={isCalculating ? { opacity: 0.7, cursor: "wait" } : {}}
+                    >
+                      {isCalculating ? "Calculating..." : "Calculate IHP"}
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+            </div>
+          </section>
+        )}
 
-        <section>
-          <h2 className="section-title">Master Data</h2>
-
-          <div className="grid-2">
-            <motion.div
-              className="card master-card"
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.28, delay: 0.04 }}
-            >
-              <div>
-                <div className="title">Master Assumption</div>
-                <div className="meta">Last Period: <span>{masterData.lastPeriod}</span></div>
-                <div className="small card-meta-margin">
-                  Maintain core reference tables used by the synchronization processes. Use the button below to manage values.
+        {canViewSection('master') && (
+          <section>
+            <h2 className="section-title">Master Data</h2>
+            <div className="grid-2">
+              <motion.div
+                className="card master-card"
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.28, delay: 0.04 }}
+              >
+                <div>
+                  <div className="title">Master Assumption</div>
+                  <div className="meta">Last Period: <span>{masterData.lastPeriod}</span></div>
+                  <div className="small card-meta-margin">
+                    Maintain core reference tables used by the synchronization processes. Use the button below to manage values.
+                  </div>
                 </div>
-              </div>
-
-              <div className="card-footer">
-                <div />
-                <div className="card-actions">
-                  <button className="btn btn-ghost" onClick={() => alert("View master data (preview)")}>
-                    View
-                  </button>
-                  <button className="btn btn-primary" onClick={openMaintain}>
-                    Maintain Master Assumption
-                  </button>
+                <div className="card-footer">
+                  <div />
+                  <div className="card-actions">
+                    <button className="btn btn-ghost" onClick={() => alert("View master data (preview)")}>
+                      View
+                    </button>
+                    <button className="btn btn-primary" onClick={openMaintain}>
+                      Maintain Master Assumption
+                    </button>
+                  </div>
                 </div>
-              </div>
-            </motion.div>
-
-            <motion.div
-              className="card"
-              initial={{ opacity: 0, y: 6 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.28, delay: 0.08 }}
-            >
-              <div>
-                <div className="title">Part Pairing Management</div>
-                <div className="meta">Cross-system part mapping and relationships</div>
-                <div className="small card-meta-margin">
-                  Manage part number mappings between CMD, SAP, and IFAST systems. Define equivalency relationships and maintain cross-reference tables.
+              </motion.div>
+              <motion.div
+                className="card"
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.28, delay: 0.08 }}
+              >
+                <div>
+                  <div className="title">Part Pairing Management</div>
+                  <div className="meta">Cross-system part mapping and relationships</div>
+                  <div className="small card-meta-margin">
+                    Manage part number mappings between CMD, SAP, and IFAST systems. Define equivalency relationships and maintain cross-reference tables.
+                  </div>
                 </div>
-              </div>
-
-              <div className="card-footer">
-                <div className="small">
-                  Status: <strong className="status-ok">Ready</strong>
+                <div className="card-footer">
+                  <div className="small">
+                    Status: <strong className="status-ok">Ready</strong>
+                  </div>
+                  <div className="card-actions">
+                    <button className="btn btn-primary" onClick={openPartPairing}>
+                      Manage Pairings
+                    </button>
+                  </div>
                 </div>
-                <div className="card-actions">
-                  <button className="btn btn-primary" onClick={openPartPairing}>
-                    Manage Pairings
-                  </button>
-                </div>
-              </div>
-            </motion.div>
-          </div>
-        </section>
+              </motion.div>
+            </div>
+          </section>
+        )}
       </main>
 
       <div className="page-bottom" />
 
-      {/* Maintain Master Data modal */}
       <MasterDataModal 
         open={isMaintaining} 
         onClose={closeMaintain}
         onSave={(data) => {
           console.log("Master data saved:", data);
-          // Handle the saved data here if needed
         }}
       />
 
