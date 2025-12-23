@@ -10,7 +10,7 @@ export const COST_ITEMS = [
   "Depre Exclusive",
   "Total Process Cost",
   "Total Cost",
-  "MH Cost",
+  "Manhour",
   "Sales Volume",
   "Prod Volume"
 ];
@@ -35,7 +35,7 @@ export const COST_ITEM_KEYS = {
   "Depre Common": "depre_common",
   "Depre Exclusive": "depre_exclusive",
   "Total Cost": "total_cost",
-  "MH Cost": "mh_cost",
+  "Manhour": "mh_cost",
   "Sales Volume": "sales_volume",
   "Prod Volume": "prod_volume"
 };
