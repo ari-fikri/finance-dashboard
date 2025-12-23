@@ -15,6 +15,22 @@ export const COST_ITEMS = [
   "Prod Volume"
 ];
 
+export const COST_ITEMS_UOM = [
+  "Rp.",
+  "Rp.",
+  "Rp",
+  "Rp.",
+  "Rp.",
+  "Rp.",
+  "Rp",
+  "Rp.",
+  "Rp.",
+  "Rp.",
+  "mins",
+  "Rp.",
+  "Units"
+];
+
 // Analysis column definitions
 export const ANALYSIS_COLUMNS = [
   "Volume",

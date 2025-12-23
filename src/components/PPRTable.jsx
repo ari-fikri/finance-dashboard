@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import FilterDialog from "./FilterDialog";
 import { CostItemRow } from "./CostItemRow";
 import FunnelIcon from "./FunnelIcon";
-import { ANALYSIS_COLUMNS, COST_ITEMS } from "../utils/pprConstants";
+import { ANALYSIS_COLUMNS, COST_ITEMS, COST_ITEMS_UOM } from "../utils/pprConstants";
 import { getAnalysisValue, getRemarkValue } from "../utils/pprHelpers";
 
 export function PPRTable(props) {
@@ -112,7 +112,7 @@ export function PPRTable(props) {
                 />
               )}
             </th>
-            <th rowSpan={2} className="tbl-header" style={{position: 'relative'}}>
+            <th colSpan={2} className="tbl-header" style={{position: 'relative'}}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
                 <span>Cost Item</span>
                 <span style={{ cursor: 'pointer' }} onClick={() => setCostItemFilterOpen(true)}>
@@ -142,6 +142,8 @@ export function PPRTable(props) {
             <th rowSpan={2} className="tbl-header" style={{minWidth: 150, background: "#bbfebb" }}>Remark</th>
           </tr>
           <tr style={{ borderBottom: "1px solid #d1d5db" }}>
+            <th className="tbl-header">Cost Item</th>
+            <th className="tbl-header">UoM</th>
             <th className="tbl-header" style={{minWidth: 80, background: '#e3f6ff' }}>{comparisonPeriod}</th>
             <th className="tbl-header" style={{minWidth: 80, background: '#e3f6ff' }}>{`PBMD`}<br/>{`${comparisonPeriod}`}</th>
             <th className="tbl-header" style={{minWidth: 80, background: '#e3f6ff' }}>{selectedPeriod}</th>

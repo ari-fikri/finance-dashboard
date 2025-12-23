@@ -5,7 +5,7 @@
  */
 
 import React, { useState } from "react";
-import { ANALYSIS_COLUMNS, COST_ITEMS } from "../utils/pprConstants";
+import { ANALYSIS_COLUMNS, COST_ITEMS, COST_ITEMS_UOM } from "../utils/pprConstants";
 import { getAnalysisValue, getRemarkValue, getAnalysisValueForSummaryRow } from "../utils/pprHelpers";
 
 /**
@@ -56,6 +56,8 @@ export function CostItemRow(props) {
   const isCalculatedRow = costItem === "Total Purchase Cost" || costItem === "Total Process Cost" || costItem === "Total Cost";
   // Determine if the row is a summary row to apply special styling.
   const isSummaryRow = isCalculatedRow || costItem === "Total Cost";
+  const costItemIndex = COST_ITEMS.indexOf(costItem);
+  const uom = costItemIndex !== -1 ? COST_ITEMS_UOM[costItemIndex] : '';
 
   return (
     <tr
@@ -109,6 +111,9 @@ export function CostItemRow(props) {
       {/* Cost Item column */}
       <td className="td-default" style={{fontWeight: isSummaryRow ? 'bold' : 500, borderRight: "1px solid #e5e7eb" }}>
         {costItem}
+      </td>
+      <td className="td-default" style={{ borderRight: "1px solid #e5e7eb" }}>
+        {uom}
       </td>
       {/* Comparison Period Value */}
       <td className="td-default" style={{textAlign: "right", fontWeight: isSummaryRow ? 'bold' : 'normal', padding:"6px" }}>
