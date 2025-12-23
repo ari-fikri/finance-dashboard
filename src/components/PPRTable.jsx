@@ -143,7 +143,7 @@ export function PPRTable(props) {
           </tr>
           <tr style={{ borderBottom: "1px solid #d1d5db" }}>
             <th className="tbl-header" style={{minWidth: 80, background: '#e3f6ff' }}>{comparisonPeriod}</th>
-            <th className="tbl-header" style={{minWidth: 120, background: '#e3f6ff' }}>{`PBMD ${comparisonPeriod}`}</th>
+            <th className="tbl-header" style={{minWidth: 80, background: '#e3f6ff' }}>{`PBMD`}<br/>{`${comparisonPeriod}`}</th>
             <th className="tbl-header" style={{minWidth: 80, background: '#e3f6ff' }}>{selectedPeriod}</th>
             <th className="tbl-header" style={{minWidth: 60, background: '#e3f6ff' }}>Diff Amt</th>
             <th className="tbl-header" style={{minWidth: 50, background: '#e3f6ff' }}>Diff %</th>
