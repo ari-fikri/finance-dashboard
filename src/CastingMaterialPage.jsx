@@ -278,7 +278,7 @@ const CastingMaterialPage = () => {
   };
 
   return (
-    <div style={{ background: "#fff", padding: "16px", position: "relative" }}>
+    <div style={{ background: "#fff", padding: "16px", position: "relative", display: 'flex', flexDirection: 'column', height: 'calc(100vh - 32px)' }}>
       <Link
         to="/"
         className="btn"
@@ -314,7 +314,7 @@ const CastingMaterialPage = () => {
         {/* The "Submit" and "Download" buttons are now in the header */}
       </div>
 
-      <div style={{ overflowX: "auto", width: "100%" }}>
+      <div style={{ overflow: "auto", flex: '1 1 auto' }}>
         <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 12 }}>
           <thead style={{ position: "sticky", top: 0, zIndex: 10 }}>
             <tr style={{ borderBottom: "1px solid #d1d5db" }}>
