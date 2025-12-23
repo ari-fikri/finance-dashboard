@@ -52,10 +52,14 @@ export default function PPRPage() {
     setCurrentPage(1);
   };
 
-  const handleLogout = () => {
-    localStorage.removeItem('isAuthenticated');
-    localStorage.removeItem('user');
-    navigate('/login');
+  const handleClose = () => {
+    if (isDphUser) {
+      localStorage.removeItem('isAuthenticated');
+      localStorage.removeItem('user');
+      navigate('/login');
+    } else {
+      navigate('/');
+    }
   };
 
   const handleSave = () => {
@@ -369,7 +373,7 @@ export default function PPRPage() {
   return (
     <div style={{ background: "#fff", padding: "16px", position: "relative" }}>
       <button
-        onClick={handleLogout}
+        onClick={handleClose}
         className="btn"
         style={{
           position: "absolute",
