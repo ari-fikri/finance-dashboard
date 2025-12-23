@@ -27,7 +27,7 @@ const NoticeMessage = ({ from, fromDept, to, toDept, timestamp, message }) => (
   </div>
 );
 
-const NoticeModal = ({ isOpen, onClose }) => {
+const NoticeModal = ({ isOpen, onClose, isDphUser }) => {
   if (!isOpen) {
     return null;
   }
@@ -75,37 +75,53 @@ const NoticeModal = ({ isOpen, onClose }) => {
             backgroundColor: '#357ab7', 
             color: 'white', 
             display: 'flex', 
+            justifyContent: 'space-between',
             alignItems: 'center',
             borderTopLeftRadius: '5px',
             borderTopRightRadius: '5px'
         }}>
-            <i className="far fa-comment-alt" style={{ marginRight: '8px' }}></i>
-            <h3 style={{margin: 0, fontSize: '16px'}}>Notice</h3>
+            <div style={{display: 'flex', alignItems: 'center'}}>
+              <i className="far fa-comment-alt" style={{ marginRight: '8px' }}></i>
+              <h3 style={{margin: 0, fontSize: '16px'}}>Notice</h3>
+            </div>
+            <button onClick={onClose} style={{
+              background: 'transparent',
+              border: 'none',
+              color: 'white',
+              fontSize: '20px',
+              cursor: 'pointer'
+            }}>
+              &times;
+            </button>
         </div>
-        <div style={{ padding: '10px', borderBottom: '1px solid #ccc', display: 'flex', alignItems: 'center', background: '#e9ecef' }}>
-          <input id="to-input" type="text" defaultValue="Yunita Aldora" style={{ flexGrow: 1, border: '1px solid #ccc', borderRadius: '3px', padding: '5px' }} />
-          <button style={{ marginLeft: '10px', border: '1px solid #ccc', borderRadius: '3px', padding: '5px', background: '#f0f0f0' }}>
-            <i className="fas fa-search"></i>
-          </button>
-          <button style={{ marginLeft: '5px', border: '1px solid #ccc', borderRadius: '3px', padding: '5px', background: '#f0f0f0' }}>
-            <i className="fas fa-sync-alt"></i>
-          </button>
-        </div>
+        {isDphUser && (
+          <div style={{ padding: '10px', borderBottom: '1px solid #ccc', display: 'flex', alignItems: 'center', background: '#e9ecef' }}>
+            <input id="to-input" type="text" defaultValue="Yunita Aldora" style={{ flexGrow: 1, border: '1px solid #ccc', borderRadius: '3px', padding: '5px' }} />
+            <button style={{ marginLeft: '10px', border: '1px solid #ccc', borderRadius: '3px', padding: '5px', background: '#f0f0f0' }}>
+              <i className="fas fa-search"></i>
+            </button>
+            <button style={{ marginLeft: '5px', border: '1px solid #ccc', borderRadius: '3px', padding: '5px', background: '#f0f0f0' }}>
+              <i className="fas fa-sync-alt"></i>
+            </button>
+          </div>
+        )}
         <div className="messages" style={{ maxHeight: '300px', overflowY: 'auto', background: '#fff' }}>
           {notices.map((notice, index) => (
             <NoticeMessage key={index} {...notice} />
           ))}
         </div>
-        <div style={{ padding: '10px', borderTop: '1px solid #ccc', display: 'flex', background: '#f8f9fa' }}>
-          <input
-            type="text"
-            placeholder="Type your message here..."
-            style={{ flexGrow: 1, border: '1px solid #ccc', borderRadius: '3px', padding: '5px' }}
-          />
-          <button style={{ marginLeft: '10px', border: 'none', borderRadius: '3px', padding: '5px 10px', background: '#ffc107', color: 'white', cursor: 'pointer' }}>
-            Send
-          </button>
-        </div>
+        {isDphUser && (
+          <div style={{ padding: '10px', borderTop: '1px solid #ccc', display: 'flex', background: '#f8f9fa' }}>
+            <input
+              type="text"
+              placeholder="Type your message here..."
+              style={{ flexGrow: 1, border: '1px solid #ccc', borderRadius: '3px', padding: '5px' }}
+            />
+            <button style={{ marginLeft: '10px', border: 'none', borderRadius: '3px', padding: '5px 10px', background: '#ffc107', color: 'white', cursor: 'pointer' }}>
+              Send
+            </button>
+          </div>
+        )}
       </div>
     </div>
   );

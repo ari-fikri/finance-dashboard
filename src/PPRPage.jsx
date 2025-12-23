@@ -444,7 +444,7 @@ export default function PPRPage() {
         itemsPerPage={itemsPerPage}
         onItemsPerPageChange={handleItemsPerPageChange}
       />
-      <NoticeModal isOpen={showNotices} onClose={() => setShowNotices(false)} />
+      <NoticeModal isOpen={showNotices} onClose={() => setShowNotices(false)} isDphUser={isDphUser} />
     </div>
   );
 }
