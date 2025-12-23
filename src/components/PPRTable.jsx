@@ -41,8 +41,8 @@ export function PPRTable(props) {
   };
 
   return (
-    <div style={{ overflowX: "auto", background: "#fff" }}>
-      <div style={{ padding: '8px 0px', background: '#fff', borderBottom: '1px solid #d1d5db', display: 'flex', gap: '8px' }}>
+    <div style={{ overflow: "auto", height: "calc(100vh - 250px)", background: "#fff" }}>
+      <div style={{ padding: '8px 0px', background: '#fff', borderBottom: '1px solid #d1d5db', display: 'flex', gap: '8px', position: 'sticky', top: 0, zIndex: 11 }}>
         <button
           onClick={toggleThresholdFilter}
           style={{
@@ -59,7 +59,7 @@ export function PPRTable(props) {
         </button>
       </div>
       <table style={{ width: "100%", borderCollapse: "collapse", fontSize: 12 }}>
-        <thead style={{ position: "sticky", top: 0, zIndex: 10 }}>
+        <thead style={{ position: "sticky", top: 45, zIndex: 10 }}>
           <tr style={{ borderBottom: "1px solid #d1d5db" }}>
             <th rowSpan={2} className="tbl-header" style={{ minWidth: 120, position: 'relative' }}>
               <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
