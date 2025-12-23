@@ -6,10 +6,15 @@ import CastingMaterialHeader from './components/CastingMaterialHeader';
 import FunnelIcon from './components/FunnelIcon';
 import FilterDialog from './components/FilterDialog';
 
-const getCleanValue = (val) => (val && String(val).trim() !== '' ? String(val).trim() : '');
+//const getCleanValue = (val) => (val && String(val).trim() !== '' ? String(val).trim() : '');
 
+// This component displays the casting material data in a filterable and paginated table.
 const CastingMaterialPage = () => {
+  // State for storing the original data from the CSV file.
   const [data, setData] = useState([]);
+  // State for storing the filtered data to be displayed in the table.
+  const [filteredData, setFilteredData] = useState([]);
+  // State for managing loading status.
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
@@ -198,19 +203,24 @@ const CastingMaterialPage = () => {
   }, []);
 
   const getUniqueValues = (key) => {
-    if (!data) return [];
+    if (data.length < 2) return [];
 
     const otherFilters = { ...activeFilters };
     delete otherFilters[key];
 
-    const filteredForDialog = data.filter(row => {
+    const dataRows = data.slice(1);
+    const filteredForDialog = dataRows.filter(row => {
       return Object.entries(otherFilters).every(([filterKey, values]) => {
         if (values.length === 0) return true;
-        return values.includes(row[filterKey]);
+        const cellValue = getCleanValue(row[filterKey]);
+        const filterValues = values.map(v => v === '(blank)' ? '' : v);
+        return filterValues.includes(cellValue);
       });
     });
 
-    return [...new Set(filteredForDialog.map(item => item[key]))];
+    const uniqueValues = [...new Set(filteredForDialog.map(item => getCleanValue(item[key])))];
+    
+    return uniqueValues.map(value => value === '' ? '(blank)' : value);
   };
 
   const handlePageChange = (pageNumber) => {
@@ -225,9 +235,57 @@ const CastingMaterialPage = () => {
     });
   };
 
-  const handleApplyFilter = (column, selectedValues) => {
-    setActiveFilters(prev => ({ ...prev, [column]: selectedValues }));
+  const closeFilterDialog = () => {
     setFilterDialog({ isOpen: false, column: null, values: [] });
+  };
+
+  // Applies the selected filters to the data by updating the activeFilters state.
+  const handleApplyFilter = (column, selectedValues) => {
+    setActiveFilters(prevFilters => ({
+      ...prevFilters,
+      [column]: selectedValues
+    }));
+    closeFilterDialog();
+  };
+
+  // This effect hook handles the filtering logic. It runs whenever the
+  // active filters or the main data set changes.
+  useEffect(() => {
+    if (data.length < 2) {
+      setFilteredData(data);
+      return;
+    }
+
+    const dataRows = data.slice(1);
+    const filteredRows = dataRows.filter(row => {
+      // A row is kept if it satisfies ALL active column filters.
+      return Object.entries(activeFilters).every(([key, values]) => {
+        // If a filter for a column has no selected values, it's ignored.
+        if (values.length === 0) {
+          return true;
+        }
+
+        const cellValue = getCleanValue(row[key]);
+
+        // Check if the cell value matches any of the selected filter values.
+        // This includes a special check for '(blank)'.
+        const matchesBlank = values.includes('(blank)') && cellValue === '';
+        const matchesValue = values.includes(cellValue);
+
+        return matchesBlank || matchesValue;
+      });
+    });
+
+    // Update the state with the filtered rows, keeping the header.
+    setFilteredData([data[0], ...filteredRows]);
+  }, [activeFilters, data]);
+
+  // Cleans up a value by trimming it and handling null/undefined/0 cases.
+  const getCleanValue = (value) => {
+    if (value === null || value === undefined || value === 0) {
+      return '';
+    }
+    return String(value).trim();
   };
 
   const formatValue = (value) => {
@@ -256,15 +314,7 @@ const CastingMaterialPage = () => {
     return <div className="p-4">No data available.</div>;
   }
 
-  const tableData = data.slice(1).filter(row => {
-    return Object.entries(activeFilters).every(([column, selectedValues]) => {
-      if (!selectedValues || selectedValues.length === 0) {
-        return true;
-      }
-      const cellValue = getCleanValue(row[column]);
-      return selectedValues.includes(cellValue);
-    });
-  });
+  const tableData = filteredData.slice(1);
 
   const indexOfLastRecord = currentPage * recordsPerPage;
   const indexOfFirstRecord = indexOfLastRecord - recordsPerPage;
@@ -485,3 +535,39 @@ const CastingMaterialPage = () => {
 };
 
 export default CastingMaterialPage;
+
+const applyFilters = (column, selectedValues) => {
+  const newFilters = { ...activeFilters, [column]: selectedValues };
+  setActiveFilters(newFilters);
+
+  const dataRows = data.slice(1);
+
+  const filtered = dataRows.filter(row => {
+    return Object.entries(newFilters).every(([key, values]) => {
+      if (values.length === 0) return true;
+
+      const cellValue = getCleanValue(row[key]);
+      debugger;
+      // If '(blank)' is selected and the cell is blank, it's a match.
+      if (values.includes('(blank)') && cellValue === '') {
+        return true;
+      }
+
+      // If the cell value is in the list of selected values, it's a match.
+      if (values.includes(cellValue)) {
+        return true;
+      }
+
+      // If none of the above, it's not a match.
+      return false;
+    });
+  });
+
+  setFilteredData([data[0], ...filtered]);
+  closeFilterDialog();
+};
+
+const getColumnChar = (index) => {
+  let temp, letter = '';
+  return temp[index];
+};
