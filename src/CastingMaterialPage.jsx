@@ -18,7 +18,7 @@ const CastingMaterialPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const [recordsPerPage, setRecordsPerPage] = useState(20);
+const [recordsPerPage, setRecordsPerPage] = useState(20);
   const [filterDialog, setFilterDialog] = useState({
     isOpen: false,
     column: null,
@@ -271,8 +271,24 @@ const CastingMaterialPage = () => {
       });
     });
 
-    // Update the state with the filtered rows, keeping the header.
-    setFilteredData([data[0], ...filteredRows]);
+    // Sort the filtered rows
+    const sortedRows = filteredRows.sort((a, b) => {
+      const modelA = getCleanValue(a['EG Model']);
+      const modelB = getCleanValue(b['EG Model']);
+      const categoryA = getCleanValue(a['Category']);
+      const categoryB = getCleanValue(b['Category']);
+
+      if (modelA < modelB) return -1;
+      if (modelA > modelB) return 1;
+
+      if (categoryA < categoryB) return -1;
+      if (categoryA > categoryB) return 1;
+
+      return 0;
+    });
+
+    // Update the state with the filtered and sorted rows, keeping the header.
+    setFilteredData([data[0], ...sortedRows]);
   }, [activeFilters, data]);
 
   // Cleans up a value by trimming it and handling null/undefined/0 cases.
@@ -283,18 +299,43 @@ const CastingMaterialPage = () => {
     return String(value).trim();
   };
 
+  const parseNumericValue = (value) => {
+    if (value === null || value === undefined) {
+      return 0;
+    }
+    if (typeof value === 'number') {
+      return value;
+    }
+    let s = String(value).trim();
+    if (s === '' || s === '-') {
+      return 0;
+    }
+
+    // Assuming German number format ('.' is thousand separator, ',' is decimal separator)
+    s = s.replace(/\./g, '').replace(',', '.');
+
+    const num = parseFloat(s);
+    return isNaN(num) ? 0 : num;
+  };
+
   const formatValue = (value) => {
     if (value === null || value === undefined || String(value).trim() === '-') {
       return String(value).trim();
     }
-    const num = Number(String(value).replace(/\./g, '').replace(',', '.'));
-    if (!isNaN(num)) {
-      if (String(value).includes(',')) {
-        return num.toLocaleString('de-DE', { minimumFractionDigits: 3, maximumFractionDigits: 3 });
-      }
-      return num.toLocaleString('de-DE');
+
+    let num;
+    if (typeof value === 'number') {
+      num = value;
+    } else {
+      let s = String(value).trim().replace(/\./g, '').replace(',', '.');
+      num = parseFloat(s);
     }
-    return value;
+
+    if (isNaN(num)) {
+      return value;
+    }
+
+    return num.toLocaleString('de-DE', { minimumFractionDigits: 1, maximumFractionDigits: 1 });
   };
 
   if (loading) {
@@ -488,25 +529,64 @@ const CastingMaterialPage = () => {
               const rightCellStyle = { ...cellStyle, textAlign: 'right' };
               const centerCellStyle = { ...cellStyle, textAlign: 'center' };
 
+              const nextRow = currentRecords[index + 1];
+              const showBlankRow = nextRow && (getCleanValue(row['Category']) !== getCleanValue(nextRow['Category']) || getCleanValue(row['EG Model']) !== getCleanValue(nextRow['EG Model']));
+
+              let subtotalRow = null;
+              if (showBlankRow) {
+                const currentGroup = tableData.filter(
+                  (r) =>
+                    getCleanValue(r['EG Model']) === getCleanValue(row['EG Model']) &&
+                    getCleanValue(r['Category']) === getCleanValue(row['Category'])
+                );
+
+                const subtotal = {
+                  comparisonPrice: currentGroup.reduce((acc, r) => acc + parseNumericValue(r[comparisonPeriod]?.[0]), 0),
+                  comparisonGentani: currentGroup.reduce((acc, r) => acc + parseNumericValue(r[comparisonPeriod]?.[1]), 0),
+                  comparisonTotal: currentGroup.reduce((acc, r) => acc + parseNumericValue(r[comparisonPeriod]?.[2]), 0),
+                  selectedPrice: currentGroup.reduce((acc, r) => acc + parseNumericValue(r[selectedPeriod]?.[0]), 0),
+                  selectedGentani: currentGroup.reduce((acc, r) => acc + parseNumericValue(r[selectedPeriod]?.[1]), 0),
+                  selectedTotal: currentGroup.reduce((acc, r) => acc + parseNumericValue(r[selectedPeriod]?.[2]), 0),
+                  diffAmount: currentGroup.reduce((acc, r) => acc + parseNumericValue(r['Diff Amount']), 0),
+                };
+
+                subtotalRow = (
+                  <tr className="subtotal-row" style={{ backgroundColor: '#FFFFE0', fontWeight: 'bold' }}>
+                    <td colSpan="8" style={{ textAlign: 'right', padding: '4px' }}>SUB TOTAL</td>
+                    <td style={rightCellStyle}>{formatValue(subtotal.comparisonPrice)}</td>
+                    <td style={rightCellStyle}>{formatValue(subtotal.comparisonGentani)}</td>
+                    <td style={rightCellStyle}>{formatValue(subtotal.comparisonTotal)}</td>
+                    <td style={rightCellStyle}>{formatValue(subtotal.selectedPrice)}</td>
+                    <td style={rightCellStyle}>{formatValue(subtotal.selectedGentani)}</td>
+                    <td style={rightCellStyle}>{formatValue(subtotal.selectedTotal)}</td>
+                    <td style={rightCellStyle}>{formatValue(subtotal.diffAmount)}</td>
+                    <td style={rightCellStyle}></td>
+                  </tr>
+                );
+              }
+
               return (
-                <tr key={indexOfFirstRecord + index} style={{...rowStyle, borderBottom: '1px solid #e5e7eb'}}>
-                  <td className="td-default" style={centerCellStyle}>{indexOfFirstRecord + index + 1}</td>
-                  <td className="td-default" style={cellStyle}>{getCleanValue(row['EG Model'])}</td>
-                  <td className="td-default" style={cellStyle}>{getCleanValue(row['Category'])}</td>
-                  <td className="td-default" style={{...cellStyle, backgroundColor: '#eaf5e9'}}>{getCleanValue(row['Casting Part'])}</td>
-                  <td className="td-default" style={{...cellStyle, backgroundColor: '#eaf5e9'}}>{getCleanValue(row['CC'])}</td>
-                  <td className="td-default" style={cellStyle}>{getCleanValue(row['Material No'])}</td>
-                  <td className="td-default" style={cellStyle}>{getCleanValue(row['Material Name'])}</td>
-                  <td className="td-default" style={cellStyle}>{getCleanValue(row['Material Category'])}</td>
-                  <td className="td-default" style={rightCellStyle}>{formatValue(row[comparisonPeriod]?.[0])}</td>
-                  <td className="td-default" style={rightCellStyle}>{formatValue(row[comparisonPeriod]?.[1])}</td>
-                  <td className="td-default" style={rightCellStyle}>{formatValue(row[comparisonPeriod]?.[2])}</td>
-                  <td className="td-default" style={rightCellStyle}>{formatValue(row[selectedPeriod]?.[0])}</td>
-                  <td className="td-default" style={rightCellStyle}>{formatValue(row[selectedPeriod]?.[1])}</td>
-                  <td className="td-default" style={rightCellStyle}>{formatValue(row[selectedPeriod]?.[2])}</td>
-                  <td className="td-default" style={{...rightCellStyle, ...diffAmountStyle}}>{formatValue(row['Diff Amount'])}</td>
-                  <td className="td-default" style={rightCellStyle}>{getCleanValue(row['Diff %'])}</td>
-                </tr>
+                <React.Fragment key={indexOfFirstRecord + index}>
+                  <tr style={{...rowStyle, borderBottom: '1px solid #e5e7eb'}}>
+                    <td className="td-default" style={centerCellStyle}>{indexOfFirstRecord + index + 1}</td>
+                    <td className="td-default" style={cellStyle}>{getCleanValue(row['EG Model'])}</td>
+                    <td className="td-default" style={cellStyle}>{getCleanValue(row['Category'])}</td>
+                    <td className="td-default" style={{...cellStyle, backgroundColor: '#eaf5e9'}}>{getCleanValue(row['Casting Part'])}</td>
+                    <td className="td-default" style={{...cellStyle, backgroundColor: '#eaf5e9'}}>{getCleanValue(row['CC'])}</td>
+                    <td className="td-default" style={cellStyle}>{getCleanValue(row['Material No'])}</td>
+                    <td className="td-default" style={cellStyle}>{getCleanValue(row['Material Name'])}</td>
+                    <td className="td-default" style={cellStyle}>{getCleanValue(row['Material Category'])}</td>
+                    <td className="td-default" style={rightCellStyle}>{formatValue(row[comparisonPeriod]?.[0])}</td>
+                    <td className="td-default" style={rightCellStyle}>{formatValue(row[comparisonPeriod]?.[1])}</td>
+                    <td className="td-default" style={rightCellStyle}>{formatValue(row[comparisonPeriod]?.[2])}</td>
+                    <td className="td-default" style={rightCellStyle}>{formatValue(row[selectedPeriod]?.[0])}</td>
+                    <td className="td-default" style={rightCellStyle}>{formatValue(row[selectedPeriod]?.[1])}</td>
+                    <td className="td-default" style={rightCellStyle}>{formatValue(row[selectedPeriod]?.[2])}</td>
+                    <td className="td-default" style={{...rightCellStyle, ...diffAmountStyle}}>{formatValue(row['Diff Amount'])}</td>
+                    <td className="td-default" style={rightCellStyle}>{getCleanValue(row['Diff %'])}</td>
+                  </tr>
+                  {subtotalRow}
+                </React.Fragment>
               );
             })}
           </tbody>
@@ -537,7 +617,6 @@ const applyFilters = (column, selectedValues) => {
   const filtered = dataRows.filter(row => {
     return Object.entries(newFilters).every(([key, values]) => {
       if (values.length === 0) return true;
-
       const cellValue = getCleanValue(row[key]);
       debugger;
       // If '(blank)' is selected and the cell is blank, it's a match.
