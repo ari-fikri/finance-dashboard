@@ -7,10 +7,10 @@ const Pagination = ({
   totalRecords,
   startIndex,
   endIndex,
-  itemsPerPage,
-  onItemsPerPageChange,
+  recordsPerPage,
+  onRecordsPerPageChange,
 }) => {
-  const itemsPerPageOptions = [5, 10, 25, 50, 100];
+  const itemsPerPageOptions = [5, 10, 20, 25, 50, 100];
 
   return (
     <div
@@ -28,8 +28,8 @@ const Pagination = ({
         </div>
         <div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
           <select
-            value={itemsPerPage}
-            onChange={(e) => onItemsPerPageChange(Number(e.target.value))}
+            value={recordsPerPage}
+            onChange={(e) => onRecordsPerPageChange(Number(e.target.value))}
             style={{ padding: '4px 8px', fontSize: 12 }}
           >
             {itemsPerPageOptions.map(option => (

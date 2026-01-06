@@ -18,7 +18,7 @@ const CastingMaterialPage = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-  const recordsPerPage = 20;
+  const [recordsPerPage, setRecordsPerPage] = useState(20);
   const [filterDialog, setFilterDialog] = useState({
     isOpen: false,
     column: null,
@@ -61,7 +61,7 @@ const CastingMaterialPage = () => {
       'No', 'EG Model', 'Category', 'Casting Part', 'CC', 'Material No', 'Material Name', 'Material Category',
       comparisonPeriod, null, null,
       selectedPeriod, null, null,
-      'Diff Amount', 'Diff %', 'Material Price Impact', 'Gentani Impact', 'Remark'
+      'Diff Amount', 'Diff %'
     ]);
 
     // Header Row 2
@@ -69,7 +69,7 @@ const CastingMaterialPage = () => {
       null, null, null, null, null, null, null, null,
       'Price', 'Gentani', 'Total',
       'Price', 'Gentani', 'Total',
-      null, null, null, null, null
+      null, null
     ]);
 
     // Merging cells for headers
@@ -85,9 +85,6 @@ const CastingMaterialPage = () => {
     worksheet.mergeCells('L1:N1'); // selectedPeriod
     worksheet.mergeCells('O1:O2');
     worksheet.mergeCells('P1:P2');
-    worksheet.mergeCells('Q1:Q2');
-    worksheet.mergeCells('R1:R2');
-    worksheet.mergeCells('S1:S2');
 
     // Sub-headers for periods
     worksheet.getCell('I2').value = 'Price';
@@ -98,7 +95,7 @@ const CastingMaterialPage = () => {
     worksheet.getCell('N2').value = 'Total';
 
     // Style headers
-    ['A1', 'B1', 'C1', 'D1', 'E1', 'F1', 'G1', 'H1', 'I1', 'L1', 'O1', 'P1', 'Q1', 'R1', 'S1', 'I2', 'J2', 'K2', 'L2', 'M2', 'N2'].forEach(key => {
+    ['A1', 'B1', 'C1', 'D1', 'E1', 'F1', 'G1', 'H1', 'I1', 'L1', 'O1', 'P1', 'I2', 'J2', 'K2', 'L2', 'M2', 'N2'].forEach(key => {
         const cell = worksheet.getCell(key);
         cell.font = { bold: true };
         cell.alignment = { vertical: 'middle', horizontal: 'center' };
@@ -115,11 +112,10 @@ const CastingMaterialPage = () => {
         };
     });
     // Special colors
-    ['O1', 'P1', 'Q1', 'R1'].forEach(key => {
+    ['O1', 'P1'].forEach(key => {
         worksheet.getCell(key).fill = { type: 'pattern', pattern:'solid', fgColor:{argb:'FFbe5014'} };
         worksheet.getCell(key).font = { bold: true, color: { argb: 'FFFFFFFF' } };
     });
-    worksheet.getCell('S1').fill = { type: 'pattern', pattern:'solid', fgColor:{argb:'FFbbfebb'} };
     ['I2', 'J2', 'K2', 'L2', 'M2', 'N2'].forEach(key => {
         worksheet.getCell(key).fill = { type: 'pattern', pattern:'solid', fgColor:{argb:'FFe3f6ff'} };
     });
@@ -143,9 +139,6 @@ const CastingMaterialPage = () => {
             parseValueForExcel(row[selectedPeriod]?.[2]),
             parseValueForExcel(row['Diff Amount']),
             getCleanValue(row['Diff %']),
-            getCleanValue(row['Material Price Impact']),
-            getCleanValue(row['Gentani Impact']),
-            getCleanValue(row['Remark']),
         ]);
     });
 
@@ -167,9 +160,6 @@ const CastingMaterialPage = () => {
         { key: 'apr_total', width: 15 },
         { key: 'diff_amount', width: 15 },
         { key: 'diff_percent', width: 10 },
-        { key: 'material_price_impact', width: 20 },
-        { key: 'gentani_impact', width: 20 },
-        { key: 'remark', width: 20 },
     ];
 
     // Download
@@ -221,6 +211,11 @@ const CastingMaterialPage = () => {
     const uniqueValues = [...new Set(filteredForDialog.map(item => getCleanValue(item[key])))];
     
     return uniqueValues.map(value => value === '' ? '(blank)' : value);
+  };
+
+  const handleRecordsPerPageChange = (value) => {
+    setRecordsPerPage(value);
+    setCurrentPage(1);
   };
 
   const handlePageChange = (pageNumber) => {
@@ -469,10 +464,7 @@ const CastingMaterialPage = () => {
               </th>
               <th colSpan="3" className="tbl-header" style={{ background: '#a8d8f1' }}>{comparisonPeriod}</th>
               <th colSpan="3" className="tbl-header" style={{ background: '#a8d8f1' }}>{selectedPeriod}</th>
-              <th colSpan="2" className="tbl-header" style={{ background: '#be5014', color: 'white', borderBottom: '2px solid #5a8a09' }}>Material Price Impact</th>
-              <th colSpan="2" className="tbl-header" style={{ background: '#be5014', color: 'white', borderBottom: '2px solid #5a8a09' }}>Gentani Impact</th>
-              <th colSpan="2" className="tbl-header" style={{ background: '#be5014', color: 'white', borderBottom: '2px solid #5a8a09' }}>Total</th>
-              <th rowSpan="2" className="tbl-header" style={{ background: '#be5014', color: 'white' }}>Remark</th>
+              <th colSpan="2" className="tbl-header" style={{ background: '#be5014', color: 'white' }}>Total</th>
             </tr>
             <tr style={{ borderBottom: "1px solid #d1d5db" }}>
               <th className="tbl-header" style={{ background: '#e3f6ff' }}>Price</th>
@@ -481,12 +473,8 @@ const CastingMaterialPage = () => {
               <th className="tbl-header" style={{ background: '#e3f6ff' }}>Price</th>
               <th className="tbl-header" style={{ background: '#e3f6ff' }}>Gentani</th>
               <th className="tbl-header" style={{ background: '#e3f6ff' }}>Total</th>
-              <th className="tbl-header" style={{ background: '#be5014', color: 'white' }}>Diff</th>
-              <th className="tbl-header" style={{ background: '#be5014', color: 'white' }}>Diff%</th>
-              <th className="tbl-header" style={{ background: '#be5014', color: 'white' }}>Diff</th>
-              <th className="tbl-header" style={{ background: '#be5014', color: 'white' }}>Diff %</th>
-              <th className="tbl-header" style={{ background: '#be5014', color: 'white' }}>Diff Amount</th>
-              <th className="tbl-header" style={{ background: '#be5014', color: 'white' }}>Diff %</th>
+              <th className="tbl-header" style={{ background: '#fbd9ca' }}>Diff Amount</th>
+              <th className="tbl-header" style={{ background: '#fbd9ca' }}>Diff %</th>
             </tr>
           </thead>
           <tbody>
@@ -516,13 +504,8 @@ const CastingMaterialPage = () => {
                   <td className="td-default" style={rightCellStyle}>{formatValue(row[selectedPeriod]?.[0])}</td>
                   <td className="td-default" style={rightCellStyle}>{formatValue(row[selectedPeriod]?.[1])}</td>
                   <td className="td-default" style={rightCellStyle}>{formatValue(row[selectedPeriod]?.[2])}</td>
-                  <td className="td-default" style={cellStyle}>{getCleanValue(row['Material Price Impact'])}</td>
-                  <td className="td-default" style={rightCellStyle}></td>
-                  <td className="td-default" style={{...cellStyle, ...gentaniImpactStyle}}>{getCleanValue(row['Gentani Impact'])}</td>
-                  <td className="td-default" style={rightCellStyle}></td>
                   <td className="td-default" style={{...rightCellStyle, ...diffAmountStyle}}>{formatValue(row['Diff Amount'])}</td>
                   <td className="td-default" style={rightCellStyle}>{getCleanValue(row['Diff %'])}</td>
-                  <td className="td-default" style={cellStyle}>{remark}</td>
                 </tr>
               );
             })}
@@ -536,6 +519,8 @@ const CastingMaterialPage = () => {
         totalRecords={tableData.length}
         startIndex={indexOfFirstRecord}
         endIndex={indexOfLastRecord}
+        recordsPerPage={recordsPerPage}
+        onRecordsPerPageChange={handleRecordsPerPageChange}
       />
     </div>
   );
