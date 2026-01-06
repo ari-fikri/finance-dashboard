@@ -6,19 +6,13 @@ import CastingMaterialHeader from './components/CastingMaterialHeader';
 import FunnelIcon from './components/FunnelIcon';
 import FilterDialog from './components/FilterDialog';
 
-//const getCleanValue = (val) => (val && String(val).trim() !== '' ? String(val).trim() : '');
-
-// This component displays the casting material data in a filterable and paginated table.
 const CastingMaterialPage = () => {
-  // State for storing the original data from the CSV file.
   const [data, setData] = useState([]);
-  // State for storing the filtered data to be displayed in the table.
   const [filteredData, setFilteredData] = useState([]);
-  // State for managing loading status.
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
   const [currentPage, setCurrentPage] = useState(1);
-const [recordsPerPage, setRecordsPerPage] = useState(20);
+  const [recordsPerPage, setRecordsPerPage] = useState(20);
   const [filterDialog, setFilterDialog] = useState({
     isOpen: false,
     column: null,
@@ -34,6 +28,13 @@ const [recordsPerPage, setRecordsPerPage] = useState(20);
     return Object.keys(firstRow).filter(key => Array.isArray(firstRow[key]));
   }, [data]);
 
+  const getCleanValue = (value) => {
+    if (value === null || value === undefined || value === 0) {
+      return '';
+    }
+    return String(value).trim();
+  };
+
   const handleDownload = async () => {
     const workbook = new ExcelJS.Workbook();
     const worksheet = workbook.addWorksheet('Casting Material');
@@ -46,15 +47,7 @@ const [recordsPerPage, setRecordsPerPage] = useState(20);
       return isNaN(num) ? value : num;
     };
 
-    const dataToDownload = data.slice(1).filter(row => {
-      return Object.entries(activeFilters).every(([column, selectedValues]) => {
-        if (!selectedValues || selectedValues.length === 0) {
-          return true;
-        }
-        const cellValue = getCleanValue(row[column]);
-        return selectedValues.includes(cellValue);
-      });
-    });
+    const dataToDownload = filteredData.slice(1);
 
     // Header Row 1
     worksheet.addRow([
@@ -234,7 +227,6 @@ const [recordsPerPage, setRecordsPerPage] = useState(20);
     setFilterDialog({ isOpen: false, column: null, values: [] });
   };
 
-  // Applies the selected filters to the data by updating the activeFilters state.
   const handleApplyFilter = (column, selectedValues) => {
     setActiveFilters(prevFilters => ({
       ...prevFilters,
@@ -243,8 +235,6 @@ const [recordsPerPage, setRecordsPerPage] = useState(20);
     closeFilterDialog();
   };
 
-  // This effect hook handles the filtering logic. It runs whenever the
-  // active filters or the main data set changes.
   useEffect(() => {
     if (data.length < 2) {
       setFilteredData(data);
@@ -253,17 +243,12 @@ const [recordsPerPage, setRecordsPerPage] = useState(20);
 
     const dataRows = data.slice(1);
     const filteredRows = dataRows.filter(row => {
-      // A row is kept if it satisfies ALL active column filters.
       return Object.entries(activeFilters).every(([key, values]) => {
-        // If a filter for a column has no selected values, it's ignored.
         if (values.length === 0) {
           return true;
         }
 
         const cellValue = getCleanValue(row[key]);
-
-        // Check if the cell value matches any of the selected filter values.
-        // This includes a special check for '(blank)'.
         const matchesBlank = values.includes('(blank)') && cellValue === '';
         const matchesValue = values.includes(cellValue);
 
@@ -271,7 +256,6 @@ const [recordsPerPage, setRecordsPerPage] = useState(20);
       });
     });
 
-    // Sort the filtered rows
     const sortedRows = filteredRows.sort((a, b) => {
       const modelA = getCleanValue(a['EG Model']);
       const modelB = getCleanValue(b['EG Model']);
@@ -287,17 +271,8 @@ const [recordsPerPage, setRecordsPerPage] = useState(20);
       return 0;
     });
 
-    // Update the state with the filtered and sorted rows, keeping the header.
     setFilteredData([data[0], ...sortedRows]);
   }, [activeFilters, data]);
-
-  // Cleans up a value by trimming it and handling null/undefined/0 cases.
-  const getCleanValue = (value) => {
-    if (value === null || value === undefined || value === 0) {
-      return '';
-    }
-    return String(value).trim();
-  };
 
   const parseNumericValue = (value) => {
     if (value === null || value === undefined) {
@@ -311,7 +286,6 @@ const [recordsPerPage, setRecordsPerPage] = useState(20);
       return 0;
     }
 
-    // Assuming German number format ('.' is thousand separator, ',' is decimal separator)
     s = s.replace(/\./g, '').replace(',', '.');
 
     const num = parseFloat(s);
@@ -397,7 +371,6 @@ const [recordsPerPage, setRecordsPerPage] = useState(20);
       />
 
       <div style={{ marginTop: "16px" }}>
-        {/* The "Submit" and "Download" buttons are now in the header */}
       </div>
 
       <div style={{ overflow: "auto", flex: '1 1 auto' }}>
@@ -529,8 +502,12 @@ const [recordsPerPage, setRecordsPerPage] = useState(20);
               const rightCellStyle = { ...cellStyle, textAlign: 'right' };
               const centerCellStyle = { ...cellStyle, textAlign: 'center' };
 
-              const nextRow = currentRecords[index + 1];
-              const showBlankRow = nextRow && (getCleanValue(row['Category']) !== getCleanValue(nextRow['Category']) || getCleanValue(row['EG Model']) !== getCleanValue(nextRow['EG Model']));
+              const overallIndex = indexOfFirstRecord + index;
+              const nextOverallRow = tableData[overallIndex + 1];
+
+              const showBlankRow = !nextOverallRow || 
+                getCleanValue(row['Category']) !== getCleanValue(nextOverallRow['Category']) || 
+                getCleanValue(row['EG Model']) !== getCleanValue(nextOverallRow['EG Model']);
 
               let subtotalRow = null;
               if (showBlankRow) {
@@ -607,38 +584,3 @@ const [recordsPerPage, setRecordsPerPage] = useState(20);
 };
 
 export default CastingMaterialPage;
-
-const applyFilters = (column, selectedValues) => {
-  const newFilters = { ...activeFilters, [column]: selectedValues };
-  setActiveFilters(newFilters);
-
-  const dataRows = data.slice(1);
-
-  const filtered = dataRows.filter(row => {
-    return Object.entries(newFilters).every(([key, values]) => {
-      if (values.length === 0) return true;
-      const cellValue = getCleanValue(row[key]);
-      debugger;
-      // If '(blank)' is selected and the cell is blank, it's a match.
-      if (values.includes('(blank)') && cellValue === '') {
-        return true;
-      }
-
-      // If the cell value is in the list of selected values, it's a match.
-      if (values.includes(cellValue)) {
-        return true;
-      }
-
-      // If none of the above, it's not a match.
-      return false;
-    });
-  });
-
-  setFilteredData([data[0], ...filtered]);
-  closeFilterDialog();
-};
-
-const getColumnChar = (index) => {
-  let temp, letter = '';
-  return temp[index];
-};
