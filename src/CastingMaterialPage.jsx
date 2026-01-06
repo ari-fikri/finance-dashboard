@@ -493,11 +493,6 @@ const CastingMaterialPage = () => {
           </thead>
           <tbody>
             {currentRecords.map((row, index) => {
-              const remark = getCleanValue(row['Remark']);
-              const rowStyle = remark === 'New Material' ? { backgroundColor: '#eaf5e9' } : {};
-              const diffAmountStyle = remark === 'delete material' ? { backgroundColor: '#eaf5e9' } : {};
-              const gentaniImpactStyle = remark === 'Increasing gentani' ? { backgroundColor: '#eaf5e9' } : {};
-
               const cellStyle = { border: '1px solid #e5e7eb', textAlign: 'left' };
               const rightCellStyle = { ...cellStyle, textAlign: 'right' };
               const centerCellStyle = { ...cellStyle, textAlign: 'center' };
@@ -555,12 +550,12 @@ const CastingMaterialPage = () => {
 
               return (
                 <React.Fragment key={indexOfFirstRecord + index}>
-                  <tr style={{...rowStyle, borderBottom: '1px solid #e5e7eb'}}>
+                  <tr style={{borderBottom: '1px solid #e5e7eb'}}>
                     <td className="td-default" style={centerCellStyle}>{indexOfFirstRecord + index + 1}</td>
                     <td className="td-default" style={cellStyle}>{getCleanValue(row['EG Model'])}</td>
                     <td className="td-default" style={cellStyle}>{getCleanValue(row['Category'])}</td>
-                    <td className="td-default" style={{...cellStyle, backgroundColor: '#eaf5e9'}}>{getCleanValue(row['Casting Part'])}</td>
-                    <td className="td-default" style={{...cellStyle, backgroundColor: '#eaf5e9'}}>{getCleanValue(row['CC'])}</td>
+                    <td className="td-default" style={cellStyle}>{getCleanValue(row['Casting Part'])}</td>
+                    <td className="td-default" style={cellStyle}>{getCleanValue(row['CC'])}</td>
                     <td className="td-default" style={cellStyle}>{getCleanValue(row['Material No'])}</td>
                     <td className="td-default" style={cellStyle}>{getCleanValue(row['Material Name'])}</td>
                     <td className="td-default" style={cellStyle}>{getCleanValue(row['Material Category'])}</td>
@@ -570,7 +565,7 @@ const CastingMaterialPage = () => {
                     <td className="td-default" style={rightCellStyle}>{formatValue(row[selectedPeriod]?.[0])}</td>
                     <td className="td-default" style={rightCellStyle}>{formatValue(row[selectedPeriod]?.[1])}</td>
                     <td className="td-default" style={rightCellStyle}>{formatValue(row[selectedPeriod]?.[2])}</td>
-                    <td className="td-default" style={{...rightCellStyle, ...diffAmountStyle}}>{formatValue(row['Diff Amount'])}</td>
+                    <td className="td-default" style={rightCellStyle}>{formatValue(row['Diff Amount'])}</td>
                     <td className="td-default" style={rightCellStyle}>{diffPercentText}</td>
                   </tr>
                   {subtotalRow}
