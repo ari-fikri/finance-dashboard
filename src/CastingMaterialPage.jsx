@@ -502,6 +502,17 @@ const CastingMaterialPage = () => {
               const rightCellStyle = { ...cellStyle, textAlign: 'right' };
               const centerCellStyle = { ...cellStyle, textAlign: 'center' };
 
+              const comparisonTotal = parseNumericValue(row[comparisonPeriod]?.[2]);
+              const diffAmount = parseNumericValue(row['Diff Amount']);
+
+              let diffPercentText = '-';
+              if (comparisonTotal !== 0) {
+                const diffPercent = (diffAmount / Math.abs(comparisonTotal)) * 100;
+                diffPercentText = diffPercent.toLocaleString('de-DE', { minimumFractionDigits: 1, maximumFractionDigits: 1 }) + ' %';
+              } else if (diffAmount > 0) {
+                diffPercentText = '∞ %';
+              }
+
               const overallIndex = indexOfFirstRecord + index;
               const nextOverallRow = tableData[overallIndex + 1];
 
@@ -560,7 +571,7 @@ const CastingMaterialPage = () => {
                     <td className="td-default" style={rightCellStyle}>{formatValue(row[selectedPeriod]?.[1])}</td>
                     <td className="td-default" style={rightCellStyle}>{formatValue(row[selectedPeriod]?.[2])}</td>
                     <td className="td-default" style={{...rightCellStyle, ...diffAmountStyle}}>{formatValue(row['Diff Amount'])}</td>
-                    <td className="td-default" style={rightCellStyle}>{getCleanValue(row['Diff %'])}</td>
+                    <td className="td-default" style={rightCellStyle}>{diffPercentText}</td>
                   </tr>
                   {subtotalRow}
                 </React.Fragment>
