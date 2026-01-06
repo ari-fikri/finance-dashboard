@@ -469,11 +469,10 @@ const CastingMaterialPage = () => {
               </th>
               <th colSpan="3" className="tbl-header" style={{ background: '#a8d8f1' }}>{comparisonPeriod}</th>
               <th colSpan="3" className="tbl-header" style={{ background: '#a8d8f1' }}>{selectedPeriod}</th>
-              <th rowSpan="2" className="tbl-header" style={{ background: '#be5014', color: 'white' }}>Diff Amount</th>
-              <th rowSpan="2" className="tbl-header" style={{ background: '#be5014', color: 'white' }}>Diff %</th>
-              <th rowSpan="2" className="tbl-header" style={{ background: '#be5014', color: 'white' }}>Material Price Impact</th>
-              <th rowSpan="2" className="tbl-header" style={{ background: '#be5014', color: 'white' }}>Gentani Impact</th>
-              <th rowSpan="2" className="tbl-header" style={{ background: '#bbfebb' }}>Remark</th>
+              <th colSpan="2" className="tbl-header" style={{ background: '#be5014', color: 'white', borderBottom: '2px solid #5a8a09' }}>Material Price Impact</th>
+              <th colSpan="2" className="tbl-header" style={{ background: '#be5014', color: 'white', borderBottom: '2px solid #5a8a09' }}>Gentani Impact</th>
+              <th colSpan="2" className="tbl-header" style={{ background: '#be5014', color: 'white', borderBottom: '2px solid #5a8a09' }}>Total</th>
+              <th rowSpan="2" className="tbl-header" style={{ background: '#be5014', color: 'white' }}>Remark</th>
             </tr>
             <tr style={{ borderBottom: "1px solid #d1d5db" }}>
               <th className="tbl-header" style={{ background: '#e3f6ff' }}>Price</th>
@@ -482,6 +481,12 @@ const CastingMaterialPage = () => {
               <th className="tbl-header" style={{ background: '#e3f6ff' }}>Price</th>
               <th className="tbl-header" style={{ background: '#e3f6ff' }}>Gentani</th>
               <th className="tbl-header" style={{ background: '#e3f6ff' }}>Total</th>
+              <th className="tbl-header" style={{ background: '#be5014', color: 'white' }}>Diff</th>
+              <th className="tbl-header" style={{ background: '#be5014', color: 'white' }}>Diff%</th>
+              <th className="tbl-header" style={{ background: '#be5014', color: 'white' }}>Diff</th>
+              <th className="tbl-header" style={{ background: '#be5014', color: 'white' }}>Diff %</th>
+              <th className="tbl-header" style={{ background: '#be5014', color: 'white' }}>Diff Amount</th>
+              <th className="tbl-header" style={{ background: '#be5014', color: 'white' }}>Diff %</th>
             </tr>
           </thead>
           <tbody>
@@ -511,10 +516,12 @@ const CastingMaterialPage = () => {
                   <td className="td-default" style={rightCellStyle}>{formatValue(row[selectedPeriod]?.[0])}</td>
                   <td className="td-default" style={rightCellStyle}>{formatValue(row[selectedPeriod]?.[1])}</td>
                   <td className="td-default" style={rightCellStyle}>{formatValue(row[selectedPeriod]?.[2])}</td>
+                  <td className="td-default" style={cellStyle}>{getCleanValue(row['Material Price Impact'])}</td>
+                  <td className="td-default" style={rightCellStyle}></td>
+                  <td className="td-default" style={{...cellStyle, ...gentaniImpactStyle}}>{getCleanValue(row['Gentani Impact'])}</td>
+                  <td className="td-default" style={rightCellStyle}></td>
                   <td className="td-default" style={{...rightCellStyle, ...diffAmountStyle}}>{formatValue(row['Diff Amount'])}</td>
                   <td className="td-default" style={rightCellStyle}>{getCleanValue(row['Diff %'])}</td>
-                  <td className="td-default" style={cellStyle}>{getCleanValue(row['Material Price Impact'])}</td>
-                  <td className="td-default" style={{...cellStyle, ...gentaniImpactStyle}}>{getCleanValue(row['Gentani Impact'])}</td>
                   <td className="td-default" style={cellStyle}>{remark}</td>
                 </tr>
               );
