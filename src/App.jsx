@@ -249,7 +249,7 @@ export default function App() {
   function synchronize() {
     // Optional: show loading or log
     console.log("Navigating to Synchronize Part List page...");
-    navigate("/sync");
+navigate("/sync");
   }
 
   return (
@@ -540,7 +540,7 @@ export default function App() {
         {canViewSection('master') && (
           <section>
             <h2 className="section-title">Master Data</h2>
-            <div className="grid-2">
+            <div className="grid-5">
               <motion.div
                 className="card master-card"
                 initial={{ opacity: 0, y: 6 }}
@@ -561,31 +561,7 @@ export default function App() {
                       View
                     </button>
                     <button className="btn btn-primary" onClick={openMaintain}>
-                      Maintain Master Assumption
-                    </button>
-                  </div>
-                </div>
-              </motion.div>
-              <motion.div
-                className="card"
-                initial={{ opacity: 0, y: 6 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.28, delay: 0.08 }}
-              >
-                <div>
-                  <div className="title">Part Pairing Management</div>
-                  <div className="meta">Cross-system part mapping and relationships</div>
-                  <div className="small card-meta-margin">
-                    Manage part number mappings between CMD, SAP, and IFAST systems. Define equivalency relationships and maintain cross-reference tables.
-                  </div>
-                </div>
-                <div className="card-footer">
-                  <div className="small">
-                    Status: <strong className="status-ok">Ready</strong>
-                  </div>
-                  <div className="card-actions">
-                    <button className="btn btn-primary" onClick={openPartPairing}>
-                      Manage Pairings
+                      Maintain 
                     </button>
                   </div>
                 </div>
