@@ -66,10 +66,10 @@ export function CostItemRow(props) {
     }}>
       {idx === 0 && (
         <>
-          <td rowSpan={filteredCostItemsCount} className="tbl-cell" style={{ verticalAlign: 'top', background: '#e8f1f7' }}>{part.part_no}</td>
-          <td rowSpan={filteredCostItemsCount} className="tbl-cell" style={{ verticalAlign: 'top', background: '#e8f1f7' }}>{part.importer}</td>
-          <td rowSpan={filteredCostItemsCount} className="tbl-cell" style={{ verticalAlign: 'top', background: '#e8f1f7' }}>{part['EG Model']}</td>
-          <td rowSpan={filteredCostItemsCount} className="tbl-cell" style={{ verticalAlign: 'top', background: '#e8f1f7' }}>{part.category}</td>
+          <td rowSpan={filteredCostItemsCount} className="tbl-cell" style={{ verticalAlign: 'middle', background: '#e8f1f7', fontWeight: 'bold', textAlign: 'center' }}>{part.part_no}</td>
+          <td rowSpan={filteredCostItemsCount} className="tbl-cell" style={{ verticalAlign: 'middle', background: '#e8f1f7', fontWeight: 'bold', textAlign: 'center' }}>{part.importer}</td>
+          <td rowSpan={filteredCostItemsCount} className="tbl-cell" style={{ verticalAlign: 'middle', background: '#e8f1f7', fontWeight: 'bold', textAlign: 'center' }}>{part['EG Model']}</td>
+          <td rowSpan={filteredCostItemsCount} className="tbl-cell" style={{ verticalAlign: 'middle', background: '#e8f1f7', fontWeight: 'bold', textAlign: 'center' }}>{part.category}</td>
         </>
       )}
       {/* Cost Item column */}
