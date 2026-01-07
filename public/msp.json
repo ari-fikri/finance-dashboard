@@ -145,7 +145,8 @@
         }
       },
       "importer": "TAR",
-      "category": "H2V"
+      "category": "H2V",
+      "EG Model": "NR"
     },
     {
       "part_no": "51400-KS6-305",
@@ -292,7 +293,8 @@
         }
       },
       "importer": "TDM",
-      "category": "ICE"
+      "category": "ICE",
+      "EG Model": "TR"
     },
     {
       "part_no": "52400-KYZ-902",
@@ -439,7 +441,8 @@
         }
       },
       "importer": "TASA",
-      "category": "ICE"
+      "category": "ICE",
+      "EG Model": "NR"
     },
     {
       "part_no": "51400-KGN-901",
@@ -586,7 +589,8 @@
         }
       },
       "importer": "TMT",
-      "category": "H2V"
+      "category": "H2V",
+      "EG Model": "TR"
     },
     {
       "part_no": "51401-KWW-641",
@@ -733,7 +737,8 @@
         }
       },
       "importer": "TAR",
-      "category": "ICE"
+      "category": "ICE",
+      "EG Model": "NR"
     },
     {
       "part_no": "51401-KWW-643",
@@ -880,7 +885,8 @@
         }
       },
       "importer": "KUO",
-      "category": "ICE"
+      "category": "ICE",
+      "EG Model": "TR"
     },
     {
       "part_no": "51402-KYZ-902",
@@ -1027,7 +1033,8 @@
         }
       },
       "importer": "TDR",
-      "category": "H2V"
+      "category": "H2V",
+      "EG Model": "NR"
     },
     {
       "part_no": "51402-KWW-641",
@@ -1174,7 +1181,8 @@
         }
       },
       "importer": "TMV",
-      "category": "H2V"
+      "category": "H2V",
+      "EG Model": "NR"
     },
     {
       "part_no": "51402-KWW-643",
@@ -1321,7 +1329,8 @@
         }
       },
       "importer": "TDR",
-      "category": "ICE"
+      "category": "ICE",
+      "EG Model": "TR"
     }
   ]
 }

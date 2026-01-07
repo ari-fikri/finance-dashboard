@@ -42,7 +42,7 @@ export function CostItemRow(props) {
   // Calculate cost values for the current and previous periods.
   const { currentValue, previousValue } = calculateCostValues(part, costItem, selectedPeriod, comparisonPeriod);
   // Get display values for PBMD and Adj from analysis data.
-  const { pbmdDisplayValue, adjDisplayValue } = getDisplayValues(part, costItem, analysisData);
+  const { pbmdDisplayValue, adjDisplayValue } = getDisplayValues(part, costItem);
   // State to manage the editing mode for the remarks column.
   const [isEditing, setIsEditing] = useState(false);
 
@@ -60,52 +60,16 @@ export function CostItemRow(props) {
   const uom = costItemIndex !== -1 ? COST_ITEMS_UOM[costItemIndex] : '';
 
   return (
-    <tr
-      style={{
-        borderBottom: isLastRow ? "3px solid #d1d5db" : "1px solid #e5e7eb",
-        background: isSummaryRow ? "#f9facd" : (idx % 2 === 0 ? "#fafafa" : "#fff")
-      }}
-    >
-      {/* Render part details (Part No, Importer, Category) only for the first cost item row. */}
+    <tr style={{ 
+      background: isSummaryRow ? '#f9facd' : (idx % 2 === 0 ? '#fafafa' : '#fff'),
+      borderBottom: '1px solid #e5e7eb'
+    }}>
       {idx === 0 && (
         <>
-          <td
-            className="td-default"
-            rowSpan={filteredCostItemsCount}
-            style={{
-              fontWeight: "bold",
-              background: "#e8f1f7",
-              verticalAlign: "middle",
-              borderRight: "2px solid #d1d5db",
-              paddingLeft: "2px"
-            }}
-          >
-            {part.part_no}
-          </td>
-          <td
-            className="td-default"
-            rowSpan={filteredCostItemsCount}
-            style={{
-              fontWeight: "bold",
-              background: "#e8f1f7",
-              verticalAlign: "middle",
-              borderRight: "2px solid #d1d5db"
-            }}
-          >
-            {part.importer}
-          </td>
-          <td
-            className="td-default"
-            rowSpan={filteredCostItemsCount}
-            style={{
-              fontWeight: "bold",
-              background: "#e8f1f7",
-              verticalAlign: "middle",
-              borderRight: "2px solid #d1d5db"
-            }}
-          >
-            {part.category}
-          </td>
+          <td rowSpan={filteredCostItemsCount} className="tbl-cell" style={{ verticalAlign: 'top', background: '#e8f1f7' }}>{part.part_no}</td>
+          <td rowSpan={filteredCostItemsCount} className="tbl-cell" style={{ verticalAlign: 'top', background: '#e8f1f7' }}>{part.importer}</td>
+          <td rowSpan={filteredCostItemsCount} className="tbl-cell" style={{ verticalAlign: 'top', background: '#e8f1f7' }}>{part['EG Model']}</td>
+          <td rowSpan={filteredCostItemsCount} className="tbl-cell" style={{ verticalAlign: 'top', background: '#e8f1f7' }}>{part.category}</td>
         </>
       )}
       {/* Cost Item column */}

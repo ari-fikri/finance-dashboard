@@ -13,12 +13,15 @@ export function PPRTable(props) {
     uniquePartNos,
     uniqueImporters,
     uniqueCategories,
+    uniqueEgModels,
     filteredPartNos,
     filteredImporters,
     filteredCategories,
+    filteredEgModels,
     onApplyFilter,
     onApplyImporterFilter,
     onApplyCategoryFilter,
+    onApplyEgModelFilter,
     selectedPeriod,
     comparisonPeriod,
     calculateCostValues,
@@ -92,6 +95,23 @@ export function PPRTable(props) {
                   initialCheckedValues={filteredImporters}
                   onApply={onApplyImporterFilter}
                   onClose={() => toggleFilter('importer')}
+                />
+              )}
+            </th>
+            <th rowSpan={2} className="tbl-header" style={{position: 'relative'}}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+                <span>EG Model</span>
+                <span style={{ cursor: 'pointer' }} onClick={() => !isAnyFilterActive || filterStates.egModel ? toggleFilter('egModel') : null}>
+                  <FunnelIcon filled={filteredEgModels.length < uniqueEgModels.length} />
+                </span>
+              </div>
+              {filterStates.egModel && (
+                <FilterDialog
+                  title="EG Model"
+                  values={uniqueEgModels}
+                  initialCheckedValues={filteredEgModels}
+                  onApply={onApplyEgModelFilter}
+                  onClose={() => toggleFilter('egModel')}
                 />
               )}
             </th>

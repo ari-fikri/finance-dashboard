@@ -26,11 +26,13 @@ export default function PPRPage() {
   const [filterStates, setFilterStates] = useState({
     partNo: false,
     importer: false,
-    category: false
+    category: false,
+    egModel: false,
   });
   const [filteredPartNos, setFilteredPartNos] = useState([]);
   const [filteredImporters, setFilteredImporters] = useState([]);
   const [filteredCategories, setFilteredCategories] = useState([]);
+  const [filteredEgModels, setFilteredEgModels] = useState([]);
 
   const user = JSON.parse(localStorage.getItem("user"));
   const initialCostItems =
@@ -91,8 +93,10 @@ export default function PPRPage() {
     worksheet.addRow([
         "Part No",
         "Importer",
+        "EG Model",
         "Category",
         "Cost Item",
+        "UoM",
         "Calculation", "", "", "", "", "", // 6 columns for Calculation
         "Analysis", ...Array(ANALYSIS_COLUMNS.length - 1).fill(""), // N columns for Analysis
         "Remark"
@@ -100,7 +104,7 @@ export default function PPRPage() {
 
     // Second header row
     worksheet.addRow([
-        "", "", "", "",
+        "", "", "", "", "", "",
         comparisonPeriod,
         `PBMD ${comparisonPeriod}`,
         selectedPeriod,
@@ -112,13 +116,15 @@ export default function PPRPage() {
     ]);
 
     // Merge cells for "Calculation" and "Analysis" in the first header row
-    worksheet.mergeCells("E1:J1"); // Calculation spans columns E to J
-    worksheet.mergeCells(`K1:${String.fromCharCode(75 + ANALYSIS_COLUMNS.length - 1)}1`); // Analysis spans columns K onward
+    worksheet.mergeCells("G1:L1"); // Calculation
+    worksheet.mergeCells(`M1:${String.fromCharCode(77 + ANALYSIS_COLUMNS.length - 1)}1`); // Analysis
     worksheet.mergeCells("A1:A2");
     worksheet.mergeCells("B1:B2");
     worksheet.mergeCells("C1:C2");
     worksheet.mergeCells("D1:D2");
-    worksheet.mergeCells(`${String.fromCharCode(75 + ANALYSIS_COLUMNS.length)}1:${String.fromCharCode(75 + ANALYSIS_COLUMNS.length)}2`); // Remark column
+    worksheet.mergeCells("E1:E2");
+    worksheet.mergeCells("F1:F2");
+    worksheet.mergeCells(`${String.fromCharCode(77 + ANALYSIS_COLUMNS.length)}1:${String.fromCharCode(77 + ANALYSIS_COLUMNS.length)}2`); // Remark
 
     // Apply styles (example for header)
     worksheet.getRow(1).font = { bold: true };
@@ -128,8 +134,10 @@ export default function PPRPage() {
     worksheet.columns = [
       { header: "Part No", key: "part_no", width: 15 },
       { header: "Importer", key: "importer", width: 15 },
+      { header: "EG Model", key: "eg_model", width: 15 },
       { header: "Category", key: "category", width: 15 },
       { header: "Cost Item", key: "cost_item", width: 20 },
+      { header: "UoM", key: "uom", width: 10 },
       { header: comparisonPeriod, key: "prev", width: 15 },
       { header: `PBMD ${comparisonPeriod}`, key: "pbmd", width: 18 },
       { header: selectedPeriod, key: "curr", width: 15 },
@@ -145,8 +153,8 @@ export default function PPRPage() {
       cell.font = { bold: true };
       cell.alignment = { vertical: "middle", horizontal: "center" };
       // Section coloring
-      if (colNumber >= 5 && colNumber <= 10) cell.fill = { type: "pattern", pattern: "solid", fgColor: { argb: "FFA8D8F0" } }; // Calculation
-      if (colNumber >= 11 && colNumber < 11 + ANALYSIS_COLUMNS.length) cell.fill = { type: "pattern", pattern: "solid", fgColor: { argb: "FFF5D5A8" } }; // Analysis
+      if (colNumber >= 7 && colNumber <= 12) cell.fill = { type: "pattern", pattern: "solid", fgColor: { argb: "FFA8D8F0" } }; // Calculation
+      if (colNumber >= 13 && colNumber < 13 + ANALYSIS_COLUMNS.length) cell.fill = { type: "pattern", pattern: "solid", fgColor: { argb: "FFF5D5A8" } }; // Analysis
       if (colNumber === worksheet.columns.length) cell.fill = { type: "pattern", pattern: "solid", fgColor: { argb: "FFBBFEBB" } }; // Remark
     });
   
@@ -161,8 +169,10 @@ export default function PPRPage() {
         const rowObj = {
           part_no: idx === 0 ? part.part_no : "",
           importer: idx === 0 ? part.importer : "",
+          eg_model: idx === 0 ? part["EG Model"] : "",
           category: idx === 0 ? part.category : "",
           cost_item: costItem,
+          uom: COST_ITEMS_UOM[costItem],
           prev: previousValue,
           pbmd: pbmdDisplayValue,
           curr: currentValue,
@@ -220,6 +230,7 @@ export default function PPRPage() {
         setFilteredPartNos(allPartNos);
         setFilteredImporters(Array.from(new Set(data.items.map(item => item.importer))));
         setFilteredCategories(Array.from(new Set(data.items.map(item => item.category))));
+        setFilteredEgModels(Array.from(new Set(data.items.map(item => item['EG Model']))));
       } catch (err) {
         console.error("Failed to load msp.json:", err);
       }
@@ -258,39 +269,50 @@ export default function PPRPage() {
   const availableImporters = useMemo(() => {
     const importers = new Set();
     mspData.forEach(item => {
-      if (filteredPartNos.includes(item.part_no) && filteredCategories.includes(item.category)) {
+      if (filteredPartNos.includes(item.part_no) && filteredCategories.includes(item.category) && filteredEgModels.includes(item['EG Model'])) {
         importers.add(item.importer);
       }
     });
     return Array.from(importers);
-  }, [mspData, filteredPartNos, filteredCategories]);
+  }, [mspData, filteredPartNos, filteredCategories, filteredEgModels]);
 
   const availableCategories = useMemo(() => {
     const categories = new Set();
     mspData.forEach(item => {
-      if (filteredPartNos.includes(item.part_no) && filteredImporters.includes(item.importer)) {
+      if (filteredPartNos.includes(item.part_no) && filteredImporters.includes(item.importer) && filteredEgModels.includes(item['EG Model'])) {
         categories.add(item.category);
       }
     });
     return Array.from(categories);
-  }, [mspData, filteredPartNos, filteredImporters]);
+  }, [mspData, filteredPartNos, filteredImporters, filteredEgModels]);
+
+  const availableEgModels = useMemo(() => {
+    const egModels = new Set();
+    mspData.forEach(item => {
+      if (filteredPartNos.includes(item.part_no) && filteredImporters.includes(item.importer) && filteredCategories.includes(item.category)) {
+        egModels.add(item['EG Model']);
+      }
+    });
+    return Array.from(egModels);
+  }, [mspData, filteredPartNos, filteredImporters, filteredCategories]);
 
   const availablePartNos = useMemo(() => {
     const partNos = new Set();
     mspData.forEach(item => {
-      if (filteredImporters.includes(item.importer) && filteredCategories.includes(item.category)) {
+      if (filteredImporters.includes(item.importer) && filteredCategories.includes(item.category) && filteredEgModels.includes(item['EG Model'])) {
         partNos.add(item.part_no);
       }
     });
     return Array.from(partNos);
-  }, [mspData, filteredImporters, filteredCategories]);
+  }, [mspData, filteredImporters, filteredCategories, filteredEgModels]);
 
   const filteredMspData = useMemo(() => 
     mspData.filter(item => 
       filteredPartNos.includes(item.part_no) &&
       filteredImporters.includes(item.importer) &&
-      filteredCategories.includes(item.category)
-    ), [mspData, filteredPartNos, filteredImporters, filteredCategories]
+      filteredCategories.includes(item.category) &&
+      filteredEgModels.includes(item['EG Model'])
+    ), [mspData, filteredPartNos, filteredImporters, filteredCategories, filteredEgModels]
   );
 
   const partNosWithThresholdIssues = useMemo(() => {
@@ -362,6 +384,12 @@ export default function PPRPage() {
     setCurrentPage(1);
   }, []);
 
+  const handleApplyEgModelFilter = useCallback((selectedEgModels) => {
+    setFilteredEgModels(selectedEgModels);
+    setFilterStates(prev => ({ ...prev, egModel: false }));
+    setCurrentPage(1);
+  }, []);
+
   const handleApplyCostItemFilter = useCallback((selected) => {
     setFilteredCostItems(selected);
   }, []);
@@ -416,12 +444,15 @@ export default function PPRPage() {
         uniquePartNos={availablePartNos}
         uniqueImporters={availableImporters}
         uniqueCategories={availableCategories}
+        uniqueEgModels={availableEgModels}
         filteredPartNos={filteredPartNos}
         filteredImporters={filteredImporters}
         filteredCategories={filteredCategories}
+        filteredEgModels={filteredEgModels}
         onApplyFilter={handleApplyFilter}
         onApplyImporterFilter={handleApplyImporterFilter}
         onApplyCategoryFilter={handleApplyCategoryFilter}
+        onApplyEgModelFilter={handleApplyEgModelFilter}
         selectedPeriod={selectedPeriod}
         comparisonPeriod={comparisonPeriod}
         calculateCostValues={calculateCostValues}
