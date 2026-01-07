@@ -25,6 +25,7 @@ const fileManifest = {
   material: [
     { name: "Material_Cost_2023_10.csv", uploadDate: "2023-10-22T12:00:00Z" },
   ],
+  gentani: [],
 };
 
 export default function App() {
@@ -42,6 +43,7 @@ export default function App() {
   // State for uploaded files
   const [materialFiles, setMaterialFiles] = useState([]);
   const [processFiles, setProcessFiles] = useState([]);
+  const [gentaniFiles, setGentaniFiles] = useState([]);
 
   // State for download modal
   const [isDownloadModalOpen, setIsDownloadModalOpen] = useState(false);
@@ -73,6 +75,14 @@ export default function App() {
     return allFiles[0];
   }, [materialFiles]);
 
+  const latestGentaniFile = useMemo(() => {
+    const allFiles = [...(fileManifest.gentani || []), ...gentaniFiles];
+    if (allFiles.length === 0) return null;
+    // Sort by date descending to find the latest
+    allFiles.sort((a, b) => new Date(b.uploadDate) - new Date(a.uploadDate));
+    return allFiles[0];
+  }, [gentaniFiles]);
+
   const navigate = useNavigate();
 
   const handleLogout = () => {
@@ -88,6 +98,8 @@ export default function App() {
       setProcessFiles(prevFiles => prevFiles.filter(f => f.name !== fileName));
     } else if (currentModalType === 'material') {
       setMaterialFiles(prevFiles => prevFiles.filter(f => f.name !== fileName));
+    } else if (currentModalType === 'gentani') {
+      setGentaniFiles(prevFiles => prevFiles.filter(f => f.name !== fileName));
     }
     // Note: This doesn't delete from fileManifest, only from uploaded files state.
     // To "delete" from the modal, we can filter the downloadableFiles state
@@ -150,7 +162,23 @@ export default function App() {
       // upload logic for process cost file goes here
     } else {
       alert("Please select a valid Excel file (.xls or .xlsx)");
-}
+    }
+  }
+
+  function handleGentaniFileUpload(event) {
+    const file = event.target.files[0];
+    if (file && (file.type === "application/vnd.ms-excel" || file.type === "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet")) {
+      const newFile = {
+        name: file.name,
+        size: file.size,
+        uploadDate: new Date().toISOString(),
+      };
+      setGentaniFiles(prevFiles => [...prevFiles, newFile]);
+      console.log("Gentani file uploaded:", file.name);
+      // upload logic for gentani file goes here
+    } else {
+      alert("Please select a valid Excel file (.xls or .xlsx)");
+    }
   }
 
   function openDownloadModal(type, files) {
@@ -160,6 +188,8 @@ export default function App() {
       setDownloadModalTitle("Download Material Cost Files");
     } else if (type === 'process') {
       setDownloadModalTitle("Download Process Cost Files");
+    } else if (type === 'gentani') {
+      setDownloadModalTitle("Download Gentani Files");
     } else {
       setDownloadModalTitle(`Download ${type.toUpperCase()} Files`);
     }
@@ -172,6 +202,11 @@ export default function App() {
     openDownloadModal('process', files);
   }
 
+  function downloadGentaniCost() {
+    const files = [...(fileManifest.gentani || []), ...gentaniFiles];
+    openDownloadModal('gentani', files);
+  }
+
   function downloadTemplate(type) {
     let fileName = "";
     let csvContent;
@@ -182,6 +217,9 @@ export default function App() {
     } else if (type === 'material') {
       csvContent = `Part Number,Material Type,Cost per Unit,Currency\\nPART-001,Steel,0,USD`;
       fileName = 'material-cost-template.csv';
+    } else if (type === 'gentani') {
+      csvContent = `Part Number,Gentani Cost,Currency\\nPART-001,0,USD`;
+      fileName = 'gentani-template.csv';
     } else {
       return;
     }
@@ -295,7 +333,7 @@ export default function App() {
         {canViewSection('calculation') && (
           <section>
             <h2 className="section-title">Calculation</h2>
-            <div className="grid-4">
+            <div className="grid-5">
               <motion.div
                 initial={{ opacity: 0, y: 6 }}
                 animate={{ opacity: 1, y: 0 }}
@@ -408,6 +446,60 @@ export default function App() {
                 initial={{ opacity: 0, y: 6 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.28, delay: 0.06 }}
+                className="card"
+              >
+                <div>
+                  <div className="card-title-flex">
+                    <div className="title">Gentani</div>
+                    <a href="#" onClick={(e) => { e.preventDefault(); downloadTemplate('gentani'); }} className="template-link">
+                      <img src={templateIcon} alt="Download Template" />
+                      <span>Template</span>
+                    </a>
+                  </div>
+                  <div className="meta">
+                    Last Update: <span>{latestGentaniFile ? new Date(latestGentaniFile.uploadDate).toLocaleDateString('en-CA') : '-'}</span>
+                  </div>
+                  <div className="small card-meta-margin">
+                    Manage Gentani-related cost calculations and data.
+                  </div>
+                </div>
+                <div className="card-footer">
+                  <div className="small">
+                    {latestGentaniFile ? (
+                      <strong className="status-ok">Ready</strong>
+                    ) : (
+                      <strong className="status-warning">Upload required</strong>
+                    )}
+                  </div>
+                  <div className="card-actions">
+                    <input
+                      type="file"
+                      accept=".xls,.xlsx"
+                      onChange={handleGentaniFileUpload}
+                      style={{ display: "none" }}
+                      id="gentani-upload"
+                    />
+                    <label
+                      htmlFor="gentani-upload"
+                      className="btn btn-ghost upload-label"
+                    >
+                      Upload
+                    </label>
+                    <button
+                      onClick={downloadGentaniCost}
+                      className="btn btn-primary"
+                      disabled={!latestGentaniFile}
+                      style={!latestGentaniFile ? { opacity: 0.5, cursor: "not-allowed" } : {}}
+                    >
+                      Download
+                    </button>
+                  </div>
+                </div>
+              </motion.div>
+              <motion.div
+                initial={{ opacity: 0, y: 6 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.28, delay: 0.08 }}
                 className="card arrow-card"
               >
                 ➜
@@ -416,7 +508,7 @@ export default function App() {
                 className="card ihp-area"
                 initial={{ opacity: 0, y: 6 }}
                 animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.28, delay: 0.08 }}
+                transition={{ duration: 0.28, delay: 0.10 }}
               >
                 <div>
                   <div className="title">IHP</div>
