@@ -16,6 +16,18 @@ import ExcelJS from "exceljs";
 import { exportPPRToExcel } from "./utils/exportPPRToExcel";
 import NoticeModal from "./components/NoticeModal";
 
+const COST_ITEMS_UOM = {
+  "Purchase": "USD",
+  "Material Cost": "USD",
+  "Process Cost": "USD",
+  "Logistic": "USD",
+  "Total Purchase Cost": "USD",
+  "Standard Cost": "IDR",
+  "FOH Cost": "IDR",
+  "Total Process Cost": "IDR",
+  "Total Cost": "IDR",
+};
+
 export default function PPRPage() {
   const navigate = useNavigate();
   const [mspData, setMspData] = useState([]);
