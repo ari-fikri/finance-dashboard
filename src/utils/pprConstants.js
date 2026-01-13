@@ -38,7 +38,7 @@ export const ANALYSIS_COLUMNS = [
   "CR",
   "Material Price Impact",
   "Gentan-I Impact",
-  "Material Change"
+  "Others"
 ];
 
 // Cost item key mappings
